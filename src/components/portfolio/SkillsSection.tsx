@@ -104,11 +104,11 @@ const SkillsSection = () => {
         </div>
 
         {/* Skill Categories */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 mobile-gap-tight mb-6 sm:mb-8 md:mb-12">
+        <div className="flex flex-col space-y-4 lg:grid lg:grid-cols-2 lg:space-y-0 mobile-gap-tight mb-6 sm:mb-8 md:mb-12">
           {categories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.key} className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={category.key} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll rounded-xl lg:rounded-lg" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="flex items-center space-x-3 mb-6">
                   <div className={`p-3 rounded-lg bg-${category.color}/10`}>
                     <IconComponent className={`w-6 h-6 text-${category.color}`} />
@@ -143,7 +143,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Security Tools Arsenal */}
-        <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
+        <Card className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll rounded-xl lg:rounded-lg">
           <div className="flex items-center space-x-3 mb-6">
             <div className="p-3 rounded-lg bg-accent/10">
               <Zap className="w-6 h-6 text-accent" />
@@ -166,7 +166,7 @@ const SkillsSection = () => {
         </Card>
 
         {/* Security Frameworks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 mobile-gap-tight mt-4 sm:mt-6 md:mt-8">
+        <div className="flex flex-col space-y-3 md:grid md:grid-cols-3 md:space-y-0 mobile-gap-tight mt-4 sm:mt-6 md:mt-8">
           {[
             { name: "OWASP", icon: Shield, description: "Web Application Security" },
             { name: "NIST", icon: Lock, description: "Cybersecurity Framework" },
@@ -174,12 +174,14 @@ const SkillsSection = () => {
           ].map((framework, index) => {
             const IconComponent = framework.icon;
             return (
-              <Card key={framework.name} className="cyber-glow mobile-card-padding bg-card/30 backdrop-blur-sm border-primary/10 text-center animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="p-3 rounded-lg bg-primary/10 inline-block mb-4">
-                  <IconComponent className="w-6 h-6 text-primary" />
+              <Card key={framework.name} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/30 backdrop-blur-sm border-primary/10 text-center animate-on-scroll rounded-xl md:rounded-lg flex items-center md:block" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="p-2 sm:p-3 rounded-lg bg-primary/10 flex-shrink-0 mr-3 md:mr-0 md:inline-block md:mb-4">
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
-                <h4 className="font-semibold text-lg">{framework.name}</h4>
-                <p className="text-sm text-muted-foreground">{framework.description}</p>
+                <div className="md:text-center">
+                  <h4 className="font-semibold text-base sm:text-lg">{framework.name}</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{framework.description}</p>
+                </div>
               </Card>
             );
           })}

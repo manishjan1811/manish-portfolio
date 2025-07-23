@@ -36,7 +36,7 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 mobile-gap-tight">
           {/* Education */}
-          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll">
+          <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll sm:mobile-card-padding">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-primary/10">
                 <GraduationCap className="w-6 h-6 text-primary" />
@@ -65,7 +65,7 @@ const AboutSection = () => {
           </Card>
 
           {/* Certifications */}
-          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
+          <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll flex flex-col sm:block">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-accent/10">
                 <Award className="w-6 h-6 text-accent" />
@@ -73,14 +73,14 @@ const AboutSection = () => {
               <h3 className="text-xl font-semibold">Certifications</h3>
             </div>
             
-            <div className="space-y-4">
-              <Badge variant="secondary" className="cyber-glow bg-primary/10 text-primary border-primary/30 px-3 py-1">
+            <div className="flex flex-col space-y-2 sm:space-y-4">
+              <Badge variant="secondary" className="cyber-glow bg-primary/10 text-primary border-primary/30 px-2 py-1 text-xs sm:px-3 sm:py-1 sm:text-sm w-full sm:w-auto text-center">
                 CEH - Certified Ethical Hacker
               </Badge>
-              <Badge variant="secondary" className="cyber-glow bg-accent/10 text-accent border-accent/30 px-3 py-1">
+              <Badge variant="secondary" className="cyber-glow bg-accent/10 text-accent border-accent/30 px-2 py-1 text-xs sm:px-3 sm:py-1 sm:text-sm w-full sm:w-auto text-center">
                 CRTA - Certified Red Team Analyst
               </Badge>
-              <Badge variant="secondary" className="cyber-glow bg-cyber-purple/10 text-cyber-purple border-cyber-purple/30 px-3 py-1">
+              <Badge variant="secondary" className="cyber-glow bg-cyber-purple/10 text-cyber-purple border-cyber-purple/30 px-2 py-1 text-xs sm:px-3 sm:py-1 sm:text-sm w-full sm:w-auto text-center">
                 BSCP - Burp Suite Certified Practitioner
               </Badge>
             </div>
@@ -92,7 +92,7 @@ const AboutSection = () => {
           </Card>
 
           {/* Specializations */}
-          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
+          <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-cyber-purple/10">
                 <Target className="w-6 h-6 text-cyber-purple" />
@@ -126,7 +126,7 @@ const AboutSection = () => {
         </div>
 
         {/* Notable Achievement */}
-        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 mobile-card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 p-4 sm:p-6 lg:p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
           <div className="text-center">
             <h3 className="text-2xl font-bold cyber-text mb-4">Notable Achievement</h3>
             <p className="text-lg text-muted-foreground">

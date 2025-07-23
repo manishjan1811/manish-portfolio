@@ -88,10 +88,10 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 mobile-gap-tight">
+        <div className="flex flex-col space-y-6 lg:grid lg:grid-cols-2 lg:space-y-0 mobile-gap-tight">
           {/* Contact Information */}
           <div className="space-y-8 animate-on-scroll">
-            <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20">
+            <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-primary/20 rounded-xl lg:rounded-lg">
               <h3 className="text-2xl font-bold cyber-text mb-6">Let's Connect</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
                 I'm always interested in discussing cybersecurity challenges, sharing knowledge, 
@@ -147,7 +147,7 @@ const ContactSection = () => {
 
           {/* Quick Contact Form */}
           <div className="animate-on-scroll">
-            <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-accent/20">
+            <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-accent/20 rounded-xl lg:rounded-lg">
               <h3 className="text-2xl font-bold cyber-text mb-6">Quick Message</h3>
               
               <form className="space-y-6">
@@ -213,7 +213,7 @@ const ContactSection = () => {
             </Card>
 
             {/* Professional Services */}
-            <Card className="cyber-glow mt-4 sm:mt-6 md:mt-8 mobile-card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20">
+            <Card className="cyber-glow mt-4 sm:mt-6 md:mt-8 p-4 sm:p-6 lg:p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 rounded-xl lg:rounded-lg">
               <div className="flex items-center space-x-3 mb-4">
                 <MessageSquare className="w-6 h-6 text-primary" />
                 <h4 className="font-semibold text-lg">Professional Services</h4>

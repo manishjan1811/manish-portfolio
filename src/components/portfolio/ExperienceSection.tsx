@@ -121,8 +121,8 @@ const ExperienceSection = () => {
           {experiences.map((exp, index) => {
             const IconComponent = exp.icon;
             return (
-              <Card key={exp.title} className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="grid grid-cols-1 lg:grid-cols-4 mobile-gap-tight">
+              <Card key={exp.title} className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll rounded-xl lg:rounded-lg" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex flex-col space-y-4 lg:grid lg:grid-cols-4 lg:space-y-0 mobile-gap-tight">
                   {/* Company Info */}
                   <div className="lg:col-span-1">
                     <div className="flex items-center space-x-3 mb-4">
@@ -168,11 +168,11 @@ const ExperienceSection = () => {
         {/* Key Accomplishments */}
         <div className="animate-on-scroll">
           <h3 className="text-2xl font-bold cyber-text text-center mb-8">Key Accomplishments</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 mobile-gap-tight">
+          <div className="flex flex-col space-y-3 md:grid md:grid-cols-2 md:space-y-0 mobile-gap-tight">
             {keyAccomplishments.map((accomplishment, index) => {
               const IconComponent = accomplishment.icon;
               return (
-                <Card key={accomplishment.title} className="cyber-glow mobile-card-padding bg-card/30 backdrop-blur-sm border-primary/10 animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
+                <Card key={accomplishment.title} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/30 backdrop-blur-sm border-primary/10 animate-on-scroll rounded-xl md:rounded-lg" style={{ animationDelay: `${index * 0.1}s` }}>
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 rounded-lg bg-${accomplishment.color}/10 flex-shrink-0`}>
                       <IconComponent className={`w-6 h-6 text-${accomplishment.color}`} />
@@ -189,7 +189,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* Professional Focus */}
-        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 mobile-card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 p-4 sm:p-6 lg:p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll rounded-xl lg:rounded-lg">
           <div className="text-center">
             <h3 className="text-2xl font-bold cyber-text mb-4">Professional Focus</h3>
             <p className="text-lg text-muted-foreground mb-6">
