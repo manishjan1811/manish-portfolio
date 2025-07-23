@@ -37,7 +37,7 @@ const AboutSection = () => {
         {/* Mobile: Vertical Stack, Desktop: Grid */}
         <div className="mobile-stack md:grid md:grid-cols-3 md:gap-8">
           {/* Education - Mobile Floating Card */}
-          <div className="mobile-glass-card mobile-padding-small md:cyber-glow md:p-8 md:bg-card/50 md:backdrop-blur-sm md:border-primary/20 animate-on-scroll mobile-glow-pulse">
+          <div className="mobile-neon-card mobile-padding-small md:cyber-glow md:p-8 md:bg-card/50 md:backdrop-blur-sm md:border-primary/20 animate-on-scroll mobile-glow-pulse">
             <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-6">
               <div className="p-2 md:p-3 rounded-xl md:rounded-lg bg-primary/20 md:bg-primary/10">
                 <GraduationCap className="w-4 h-4 md:w-6 md:h-6 text-primary" />
