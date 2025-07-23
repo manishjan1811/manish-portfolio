@@ -42,7 +42,7 @@ const Navigation = () => {
           <div className="flex items-center space-x-3 group">
             <div className="relative">
               <div className="cyber-glow p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
-                <Shield className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                <Terminal className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
               </div>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
             </div>
