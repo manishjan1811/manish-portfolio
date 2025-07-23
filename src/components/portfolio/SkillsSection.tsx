@@ -94,38 +94,38 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="mobile-py-tight mobile-px-tight bg-gradient-matrix">
+    <section id="skills" ref={sectionRef} className="mobile-section-spacing md:py-20 md:px-6 bg-gradient-matrix">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-4">Security Skills</h2>
-          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-6 md:mb-16 animate-on-scroll">
+          <h2 className="mobile-title md:text-4xl md:font-bold md:cyber-text mb-2 md:mb-4">Security Skills</h2>
+          <p className="text-xs md:text-xl md:text-muted-foreground md:max-w-3xl mx-auto text-primary/70">
             Comprehensive expertise in cybersecurity, ethical hacking, and web application security
           </p>
         </div>
 
-        {/* Skill Categories */}
-        <div className="flex flex-col space-y-4 lg:grid lg:grid-cols-2 lg:space-y-0 mobile-gap-tight mb-6 sm:mb-8 md:mb-12">
+        {/* Mobile: Masonry Layout, Desktop: Grid */}
+        <div className="mobile-masonry md:grid md:grid-cols-2 md:gap-8 mb-4 md:mb-12">
           {categories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.key} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll rounded-xl lg:rounded-lg" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className={`p-3 rounded-lg bg-${category.color}/10`}>
-                    <IconComponent className={`w-6 h-6 text-${category.color}`} />
+              <div key={category.key} className="mobile-slide-card mobile-padding-small md:cyber-glow md:p-6 md:bg-card/50 md:backdrop-blur-sm md:border-primary/20 animate-on-scroll mobile-glow-pulse" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-6">
+                  <div className={`p-2 md:p-3 rounded-xl md:rounded-lg bg-${category.color}/20 md:bg-${category.color}/10`}>
+                    <IconComponent className={`w-4 h-4 md:w-6 md:h-6 text-${category.color}`} />
                   </div>
-                  <h3 className="text-xl font-semibold">{category.name}</h3>
+                  <h3 className="mobile-title md:text-xl md:font-semibold">{category.name}</h3>
                 </div>
                 
-                <div className="space-y-4">
+                <div className="mobile-space-ultra md:space-y-4">
                   {skills
                     .filter(skill => skill.category === category.key)
                     .map((skill) => (
                       <div key={skill.name}>
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium">{skill.name}</span>
-                          <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                        <div className="flex justify-between items-center mb-1 md:mb-2">
+                          <span className="text-xs md:text-sm font-bold md:font-medium">{skill.name}</span>
+                          <span className="text-xs md:text-sm text-muted-foreground">{skill.level}%</span>
                         </div>
-                        <div className="skill-bar h-2">
+                        <div className="skill-bar h-1 md:h-2">
                           <div 
                             className="skill-progress h-full"
                             style={{ 
@@ -137,36 +137,36 @@ const SkillsSection = () => {
                       </div>
                     ))}
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
 
-        {/* Security Tools Arsenal */}
-        <Card className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll rounded-xl lg:rounded-lg">
-          <div className="flex items-center space-x-3 mb-6">
-            <div className="p-3 rounded-lg bg-accent/10">
-              <Zap className="w-6 h-6 text-accent" />
+        {/* Security Tools - Mobile Floating Design */}
+        <div className="mobile-floating-card mobile-padding-small mobile-margin-tight md:cyber-glow md:p-6 md:bg-card/50 md:backdrop-blur-sm md:border-accent/20 animate-on-scroll mobile-bounce">
+          <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-6">
+            <div className="p-2 md:p-3 rounded-xl md:rounded-lg bg-accent/20 md:bg-accent/10">
+              <Zap className="w-4 h-4 md:w-6 md:h-6 text-accent" />
             </div>
-            <h3 className="text-xl font-semibold">Security Tools Arsenal</h3>
+            <h3 className="mobile-title md:text-xl md:font-semibold">Security Tools Arsenal</h3>
           </div>
           
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-1 md:gap-3">
             {securityTools.map((tool, index) => (
               <Badge 
                 key={tool} 
                 variant="secondary" 
-                className="cyber-glow bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-300 cursor-default"
+                className="mobile-neon-card text-xs px-2 py-1 md:cyber-glow md:bg-muted/50 md:hover:bg-primary/10 md:hover:text-primary md:transition-all md:duration-300 md:cursor-default"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {tool}
               </Badge>
             ))}
           </div>
-        </Card>
+        </div>
 
-        {/* Security Frameworks */}
-        <div className="flex flex-col space-y-3 md:grid md:grid-cols-3 md:space-y-0 mobile-gap-tight mt-4 sm:mt-6 md:mt-8">
+        {/* Security Frameworks - Mobile Card Grid */}
+        <div className="mobile-masonry md:grid md:grid-cols-3 md:gap-6 mt-4 md:mt-8">
           {[
             { name: "OWASP", icon: Shield, description: "Web Application Security" },
             { name: "NIST", icon: Lock, description: "Cybersecurity Framework" },
@@ -174,15 +174,13 @@ const SkillsSection = () => {
           ].map((framework, index) => {
             const IconComponent = framework.icon;
             return (
-              <Card key={framework.name} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/30 backdrop-blur-sm border-primary/10 text-center animate-on-scroll rounded-xl md:rounded-lg flex items-center md:block" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="p-2 sm:p-3 rounded-lg bg-primary/10 flex-shrink-0 mr-3 md:mr-0 md:inline-block md:mb-4">
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+              <div key={framework.name} className="mobile-glass-card mobile-padding-small text-center md:cyber-glow md:p-6 md:bg-card/30 md:backdrop-blur-sm md:border-primary/10 animate-on-scroll mobile-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="p-2 md:p-3 rounded-xl md:rounded-lg bg-primary/20 md:bg-primary/10 inline-block mb-2 md:mb-4">
+                  <IconComponent className="w-4 h-4 md:w-6 md:h-6 text-primary" />
                 </div>
-                <div className="md:text-center">
-                  <h4 className="font-semibold text-base sm:text-lg">{framework.name}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">{framework.description}</p>
-                </div>
-              </Card>
+                <h4 className="font-bold text-sm md:font-semibold md:text-lg">{framework.name}</h4>
+                <p className="text-xs md:text-sm text-muted-foreground">{framework.description}</p>
+              </div>
             );
           })}
         </div>

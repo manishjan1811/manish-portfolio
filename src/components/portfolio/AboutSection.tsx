@@ -25,117 +25,118 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="mobile-py-tight mobile-px-tight">
+    <section id="about" ref={sectionRef} className="mobile-section-spacing md:py-20 md:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-4">About Me</h2>
-          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-6 md:mb-16 animate-on-scroll">
+          <h2 className="mobile-title md:text-4xl md:font-bold md:cyber-text mb-2 md:mb-4">About Me</h2>
+          <p className="text-xs md:text-xl md:text-muted-foreground md:max-w-3xl mx-auto text-primary/70">
             Passionate cybersecurity professional specializing in web application security and penetration testing
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 mobile-gap-tight">
-          {/* Education */}
-          <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll sm:mobile-card-padding">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <GraduationCap className="w-6 h-6 text-primary" />
+        {/* Mobile: Vertical Stack, Desktop: Grid */}
+        <div className="mobile-stack md:grid md:grid-cols-3 md:gap-8">
+          {/* Education - Mobile Floating Card */}
+          <div className="mobile-floating-card mobile-padding-small md:cyber-glow md:p-8 md:bg-card/50 md:backdrop-blur-sm md:border-primary/20 animate-on-scroll mobile-bounce">
+            <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-6">
+              <div className="p-2 md:p-3 rounded-xl md:rounded-lg bg-primary/20 md:bg-primary/10">
+                <GraduationCap className="w-4 h-4 md:w-6 md:h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold">Education</h3>
+              <h3 className="mobile-title md:text-xl md:font-semibold">Education</h3>
             </div>
             
-            <div className="mobile-space-tight">
+            <div className="mobile-space-ultra md:space-y-6">
               <div>
-                <h4 className="font-semibold text-lg">BCA 3rd Year</h4>
-                <p className="text-accent">Om University, Hisar</p>
-                <p className="text-sm text-muted-foreground">May 2023 – Present</p>
-                <p className="text-sm mt-2">Studying Cyber Security and more.</p>
+                <h4 className="font-bold text-sm md:text-lg md:font-semibold">BCA 3rd Year</h4>
+                <p className="text-xs md:text-base text-accent">Om University, Hisar</p>
+                <p className="text-xs md:text-sm text-muted-foreground">May 2023 – Present</p>
+                <p className="text-xs md:text-sm mt-1 md:mt-2">Studying Cyber Security and more.</p>
               </div>
               
               <div>
-                <h4 className="font-semibold text-lg">Cyber Security</h4>
-                <p className="text-accent">Craw Cyber Security, Delhi</p>
-                <p className="text-sm text-muted-foreground">July 2023 – Present</p>
-                <p className="text-sm mt-2">
+                <h4 className="font-bold text-sm md:text-lg md:font-semibold">Cyber Security</h4>
+                <p className="text-xs md:text-base text-accent">Craw Cyber Security, Delhi</p>
+                <p className="text-xs md:text-sm text-muted-foreground">July 2023 – Present</p>
+                <p className="text-xs md:text-sm mt-1 md:mt-2">
                   Deep knowledge of cybersecurity and ethical hacking techniques.
                   VAPT using advanced tools and methodologies.
                 </p>
               </div>
             </div>
-          </Card>
+          </div>
 
-          {/* Certifications */}
-          <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll flex flex-col sm:block">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 rounded-lg bg-accent/10">
-                <Award className="w-6 h-6 text-accent" />
+          {/* Certifications - Mobile Glass Card */}
+          <div className="mobile-glass-card mobile-padding-small md:cyber-glow md:p-8 md:bg-card/50 md:backdrop-blur-sm md:border-accent/20 animate-on-scroll mobile-glow-pulse">
+            <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-6">
+              <div className="p-2 md:p-3 rounded-xl md:rounded-lg bg-accent/20 md:bg-accent/10">
+                <Award className="w-4 h-4 md:w-6 md:h-6 text-accent" />
               </div>
-              <h3 className="text-xl font-semibold">Certifications</h3>
+              <h3 className="mobile-title md:text-xl md:font-semibold">Certifications</h3>
             </div>
             
-            <div className="flex flex-col space-y-2 sm:space-y-4">
-              <Badge variant="secondary" className="cyber-glow bg-primary/10 text-primary border-primary/30 px-2 py-1 text-xs sm:px-3 sm:py-1 sm:text-sm w-full sm:w-auto text-center">
+            <div className="mobile-space-ultra md:space-y-4">
+              <Badge variant="secondary" className="mobile-neon-card text-xs w-full justify-center py-1 md:cyber-glow md:bg-primary/10 md:text-primary md:border-primary/30 md:px-3 md:py-1 md:w-auto">
                 CEH - Certified Ethical Hacker
               </Badge>
-              <Badge variant="secondary" className="cyber-glow bg-accent/10 text-accent border-accent/30 px-2 py-1 text-xs sm:px-3 sm:py-1 sm:text-sm w-full sm:w-auto text-center">
+              <Badge variant="secondary" className="mobile-neon-card text-xs w-full justify-center py-1 md:cyber-glow md:bg-accent/10 md:text-accent md:border-accent/30 md:px-3 md:py-1 md:w-auto">
                 CRTA - Certified Red Team Analyst
               </Badge>
-              <Badge variant="secondary" className="cyber-glow bg-cyber-purple/10 text-cyber-purple border-cyber-purple/30 px-2 py-1 text-xs sm:px-3 sm:py-1 sm:text-sm w-full sm:w-auto text-center">
+              <Badge variant="secondary" className="mobile-neon-card text-xs w-full justify-center py-1 md:cyber-glow md:bg-cyber-purple/10 md:text-cyber-purple md:border-cyber-purple/30 md:px-3 md:py-1 md:w-auto">
                 BSCP - Burp Suite Certified Practitioner
               </Badge>
             </div>
             
-            <p className="text-sm text-muted-foreground mt-4">
+            <p className="text-xs md:text-sm text-muted-foreground mt-2 md:mt-4">
               Industry-recognized certifications demonstrating expertise in ethical hacking, 
               red team operations, and web application security testing.
             </p>
-          </Card>
+          </div>
 
-          {/* Specializations */}
-          <Card className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 rounded-lg bg-cyber-purple/10">
-                <Target className="w-6 h-6 text-cyber-purple" />
+          {/* Specializations - Mobile Neon Card */}
+          <div className="mobile-neon-card mobile-padding-small md:cyber-glow md:p-8 md:bg-card/50 md:backdrop-blur-sm md:border-cyber-purple/20 animate-on-scroll mobile-bounce">
+            <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-6">
+              <div className="p-2 md:p-3 rounded-xl md:rounded-lg bg-cyber-purple/20 md:bg-cyber-purple/10">
+                <Target className="w-4 h-4 md:w-6 md:h-6 text-cyber-purple" />
               </div>
-              <h3 className="text-xl font-semibold">Specializations</h3>
+              <h3 className="mobile-title md:text-xl md:font-semibold">Specializations</h3>
             </div>
             
-            <div className="space-y-4">
+            <div className="mobile-space-ultra md:space-y-4">
               <div>
-                <h4 className="font-semibold text-primary">Web Application Security</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-bold text-sm md:font-semibold md:text-base text-primary">Web Application Security</h4>
+                <p className="text-xs md:text-sm text-muted-foreground">
                   OWASP Top 10, business logic flaws, authentication bypasses
                 </p>
               </div>
               
               <div>
-                <h4 className="font-semibold text-accent">Penetration Testing</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-bold text-sm md:font-semibold md:text-base text-accent">Penetration Testing</h4>
+                <p className="text-xs md:text-sm text-muted-foreground">
                   SQLi, XSS, LFI, and advanced exploitation techniques
                 </p>
               </div>
               
               <div>
-                <h4 className="font-semibold text-cyber-purple">Security Research</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-bold text-sm md:font-semibold md:text-base text-cyber-purple">Security Research</h4>
+                <p className="text-xs md:text-sm text-muted-foreground">
                   Critical vulnerability discovery and responsible disclosure
                 </p>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
 
-        {/* Notable Achievement */}
-        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 p-4 sm:p-6 lg:p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        {/* Notable Achievement - Mobile Hero Card */}
+        <div className="mobile-hero-card mobile-padding-small mobile-margin-tight md:cyber-glow md:mt-12 md:p-8 md:bg-gradient-cyber/10 md:backdrop-blur-sm md:border-primary/20 animate-on-scroll mobile-glow-pulse">
           <div className="text-center">
-            <h3 className="text-2xl font-bold cyber-text mb-4">Notable Achievement</h3>
-            <p className="text-lg text-muted-foreground">
-              Discovered and reported a <span className="text-primary font-semibold">critical 2FA bypass vulnerability</span> in 
-              <span className="text-accent font-semibold"> Epic Games</span>, demonstrating expertise in 
+            <h3 className="mobile-title md:text-2xl md:font-bold md:cyber-text mb-2 md:mb-4">Notable Achievement</h3>
+            <p className="text-xs md:text-lg md:text-muted-foreground leading-relaxed">
+              Discovered and reported a <span className="text-primary font-bold md:font-semibold">critical 2FA bypass vulnerability</span> in 
+              <span className="text-accent font-bold md:font-semibold"> Epic Games</span>, demonstrating expertise in 
               authentication security and responsible disclosure practices.
             </p>
           </div>
-        </Card>
+        </div>
       </div>
     </section>
   );

@@ -73,19 +73,19 @@ const HeroSection = () => {
             and securing web applications against sophisticated threats.
           </p>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-4xl mx-auto mt-4 sm:mt-6 md:mt-12">
-            <div className="cyber-glow p-2 sm:p-3 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in">
-              <div className="text-lg sm:text-xl md:text-3xl font-bold cyber-text">3+</div>
-              <div className="text-xs text-muted-foreground">Certs</div>
+          {/* Mobile Hero Stats - Completely Different Design */}
+          <div className="mobile-masonry md:grid md:grid-cols-3 md:gap-8 max-w-4xl mx-auto mt-4 md:mt-12">
+            <div className="mobile-hologram-card mobile-padding-small md:p-6 text-center mobile-slide-in mobile-glow-pulse">
+              <div className="mobile-title md:text-3xl">3+</div>
+              <div className="mobile-subtitle md:text-sm md:text-muted-foreground">Certifications</div>
             </div>
-            <div className="cyber-glow p-2 sm:p-3 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.2s' }}>
-              <div className="text-lg sm:text-xl md:text-3xl font-bold cyber-text">6+</div>
-              <div className="text-xs text-muted-foreground">Months</div>
+            <div className="mobile-hologram-card mobile-padding-small md:p-6 text-center mobile-slide-in mobile-glow-pulse" style={{ animationDelay: '0.2s' }}>
+              <div className="mobile-title md:text-3xl">6+</div>
+              <div className="mobile-subtitle md:text-sm md:text-muted-foreground">Months Experience</div>
             </div>
-            <div className="cyber-glow p-2 sm:p-3 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.4s' }}>
-              <div className="text-lg sm:text-xl md:text-3xl font-bold cyber-text">Multi</div>
-              <div className="text-xs text-muted-foreground">Vulns</div>
+            <div className="mobile-hologram-card mobile-padding-small md:p-6 text-center mobile-slide-in mobile-glow-pulse" style={{ animationDelay: '0.4s' }}>
+              <div className="mobile-title md:text-3xl">Multi</div>
+              <div className="mobile-subtitle md:text-sm md:text-muted-foreground">Vulnerabilities</div>
             </div>
           </div>
 
