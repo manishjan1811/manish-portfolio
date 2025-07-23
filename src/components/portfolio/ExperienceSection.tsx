@@ -1,83 +1,55 @@
 import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Building, 
-  GraduationCap, 
-  Shield, 
-  Users, 
-  Target,
-  CheckCircle
-} from "lucide-react";
-
+import { Building, GraduationCap, Shield, Users, Target, CheckCircle } from "lucide-react";
 const ExperienceSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-
-  const experiences = [
-    {
-      title: "Cyber Security Trainer",
-      company: "Cywer Learning",
-      type: "Corporate Training",
-      duration: "Ongoing",
-      description: "Delivering advanced cybersecurity training programs for professionals and organizations, focusing on practical penetration testing skills.",
-      achievements: [
-        "Designed advanced security training modules",
-        "Conducted VAPT workshops and seminars",
-        "Mentored junior security professionals",
-        "Created real-world hacking scenarios"
-      ],
-      icon: GraduationCap,
-      color: "accent"
-    }
-  ];
-
-  const keyAccomplishments = [
-    {
-      title: "Critical Vulnerability Discovery",
-      description: "2FA bypass in Epic Games platform",
-      icon: Target,
-      color: "destructive"
-    },
-    {
-      title: "Multiple Public Disclosures",
-      description: "Responsible vulnerability reporting",
-      icon: Shield,
-      color: "primary"
-    },
-    {
-      title: "Advanced Tool Development",
-      description: "Created Reconbro.sh and Toolsbro.sh",
-      icon: CheckCircle,
-      color: "accent"
-    },
-    {
-      title: "Professional Training",
-      description: "6+ months of APT training experience",
-      icon: GraduationCap,
-      color: "cyber-purple"
-    }
-  ];
-
+  const experiences = [{
+    title: "Cyber Security Trainer",
+    company: "Cywer Learning",
+    type: "Corporate Training",
+    duration: "Ongoing",
+    description: "Delivering advanced cybersecurity training programs for professionals and organizations, focusing on practical penetration testing skills.",
+    achievements: ["Designed advanced security training modules", "Conducted VAPT workshops and seminars", "Mentored junior security professionals", "Created real-world hacking scenarios"],
+    icon: GraduationCap,
+    color: "accent"
+  }];
+  const keyAccomplishments = [{
+    title: "Critical Vulnerability Discovery",
+    description: "2FA bypass in Epic Games platform",
+    icon: Target,
+    color: "destructive"
+  }, {
+    title: "Multiple Public Disclosures",
+    description: "Responsible vulnerability reporting",
+    icon: Shield,
+    color: "primary"
+  }, {
+    title: "Advanced Tool Development",
+    description: "Created Reconbro.sh and Toolsbro.sh",
+    icon: CheckCircle,
+    color: "accent"
+  }, {
+    title: "Professional Training",
+    description: "6+ months of APT training experience",
+    icon: GraduationCap,
+    color: "cyber-purple"
+  }];
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
-
+    elements?.forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
-
-  return (
-    <section id="experience" ref={sectionRef} className="mobile-py-tight mobile-px-tight bg-gradient-matrix pt-12 md:pt-20">
+  return <section id="experience" ref={sectionRef} className="mobile-py-tight mobile-px-tight bg-gradient-matrix pt-12 md:pt-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
           <h2 className="text-responsive-lg md:text-5xl lg:text-6xl font-bold cyber-text mb-4">Experience</h2>
@@ -89,50 +61,9 @@ const ExperienceSection = () => {
         {/* Experience Timeline */}
         <div className="space-y-4 sm:space-y-6 md:space-y-8 mb-8 sm:mb-12 md:mb-16">
           {experiences.map((exp, index) => {
-            const IconComponent = exp.icon;
-            return (
-              <Card key={exp.title} className="cyber-glow p-4 sm:p-6 lg:p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll rounded-xl lg:rounded-lg" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex flex-col space-y-4 lg:grid lg:grid-cols-4 lg:space-y-0 mobile-gap-tight">
-                  {/* Company Info */}
-                  <div className="lg:col-span-1">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className={`p-3 rounded-lg bg-${exp.color}/10`}>
-                        <IconComponent className={`w-6 h-6 text-${exp.color}`} />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg">{exp.title}</h3>
-                        <p className={`text-${exp.color} font-medium`}>{exp.company}</p>
-                      </div>
-                    </div>
-                    <Badge variant="secondary" className={`bg-${exp.color}/10 text-${exp.color} border-${exp.color}/30`}>
-                      {exp.type}
-                    </Badge>
-                    <p className="text-sm text-muted-foreground mt-2">{exp.duration}</p>
-                  </div>
-
-                  {/* Description */}
-                  <div className="lg:col-span-2">
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      {exp.description}
-                    </p>
-                  </div>
-
-                  {/* Achievements */}
-                  <div className="lg:col-span-1">
-                    <h4 className="font-semibold mb-3">Key Achievements</h4>
-                    <div className="space-y-2">
-                      {exp.achievements.map((achievement, idx) => (
-                        <div key={idx} className="flex items-start space-x-2">
-                          <div className={`w-1.5 h-1.5 rounded-full bg-${exp.color} mt-2 flex-shrink-0`}></div>
-                          <p className="text-sm text-muted-foreground">{achievement}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
+          const IconComponent = exp.icon;
+          return;
+        })}
         </div>
 
         {/* Key Accomplishments */}
@@ -140,9 +71,10 @@ const ExperienceSection = () => {
           <h3 className="text-2xl font-bold cyber-text text-center mb-8">Key Accomplishments</h3>
           <div className="flex flex-col space-y-3 md:grid md:grid-cols-2 md:space-y-0 mobile-gap-tight">
             {keyAccomplishments.map((accomplishment, index) => {
-              const IconComponent = accomplishment.icon;
-              return (
-                <Card key={accomplishment.title} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/30 backdrop-blur-sm border-primary/10 animate-on-scroll rounded-xl md:rounded-lg" style={{ animationDelay: `${index * 0.1}s` }}>
+            const IconComponent = accomplishment.icon;
+            return <Card key={accomplishment.title} className="cyber-glow p-3 sm:p-4 lg:p-6 bg-card/30 backdrop-blur-sm border-primary/10 animate-on-scroll rounded-xl md:rounded-lg" style={{
+              animationDelay: `${index * 0.1}s`
+            }}>
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 rounded-lg bg-${accomplishment.color}/10 flex-shrink-0`}>
                       <IconComponent className={`w-6 h-6 text-${accomplishment.color}`} />
@@ -152,9 +84,8 @@ const ExperienceSection = () => {
                       <p className="text-muted-foreground">{accomplishment.description}</p>
                     </div>
                   </div>
-                </Card>
-              );
-            })}
+                </Card>;
+          })}
           </div>
         </div>
 
@@ -189,8 +120,6 @@ const ExperienceSection = () => {
           </div>
         </Card>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ExperienceSection;
