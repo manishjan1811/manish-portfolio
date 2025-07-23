@@ -58,13 +58,6 @@ const ExperienceSection = () => {
           </p>
         </div>
 
-        {/* Experience Timeline */}
-        <div className="space-y-4 sm:space-y-6 md:space-y-8 mb-8 sm:mb-12 md:mb-16">
-          {experiences.map((exp, index) => {
-          const IconComponent = exp.icon;
-          return;
-        })}
-        </div>
 
         {/* Key Accomplishments */}
         <div className="animate-on-scroll">
