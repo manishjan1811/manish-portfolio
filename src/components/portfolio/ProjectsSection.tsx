@@ -57,26 +57,6 @@ const ProjectsSection = () => {
       type: "Automation"
     },
     {
-      title: "Webtools.sh",
-      subtitle: "Web Security Testing Suite",
-      date: "2024",
-      description: "Comprehensive web security testing toolkit designed for penetration testers and security researchers. Provides automated scanning and manual testing capabilities for web applications.",
-      features: [
-        "Automated vulnerability scanning",
-        "Web application enumeration",
-        "Security header analysis",
-        "SSL/TLS security testing",
-        "Directory brute forcing",
-        "Parameter fuzzing capabilities",
-        "Custom payload injection",
-        "Detailed security reports"
-      ],
-      technologies: ["Bash", "Web Security", "OWASP", "SSL/TLS", "HTTP"],
-      icon: Shield,
-      color: "accent",
-      type: "Web Security"
-    },
-    {
       title: "Epic Games 2FA Bypass",
       subtitle: "Critical Security Research",
       date: "2024",
