@@ -155,7 +155,16 @@ const ProjectsSection = () => {
                         </Button>
                       ) : (
                         <>
-                          <Button variant="default" className="bg-gradient-cyber hover:shadow-cyber">
+                          <Button 
+                            variant="default" 
+                            className="bg-gradient-cyber hover:shadow-cyber"
+                            onClick={() => window.open(
+                              project.title === 'Reconbro.sh' 
+                                ? 'https://github.com/manishjan1811/Reconbro.sh'
+                                : 'https://github.com/manishjan1811/Toolsbro.sh'
+                              , '_blank'
+                            )}
+                          >
                             <Github className="w-4 h-4 mr-2" />
                             View Code
                           </Button>
