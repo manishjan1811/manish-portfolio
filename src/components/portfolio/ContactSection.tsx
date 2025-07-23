@@ -79,16 +79,16 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 px-6 bg-gradient-matrix">
+    <section id="contact" ref={sectionRef} className="section-padding container-padding bg-gradient-matrix">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-4">Get In Touch</h2>
-          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
+          <h2 className="text-responsive-lg font-bold cyber-text mb-3 sm:mb-4">Get In Touch</h2>
+          <p className="text-responsive-sm text-muted-foreground max-w-3xl mx-auto">
             Ready to discuss cybersecurity projects, collaboration opportunities, or security consulting?
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Information */}
           <div className="space-y-8 animate-on-scroll">
             <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20">

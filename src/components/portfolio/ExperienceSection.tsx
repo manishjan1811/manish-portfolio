@@ -107,17 +107,17 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 px-6 bg-gradient-matrix">
+    <section id="experience" ref={sectionRef} className="section-padding container-padding bg-gradient-matrix">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-4">Experience</h2>
-          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
+          <h2 className="text-responsive-lg font-bold cyber-text mb-3 sm:mb-4">Experience</h2>
+          <p className="text-responsive-sm text-muted-foreground max-w-3xl mx-auto">
             Professional journey in cybersecurity training, vulnerability research, and security consulting
           </p>
         </div>
 
         {/* Experience Timeline */}
-        <div className="space-y-8 mb-16">
+        <div className="space-y-6 sm:space-y-8 mb-8 sm:mb-12 md:mb-16">
           {experiences.map((exp, index) => {
             const IconComponent = exp.icon;
             return (
