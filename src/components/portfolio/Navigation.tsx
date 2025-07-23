@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X, Shield, Terminal } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,11 +39,19 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="cyber-glow p-2 rounded-lg bg-primary/10">
-              <Shield className="w-6 h-6 text-primary" />
+          <div className="flex items-center space-x-3 group">
+            <div className="relative">
+              <div className="cyber-glow p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                <Terminal className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+              </div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
             </div>
-            <span className="text-xl font-bold cyber-text">MJ</span>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold cyber-text bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                CYBER.SEC
+              </span>
+              <span className="text-xs text-muted-foreground font-code">v2.0.24</span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
