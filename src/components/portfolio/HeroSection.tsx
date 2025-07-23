@@ -75,18 +75,29 @@ const HeroSection = () => {
 
           {/* Mobile Hero Stats - SMALLER on mobile */}
           <div className="flex flex-wrap justify-center gap-2 md:grid md:grid-cols-3 md:gap-8 max-w-4xl mx-auto mt-4 md:mt-12">
-            <div className="mobile-hologram-card p-2 md:p-6 text-center mobile-slide-in mobile-glow-pulse">
+            <button 
+              className="mobile-hologram-card p-2 md:p-6 text-center mobile-slide-in mobile-glow-pulse cursor-pointer hover:scale-105 transition-transform"
+              onClick={() => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <div className="text-lg md:text-3xl font-bold text-primary">3+</div>
               <div className="text-xs md:text-sm text-muted-foreground">Certs</div>
-            </div>
-            <div className="mobile-hologram-card p-2 md:p-6 text-center mobile-slide-in mobile-glow-pulse" style={{ animationDelay: '0.2s' }}>
+            </button>
+            <button 
+              className="mobile-hologram-card p-2 md:p-6 text-center mobile-slide-in mobile-glow-pulse cursor-pointer hover:scale-105 transition-transform" 
+              style={{ animationDelay: '0.2s' }}
+              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <div className="text-lg md:text-3xl font-bold text-primary">6+</div>
               <div className="text-xs md:text-sm text-muted-foreground">Months</div>
-            </div>
-            <div className="mobile-hologram-card p-2 md:p-6 text-center mobile-slide-in mobile-glow-pulse" style={{ animationDelay: '0.4s' }}>
+            </button>
+            <button 
+              className="mobile-hologram-card p-2 md:p-6 text-center mobile-slide-in mobile-glow-pulse cursor-pointer hover:scale-105 transition-transform" 
+              style={{ animationDelay: '0.4s' }}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <div className="text-lg md:text-3xl font-bold text-primary">Multi</div>
               <div className="text-xs md:text-sm text-muted-foreground">Vulns</div>
-            </div>
+            </button>
           </div>
 
           {/* CTA Buttons - BIG on mobile */}
