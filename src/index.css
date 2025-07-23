@@ -247,15 +247,37 @@
 
   /* Responsive text sizing */
   .text-responsive-xl {
-    @apply text-4xl md:text-6xl lg:text-7xl;
+    @apply text-3xl sm:text-4xl md:text-6xl lg:text-7xl;
   }
 
   .text-responsive-lg {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
   }
 
   .text-responsive-md {
-    @apply text-lg md:text-xl lg:text-2xl;
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  }
+
+  /* Mobile-specific spacing utilities */
+  .mobile-py-tight {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  }
+
+  .mobile-px-tight {
+    @apply px-4 sm:px-6;
+  }
+
+  .mobile-gap-tight {
+    @apply gap-4 sm:gap-6 md:gap-8;
+  }
+
+  .mobile-space-tight {
+    @apply space-y-3 sm:space-y-4 md:space-y-6;
+  }
+
+  /* Mobile card padding */
+  .mobile-card-padding {
+    @apply p-4 sm:p-6 md:p-8;
   }
 }
 

@@ -25,18 +25,18 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 px-6">
+    <section id="about" ref={sectionRef} className="mobile-py-tight mobile-px-tight">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
           <h2 className="text-responsive-lg font-bold cyber-text mb-4">About Me</h2>
           <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
             Passionate cybersecurity professional specializing in web application security and penetration testing
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 mobile-gap-tight">
           {/* Education */}
-          <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll">
+          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-primary/10">
                 <GraduationCap className="w-6 h-6 text-primary" />
@@ -44,7 +44,7 @@ const AboutSection = () => {
               <h3 className="text-xl font-semibold">Education</h3>
             </div>
             
-            <div className="space-y-6">
+            <div className="mobile-space-tight">
               <div>
                 <h4 className="font-semibold text-lg">BCA 3rd Year</h4>
                 <p className="text-accent">Om University, Hisar</p>
@@ -65,7 +65,7 @@ const AboutSection = () => {
           </Card>
 
           {/* Certifications */}
-          <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
+          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-accent/10">
                 <Award className="w-6 h-6 text-accent" />
@@ -92,7 +92,7 @@ const AboutSection = () => {
           </Card>
 
           {/* Specializations */}
-          <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
+          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-cyber-purple/10">
                 <Target className="w-6 h-6 text-cyber-purple" />
@@ -126,7 +126,7 @@ const AboutSection = () => {
         </div>
 
         {/* Notable Achievement */}
-        <Card className="cyber-glow mt-12 p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 mobile-card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
           <div className="text-center">
             <h3 className="text-2xl font-bold cyber-text mb-4">Notable Achievement</h3>
             <p className="text-lg text-muted-foreground">

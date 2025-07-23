@@ -97,23 +97,23 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 px-6">
+    <section id="projects" ref={sectionRef} className="mobile-py-tight mobile-px-tight">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
           <h2 className="text-responsive-lg font-bold cyber-text mb-4">Featured Projects</h2>
           <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
             Security tools and research that demonstrate advanced cybersecurity expertise
           </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-6 sm:space-y-8 md:space-y-12">
           {projects.map((project, index) => {
             const IconComponent = project.icon;
             return (
-              <Card key={project.title} className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <Card key={project.title} className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="grid grid-cols-1 lg:grid-cols-3 mobile-gap-tight">
                   {/* Project Info */}
-                  <div className="lg:col-span-2 space-y-6">
+                  <div className="lg:col-span-2 mobile-space-tight">
                     <div className="flex items-start space-x-4">
                       <div className={`p-3 rounded-lg bg-${project.color}/10 flex-shrink-0`}>
                         <IconComponent className={`w-6 h-6 text-${project.color}`} />
@@ -210,7 +210,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Additional Work */}
-        <Card className="cyber-glow mt-12 p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        <Card className="cyber-glow mt-6 sm:mt-8 md:mt-12 mobile-card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
           <div className="text-center">
             <h3 className="text-2xl font-bold cyber-text mb-4">Continuous Security Research</h3>
             <p className="text-lg text-muted-foreground mb-6">

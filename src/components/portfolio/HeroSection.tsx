@@ -52,8 +52,8 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
-        <div className="space-y-8 animate-fade-in-up">
+      <div className="relative z-10 text-center max-w-6xl mx-auto mobile-px-tight">
+        <div className="space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in-up">
           {/* Main heading */}
           <h1 className="text-responsive-xl font-bold cyber-text glitch-text">
             MANISH JANGRA
@@ -74,23 +74,23 @@ const HeroSection = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-12">
-            <div className="cyber-glow p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in">
-              <div className="text-3xl font-bold cyber-text">3+</div>
-              <div className="text-sm text-muted-foreground">Certifications</div>
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-4xl mx-auto mt-6 sm:mt-8 md:mt-12">
+            <div className="cyber-glow p-3 sm:p-4 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold cyber-text">3+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Certifications</div>
             </div>
-            <div className="cyber-glow p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.2s' }}>
-              <div className="text-3xl font-bold cyber-text">6+</div>
-              <div className="text-sm text-muted-foreground">Months Experience</div>
+            <div className="cyber-glow p-3 sm:p-4 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.2s' }}>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold cyber-text">6+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Months Exp.</div>
             </div>
-            <div className="cyber-glow p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.4s' }}>
-              <div className="text-3xl font-bold cyber-text">Multiple</div>
-              <div className="text-sm text-muted-foreground">Critical Vulnerabilities Found</div>
+            <div className="cyber-glow p-3 sm:p-4 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.4s' }}>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold cyber-text">Multi</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Vulnerabilities</div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-6 sm:mt-8 md:mt-12">
             <Button 
               variant="default" 
               size="lg" 

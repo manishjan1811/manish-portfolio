@@ -92,9 +92,9 @@ const CertificationsSection = () => {
   }, []);
 
   return (
-    <section id="certifications" ref={sectionRef} className="py-20 px-6">
+    <section id="certifications" ref={sectionRef} className="mobile-py-tight mobile-px-tight">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
           <h2 className="text-responsive-lg font-bold cyber-text mb-4">Certifications</h2>
           <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
             Industry-recognized certifications demonstrating advanced cybersecurity expertise
@@ -102,11 +102,11 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 mobile-gap-tight mb-8 sm:mb-12 md:mb-16">
           {certifications.map((cert, index) => {
             const IconComponent = cert.icon;
             return (
-              <Card key={cert.acronym} className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={cert.acronym} className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="text-center mb-6">
                   <div className={`inline-flex p-4 rounded-full bg-${cert.color}/10 mb-4`}>
                     <IconComponent className={`w-8 h-8 text-${cert.color}`} />
@@ -147,8 +147,8 @@ const CertificationsSection = () => {
         </div>
 
         {/* Professional Development */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
+        <div className="grid grid-cols-1 lg:grid-cols-2 mobile-gap-tight mb-6 sm:mb-8 md:mb-12">
+          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-accent/10">
                 <Users className="w-6 h-6 text-accent" />
@@ -169,7 +169,7 @@ const CertificationsSection = () => {
             </div>
           </Card>
 
-          <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
+          <Card className="cyber-glow mobile-card-padding bg-card/50 backdrop-blur-sm border-cyber-purple/20 animate-on-scroll">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-cyber-purple/10">
                 <Target className="w-6 h-6 text-cyber-purple" />
@@ -201,7 +201,7 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certification Value Proposition */}
-        <Card className="cyber-glow p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        <Card className="cyber-glow mobile-card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
           <div className="text-center">
             <h3 className="text-2xl font-bold cyber-text mb-6">Certification Impact</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
