@@ -92,17 +92,17 @@ const CertificationsSection = () => {
   }, []);
 
   return (
-    <section id="certifications" ref={sectionRef} className="section-padding container-padding">
+    <section id="certifications" ref={sectionRef} className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-3 sm:mb-4">Certifications</h2>
-          <p className="text-responsive-sm text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-16 animate-on-scroll">
+          <h2 className="text-responsive-lg font-bold cyber-text mb-4">Certifications</h2>
+          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
             Industry-recognized certifications demonstrating advanced cybersecurity expertise
           </p>
         </div>
 
         {/* Certifications Grid */}
-        <div className="mobile-grid-3 gap-6 sm:gap-8 mb-8 sm:mb-12 md:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {certifications.map((cert, index) => {
             const IconComponent = cert.icon;
             return (

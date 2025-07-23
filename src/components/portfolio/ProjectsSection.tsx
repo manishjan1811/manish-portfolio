@@ -97,49 +97,49 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="section-padding container-padding">
+    <section id="projects" ref={sectionRef} className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-3 sm:mb-4">Featured Projects</h2>
-          <p className="text-responsive-sm text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-16 animate-on-scroll">
+          <h2 className="text-responsive-lg font-bold cyber-text mb-4">Featured Projects</h2>
+          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
             Security tools and research that demonstrate advanced cybersecurity expertise
           </p>
         </div>
 
-        <div className="space-y-8 sm:space-y-12">
+        <div className="space-y-12">
           {projects.map((project, index) => {
             const IconComponent = project.icon;
             return (
-              <Card key={project.title} className="cyber-glow card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+              <Card key={project.title} className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   {/* Project Info */}
-                  <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className={`p-2 sm:p-3 rounded-lg bg-${project.color}/10 flex-shrink-0`}>
-                        <IconComponent className={`w-5 h-5 sm:w-6 sm:h-6 text-${project.color}`} />
+                  <div className="lg:col-span-2 space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className={`p-3 rounded-lg bg-${project.color}/10 flex-shrink-0`}>
+                        <IconComponent className={`w-6 h-6 text-${project.color}`} />
                       </div>
                       <div className="flex-1">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-2">
-                          <h3 className="text-lg sm:text-xl md:text-2xl font-bold">{project.title}</h3>
-                          <Badge variant="secondary" className={`bg-${project.color}/10 text-${project.color} border-${project.color}/30 text-xs sm:text-sm mt-1 sm:mt-0 self-start sm:self-center`}>
+                        <div className="flex items-center space-x-3 mb-2">
+                          <h3 className="text-2xl font-bold">{project.title}</h3>
+                          <Badge variant="secondary" className={`bg-${project.color}/10 text-${project.color} border-${project.color}/30`}>
                             {project.type}
                           </Badge>
                         </div>
-                        <p className={`text-sm sm:text-base md:text-lg text-${project.color} font-medium mb-1 sm:mb-2`}>{project.subtitle}</p>
-                        <p className="text-xs sm:text-sm text-muted-foreground">{project.date}</p>
+                        <p className={`text-lg text-${project.color} font-medium mb-2`}>{project.subtitle}</p>
+                        <p className="text-sm text-muted-foreground">{project.date}</p>
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                    <p className="text-muted-foreground leading-relaxed">
                       {project.description}
                     </p>
 
                     {/* Technologies */}
                     <div>
-                      <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Technologies Used</h4>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
+                      <h4 className="font-semibold mb-3">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
-                          <Badge key={tech} variant="outline" className="border-primary/30 text-primary text-xs sm:text-sm">
+                          <Badge key={tech} variant="outline" className="border-primary/30 text-primary">
                             {tech}
                           </Badge>
                         ))}
@@ -147,7 +147,7 @@ const ProjectsSection = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
+                    <div className="flex flex-wrap gap-3">
                       {project.title.includes('Epic Games') ? (
                         <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                           <Shield className="w-4 h-4 mr-2" />
@@ -192,18 +192,15 @@ const ProjectsSection = () => {
                   </div>
 
                   {/* Features */}
-                  <div className="space-y-3 sm:space-y-4">
-                    <h4 className="font-semibold text-base sm:text-lg">Key Features</h4>
-                    <div className="space-y-2 sm:space-y-3">
-                      {project.features.slice(0, 6).map((feature, idx) => (
-                        <div key={idx} className="flex items-start space-x-2 sm:space-x-3">
-                          <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-${project.color} mt-1.5 sm:mt-2 flex-shrink-0`}></div>
-                          <p className="text-xs sm:text-sm text-muted-foreground">{feature}</p>
+                  <div className="space-y-4">
+                    <h4 className="font-semibold text-lg">Key Features</h4>
+                    <div className="space-y-3">
+                      {project.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start space-x-3">
+                          <div className={`w-1.5 h-1.5 rounded-full bg-${project.color} mt-2 flex-shrink-0`}></div>
+                          <p className="text-sm text-muted-foreground">{feature}</p>
                         </div>
                       ))}
-                      {project.features.length > 6 && (
-                        <p className="text-xs text-muted-foreground italic ml-3 sm:ml-5">...and more</p>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -213,21 +210,21 @@ const ProjectsSection = () => {
         </div>
 
         {/* Additional Work */}
-        <Card className="cyber-glow mt-8 sm:mt-12 card-padding bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
+        <Card className="cyber-glow mt-12 p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20 animate-on-scroll">
           <div className="text-center">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold cyber-text mb-3 sm:mb-4 md:mb-6">Continuous Security Research</h3>
-            <p className="text-responsive-sm text-muted-foreground mb-4 sm:mb-6">
+            <h3 className="text-2xl font-bold cyber-text mb-4">Continuous Security Research</h3>
+            <p className="text-lg text-muted-foreground mb-6">
               Actively discovering vulnerabilities in public programs and contributing to the cybersecurity community 
               through responsible disclosure and security awareness.
             </p>
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
-              <Badge variant="secondary" className="cyber-glow bg-primary/10 text-primary border-primary/30 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Badge variant="secondary" className="cyber-glow bg-primary/10 text-primary border-primary/30 px-4 py-2">
                 Bug Bounty Hunter
               </Badge>
-              <Badge variant="secondary" className="cyber-glow bg-accent/10 text-accent border-accent/30 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm">
+              <Badge variant="secondary" className="cyber-glow bg-accent/10 text-accent border-accent/30 px-4 py-2">
                 Vulnerability Researcher
               </Badge>
-              <Badge variant="secondary" className="cyber-glow bg-cyber-purple/10 text-cyber-purple border-cyber-purple/30 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm">
+              <Badge variant="secondary" className="cyber-glow bg-cyber-purple/10 text-cyber-purple border-cyber-purple/30 px-4 py-2">
                 Security Trainer
               </Badge>
             </div>

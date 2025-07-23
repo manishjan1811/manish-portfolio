@@ -94,26 +94,26 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="section-padding container-padding bg-gradient-matrix">
+    <section id="skills" ref={sectionRef} className="py-20 px-6 bg-gradient-matrix">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg font-bold cyber-text mb-3 sm:mb-4">Security Skills</h2>
-          <p className="text-responsive-sm text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-16 animate-on-scroll">
+          <h2 className="text-responsive-lg font-bold cyber-text mb-4">Security Skills</h2>
+          <p className="text-responsive-md text-muted-foreground max-w-3xl mx-auto">
             Comprehensive expertise in cybersecurity, ethical hacking, and web application security
           </p>
         </div>
 
         {/* Skill Categories */}
-        <div className="mobile-grid-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {categories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.key} className="cyber-glow card-padding bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-                  <div className={`p-2 sm:p-3 rounded-lg bg-${category.color}/10`}>
-                    <IconComponent className={`w-5 h-5 sm:w-6 sm:h-6 text-${category.color}`} />
+              <Card key={category.key} className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className={`p-3 rounded-lg bg-${category.color}/10`}>
+                    <IconComponent className={`w-6 h-6 text-${category.color}`} />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold">{category.name}</h3>
+                  <h3 className="text-xl font-semibold">{category.name}</h3>
                 </div>
                 
                 <div className="space-y-4">
@@ -143,20 +143,20 @@ const SkillsSection = () => {
         </div>
 
         {/* Security Tools Arsenal */}
-        <Card className="cyber-glow card-padding bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
-          <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-            <div className="p-2 sm:p-3 rounded-lg bg-accent/10">
-              <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+        <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="p-3 rounded-lg bg-accent/10">
+              <Zap className="w-6 h-6 text-accent" />
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold">Security Tools Arsenal</h3>
+            <h3 className="text-xl font-semibold">Security Tools Arsenal</h3>
           </div>
           
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="flex flex-wrap gap-3">
             {securityTools.map((tool, index) => (
               <Badge 
                 key={tool} 
                 variant="secondary" 
-                className="cyber-glow bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-300 cursor-default text-xs sm:text-sm"
+                className="cyber-glow bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-300 cursor-default"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {tool}
@@ -166,7 +166,7 @@ const SkillsSection = () => {
         </Card>
 
         {/* Security Frameworks */}
-        <div className="mobile-grid-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {[
             { name: "OWASP", icon: Shield, description: "Web Application Security" },
             { name: "NIST", icon: Lock, description: "Cybersecurity Framework" },
@@ -174,12 +174,12 @@ const SkillsSection = () => {
           ].map((framework, index) => {
             const IconComponent = framework.icon;
             return (
-              <Card key={framework.name} className="cyber-glow p-4 sm:p-6 bg-card/30 backdrop-blur-sm border-primary/10 text-center animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="p-2 sm:p-3 rounded-lg bg-primary/10 inline-block mb-3 sm:mb-4">
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+              <Card key={framework.name} className="cyber-glow p-6 bg-card/30 backdrop-blur-sm border-primary/10 text-center animate-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="p-3 rounded-lg bg-primary/10 inline-block mb-4">
+                  <IconComponent className="w-6 h-6 text-primary" />
                 </div>
-                <h4 className="font-semibold text-base sm:text-lg">{framework.name}</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground">{framework.description}</p>
+                <h4 className="font-semibold text-lg">{framework.name}</h4>
+                <p className="text-sm text-muted-foreground">{framework.description}</p>
               </Card>
             );
           })}
