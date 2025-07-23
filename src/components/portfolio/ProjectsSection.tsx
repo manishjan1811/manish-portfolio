@@ -190,7 +190,19 @@ const ProjectsSection = () => {
                             <Github className="w-4 h-4 mr-2" />
                             View Code
                           </Button>
-                          <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                          <Button 
+                            variant="outline" 
+                            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                            onClick={() => {
+                              if (project.title === 'Reconbro.sh') {
+                                window.open('https://asciinema.org/a/demo-reconbro', '_blank');
+                              } else if (project.title === 'Toolsbro.sh') {
+                                window.open('https://asciinema.org/a/demo-toolsbro', '_blank');
+                              } else if (project.title === 'Webtools.sh') {
+                                window.open('https://asciinema.org/a/demo-webtools', '_blank');
+                              }
+                            }}
+                          >
                             <ExternalLink className="w-4 h-4 mr-2" />
                             Live Demo
                           </Button>
