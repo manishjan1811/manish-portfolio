@@ -51,9 +51,9 @@ const ExperienceSection = () => {
   }, []);
   return <section id="experience" ref={sectionRef} className="mobile-py-tight mobile-px-tight bg-gradient-matrix pt-12 md:pt-20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-on-scroll">
-          <h2 className="text-responsive-lg md:text-5xl lg:text-6xl font-bold cyber-text mb-4">Experience</h2>
-          <p className="text-responsive-md md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-6 md:mb-16 animate-on-scroll">
+          <h2 className="mobile-title md:text-4xl md:font-bold md:cyber-text mb-2 md:mb-4">Experience</h2>
+          <p className="text-xs md:text-xl md:text-muted-foreground md:max-w-3xl mx-auto text-primary/70">
             Professional journey in cybersecurity training, vulnerability research, and security consulting
           </p>
         </div>
