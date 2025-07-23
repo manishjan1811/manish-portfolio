@@ -74,23 +74,23 @@ const HeroSection = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-4xl mx-auto mt-6 sm:mt-8 md:mt-12">
-            <div className="cyber-glow p-3 sm:p-4 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold cyber-text">3+</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Certifications</div>
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-4xl mx-auto mt-4 sm:mt-6 md:mt-12">
+            <div className="cyber-glow p-2 sm:p-3 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in">
+              <div className="text-lg sm:text-xl md:text-3xl font-bold cyber-text">3+</div>
+              <div className="text-xs text-muted-foreground">Certs</div>
             </div>
-            <div className="cyber-glow p-3 sm:p-4 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.2s' }}>
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold cyber-text">6+</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Months Exp.</div>
+            <div className="cyber-glow p-2 sm:p-3 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.2s' }}>
+              <div className="text-lg sm:text-xl md:text-3xl font-bold cyber-text">6+</div>
+              <div className="text-xs text-muted-foreground">Months</div>
             </div>
-            <div className="cyber-glow p-3 sm:p-4 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.4s' }}>
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold cyber-text">Multi</div>
-              <div className="text-xs sm:text-sm text-muted-foreground">Vulnerabilities</div>
+            <div className="cyber-glow p-2 sm:p-3 md:p-6 rounded-lg bg-card/10 backdrop-blur-sm animate-scale-in" style={{ animationDelay: '0.4s' }}>
+              <div className="text-lg sm:text-xl md:text-3xl font-bold cyber-text">Multi</div>
+              <div className="text-xs text-muted-foreground">Vulns</div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-6 sm:mt-8 md:mt-12">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center mt-4 sm:mt-6 md:mt-12">
             <Button 
               variant="default" 
               size="lg" 
