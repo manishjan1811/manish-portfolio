@@ -87,7 +87,7 @@ const ProjectsSection = () => {
                   <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-background via-background/95 to-background/90 border border-border/50 shadow-lg">
                     {/* Top Section with Icon and Type */}
                     <div className={`relative h-24 bg-gradient-to-r ${project.color === 'primary' ? 'from-blue-500/20 to-blue-600/30' : project.color === 'accent' ? 'from-emerald-500/20 to-emerald-600/30' : 'from-red-500/20 to-red-600/30'}`}>
-                      <div className="absolute inset-0 bg-black/10"></div>
+                      <div className="absolute inset-0 bg-black/30 dark:bg-black/10"></div>
                       <div className="relative p-4 flex items-center justify-between">
                         <div className={`p-3 rounded-xl bg-background/90 backdrop-blur-sm shadow-lg`}>
                           <IconComponent className={`w-6 h-6 ${project.color === 'primary' ? 'text-blue-500' : project.color === 'accent' ? 'text-emerald-500' : 'text-red-500'}`} />
