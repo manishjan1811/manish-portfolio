@@ -411,9 +411,9 @@ const ProjectsSection = () => {
           </TabsContent>
         </Tabs>
 
-        {/* Private Project Dialog */}
+        {/* Private Project Dialog - Desktop & Tablet */}
         <Dialog open={showPrivateDialog} onOpenChange={setShowPrivateDialog}>
-          <DialogContent className="max-w-[90vw] sm:max-w-md w-full mx-4 sm:mx-auto">
+          <DialogContent className="max-w-[90vw] sm:max-w-md w-full mx-4 sm:mx-auto hidden sm:block">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-center justify-center">
                 <Lock className="w-5 h-5 text-orange-500" />
@@ -430,6 +430,31 @@ const ProjectsSection = () => {
             </div>
           </DialogContent>
         </Dialog>
+
+        {/* Mobile-Specific Popup */}
+        {showPrivateDialog && (
+          <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 sm:hidden">
+            <div className="bg-background rounded-2xl p-6 w-full max-w-sm mx-auto shadow-2xl border border-border animate-in fade-in-0 zoom-in-95">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <div className="p-2 bg-orange-500/10 rounded-full">
+                    <Lock className="w-6 h-6 text-orange-500" />
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold">Private Repository</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  This project is not uploaded to GitHub because it is client property and contains confidential business information.
+                </p>
+                <Button 
+                  onClick={() => setShowPrivateDialog(false)} 
+                  className="w-full mt-6 bg-primary hover:bg-primary/90"
+                >
+                  Understood
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
