@@ -17,54 +17,111 @@ export function CVPreview() {
         description: "Please wait while we prepare your CV download.",
       })
 
-      // Use the existing CVPage element from the dialog preview
-      const existingCvElement = document.querySelector('#cv-page') as HTMLElement
+      // Find the CV element from the dialog preview
+      const cvElement = document.querySelector('#cv-page') as HTMLElement
       
-      if (!existingCvElement) {
+      if (!cvElement) {
         throw new Error('CV preview not found. Please open the preview first.')
       }
 
-      // Convert the existing styled element to canvas
-      const canvas = await html2canvas(existingCvElement, {
-        scale: 3,
+      // Wait for all images and fonts to load
+      await new Promise(resolve => {
+        const images = cvElement.querySelectorAll('img')
+        if (images.length === 0) {
+          resolve(true)
+          return
+        }
+        
+        let loadedImages = 0
+        images.forEach(img => {
+          if (img.complete) {
+            loadedImages++
+          } else {
+            img.addEventListener('load', () => {
+              loadedImages++
+              if (loadedImages === images.length) resolve(true)
+            })
+            img.addEventListener('error', () => {
+              loadedImages++
+              if (loadedImages === images.length) resolve(true)
+            })
+          }
+        })
+        
+        if (loadedImages === images.length) resolve(true)
+      })
+
+      // Wait a bit more for CSS animations and transitions to settle
+      await new Promise(resolve => setTimeout(resolve, 500))
+
+      // Capture with maximum quality settings
+      const canvas = await html2canvas(cvElement, {
+        scale: 4, // Higher scale for better quality
         useCORS: true,
-        allowTaint: true,
-        backgroundColor: null, // Keep transparent areas
-        width: existingCvElement.scrollWidth,
-        height: existingCvElement.scrollHeight,
+        allowTaint: false,
+        backgroundColor: '#ffffff', // White background for PDF
+        width: cvElement.scrollWidth,
+        height: cvElement.scrollHeight,
         scrollX: 0,
         scrollY: 0,
         logging: false,
         removeContainer: false,
         foreignObjectRendering: true,
+        onclone: (clonedDoc) => {
+          // Ensure all styles are applied to the cloned document
+          const clonedElement = clonedDoc.querySelector('#cv-page') as HTMLElement
+          if (clonedElement) {
+            // Force style recomputation
+            clonedElement.style.visibility = 'visible'
+            clonedElement.style.opacity = '1'
+            
+            // Ensure fonts are loaded
+            const fontFaces = Array.from(document.fonts)
+            fontFaces.forEach(font => {
+              if (font.status === 'loaded') {
+                clonedDoc.fonts.add(font)
+              }
+            })
+          }
+        },
         ignoreElements: (element) => {
-          // Skip elements that might cause issues
-          return element.tagName === 'SCRIPT' || element.tagName === 'STYLE'
+          // Skip problematic elements
+          return element.tagName === 'SCRIPT' || 
+                 element.tagName === 'NOSCRIPT' ||
+                 element.classList?.contains('exclude-from-pdf')
         }
       })
 
-      // Create PDF with high quality
-      const imgData = canvas.toDataURL('image/png', 1.0)
+      // Create high-quality PDF
+      const imgData = canvas.toDataURL('image/jpeg', 0.98) // Use JPEG with high quality
       const pdf = new jsPDF('p', 'mm', 'a4')
       
-      const imgWidth = 210 // A4 width
+      const pdfWidth = 210 // A4 width in mm
+      const pdfHeight = 297 // A4 height in mm
+      const imgWidth = pdfWidth - 20 // Leave 10mm margin on each side
       const imgHeight = (canvas.height * imgWidth) / canvas.width
       
+      // Center the content with margins
+      const xOffset = 10 // 10mm left margin
+      let yOffset = 10 // 10mm top margin
+      
       // Handle multi-page if content is too long
-      if (imgHeight > 297) {
-        const pageHeight = 297
-        let yOffset = 0
+      if (imgHeight > pdfHeight - 20) { // Account for top and bottom margins
+        const pageHeight = pdfHeight - 20 // Account for margins
+        let currentY = 0
         
-        while (yOffset < imgHeight) {
-          if (yOffset > 0) {
+        while (currentY < imgHeight) {
+          if (currentY > 0) {
             pdf.addPage()
           }
           
-          pdf.addImage(imgData, 'PNG', 0, -yOffset, imgWidth, imgHeight)
-          yOffset += pageHeight
+          pdf.addImage(imgData, 'JPEG', xOffset, yOffset - currentY, imgWidth, imgHeight)
+          currentY += pageHeight
         }
       } else {
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+        // Center vertically if content fits on one page
+        const verticalCenter = (pdfHeight - imgHeight) / 2
+        pdf.addImage(imgData, 'JPEG', xOffset, Math.max(yOffset, verticalCenter), imgWidth, imgHeight)
       }
       
       pdf.save('Manish_Jangra_CV.pdf')
@@ -77,7 +134,7 @@ export function CVPreview() {
       console.error('Download error:', error)
       toast({
         title: "Download Error", 
-        description: "There was an error generating the PDF.",
+        description: "There was an error generating the PDF. Please try again.",
         variant: "destructive",
       })
     }
