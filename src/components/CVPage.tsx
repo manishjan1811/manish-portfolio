@@ -106,7 +106,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <span className="text-gray-500 mt-1">•</span>
-                      <span>Conducted advanced penetration testing with 6+ months of APT training experience</span>
+                      <span>Conducted advanced penetration testing with 6+ months of experience</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-gray-500 mt-1">•</span>
