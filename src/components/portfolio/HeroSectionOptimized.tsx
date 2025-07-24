@@ -40,70 +40,133 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Content - Mobile-first responsive layout */}
-      <div className="relative z-10 text-center w-full px-4 sm:px-6">
-        <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
-          {/* Mobile-optimized main heading */}
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold cyber-text leading-tight tracking-tight break-words">
-            MANISH JANGRA
-          </h1>
-          
-          {/* Mobile-optimized typing effect subtitle */}
-          <div className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-medium px-2">
-            <span className="border-r-2 border-primary animate-pulse break-words">
-              {typedText}
-            </span>
+      {/* Content - Enhanced responsive layout */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+        {/* Mobile View */}
+        <div className="block lg:hidden text-center">
+          <div className="space-y-4 animate-fade-in-up">
+            {/* Mobile compact heading */}
+            <div className="space-y-3">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold cyber-text leading-tight">
+                MANISH JANGRA
+              </h1>
+              <div className="text-sm xs:text-base text-muted-foreground font-medium">
+                <span className="border-r-2 border-primary animate-pulse">
+                  {typedText}
+                </span>
+              </div>
+            </div>
+
+            {/* Mobile hero card */}
+            <div className="bg-card/30 backdrop-blur-md rounded-2xl border border-border/50 p-4 xs:p-5 mx-2 mt-6">
+              <p className="text-xs xs:text-sm text-muted-foreground leading-relaxed mb-4">
+                Elite cybersecurity specialist with <span className="text-primary font-semibold">6+ months</span> of penetration testing experience.
+              </p>
+              
+              {/* Mobile inline stats */}
+              <div className="flex justify-between items-center bg-card/50 rounded-xl p-3 mb-4">
+                <div className="text-center">
+                  <div className="text-lg font-bold text-primary">3+</div>
+                  <div className="text-xs text-muted-foreground">Certs</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-primary">6+</div>
+                  <div className="text-xs text-muted-foreground">Months</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-primary">Multi</div>
+                  <div className="text-xs text-muted-foreground">Vulns</div>
+                </div>
+              </div>
+
+              {/* Mobile CTA buttons */}
+              <div className="flex flex-col gap-2">
+                <Button 
+                  variant="default" 
+                  className="w-full py-2.5 text-sm font-medium hover:scale-[1.01] transition-transform"
+                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View My Work
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full py-2.5 text-sm font-medium hover:scale-[1.01] transition-transform"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Get In Touch
+                </Button>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Mobile-optimized description */}
-          <p className="text-xs xs:text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-2 max-w-full sm:max-w-2xl mx-auto">
-            Elite cybersecurity specialist with <span className="text-primary font-semibold">6+ months</span> of advanced penetration testing experience. 
-            Certified in <span className="text-primary font-semibold">CEH, CRTA, and BSCP</span>.
-          </p>
+        {/* Desktop View */}
+        <div className="hidden lg:block text-center">
+          <div className="space-y-8 animate-fade-in-up max-w-5xl mx-auto">
+            {/* Desktop grand heading */}
+            <div className="space-y-6">
+              <h1 className="text-5xl xl:text-7xl font-bold cyber-text leading-tight tracking-tight">
+                MANISH JANGRA
+              </h1>
+              <div className="text-xl xl:text-3xl text-muted-foreground font-medium">
+                <span className="border-r-2 border-primary animate-pulse">
+                  {typedText}
+                </span>
+              </div>
+            </div>
 
-          {/* Mobile-optimized stats cards */}
-          <div className="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl mx-auto mt-8 sm:mt-12 px-2">
-            <button 
-              className="p-2 xs:p-3 sm:p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02] min-h-[70px] xs:min-h-[80px] sm:min-h-[90px]"
-              onClick={() => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-primary">3+</div>
-              <div className="text-xs xs:text-xs sm:text-sm text-muted-foreground leading-tight">Certs</div>
-            </button>
-            <button 
-              className="p-2 xs:p-3 sm:p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02] min-h-[70px] xs:min-h-[80px] sm:min-h-[90px]"
-              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-primary">6+</div>
-              <div className="text-xs xs:text-xs sm:text-sm text-muted-foreground leading-tight">Months</div>
-            </button>
-            <button 
-              className="p-2 xs:p-3 sm:p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02] min-h-[70px] xs:min-h-[80px] sm:min-h-[90px]"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-primary">Multi</div>
-              <div className="text-xs xs:text-xs sm:text-sm text-muted-foreground leading-tight">Vulns</div>
-            </button>
-          </div>
+            {/* Desktop description with enhanced styling */}
+            <div className="bg-gradient-to-r from-card/20 via-card/30 to-card/20 backdrop-blur-md rounded-2xl border border-border/50 p-8 mx-8">
+              <p className="text-lg xl:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                Elite cybersecurity specialist with <span className="text-primary font-semibold bg-primary/10 px-2 py-1 rounded">6+ months</span> of advanced penetration testing experience. 
+                Certified in <span className="text-primary font-semibold bg-primary/10 px-2 py-1 rounded">CEH, CRTA, and BSCP</span>.
+              </p>
+            </div>
 
-          {/* Mobile-optimized CTA buttons */}
-          <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center mt-8 sm:mt-12 px-4">
-            <Button 
-              variant="default" 
-              size="lg" 
-              className="w-full max-w-xs sm:max-w-sm px-6 sm:px-8 py-3 text-sm sm:text-base font-medium transition-all duration-200 hover:scale-[1.02]"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View My Work
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="w-full max-w-xs sm:max-w-sm px-6 sm:px-8 py-3 text-sm sm:text-base font-medium transition-all duration-200 hover:scale-[1.02]"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Get In Touch
-            </Button>
+            {/* Desktop enhanced stats grid */}
+            <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
+              <button 
+                className="group p-8 text-center bg-gradient-to-br from-card/40 to-card/20 backdrop-blur-md rounded-2xl border border-border/50 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
+                onClick={() => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">3+</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Certifications</div>
+              </button>
+              <button 
+                className="group p-8 text-center bg-gradient-to-br from-card/40 to-card/20 backdrop-blur-md rounded-2xl border border-border/50 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
+                onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">6+</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Months Experience</div>
+              </button>
+              <button 
+                className="group p-8 text-center bg-gradient-to-br from-card/40 to-card/20 backdrop-blur-md rounded-2xl border border-border/50 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">Multi</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Vulnerabilities</div>
+              </button>
+            </div>
+
+            {/* Desktop elegant CTA buttons */}
+            <div className="flex gap-6 justify-center items-center mt-12">
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="px-10 py-4 text-base font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View My Work
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="px-10 py-4 text-base font-medium hover:scale-105 transition-all duration-300 bg-card/20 backdrop-blur-sm hover:bg-card/40"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get In Touch
+              </Button>
+            </div>
           </div>
         </div>
       </div>
