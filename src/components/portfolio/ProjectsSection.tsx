@@ -327,54 +327,52 @@ const ProjectsSection = () => {
 
                     {/* Content Section */}
                     <div className="px-8 pb-8">
-                      <div className="grid grid-cols-5 gap-8">
+                      <div className="grid grid-cols-5 gap-6">
                         {/* Left: Description & Technologies */}
-                        <div className="col-span-3 space-y-6">
+                        <div className="col-span-3 space-y-5">
                           {/* Description */}
                           <div>
-                            <p className="text-lg leading-relaxed text-muted-foreground">
+                            <p className="text-base leading-relaxed text-muted-foreground">
                               {project.description}
                             </p>
                           </div>
 
-                          {/* Technologies - Enhanced Grid */}
+                          {/* Technologies - Optimized Grid */}
                           <div>
-                            <h4 className="text-lg font-semibold mb-4 flex items-center">
-                              <Terminal className="w-5 h-5 mr-2 text-primary" />
+                            <h4 className="text-base font-semibold mb-3 flex items-center">
+                              <Terminal className="w-4 h-4 mr-2 text-primary" />
                               Tech Stack
                             </h4>
-                            <div className="grid grid-cols-3 gap-3">
+                            <div className="flex flex-wrap gap-2">
                               {project.technologies.map((tech) => (
-                                <div key={tech} className={`relative p-3 rounded-xl border transition-all duration-300 hover:scale-105 ${
-                                  project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/20 hover:border-blue-500/40' :
-                                  project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-500/40' :
-                                  'bg-red-500/5 border-red-500/20 hover:border-red-500/40'
+                                <div key={tech} className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                                  project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/20 hover:border-blue-500/40 text-blue-300' :
+                                  project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-500/40 text-emerald-300' :
+                                  'bg-red-500/5 border-red-500/20 hover:border-red-500/40 text-red-300'
                                 }`}>
-                                  <span className="text-sm font-medium text-foreground">{tech}</span>
+                                  {tech}
                                 </div>
                               ))}
                             </div>
                           </div>
 
-                          {/* Action Buttons - Enhanced Design */}
-                          <div className="flex flex-wrap gap-4 pt-2">
+                          {/* Action Buttons - Optimized Layout */}
+                          <div className="flex flex-wrap gap-3 pt-1">
                             {project.title.includes('Epic Games') ? (
                               <Button 
-                                size="lg" 
-                                variant="outline" 
                                 className="bg-red-500/10 border-red-500/30 text-red-400 hover:bg-red-500/20 hover:border-red-500/50 transition-all duration-300"
+                                variant="outline"
                               >
-                                <Shield className="w-5 h-5 mr-2" />
+                                <Shield className="w-4 h-4 mr-2" />
                                 Security Research
                               </Button>
                             ) : (
                               <>
                                 <Button 
-                                  size="lg"
-                                  className={`font-semibold transition-all duration-300 hover:scale-105 ${
-                                    project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 shadow-lg hover:shadow-blue-500/25' :
-                                    project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 shadow-lg hover:shadow-emerald-500/25' :
-                                    'bg-red-500 hover:bg-red-600 shadow-lg hover:shadow-red-500/25'
+                                  className={`font-medium transition-all duration-300 hover:scale-105 ${
+                                    project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-blue-500/25' :
+                                    project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 shadow-md hover:shadow-emerald-500/25' :
+                                    'bg-red-500 hover:bg-red-600 shadow-md hover:shadow-red-500/25'
                                   }`}
                                   onClick={() => window.open(
                                     project.title === 'Reconbro.sh' 
@@ -383,20 +381,19 @@ const ProjectsSection = () => {
                                     , '_blank'
                                   )}
                                 >
-                                  <Github className="w-5 h-5 mr-2" />
+                                  <Github className="w-4 h-4 mr-2" />
                                   View Source
                                 </Button>
                                 <Button 
-                                  size="lg"
                                   variant="outline" 
-                                  className={`font-semibold transition-all duration-300 hover:scale-105 ${
+                                  className={`font-medium transition-all duration-300 hover:scale-105 ${
                                     project.color === 'primary' ? 'border-blue-500/30 text-blue-400 bg-blue-500/5 hover:bg-blue-500/15' :
                                     project.color === 'accent' ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/5 hover:bg-emerald-500/15' :
                                     'border-red-500/30 text-red-400 bg-red-500/5 hover:bg-red-500/15'
                                   }`}
                                   onClick={() => window.open('#', '_blank')}
                                 >
-                                  <ExternalLink className="w-5 h-5 mr-2" />
+                                  <ExternalLink className="w-4 h-4 mr-2" />
                                   Live Demo
                                 </Button>
                               </>
@@ -404,9 +401,9 @@ const ProjectsSection = () => {
                           </div>
                         </div>
 
-                        {/* Right: Key Features - Enhanced List */}
+                        {/* Right: Key Features - Optimized */}
                         <div className="col-span-2">
-                          <h4 className="text-lg font-semibold mb-4 flex items-center">
+                          <h4 className="text-base font-semibold mb-3 flex items-center">
                             <div className={`w-2 h-2 rounded-full mr-3 ${
                               project.color === 'primary' ? 'bg-blue-400' :
                               project.color === 'accent' ? 'bg-emerald-400' :
@@ -414,23 +411,23 @@ const ProjectsSection = () => {
                             }`}></div>
                             Key Features
                           </h4>
-                          <div className="space-y-4">
+                          <div className="space-y-2.5">
                             {project.features.map((feature, idx) => (
                               <div 
                                 key={idx} 
-                                className={`group/feature relative p-4 rounded-xl border transition-all duration-300 hover:scale-[1.02] ${
+                                className={`group/feature relative p-3 rounded-lg border transition-all duration-300 hover:scale-[1.01] ${
                                   project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/10 hover:border-blue-500/30' :
                                   project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/10 hover:border-emerald-500/30' :
                                   'bg-red-500/5 border-red-500/10 hover:border-red-500/30'
                                 }`}
                               >
                                 <div className="flex items-start space-x-3">
-                                  <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 transition-all duration-300 ${
+                                  <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 transition-all duration-300 ${
                                     project.color === 'primary' ? 'bg-blue-400 group-hover/feature:bg-blue-300' :
                                     project.color === 'accent' ? 'bg-emerald-400 group-hover/feature:bg-emerald-300' :
                                     'bg-red-400 group-hover/feature:bg-red-300'
                                   }`}></div>
-                                  <p className="text-sm font-medium text-muted-foreground group-hover/feature:text-foreground transition-colors duration-300">
+                                  <p className="text-sm text-muted-foreground group-hover/feature:text-foreground transition-colors duration-300 leading-snug">
                                     {feature}
                                   </p>
                                 </div>
