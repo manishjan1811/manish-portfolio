@@ -215,7 +215,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="px-10 py-4 text-base font-medium hover:scale-105 transition-all duration-300 bg-card/20 backdrop-blur-sm hover:bg-primary/20 dark:hover:bg-card/40"
+                className="px-10 py-4 text-base font-medium hover:scale-105 transition-all duration-300 bg-card/20 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground dark:hover:bg-card/40"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get In Touch
