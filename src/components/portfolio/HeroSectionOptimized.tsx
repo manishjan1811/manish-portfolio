@@ -40,58 +40,58 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Content - Apple-style clean layout */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <div className="space-y-8 animate-fade-in-up">
-          {/* Clean main heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold cyber-text leading-tight tracking-tight">
+      {/* Content - Mobile-first responsive layout */}
+      <div className="relative z-10 text-center w-full px-4 sm:px-6">
+        <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
+          {/* Mobile-optimized main heading */}
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold cyber-text leading-tight tracking-tight break-words">
             MANISH JANGRA
           </h1>
           
-          {/* Typing effect subtitle */}
-          <div className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-medium">
-            <span className="border-r-2 border-primary animate-pulse">
+          {/* Mobile-optimized typing effect subtitle */}
+          <div className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-medium px-2">
+            <span className="border-r-2 border-primary animate-pulse break-words">
               {typedText}
             </span>
           </div>
 
-          {/* Clean description */}
-          <p className="text-lg md:text-xl max-w-3xl mx-auto text-muted-foreground leading-relaxed">
+          {/* Mobile-optimized description */}
+          <p className="text-xs xs:text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-2 max-w-full sm:max-w-2xl mx-auto">
             Elite cybersecurity specialist with <span className="text-primary font-semibold">6+ months</span> of advanced penetration testing experience. 
             Certified in <span className="text-primary font-semibold">CEH, CRTA, and BSCP</span>.
           </p>
 
-          {/* Apple-style stats cards */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto mt-12">
+          {/* Mobile-optimized stats cards */}
+          <div className="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl mx-auto mt-8 sm:mt-12 px-2">
             <button 
-              className="p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02]"
+              className="p-2 xs:p-3 sm:p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02] min-h-[70px] xs:min-h-[80px] sm:min-h-[90px]"
               onClick={() => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <div className="text-2xl md:text-3xl font-bold text-primary">3+</div>
-              <div className="text-sm text-muted-foreground">Certifications</div>
+              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-primary">3+</div>
+              <div className="text-xs xs:text-xs sm:text-sm text-muted-foreground leading-tight">Certs</div>
             </button>
             <button 
-              className="p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02]"
+              className="p-2 xs:p-3 sm:p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02] min-h-[70px] xs:min-h-[80px] sm:min-h-[90px]"
               onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <div className="text-2xl md:text-3xl font-bold text-primary">6+</div>
-              <div className="text-sm text-muted-foreground">Months Exp</div>
+              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-primary">6+</div>
+              <div className="text-xs xs:text-xs sm:text-sm text-muted-foreground leading-tight">Months</div>
             </button>
             <button 
-              className="p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02]"
+              className="p-2 xs:p-3 sm:p-4 md:p-6 text-center bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-border/50 hover:bg-card/70 transition-all duration-200 hover:scale-[1.02] min-h-[70px] xs:min-h-[80px] sm:min-h-[90px]"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <div className="text-2xl md:text-3xl font-bold text-primary">Multi</div>
-              <div className="text-sm text-muted-foreground">Vulnerabilities</div>
+              <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-primary">Multi</div>
+              <div className="text-xs xs:text-xs sm:text-sm text-muted-foreground leading-tight">Vulns</div>
             </button>
           </div>
 
-          {/* Apple-style CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+          {/* Mobile-optimized CTA buttons */}
+          <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center mt-8 sm:mt-12 px-4">
             <Button 
               variant="default" 
               size="lg" 
-              className="w-full sm:w-auto px-8 py-3 text-base font-medium transition-all duration-200 hover:scale-[1.02]"
+              className="w-full max-w-xs sm:max-w-sm px-6 sm:px-8 py-3 text-sm sm:text-base font-medium transition-all duration-200 hover:scale-[1.02]"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View My Work
@@ -99,7 +99,7 @@ const HeroSection = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="w-full sm:w-auto px-8 py-3 text-base font-medium transition-all duration-200 hover:scale-[1.02]"
+              className="w-full max-w-xs sm:max-w-sm px-6 sm:px-8 py-3 text-sm sm:text-base font-medium transition-all duration-200 hover:scale-[1.02]"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Get In Touch

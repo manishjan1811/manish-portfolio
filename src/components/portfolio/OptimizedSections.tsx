@@ -44,11 +44,11 @@ const SectionWrapper = ({
     <section 
       id={id} 
       ref={sectionRef} 
-      className={`py-16 md:py-24 transition-all duration-700 ${
+      className={`py-8 sm:py-12 md:py-16 lg:py-24 transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       } ${className}`}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {children}
       </div>
     </section>
@@ -63,11 +63,11 @@ const SectionHeading = ({
   title: string; 
   description: string; 
 }) => (
-  <div className="text-center mb-16">
-    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+  <div className="text-center mb-8 sm:mb-12 md:mb-16">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4 px-2">
       {title}
     </h2>
-    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+    <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
       {description}
     </p>
   </div>
@@ -80,31 +80,31 @@ export const AboutSectionOptimized = () => (
       title="About Me"
       description="Passionate cybersecurity professional dedicated to securing digital environments"
     />
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-      <div className="space-y-6">
-        <p className="text-lg leading-relaxed text-muted-foreground">
+    <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 items-center">
+      <div className="space-y-4 sm:space-y-6 order-2 sm:order-1">
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
           With <span className="text-primary font-semibold">6+ months</span> of hands-on penetration testing experience, 
           I specialize in web application security and vulnerability assessment. My journey in cybersecurity 
           is driven by a passion for protecting digital assets and staying ahead of emerging threats.
         </p>
-        <p className="text-lg leading-relaxed text-muted-foreground">
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
           I hold industry-recognized certifications including <span className="text-primary font-semibold">CEH</span>, 
           <span className="text-primary font-semibold"> CRTA</span>, and <span className="text-primary font-semibold">BSCP</span>, 
           demonstrating my commitment to continuous learning and professional development.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 order-1 sm:order-2">
         {[
           { icon: Shield, label: "Security Expert", value: "6+ Months" },
           { icon: Award, label: "Certifications", value: "3 Active" },
           { icon: Code2, label: "Languages", value: "5+" },
           { icon: Globe, label: "Projects", value: "Multiple" }
         ].map((item, index) => (
-          <Card key={index} className="p-6 bg-card/50 border-border/50 hover:bg-card/70 transition-colors duration-200">
+          <Card key={index} className="p-3 sm:p-4 md:p-6 bg-card/50 border-border/50 hover:bg-card/70 transition-colors duration-200">
             <CardContent className="p-0 text-center">
-              <item.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="text-2xl font-bold text-foreground">{item.value}</div>
-              <div className="text-sm text-muted-foreground">{item.label}</div>
+              <item.icon className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-primary mx-auto mb-2 sm:mb-3" />
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">{item.value}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground leading-tight">{item.label}</div>
             </CardContent>
           </Card>
         ))}
@@ -134,17 +134,17 @@ export const SkillsSectionOptimized = () => {
         title="Skills & Expertise"
         description="Technical competencies and areas of specialization"
       />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {categories.map(category => (
-          <Card key={category} className="p-6 bg-card/50 border-border/50">
+          <Card key={category} className="p-4 sm:p-5 md:p-6 bg-card/50 border-border/50">
             <CardContent className="p-0">
-              <h3 className="text-xl font-semibold mb-6 text-primary">{category}</h3>
-              <div className="space-y-4">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-primary">{category}</h3>
+              <div className="space-y-3 sm:space-y-4">
                 {skills.filter(skill => skill.category === category).map(skill => (
                   <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground">{skill.name}</span>
-                      <span className="text-muted-foreground">{skill.level}%</span>
+                    <div className="flex justify-between text-xs sm:text-sm">
+                      <span className="text-foreground truncate pr-2">{skill.name}</span>
+                      <span className="text-muted-foreground flex-shrink-0">{skill.level}%</span>
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <div 
@@ -179,31 +179,31 @@ export const ContactSectionOptimized = () => {
         title="Get In Touch"
         description="Ready to discuss cybersecurity projects or collaboration opportunities"
       />
-      <div className="grid md:grid-cols-2 gap-12">
-        <div className="space-y-8">
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-foreground">Let's Connect</h3>
-            <p className="text-muted-foreground">
+      <div className="grid sm:grid-cols-2 gap-8 sm:gap-12">
+        <div className="space-y-6 sm:space-y-8 order-2 sm:order-1">
+          <div className="space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-semibold text-foreground">Let's Connect</h3>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Whether you need security consulting, penetration testing, or want to collaborate 
               on cybersecurity projects, I'm here to help.
             </p>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex items-center space-x-3">
-              <Mail className="w-5 h-5 text-primary" />
-              <span className="text-muted-foreground">jangramanish708@gmail.com</span>
+              <Mail className="w-4 sm:w-5 h-4 sm:h-5 text-primary flex-shrink-0" />
+              <span className="text-sm sm:text-base text-muted-foreground break-all">jangramanish708@gmail.com</span>
             </div>
             <div className="flex items-center space-x-3">
-              <MapPin className="w-5 h-5 text-primary" />
-              <span className="text-muted-foreground">Available for remote work</span>
+              <MapPin className="w-4 sm:w-5 h-4 sm:h-5 text-primary flex-shrink-0" />
+              <span className="text-sm sm:text-base text-muted-foreground">Available for remote work</span>
             </div>
           </div>
         </div>
 
-        <Card className="p-6 bg-card/50 border-border/50">
+        <Card className="p-4 sm:p-5 md:p-6 bg-card/50 border-border/50 order-1 sm:order-2">
           <CardContent className="p-0">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
                 <Input
                   type="text"
