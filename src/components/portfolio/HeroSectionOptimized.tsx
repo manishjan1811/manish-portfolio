@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-cybersecurity.jpg";
+import circuitBg from "@/assets/circuit-board-bg.jpg";
 
 const HeroSection = () => {
   const [typedText, setTypedText] = useState("");
@@ -27,17 +28,37 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Minimal background */}
-      <div className="absolute inset-0 matrix-bg"></div>
-      
-      {/* Subtle hero image */}
-      <div className="absolute inset-0 opacity-5">
-        <img 
-          src={heroImage} 
-          alt="Cybersecurity Professional" 
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
+      {/* Enhanced layered background */}
+      <div className="absolute inset-0">
+        {/* Primary circuit board background */}
+        <div className="absolute inset-0">
+          <img 
+            src={circuitBg} 
+            alt="Circuit Board Background" 
+            className="w-full h-full object-cover opacity-20"
+            loading="eager"
+          />
+        </div>
+        
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80"></div>
+        
+        {/* Matrix animation overlay */}
+        <div className="absolute inset-0 matrix-bg opacity-40"></div>
+        
+        {/* Subtle hero accent */}
+        <div className="absolute inset-0 opacity-5">
+          <img 
+            src={heroImage} 
+            alt="Cybersecurity Professional" 
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+        
+        {/* Tech glow effects */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Content - Enhanced responsive layout */}
