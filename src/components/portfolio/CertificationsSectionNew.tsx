@@ -57,10 +57,14 @@ const CertificationsSectionNew = () => {
     }
   ];
 
-  const additionalSkills = [
-    "Threat Modeling", "Report Writing", "Exploit Development", "Post-Exploitation",
-    "Encryption Basics", "Secure Communication", "Risk Assessment", "Compliance Frameworks",
-    "Incident Response", "Digital Forensics", "Security Architecture", "Vulnerability Management"
+  const webPentesterSkills = [
+    "Web Application Testing", "OWASP Top 10", "SQL Injection", "XSS Analysis",
+    "Authentication Bypass", "API Security Testing", "Session Management", "CSRF Testing"
+  ];
+
+  const webDeveloperSkills = [
+    "React.js", "Node.js", "JavaScript", "TypeScript", 
+    "REST APIs", "Database Security", "Secure Coding", "Git"
   ];
 
   const updateScrollButtons = () => {
@@ -255,84 +259,131 @@ const CertificationsSectionNew = () => {
           })}
         </div>
 
-        {/* Professional Development Section */}
-        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          <Card className="p-4 sm:p-6 md:p-8 bg-card/50 backdrop-blur-sm border-accent/20 animate-on-scroll">
+        {/* Mobile: Horizontal Scrolling Skills Cards */}
+        <div className="block lg:hidden mb-8">
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4">
+            {/* Web Pentester Skills Card */}
+            <Card className="flex-shrink-0 w-64 p-4 bg-green-500/10 border-green-500/30 border-2">
+              <div className="text-center mb-3">
+                <div className="p-3 rounded-full bg-green-500/10 inline-block mb-2">
+                  <Shield className="w-5 h-5 text-green-400" />
+                </div>
+                <h3 className="text-sm font-bold text-green-400">Web Pentester</h3>
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+                {webPentesterSkills.map((skill) => (
+                  <Badge key={skill} variant="outline" className="border-green-500/30 text-green-400 text-xs py-1 justify-center">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+
+            {/* Web Developer Skills Card */}
+            <Card className="flex-shrink-0 w-64 p-4 bg-blue-500/10 border-blue-500/30 border-2">
+              <div className="text-center mb-3">
+                <div className="p-3 rounded-full bg-blue-500/10 inline-block mb-2">
+                  <Target className="w-5 h-5 text-blue-400" />
+                </div>
+                <h3 className="text-sm font-bold text-blue-400">Web Developer</h3>
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+                {webDeveloperSkills.map((skill) => (
+                  <Badge key={skill} variant="outline" className="border-blue-500/30 text-blue-400 text-xs py-1 justify-center">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+
+            {/* Continuous Learning Card */}
+            <Card className="flex-shrink-0 w-64 p-4 bg-purple-500/10 border-purple-500/30 border-2">
+              <div className="text-center mb-3">
+                <div className="p-3 rounded-full bg-purple-500/10 inline-block mb-2">
+                  <Users className="w-5 h-5 text-purple-400" />
+                </div>
+                <h3 className="text-sm font-bold text-purple-400">Learning</h3>
+              </div>
+              <div className="space-y-2 text-xs">
+                <div>
+                  <p className="font-medium text-purple-400 mb-1">Focus:</p>
+                  <p className="text-muted-foreground">• Advanced Web Attacks</p>
+                  <p className="text-muted-foreground">• Cloud Security</p>
+                </div>
+                <div>
+                  <p className="font-medium text-purple-400 mb-1">Next:</p>
+                  <p className="text-muted-foreground">• OSCP</p>
+                  <p className="text-muted-foreground">• CISSP</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* Desktop: Grid Layout for Skills */}
+        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 mb-16">
+          <Card className="p-8 bg-card/50 backdrop-blur-sm border-accent/20">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-3 rounded-lg bg-accent/10">
                 <Users className="w-6 h-6 text-accent" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold">Professional Skills</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-              {additionalSkills.map((skill, index) => (
-                <Badge 
-                  key={skill} 
-                  variant="outline" 
-                  className="border-accent/30 text-accent hover:bg-accent/10 transition-colors text-xs py-1 justify-center"
-                >
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </Card>
-
-          <Card className="p-4 sm:p-6 md:p-8 bg-card/50 backdrop-blur-sm border-primary/20 animate-on-scroll">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Target className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold">Continuous Learning</h3>
+              <h3 className="text-xl font-semibold">Professional Skills</h3>
             </div>
             
             <div className="space-y-4">
               <div>
-                <h4 className="font-semibold text-primary mb-2 text-sm sm:text-base">Current Focus Areas</h4>
-                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1">
-                  <li>• Advanced APT Techniques</li>
-                  <li>• Cloud Security Assessment</li>
-                  <li>• AI/ML Security Testing</li>
-                  <li>• Zero-Day Research</li>
+                <h4 className="font-semibold text-accent mb-3">Web Pentesting</h4>
+                <div className="grid grid-cols-2 gap-2">
+                  {webPentesterSkills.map((skill) => (
+                    <Badge key={skill} variant="outline" className="border-accent/30 text-accent text-xs py-1 justify-center">
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-primary mb-3">Web Development</h4>
+                <div className="grid grid-cols-2 gap-2">
+                  {webDeveloperSkills.map((skill) => (
+                    <Badge key={skill} variant="outline" className="border-primary/30 text-primary text-xs py-1 justify-center">
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Target className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold">Continuous Learning</h3>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-primary mb-2">Current Focus</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Advanced Web Application Attacks</li>
+                  <li>• Cloud Security Testing</li>
+                  <li>• Modern Framework Security</li>
+                  <li>• API Security Assessment</li>
                 </ul>
               </div>
               
               <div>
-                <h4 className="font-semibold text-accent mb-2 text-sm sm:text-base">Upcoming Certifications</h4>
-                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1">
+                <h4 className="font-semibold text-accent mb-2">Upcoming Certifications</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
                   <li>• OSCP (Offensive Security)</li>
                   <li>• CISSP (Security Architecture)</li>
-                  <li>• CISM (Information Security Management)</li>
                 </ul>
               </div>
             </div>
           </Card>
         </div>
-
-        {/* Impact Stats */}
-        <Card className="p-4 sm:p-6 md:p-8 bg-gradient-to-br from-primary/5 to-accent/5 backdrop-blur-sm border-primary/20 animate-on-scroll">
-          <div className="text-center">
-            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6">Certification Impact</h3>
-            <div className="grid grid-cols-3 gap-4 sm:gap-8">
-              <div className="p-4 sm:p-6 rounded-lg bg-card/20 backdrop-blur-sm">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">100%</div>
-                <p className="text-xs sm:text-sm text-muted-foreground">Hands-on Practical</p>
-              </div>
-              <div className="p-4 sm:p-6 rounded-lg bg-card/20 backdrop-blur-sm">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">3+</div>
-                <p className="text-xs sm:text-sm text-muted-foreground">Industry Certifications</p>
-              </div>
-              <div className="p-4 sm:p-6 rounded-lg bg-card/20 backdrop-blur-sm">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">6+</div>
-                <p className="text-xs sm:text-sm text-muted-foreground">Months Active Practice</p>
-              </div>
-            </div>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-6">
-              These certifications represent not just theoretical knowledge, but proven practical expertise 
-              in real-world cybersecurity challenges and advanced threat scenarios.
-            </p>
-          </div>
-        </Card>
       </div>
     </section>
   );
