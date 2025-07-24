@@ -83,7 +83,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                     </li>
                     <li className="flex items-start gap-3">
                       <Shield className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span><strong>Conducted VAPT workshops and seminars</strong> providing hands-on experience with real-world security scenarios</span>
+                      <span><strong>Conducted VAPT workshops and seminars</strong></span>
                     </li>
                     <li className="flex items-start gap-3">
                       <Users className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
