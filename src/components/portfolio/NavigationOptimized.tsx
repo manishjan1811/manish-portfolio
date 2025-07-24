@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Terminal } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { DownloadCV } from "@/components/download-cv";
+import { CVPreview } from "@/components/cv-preview";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,7 +99,7 @@ const Navigation = () => {
             
             {/* Interactive Features */}
             <div className="flex items-center space-x-2">
-              <DownloadCV />
+              <CVPreview />
               <ThemeToggle />
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import { DownloadCV } from "@/components/download-cv";
+import { CVPreview } from "@/components/cv-preview";
 import cyberMatrix from "@/assets/hero-cyber-matrix.jpg";
 import webDevBg from "@/assets/hero-web-dev.jpg";
 import circuitBg from "@/assets/circuit-board-bg.jpg";
@@ -123,7 +123,7 @@ const HeroSection = () => {
               {/* Mobile CTA buttons with Download CV */}
               <div className="flex flex-col gap-2">
                 <div className="w-full mb-2">
-                  <DownloadCV />
+                  <CVPreview />
                 </div>
                 <Button 
                   variant="default" 
