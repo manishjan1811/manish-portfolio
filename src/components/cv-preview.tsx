@@ -11,6 +11,44 @@ import React from 'react'
 export function CVPreview() {
   const { toast } = useToast()
 
+  const handleBrowserPrint = async () => {
+    try {
+      toast({
+        title: "Opening Print Dialog...",
+        description: "Browser print dialog khul raha hai - best quality ke liye!",
+      })
+
+      // Open CV in new window for printing
+      const printWindow = window.open('/cv', '_blank')
+      
+      if (!printWindow) {
+        throw new Error('Pop-up blocked. Please allow pop-ups for this site.')
+      }
+
+      // Wait for the new window to load
+      printWindow.onload = () => {
+        setTimeout(() => {
+          // Focus on the window and trigger print
+          printWindow.focus()
+          printWindow.print()
+          
+          toast({
+            title: "Print Dialog Ready! 🖨️",
+            description: "Settings: A4 size, Background graphics ON, Margins Custom",
+          })
+        }, 1000)
+      }
+
+    } catch (error) {
+      console.error('Print error:', error)
+      toast({
+        title: "Print Dialog Error",
+        description: "Manual method: Ctrl+P → A4 → Background graphics ON",
+        variant: "destructive",
+      })
+    }
+  }
+
   const handleDownload = async () => {
     try {
       toast({
@@ -191,14 +229,26 @@ export function CVPreview() {
         <DialogHeader className="p-6 pb-2 border-b">
           <DialogTitle className="flex items-center justify-between">
             <span>CV Preview - Manish Jangra</span>
-            <Button
-              onClick={handleDownload}
-              size="sm" 
-              className="flex items-center gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download PDF
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={handleBrowserPrint}
+                size="sm" 
+                variant="default"
+                className="flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Print CV (Recommended)
+              </Button>
+              <Button
+                onClick={handleDownload}
+                size="sm" 
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Download PDF
+              </Button>
+            </div>
           </DialogTitle>
         </DialogHeader>
         
