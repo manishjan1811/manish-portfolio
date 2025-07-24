@@ -227,7 +227,7 @@ const ProjectsSection = () => {
                         <div className="col-span-3 space-y-5 px-[11px] py-[12px] mx-0">
                           {/* Description */}
                           <div>
-                            <p className="text-base leading-relaxed text-muted-foreground">
+                            <p className="text-base leading-relaxed text-gray-700 dark:text-muted-foreground">
                               {project.description}
                             </p>
                           </div>
@@ -240,7 +240,7 @@ const ProjectsSection = () => {
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {project.technologies.map(tech => (
-                                <div key={tech} className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all duration-300 hover:scale-105 ${project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/20 hover:border-blue-500/40 text-blue-300' : project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-500/40 text-emerald-300' : 'bg-red-500/5 border-red-500/20 hover:border-red-500/40 text-red-300'}`}>
+                                <div key={tech} className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all duration-300 hover:scale-105 ${project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/20 hover:border-blue-500/40 text-blue-600 dark:text-blue-300' : project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-500/40 text-emerald-600 dark:text-emerald-300' : 'bg-red-500/5 border-red-500/20 hover:border-red-500/40 text-red-600 dark:text-red-300'}`}>
                                   {tech}
                                 </div>
                               ))}
