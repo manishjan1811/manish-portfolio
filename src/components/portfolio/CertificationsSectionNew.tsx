@@ -266,16 +266,16 @@ const CertificationsSectionNew = () => {
             <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full -translate-y-12 translate-x-12"></div>
             <div className="flex items-center mb-4">
               <div className="p-3 rounded-full bg-green-500/20 mr-4">
-                <Shield className="w-6 h-6 text-green-400" />
+                <Shield className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-green-400">Web Penetration Tester</h3>
-                <p className="text-xs text-muted-foreground">Security Assessment Specialist</p>
+                <h3 className="text-base font-bold text-green-700 dark:text-green-400">Web Penetration Tester</h3>
+                <p className="text-xs text-gray-600 dark:text-muted-foreground">Security Assessment Specialist</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
               {webPentesterSkills.map((skill) => (
-                <span key={skill} className="px-3 py-1 text-xs bg-green-500/20 text-green-300 rounded-full border border-green-500/30">
+                <span key={skill} className="px-3 py-1 text-xs bg-green-500/20 text-green-700 dark:text-green-300 rounded-full border border-green-500/30">
                   {skill}
                 </span>
               ))}
@@ -287,18 +287,18 @@ const CertificationsSectionNew = () => {
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-blue-500/10 rounded-full translate-y-10 -translate-x-10"></div>
             <div className="flex items-center mb-4">
               <div className="p-3 rounded-full bg-blue-500/20 mr-4">
-                <Target className="w-6 h-6 text-blue-400" />
+                <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-blue-400">Web Developer</h3>
-                <p className="text-xs text-muted-foreground">Full-Stack Development</p>
+                <h3 className="text-base font-bold text-blue-700 dark:text-blue-400">Web Developer</h3>
+                <p className="text-xs text-gray-600 dark:text-muted-foreground">Full-Stack Development</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2">
               {webDeveloperSkills.map((skill) => (
                 <div key={skill} className="flex items-center space-x-2 p-2 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                  <span className="text-xs text-blue-300 font-medium">{skill}</span>
+                  <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400"></div>
+                  <span className="text-xs text-blue-700 dark:text-blue-300 font-medium">{skill}</span>
                 </div>
               ))}
             </div>
@@ -309,17 +309,17 @@ const CertificationsSectionNew = () => {
             <div className="absolute top-0 left-1/2 w-16 h-16 bg-purple-500/10 rounded-full -translate-y-8 -translate-x-8"></div>
             <div className="text-center mb-4">
               <div className="p-3 rounded-full bg-purple-500/20 inline-block mb-2">
-                <Users className="w-6 h-6 text-purple-400" />
+                <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
-              <h3 className="text-base font-bold text-purple-400">Continuous Learning Journey</h3>
+              <h3 className="text-base font-bold text-purple-700 dark:text-purple-400">Continuous Learning Journey</h3>
             </div>
             
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 p-3 bg-purple-500/10 rounded-lg border-l-4 border-purple-400">
-                <div className="w-2 h-2 rounded-full bg-purple-400"></div>
+              <div className="flex items-center space-x-3 p-3 bg-purple-500/10 rounded-lg border-l-4 border-purple-600 dark:border-purple-400">
+                <div className="w-2 h-2 rounded-full bg-purple-600 dark:bg-purple-400"></div>
                 <div>
-                  <p className="text-xs font-medium text-purple-300">Current Focus</p>
-                  <p className="text-xs text-muted-foreground">Advanced Web Attacks & Cloud Security</p>
+                  <p className="text-xs font-medium text-purple-700 dark:text-purple-300">Current Focus</p>
+                  <p className="text-xs text-gray-600 dark:text-muted-foreground">Advanced Web Attacks & Cloud Security</p>
                 </div>
               </div>
               
@@ -327,7 +327,7 @@ const CertificationsSectionNew = () => {
                 <div className="w-2 h-2 rounded-full bg-accent"></div>
                 <div>
                   <p className="text-xs font-medium text-accent">Next Milestone</p>
-                  <p className="text-xs text-muted-foreground">OSCP & CISSP Certifications</p>
+                  <p className="text-xs text-gray-600 dark:text-muted-foreground">OSCP & CISSP Certifications</p>
                 </div>
               </div>
             </div>
