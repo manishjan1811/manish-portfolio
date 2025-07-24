@@ -11,7 +11,6 @@ import {
   MapPin, 
   Linkedin, 
   Github, 
-  Twitter,
   Send,
   MessageSquare,
   Shield,
@@ -217,6 +216,8 @@ const ContactSection = () => {
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`p-3 rounded-lg bg-${social.color}/10 hover:bg-${social.color}/20 transition-all hover:scale-110`}
                     aria-label={social.label}
                   >
@@ -273,6 +274,8 @@ const ContactSection = () => {
                       <a
                         key={social.label}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`cyber-glow p-3 rounded-lg bg-${social.color}/10 hover:bg-${social.color}/20 transition-all duration-300 hover:scale-110`}
                         aria-label={social.label}
                       >
