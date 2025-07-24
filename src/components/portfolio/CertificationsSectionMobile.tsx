@@ -140,14 +140,14 @@ const CertificationsSectionMobile = () => {
           </p>
         </div>
 
-        {/* Mobile: Horizontal Scrolling Cards with 3D Effect */}
+        {/* Mobile: Fixed Horizontal Scrolling Cards */}
         <div className="block lg:hidden mb-8">
-          <div className="relative">
-            {/* Scroll buttons */}
+          <div className="relative -mx-4 sm:-mx-6">
+            {/* Scroll buttons - Better positioning */}
             <button
               onClick={() => scroll('left')}
-              className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-lg transition-all duration-200 ${
-                canScrollLeft ? 'opacity-100 hover:scale-110' : 'opacity-30 cursor-not-allowed'
+              className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border shadow-xl transition-all duration-200 ${
+                canScrollLeft ? 'opacity-100 hover:scale-110 hover:bg-background' : 'opacity-50 cursor-not-allowed'
               }`}
               disabled={!canScrollLeft}
             >
@@ -156,87 +156,94 @@ const CertificationsSectionMobile = () => {
             
             <button
               onClick={() => scroll('right')}
-              className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-lg transition-all duration-200 ${
-                canScrollRight ? 'opacity-100 hover:scale-110' : 'opacity-30 cursor-not-allowed'
+              className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border shadow-xl transition-all duration-200 ${
+                canScrollRight ? 'opacity-100 hover:scale-110 hover:bg-background' : 'opacity-50 cursor-not-allowed'
               }`}
               disabled={!canScrollRight}
             >
               <ChevronRight className="w-5 h-5" />
             </button>
 
-            {/* Horizontal scrolling container */}
+            {/* Horizontal scrolling container - Fixed */}
             <div
               ref={scrollRef}
-              className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 px-8"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 pl-4 pr-4"
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                scrollSnapType: 'x mandatory'
+              }}
             >
               {certifications.map((cert, index) => {
                 const IconComponent = cert.icon;
                 return (
                   <div
                     key={cert.acronym}
-                    className="flex-shrink-0 w-80 sm:w-96 animate-on-scroll"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className="flex-shrink-0 w-72 animate-on-scroll"
+                    style={{ 
+                      animationDelay: `${index * 0.1}s`,
+                      scrollSnapAlign: 'start'
+                    }}
                   >
-                    {/* 3D Rotating Card */}
-                    <div className="group perspective-1000 h-[420px]">
+                    {/* 3D Card - Compact for mobile */}
+                    <div className="group perspective-1000 h-80">
                       <div className="relative preserve-3d transition-transform duration-700 group-hover:rotate-y-180 w-full h-full">
-                        {/* Front side - Larger padding and text */}
-                        <div className={`absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-gradient-to-br ${cert.gradient} backdrop-blur-xl border border-white/20 shadow-2xl`}>
-                          <div className="p-8 h-full flex flex-col justify-between">
-                            {/* Icon and Title */}
-                            <div className="text-center mb-6">
-                              <div className="inline-flex p-4 rounded-full bg-white/10 backdrop-blur-sm mb-4 border border-white/20">
-                                <IconComponent className="w-10 h-10 text-white" />
+                        {/* Front side - Compact layout */}
+                        <div className={`absolute inset-0 w-full h-full backface-hidden rounded-xl bg-gradient-to-br ${cert.gradient} backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden`}>
+                          <div className="p-5 h-full flex flex-col justify-between">
+                            {/* Icon and Title - Compact */}
+                            <div className="text-center">
+                              <div className="inline-flex p-3 rounded-full bg-white/10 backdrop-blur-sm mb-3 border border-white/20">
+                                <IconComponent className="w-7 h-7 text-white" />
                               </div>
-                              <h3 className="text-4xl font-bold text-white mb-3">{cert.acronym}</h3>
+                              <h3 className="text-2xl font-bold text-white mb-2">{cert.acronym}</h3>
                               <Badge 
                                 variant="secondary" 
-                                className="bg-white/20 text-white border-white/30 backdrop-blur-sm px-4 py-1"
+                                className="bg-white/20 text-white border-white/30 backdrop-blur-sm px-3 py-1 text-sm"
                               >
                                 {cert.level}
                               </Badge>
                             </div>
 
-                            {/* Title and Issuer */}
-                            <div className="text-center mb-6">
-                              <h4 className="text-xl font-semibold text-white/90 mb-3 leading-tight">{cert.title}</h4>
-                              <p className="text-white/70 font-medium text-lg">{cert.issuer}</p>
+                            {/* Title and Issuer - Compact */}
+                            <div className="text-center mb-3">
+                              <h4 className="text-base font-semibold text-white/90 mb-1 leading-tight">{cert.title}</h4>
+                              <p className="text-white/70 font-medium text-sm">{cert.issuer}</p>
                             </div>
 
-                            {/* Description */}
+                            {/* Description - Compact */}
                             <div className="flex-grow flex items-center">
-                              <p className="text-white/80 text-base leading-relaxed text-center">
+                              <p className="text-white/80 text-xs leading-relaxed text-center line-clamp-4">
                                 {cert.description}
                               </p>
                             </div>
 
                             {/* Hover indicator */}
                             <div className="text-center">
-                              <p className="text-white/60 text-sm animate-pulse">
+                              <p className="text-white/60 text-xs animate-pulse">
                                 Tap to see skills →
                               </p>
                             </div>
                           </div>
                         </div>
 
-                        {/* Back side - Larger padding */}
-                        <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br ${cert.gradient} backdrop-blur-xl border border-white/20 shadow-2xl`}>
-                          <div className="p-8 h-full flex flex-col">
-                            <h5 className="font-bold text-white mb-6 text-center text-xl">Key Skills Covered</h5>
-                            <div className="space-y-4 flex-grow">
+                        {/* Back side - Compact */}
+                        <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-xl bg-gradient-to-br ${cert.gradient} backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden`}>
+                          <div className="p-5 h-full flex flex-col">
+                            <h5 className="font-bold text-white mb-4 text-center text-lg">Key Skills</h5>
+                            <div className="space-y-2 flex-grow overflow-y-auto">
                               {cert.skills.map((skill, idx) => (
-                                <div key={idx} className="flex items-start space-x-3">
-                                  <CheckCircle className="w-5 h-5 text-white/80 flex-shrink-0 mt-1" />
-                                  <span className="text-base text-white/90 leading-relaxed">{skill}</span>
+                                <div key={idx} className="flex items-start space-x-2">
+                                  <CheckCircle className="w-4 h-4 text-white/80 flex-shrink-0 mt-0.5" />
+                                  <span className="text-sm text-white/90 leading-tight">{skill}</span>
                                 </div>
                               ))}
                             </div>
 
-                            <div className="mt-6 pt-6 border-t border-white/20">
+                            <div className="mt-4 pt-4 border-t border-white/20">
                               <button className="w-full flex items-center justify-center space-x-2 text-white/90 hover:text-white transition-colors">
-                                <span className="text-base font-medium">Verify Certification</span>
-                                <ExternalLink className="w-5 h-5" />
+                                <span className="text-sm font-medium">Verify</span>
+                                <ExternalLink className="w-4 h-4" />
                               </button>
                             </div>
                           </div>
