@@ -14,17 +14,17 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <HeroSection />
-      <Separator className="my-8 opacity-30" />
+      <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <AboutSectionOptimized />
-      <Separator className="my-8 opacity-30" />
+      <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <SkillsSectionOptimized />
-      <Separator className="my-8 opacity-30" />
+      <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <ProjectsSection />
-      <Separator className="my-8 opacity-30" />
+      <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <CertificationsSection />
-      <Separator className="my-8 opacity-30" />
+      <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <ExperienceSection />
-      <Separator className="my-8 opacity-30" />
+      <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <ContactSection />
       <Footer />
       <Toaster />
