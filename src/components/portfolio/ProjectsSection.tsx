@@ -3,10 +3,12 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ExternalLink, Github, Terminal, Download, Shield, Search, Bug, Code, Globe } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ExternalLink, Github, Terminal, Download, Shield, Search, Bug, Code, Globe, Lock } from "lucide-react";
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [showPrivateDialog, setShowPrivateDialog] = useState(false);
 
   const cyberSecurityProjects = [{
     title: "Reconbro.sh",
@@ -247,7 +249,7 @@ const ProjectsSection = () => {
                                   className={`font-medium transition-all duration-300 hover:scale-105 ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-blue-500/25' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 shadow-md hover:shadow-emerald-500/25' : 'bg-red-500 hover:bg-red-600 shadow-md hover:shadow-red-500/25'}`} 
                                   onClick={() => {
                                     if (project.title === 'CheapOTT Store') {
-                                      alert('This project is not uploaded to GitHub because it is client property and confidential.');
+                                      setShowPrivateDialog(true);
                                     } else {
                                       window.open(project.githubUrl, '_blank');
                                     }
@@ -398,6 +400,26 @@ const ProjectsSection = () => {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* Private Project Dialog */}
+        <Dialog open={showPrivateDialog} onOpenChange={setShowPrivateDialog}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Lock className="w-5 h-5 text-orange-500" />
+                Private Repository
+              </DialogTitle>
+              <DialogDescription className="pt-3">
+                This project is not uploaded to GitHub because it is client property and contains confidential business logic and sensitive information that cannot be made public.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-center pt-4">
+              <Button onClick={() => setShowPrivateDialog(false)} className="w-full">
+                Understood
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
