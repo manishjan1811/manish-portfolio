@@ -10,6 +10,8 @@ const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [showPrivateDialog, setShowPrivateDialog] = useState(false);
 
+  console.log('Dialog state:', showPrivateDialog);
+
   const cyberSecurityProjects = [{
     title: "Reconbro.sh",
     subtitle: "Advanced Reconnaissance Tool",
@@ -147,7 +149,9 @@ const ProjectsSection = () => {
                             <button 
                               className={`py-2.5 rounded-lg text-xs font-medium transition-all flex items-center justify-center ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 text-white' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'bg-red-500 hover:bg-red-600 text-white'}`} 
                               onClick={() => {
+                                console.log('Mobile button clicked for:', project.title);
                                 if (project.title === 'CheapOTT Store') {
+                                  console.log('Setting dialog to true');
                                   setShowPrivateDialog(true);
                                 } else {
                                   window.open(project.githubUrl, '_blank');
