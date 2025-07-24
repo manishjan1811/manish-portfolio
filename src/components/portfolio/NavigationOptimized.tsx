@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Terminal } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { DownloadCV } from "@/components/download-cv";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,7 +71,7 @@ const Navigation = () => {
           </div>
 
           {/* Enhanced Desktop Navigation */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center space-x-4">
             <div className={`flex items-center space-x-1 p-1 rounded-2xl transition-all duration-300 ${
               isScrolled 
                 ? 'bg-card/30 backdrop-blur-md border border-border/30' 
@@ -94,28 +96,38 @@ const Navigation = () => {
                 </button>
               ))}
             </div>
+            
+            {/* Interactive Features */}
+            <div className="flex items-center space-x-2">
+              <DownloadCV />
+              <ThemeToggle />
+            </div>
           </div>
 
-          {/* Enhanced Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className={`md:hidden p-2.5 rounded-xl transition-all duration-300 ${
-              isScrolled 
-                ? 'hover:bg-primary/10 hover:shadow-lg' 
-                : 'hover:bg-card/30'
-            }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <div className="relative">
-              {isMobileMenuOpen ? (
-                <X className="w-5 h-5 text-foreground" />
-              ) : (
-                <Menu className="w-5 h-5 text-foreground" />
-              )}
-            </div>
-          </Button>
+          {/* Mobile Interactive Features & Menu */}
+          <div className="md:hidden flex items-center space-x-2">
+            <DownloadCV />
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`p-2.5 rounded-xl transition-all duration-300 ${
+                isScrolled 
+                  ? 'hover:bg-primary/10 hover:shadow-lg' 
+                  : 'hover:bg-card/30'
+              }`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle mobile menu"
+            >
+              <div className="relative">
+                {isMobileMenuOpen ? (
+                  <X className="w-5 h-5 text-foreground" />
+                ) : (
+                  <Menu className="w-5 h-5 text-foreground" />
+                )}
+              </div>
+            </Button>
+          </div>
         </div>
 
         {/* Enhanced Mobile Navigation */}
