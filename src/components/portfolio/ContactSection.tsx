@@ -46,7 +46,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "Hisar, Haryana, India",
+      value: "Gurgaon, Haryana, India",
       href: "#",
       color: "cyber-purple"
     }
