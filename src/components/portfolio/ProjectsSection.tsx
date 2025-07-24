@@ -46,9 +46,9 @@ const ProjectsSection = () => {
     title: "CheapOTT Store",
     subtitle: "E-commerce Platform for Client",
     date: "2024",
-    description: "Complete e-commerce solution built for streaming service subscriptions. Features secure payment processing, user authentication, and responsive design for optimal user experience.",
-    features: ["Secure payment integration", "User authentication system", "Responsive design", "Product catalog management", "Order tracking system", "Admin dashboard", "SEO optimization", "Mobile-first approach"],
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT"],
+    description: "Complete e-commerce solution built for streaming service subscriptions. Frontend-only implementation with responsive design and modern user interface.",
+    features: ["Responsive design", "Product catalog display", "Shopping cart functionality", "Modern UI/UX", "SEO optimization", "Mobile-first approach", "Fast loading", "Cross-browser compatibility"],
+    technologies: ["HTML", "CSS", "JavaScript"],
     icon: Globe,
     color: "primary",
     type: "E-commerce",
@@ -57,9 +57,9 @@ const ProjectsSection = () => {
     title: "Trade Flow Universe",
     subtitle: "Crypto Trading Frontend",
     date: "2024",
-    description: "Advanced cryptocurrency trading interface with real-time market data, portfolio management, and sophisticated trading tools. Built with modern React architecture and optimized for performance.",
-    features: ["Real-time market data", "Portfolio tracking", "Advanced charting", "Trading interface", "Risk management", "Multi-exchange support", "Performance analytics", "Mobile responsive"],
-    technologies: ["React", "TypeScript", "WebSocket", "Chart.js", "Redux", "Material-UI"],
+    description: "Advanced cryptocurrency trading interface frontend with modern React architecture. Frontend-only implementation showcasing trading interface design and user experience.",
+    features: ["Trading interface design", "Portfolio UI mockups", "Advanced charting display", "Modern UI components", "Responsive design", "Interactive elements", "Performance optimized", "Mobile responsive"],
+    technologies: ["React", "TypeScript", "Chart.js", "Material-UI"],
     icon: Code,
     color: "accent",
     type: "Fintech",
@@ -377,6 +377,19 @@ const ProjectsSection = () => {
 
           <TabsContent value="webdev" className="animate-on-scroll">
             {renderProjects(webDevProjects)}
+            
+            {/* Additional Projects Note */}
+            <div className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-muted/5 via-muted/10 to-accent/5 border border-muted/30">
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
+                  <Code className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">More Projects Available</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Several additional projects are currently in development phase and some cannot be showcased for security and confidentiality reasons.
+                </p>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
