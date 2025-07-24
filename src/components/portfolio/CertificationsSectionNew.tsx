@@ -259,65 +259,79 @@ const CertificationsSectionNew = () => {
           })}
         </div>
 
-        {/* Mobile: Horizontal Scrolling Skills Cards */}
-        <div className="block lg:hidden mb-8">
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-2">
-            {/* Web Pentester Skills Card */}
-            <Card className="flex-shrink-0 w-72 p-4 bg-green-500/10 border-green-500/30 border-2">
-              <div className="text-center mb-4">
-                <div className="p-3 rounded-full bg-green-500/10 inline-block mb-3">
-                  <Shield className="w-6 h-6 text-green-400" />
-                </div>
-                <h3 className="text-base font-bold text-green-400 mb-2">Web Pentester</h3>
+        {/* Mobile: Unique Stacked Skills Design */}
+        <div className="block lg:hidden mb-8 space-y-4">
+          {/* Web Pentester - Expandable Card */}
+          <Card className="p-5 bg-gradient-to-r from-green-500/20 via-green-500/10 to-transparent border-green-500/40 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full -translate-y-12 translate-x-12"></div>
+            <div className="flex items-center mb-4">
+              <div className="p-3 rounded-full bg-green-500/20 mr-4">
+                <Shield className="w-6 h-6 text-green-400" />
               </div>
-              <div className="grid grid-cols-2 gap-2">
-                {webPentesterSkills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="border-green-500/30 text-green-400 text-xs py-1.5 px-2 justify-center text-center">
-                    {skill}
-                  </Badge>
-                ))}
+              <div>
+                <h3 className="text-base font-bold text-green-400">Web Penetration Tester</h3>
+                <p className="text-xs text-muted-foreground">Security Assessment Specialist</p>
               </div>
-            </Card>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {webPentesterSkills.map((skill) => (
+                <span key={skill} className="px-3 py-1 text-xs bg-green-500/20 text-green-300 rounded-full border border-green-500/30">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </Card>
 
-            {/* Web Developer Skills Card */}
-            <Card className="flex-shrink-0 w-72 p-4 bg-blue-500/10 border-blue-500/30 border-2">
-              <div className="text-center mb-4">
-                <div className="p-3 rounded-full bg-blue-500/10 inline-block mb-3">
-                  <Target className="w-6 h-6 text-blue-400" />
+          {/* Web Developer - Different Style */}
+          <Card className="p-5 bg-gradient-to-l from-blue-500/20 via-blue-500/10 to-transparent border-blue-500/40 relative">
+            <div className="absolute bottom-0 left-0 w-20 h-20 bg-blue-500/10 rounded-full translate-y-10 -translate-x-10"></div>
+            <div className="flex items-center mb-4">
+              <div className="p-3 rounded-full bg-blue-500/20 mr-4">
+                <Target className="w-6 h-6 text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-blue-400">Web Developer</h3>
+                <p className="text-xs text-muted-foreground">Full-Stack Development</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {webDeveloperSkills.map((skill) => (
+                <div key={skill} className="flex items-center space-x-2 p-2 bg-blue-500/10 rounded-lg border border-blue-500/20">
+                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                  <span className="text-xs text-blue-300 font-medium">{skill}</span>
                 </div>
-                <h3 className="text-base font-bold text-blue-400 mb-2">Web Developer</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                {webDeveloperSkills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="border-blue-500/30 text-blue-400 text-xs py-1.5 px-2 justify-center text-center">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </Card>
+              ))}
+            </div>
+          </Card>
 
-            {/* Continuous Learning Card */}
-            <Card className="flex-shrink-0 w-72 p-4 bg-purple-500/10 border-purple-500/30 border-2">
-              <div className="text-center mb-4">
-                <div className="p-3 rounded-full bg-purple-500/10 inline-block mb-3">
-                  <Users className="w-6 h-6 text-purple-400" />
-                </div>
-                <h3 className="text-base font-bold text-purple-400 mb-2">Learning Path</h3>
+          {/* Learning Path - Timeline Style */}
+          <Card className="p-5 bg-gradient-to-br from-purple-500/20 via-purple-500/10 to-accent/10 border-purple-500/40 relative">
+            <div className="absolute top-0 left-1/2 w-16 h-16 bg-purple-500/10 rounded-full -translate-y-8 -translate-x-8"></div>
+            <div className="text-center mb-4">
+              <div className="p-3 rounded-full bg-purple-500/20 inline-block mb-2">
+                <Users className="w-6 h-6 text-purple-400" />
               </div>
-              <div className="space-y-3 text-center">
+              <h3 className="text-base font-bold text-purple-400">Continuous Learning Journey</h3>
+            </div>
+            
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 p-3 bg-purple-500/10 rounded-lg border-l-4 border-purple-400">
+                <div className="w-2 h-2 rounded-full bg-purple-400"></div>
                 <div>
-                  <p className="font-medium text-purple-400 mb-2 text-sm">Current Focus:</p>
-                  <p className="text-muted-foreground text-xs">• Advanced Web Attacks</p>
-                  <p className="text-muted-foreground text-xs">• Cloud Security</p>
-                </div>
-                <div>
-                  <p className="font-medium text-purple-400 mb-2 text-sm">Next Goals:</p>
-                  <p className="text-muted-foreground text-xs">• OSCP Certification</p>
-                  <p className="text-muted-foreground text-xs">• CISSP Certification</p>
+                  <p className="text-xs font-medium text-purple-300">Current Focus</p>
+                  <p className="text-xs text-muted-foreground">Advanced Web Attacks & Cloud Security</p>
                 </div>
               </div>
-            </Card>
-          </div>
+              
+              <div className="flex items-center space-x-3 p-3 bg-accent/10 rounded-lg border-l-4 border-accent">
+                <div className="w-2 h-2 rounded-full bg-accent"></div>
+                <div>
+                  <p className="text-xs font-medium text-accent">Next Milestone</p>
+                  <p className="text-xs text-muted-foreground">OSCP & CISSP Certifications</p>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Desktop: Grid Layout for Skills */}
