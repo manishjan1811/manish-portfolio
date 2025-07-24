@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Calendar, Award, Code, Shield, Globe, Database, Terminal, ExternalLink } from "lucide-react"
+import { Mail, Phone, MapPin, Calendar, Award, Code, Shield, Globe, Database, Terminal, ExternalLink, Bug, Search, Download, GraduationCap, Users, Target } from "lucide-react"
 
 interface CVPageProps {
   className?: string
@@ -72,49 +72,49 @@ export function CVPage({ className = "" }: CVPageProps) {
                 {/* Current Role */}
                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-l-4 border-blue-500">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                    <h3 className="text-xl font-bold text-slate-800">Senior Web Application Penetration Tester</h3>
-                    <span className="text-sm text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-full">Current</span>
+                    <h3 className="text-xl font-bold text-slate-800">Cyber Security Trainer</h3>
+                    <span className="text-sm text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-full">Ongoing</span>
                   </div>
-                  <p className="text-blue-700 font-semibold mb-4">Freelance Security Consultant | Jan 2024 - Present</p>
+                  <p className="text-blue-700 font-semibold mb-4">Cywer Learning | Corporate Training</p>
                   <ul className="space-y-3 text-gray-700">
                     <li className="flex items-start gap-3">
-                      <Shield className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                      <span><strong>Led security assessments</strong> for 15+ enterprise web applications, identifying and documenting 200+ vulnerabilities with 95% accuracy rate</span>
+                      <GraduationCap className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>Designed advanced security training modules</strong> for professionals and organizations focusing on practical penetration testing skills</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Database className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span><strong>Specialized in advanced attack vectors</strong> including SQL injection, XSS, CSRF, authentication bypass, and business logic flaws</span>
+                      <Shield className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>Conducted VAPT workshops and seminars</strong> providing hands-on experience with real-world security scenarios</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Terminal className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                      <span><strong>Developed custom exploitation tools</strong> and automated security testing scripts using Python and Bash</span>
+                      <Users className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>Mentored junior security professionals</strong> in vulnerability assessment and penetration testing methodologies</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Award className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                      <span><strong>Achieved industry certifications</strong> - CEH, CRTA, and BSCP with hands-on practical experience</span>
+                      <Target className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>Created real-world hacking scenarios</strong> for comprehensive cybersecurity training programs</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Previous Experience */}
+                {/* Additional Experience */}
                 <div className="border-l-4 border-gray-400 pl-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <h3 className="text-lg font-semibold text-slate-800">Junior Security Researcher</h3>
-                    <span className="text-sm text-gray-600 font-medium">6 Months</span>
+                    <h3 className="text-lg font-semibold text-slate-800">Security Researcher & Tool Developer</h3>
+                    <span className="text-sm text-gray-600 font-medium">6+ Months</span>
                   </div>
-                  <p className="text-gray-600 font-medium mb-3">Independent Research | Jul 2023 - Dec 2023</p>
+                  <p className="text-gray-600 font-medium mb-3">Independent Research | 2024</p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <span className="text-gray-500 mt-1">•</span>
-                      <span>Conducted vulnerability research on popular web frameworks and CMS platforms</span>
+                      <span>Conducted advanced penetration testing with 6+ months of APT training experience</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-gray-500 mt-1">•</span>
-                      <span>Participated in bug bounty programs with successful vulnerability disclosures</span>
+                      <span>Developed custom security tools - Reconbro.sh and Toolsbro.sh for automation</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-gray-500 mt-1">•</span>
-                      <span>Built foundational knowledge in web application security and penetration testing methodologies</span>
+                      <span>Specialized in identifying logic-based and business logic flaws in web applications</span>
                     </li>
                   </ul>
                 </div>
@@ -128,97 +128,120 @@ export function CVPage({ className = "" }: CVPageProps) {
               </h2>
               <div className="space-y-6">
                 
-                {/* Featured Project */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-xl border border-blue-200 shadow-sm">
+                {/* Featured Project - Epic Games */}
+                <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border border-red-200 shadow-sm">
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                      <Globe className="w-5 h-5 text-blue-600" />
-                      Enterprise E-commerce Security Audit
+                      <Bug className="w-5 h-5 text-red-600" />
+                      Epic Games 2FA Bypass Discovery
                     </h3>
-                    <ExternalLink className="w-4 h-4 text-blue-500" />
+                    <span className="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Critical CVE</span>
                   </div>
                   <p className="text-gray-700 mb-4 leading-relaxed">
-                    Led comprehensive security assessment of a high-traffic e-commerce platform processing 10K+ daily transactions. 
-                    Identified critical payment gateway vulnerabilities and session management flaws that could have led to financial losses.
+                    Discovered and responsibly disclosed a critical two-factor authentication bypass vulnerability in Epic Games platform. 
+                    Demonstrates expertise in authentication security and business logic flaw identification through security research.
                   </p>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-3 gap-4 mb-4">
                     <div className="text-center p-3 bg-white rounded-lg">
-                      <div className="font-bold text-red-600 text-xl">47</div>
-                      <div className="text-xs text-gray-600">Critical Vulnerabilities</div>
+                      <div className="font-bold text-red-600 text-xl">Critical</div>
+                      <div className="text-xs text-gray-600">Severity Level</div>
                     </div>
                     <div className="text-center p-3 bg-white rounded-lg">
-                      <div className="font-bold text-green-600 text-xl">$2M+</div>
-                      <div className="text-xs text-gray-600">Potential Loss Prevented</div>
+                      <div className="font-bold text-green-600 text-xl">2FA</div>
+                      <div className="text-xs text-gray-600">Bypass Found</div>
+                    </div>
+                    <div className="text-center p-3 bg-white rounded-lg">
+                      <div className="font-bold text-blue-600 text-xl">Public</div>
+                      <div className="text-xs text-gray-600">Program</div>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">SQL Injection</span>
-                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">Payment Security</span>
-                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full font-medium">Session Management</span>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">OWASP Top 10</span>
+                    <span className="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Authentication</span>
+                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">Business Logic</span>
+                    <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">Security Research</span>
+                    <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">Responsible Disclosure</span>
                   </div>
                 </div>
 
-                {/* Additional Projects Grid */}
+                {/* Projects Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Reconbro.sh */}
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Shield className="w-4 h-4 text-green-600" />
-                      Automated Security Scanner
+                      <Search className="w-4 h-4 text-blue-600" />
+                      Reconbro.sh
                     </h3>
                     <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Developed custom Python-based security scanner for detecting OWASP Top 10 vulnerabilities with 85% accuracy rate. 
-                      Reduced manual testing time by 60%.
+                      Advanced reconnaissance automation tool built in bash script. Designed for beginners in web pentesting 
+                      with powerful yet easy-to-use reconnaissance capabilities.
                     </p>
-                    <div className="flex flex-wrap gap-1">
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Python</span>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Bash</span>
                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Automation</span>
-                      <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded">OWASP</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Reconnaissance</span>
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      <strong>Features:</strong> Domain recon, subdomain enumeration, port scanning, directory discovery
                     </div>
                   </div>
 
+                  {/* Toolsbro.sh */}
                   <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Code className="w-4 h-4 text-blue-600" />
-                      Secure Portfolio Development
+                      <Download className="w-4 h-4 text-emerald-600" />
+                      Toolsbro.sh
                     </h3>
                     <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Built responsive portfolio with React & TypeScript, implementing security-first development practices and comprehensive security testing.
+                      One-click installer for essential web pentesting tools. Streamlines setup process for security 
+                      professionals by automating tool installation and configuration.
                     </p>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Bash</span>
+                      <span className="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded">Automation</span>
+                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Tool Management</span>
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      <strong>Features:</strong> One-click installation, dependency resolution, update management
+                    </div>
+                  </div>
+
+                  {/* CheapOTT Store */}
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                      <Globe className="w-4 h-4 text-blue-600" />
+                      CheapOTT Store
+                    </h3>
+                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                      Complete e-commerce solution for streaming service subscriptions. Frontend implementation with 
+                      responsive design and modern user interface for client requirements.
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">HTML</span>
+                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">CSS</span>
+                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">JavaScript</span>
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      <strong>Features:</strong> Responsive design, product catalog, shopping cart, SEO optimization
+                    </div>
+                  </div>
+
+                  {/* Trade Flow Universe */}
+                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                      <Code className="w-4 h-4 text-purple-600" />
+                      Trade Flow Universe
+                    </h3>
+                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                      Advanced cryptocurrency trading interface frontend with modern React architecture. 
+                      Showcases trading interface design and user experience implementation.
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-3">
                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
                       <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">TypeScript</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Security</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Chart.js</span>
                     </div>
-                  </div>
-
-                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Database className="w-4 h-4 text-purple-600" />
-                      API Security Research
-                    </h3>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Research project on REST API security vulnerabilities, focusing on authentication flaws and data exposure in modern web APIs.
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">API Security</span>
-                      <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Research</span>
-                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">REST</span>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Terminal className="w-4 h-4 text-red-600" />
-                      Penetration Testing Lab
-                    </h3>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Established personal penetration testing lab environment using VirtualBox, Kali Linux, and vulnerable applications for continuous skill development.
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Kali Linux</span>
-                      <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Penetration Testing</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Lab Setup</span>
+                    <div className="text-xs text-gray-500">
+                      <strong>Features:</strong> Trading interface, portfolio UI, charting, responsive design
                     </div>
                   </div>
                 </div>
