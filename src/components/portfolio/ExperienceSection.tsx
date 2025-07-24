@@ -58,76 +58,81 @@ const ExperienceSection = () => {
           </p>
         </div>
 
-        {/* Mobile: Horizontal Scrolling Experience Cards */}
+        {/* Mobile: Unique Timeline Design */}
         <div className="block lg:hidden mb-8">
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-2">
-            {/* Training Experience Card */}
-            <Card className="flex-shrink-0 w-72 p-4 bg-gradient-to-br from-accent/10 to-accent/5 border-accent/30 border-2">
-              <div className="text-center mb-4">
-                <div className="p-3 rounded-full bg-accent/10 inline-block mb-3">
+          {/* Current Role - Hero Style */}
+          <Card className="mb-6 p-6 bg-gradient-to-br from-accent/20 via-accent/10 to-transparent border-accent/40 border-2 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-accent/10 rounded-full -translate-y-10 translate-x-10"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-accent/5 rounded-full translate-y-8 -translate-x-8"></div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center mb-4">
+                <div className="p-3 rounded-full bg-accent/20 mr-4">
                   <GraduationCap className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-base font-bold text-accent mb-1">Cyber Security Trainer</h3>
-                <p className="text-xs text-muted-foreground">Cywer Learning</p>
-              </div>
-              <div className="space-y-2 text-center">
-                <p className="text-xs text-muted-foreground leading-relaxed">Advanced cybersecurity training programs for professionals and organizations</p>
-                <div className="space-y-1">
-                  <p className="text-xs text-accent">• VAPT workshops</p>
-                  <p className="text-xs text-accent">• Real-world scenarios</p>
-                  <p className="text-xs text-accent">• Professional mentoring</p>
+                <div>
+                  <h3 className="text-lg font-bold text-accent">Cyber Security Trainer</h3>
+                  <p className="text-sm text-muted-foreground">Cywer Learning • Ongoing</p>
                 </div>
               </div>
-            </Card>
+              
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                Delivering advanced cybersecurity training programs for professionals and organizations, 
+                focusing on practical penetration testing skills.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-2">
+                <Badge variant="outline" className="border-accent/30 text-accent text-xs py-1 justify-center">Training Design</Badge>
+                <Badge variant="outline" className="border-accent/30 text-accent text-xs py-1 justify-center">VAPT Workshops</Badge>
+                <Badge variant="outline" className="border-accent/30 text-accent text-xs py-1 justify-center">Mentoring</Badge>
+                <Badge variant="outline" className="border-accent/30 text-accent text-xs py-1 justify-center">Real Scenarios</Badge>
+              </div>
+            </div>
+          </Card>
 
-            {/* Key Achievements Card */}
-            <Card className="flex-shrink-0 w-72 p-4 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30 border-2">
-              <div className="text-center mb-4">
-                <div className="p-3 rounded-full bg-primary/10 inline-block mb-3">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-base font-bold text-primary mb-1">Key Achievements</h3>
-              </div>
-              <div className="space-y-2 text-center">
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-primary">Epic Games 2FA Bypass</p>
-                  <p className="text-xs text-muted-foreground">Critical vulnerability discovery</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-primary">Tool Development</p>
-                  <p className="text-xs text-muted-foreground">Reconbro.sh & Toolsbro.sh</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-primary">Public Disclosures</p>
-                  <p className="text-xs text-muted-foreground">Responsible reporting</p>
-                </div>
-              </div>
-            </Card>
-
-            {/* Expertise Focus Card */}
-            <Card className="flex-shrink-0 w-72 p-4 bg-gradient-to-br from-green-500/10 to-green-500/5 border-green-500/30 border-2">
-              <div className="text-center mb-4">
-                <div className="p-3 rounded-full bg-green-500/10 inline-block mb-3">
-                  <Shield className="w-6 h-6 text-green-400" />
-                </div>
-                <h3 className="text-base font-bold text-green-400 mb-1">Expertise Focus</h3>
-              </div>
-              <div className="space-y-2 text-center">
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-green-400">Logic-Based Flaws</p>
-                  <p className="text-xs text-muted-foreground">Business logic vulnerabilities</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-green-400">OWASP Top 10</p>
-                  <p className="text-xs text-muted-foreground">Industry-standard methodologies</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-green-400">VAPT Expert</p>
-                  <p className="text-xs text-muted-foreground">Advanced assessment techniques</p>
-                </div>
-              </div>
-            </Card>
+          {/* Achievements Grid */}
+          <div className="grid grid-cols-1 gap-4 mb-6">
+            {keyAccomplishments.map((accomplishment, index) => {
+              const IconComponent = accomplishment.icon;
+              return (
+                <Card key={accomplishment.title} className="p-4 bg-card/50 backdrop-blur-sm border-l-4 border-l-primary relative">
+                  <div className="flex items-start space-x-3">
+                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0 mt-1">
+                      <IconComponent className="w-4 h-4 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-sm text-foreground mb-1">{accomplishment.title}</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{accomplishment.description}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Achievement Number */}
+                  <div className="absolute top-2 right-3 text-xs font-bold text-primary/30">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                </Card>
+              );
+            })}
           </div>
+
+          {/* Stats Card */}
+          <Card className="p-5 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border-primary/20">
+            <h3 className="text-center font-bold text-primary mb-4 text-base">Professional Impact</h3>
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="text-xl font-bold text-primary mb-1">6+</div>
+                <p className="text-xs text-muted-foreground">Months Training</p>
+              </div>
+              <div>
+                <div className="text-xl font-bold text-accent mb-1">1</div>
+                <p className="text-xs text-muted-foreground">Critical CVE</p>
+              </div>
+              <div>
+                <div className="text-xl font-bold text-primary mb-1">2</div>
+                <p className="text-xs text-muted-foreground">Custom Tools</p>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Desktop: Original Layout */}
