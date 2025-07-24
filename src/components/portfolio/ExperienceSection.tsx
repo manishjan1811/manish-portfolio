@@ -94,11 +94,24 @@ const ExperienceSection = () => {
           <div className="grid grid-cols-1 gap-4 mb-6">
             {keyAccomplishments.map((accomplishment, index) => {
               const IconComponent = accomplishment.icon;
+              const getColorClasses = (color: string) => {
+                switch(color) {
+                  case 'destructive':
+                    return { bg: 'bg-red-500/10', icon: 'text-red-500', border: 'border-l-red-500' };
+                  case 'accent':
+                    return { bg: 'bg-emerald-500/10', icon: 'text-emerald-500', border: 'border-l-emerald-500' };
+                  case 'cyber-purple':
+                    return { bg: 'bg-purple-500/10', icon: 'text-purple-500', border: 'border-l-purple-500' };
+                  default:
+                    return { bg: 'bg-blue-500/10', icon: 'text-blue-500', border: 'border-l-blue-500' };
+                }
+              };
+              const colors = getColorClasses(accomplishment.color);
               return (
-                <Card key={accomplishment.title} className="p-4 bg-card/50 backdrop-blur-sm border-l-4 border-l-primary relative">
+                <Card key={accomplishment.title} className={`p-4 bg-card/50 backdrop-blur-sm border-l-4 ${colors.border} relative`}>
                   <div className="flex items-start space-x-3">
-                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0 mt-1">
-                      <IconComponent className="w-4 h-4 text-primary" />
+                    <div className={`p-2 rounded-lg ${colors.bg} flex-shrink-0 mt-1`}>
+                      <IconComponent className={`w-4 h-4 ${colors.icon}`} />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-sm text-foreground mb-1">{accomplishment.title}</h4>
