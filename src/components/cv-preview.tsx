@@ -11,65 +11,71 @@ import React from 'react'
 export function CVPreview() {
   const { toast } = useToast()
 
-  const renderCVForCapture = async (): Promise<HTMLElement> => {
-    // Create a temporary container
-    const tempContainer = document.createElement('div')
-    tempContainer.style.position = 'absolute'
-    tempContainer.style.top = '-9999px'
-    tempContainer.style.left = '-9999px'
-    tempContainer.style.width = '794px' // A4 width in pixels at 96 DPI
-    tempContainer.style.background = 'white'
-    tempContainer.style.zIndex = '-1'
-    
-    document.body.appendChild(tempContainer)
-    
-    // Create a root and render CVPage
-    const root = createRoot(tempContainer)
-    
-    return new Promise((resolve) => {
-      const CVPageComponent = () => {
-        React.useEffect(() => {
-          // Wait for component to mount and styles to apply
-          const timer = setTimeout(() => {
-            const cvElement = tempContainer.querySelector('#cv-page') as HTMLElement
-            if (cvElement) {
-              resolve(cvElement)
-            }
-          }, 1000)
-          
-          return () => clearTimeout(timer)
-        }, [])
-        
-        return <CVPage className="w-full" />
-      }
-      
-      root.render(<CVPageComponent />)
-    })
-  }
-
   const handleDownload = async () => {
     try {
       toast({
         title: "Generating PDF...",
-        description: "Please wait while we prepare your CV download.",
+        description: "Backend se CV render ho rahi hai...",
       })
 
-      // Try to get CV from dialog first, if not available, render it fresh
-      let cvElement = document.querySelector('#cv-page') as HTMLElement
-      let tempContainer: HTMLElement | null = null
-      
-      if (!cvElement) {
-        // Render CV fresh for capture
-        cvElement = await renderCVForCapture()
-        tempContainer = cvElement.parentElement
+      // First, let's get the CV HTML from our backend
+      const response = await fetch('https://suynbvqdtzuwxqrrgrgn.supabase.co/functions/v1/cv-generator', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch CV from backend')
       }
 
-      // Wait for all resources to load
-      await document.fonts.ready
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      const cvHTML = await response.text()
+      
+      // Create a temporary iframe to render the backend CV
+      const iframe = document.createElement('iframe')
+      iframe.style.position = 'absolute'
+      iframe.style.top = '-9999px'
+      iframe.style.left = '-9999px'
+      iframe.style.width = '794px' // A4 width
+      iframe.style.height = '1123px' // A4 height
+      iframe.style.border = 'none'
+      
+      document.body.appendChild(iframe)
+      
+      // Write the backend HTML to iframe
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document
+      if (!iframeDoc) {
+        throw new Error('Could not access iframe document')
+      }
+      
+      iframeDoc.open()
+      iframeDoc.write(cvHTML)
+      iframeDoc.close()
 
-      // Capture with maximum quality
-      const canvas = await html2canvas(cvElement, {
+      // Wait for the iframe to load completely
+      await new Promise(resolve => {
+        iframe.onload = resolve
+        // Fallback timeout
+        setTimeout(resolve, 3000)
+      })
+
+      // Wait a bit more for fonts and styles to load
+      await new Promise(resolve => setTimeout(resolve, 2000))
+
+      const cvElement = iframeDoc.getElementById('cv-page')
+      
+      if (!cvElement) {
+        throw new Error('CV element not found in backend response')
+      }
+
+      toast({
+        title: "Creating PDF...",
+        description: "Backend se rendered CV ko PDF banaya ja raha hai...",
+      })
+
+      // Capture the iframe content with html2canvas
+      const canvas = await html2canvas(cvElement as HTMLElement, {
         scale: 3,
         useCORS: true,
         allowTaint: false,
@@ -81,33 +87,10 @@ export function CVPreview() {
         logging: false,
         removeContainer: false,
         foreignObjectRendering: true,
-        onclone: (clonedDoc, clonedElement) => {
-          // Ensure all Tailwind classes work in cloned document
-          const originalHead = document.head
-          const clonedHead = clonedDoc.head
-          
-          // Copy all stylesheets
-          Array.from(originalHead.children).forEach(child => {
-            if (child.tagName === 'STYLE' || 
-                (child.tagName === 'LINK' && (child as HTMLLinkElement).rel === 'stylesheet')) {
-              clonedHead.appendChild(child.cloneNode(true))
-            }
-          })
-          
-          // Ensure the CV element is visible and styled
-          const clonedCvElement = clonedElement.querySelector('#cv-page') as HTMLElement
-          if (clonedCvElement) {
-            clonedCvElement.style.visibility = 'visible'
-            clonedCvElement.style.opacity = '1'
-            clonedCvElement.style.transform = 'none'
-          }
-        }
       })
 
-      // Clean up temporary container if created
-      if (tempContainer) {
-        document.body.removeChild(tempContainer)
-      }
+      // Clean up iframe
+      document.body.removeChild(iframe)
 
       // Create PDF with proper A4 dimensions
       const pdf = new jsPDF('p', 'mm', 'a4')
@@ -147,16 +130,44 @@ export function CVPreview() {
       pdf.save('Manish_Jangra_CV.pdf')
 
       toast({
-        title: "CV Downloaded Successfully!",
-        description: "Your professionally styled CV has been saved as PDF.",
+        title: "CV Successfully Downloaded! ✅",
+        description: "Backend se properly rendered aur styled CV download ho gayi!",
       })
     } catch (error) {
       console.error('Download error:', error)
       toast({
-        title: "Download Failed", 
-        description: "Could not generate PDF. Try opening CV preview first.",
+        title: "Download Failed ❌", 
+        description: "Backend connection issue. Fallback method use kar rahe hain...",
         variant: "destructive",
       })
+      
+      // Fallback to local CV if backend fails
+      const localCvElement = document.querySelector('#cv-page') as HTMLElement
+      if (localCvElement) {
+        try {
+          const canvas = await html2canvas(localCvElement, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: false,
+            backgroundColor: '#ffffff',
+          })
+          
+          const pdf = new jsPDF('p', 'mm', 'a4')
+          const imgData = canvas.toDataURL('image/jpeg', 0.95)
+          const imgWidth = 190
+          const imgHeight = (canvas.height * imgWidth) / canvas.width
+          
+          pdf.addImage(imgData, 'JPEG', 10, 10, imgWidth, imgHeight)
+          pdf.save('Manish_Jangra_CV_Fallback.pdf')
+          
+          toast({
+            title: "Fallback Download Complete",
+            description: "Local CV version downloaded successfully.",
+          })
+        } catch (fallbackError) {
+          console.error('Fallback also failed:', fallbackError)
+        }
+      }
     }
   }
 
