@@ -115,51 +115,243 @@ export const AboutSectionOptimized = () => (
 
 // Skills Section
 export const SkillsSectionOptimized = () => {
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   const skills = [
-    { name: "Web Application Security", level: 95, category: "Security" },
-    { name: "Penetration Testing", level: 90, category: "Security" },
-    { name: "Vulnerability Assessment", level: 88, category: "Security" },
-    { name: "Python", level: 85, category: "Programming" },
-    { name: "JavaScript", level: 80, category: "Programming" },
-    { name: "Linux", level: 90, category: "Systems" },
-    { name: "Network Security", level: 85, category: "Security" },
-    { name: "OWASP Top 10", level: 95, category: "Security" }
+    { name: "Web Application Security", level: 95, category: "Security", icon: "🛡️" },
+    { name: "Penetration Testing", level: 90, category: "Security", icon: "🎯" },
+    { name: "Vulnerability Assessment", level: 88, category: "Security", icon: "🔍" },
+    { name: "OWASP Top 10", level: 95, category: "Security", icon: "🔴" },
+    { name: "Python", level: 85, category: "Programming", icon: "🐍" },
+    { name: "Bash Scripting", level: 80, category: "Programming", icon: "💻" },
+    { name: "JavaScript", level: 80, category: "Programming", icon: "⚡" },
+    { name: "Linux", level: 90, category: "Systems", icon: "🐧" },
+    { name: "Network Security", level: 85, category: "Systems", icon: "🌐" }
   ];
 
-  const categories = [...new Set(skills.map(skill => skill.category))];
+  const tools = ["Burp Suite", "Kali Linux", "Nmap", "Metasploit", "Wireshark", "SQLMap", "Hydra", "John the Ripper", "Nessus", "OWASP ZAP", "Nikto", "Gobuster"];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <SectionWrapper id="skills">
-      <SectionHeading 
-        title="Skills & Expertise"
-        description="Technical competencies and areas of specialization"
-      />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-        {categories.map(category => (
-          <Card key={category} className="p-4 sm:p-5 md:p-6 bg-card/50 border-border/50">
-            <CardContent className="p-0">
-              <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-primary">{category}</h3>
-              <div className="space-y-3 sm:space-y-4">
-                {skills.filter(skill => skill.category === category).map(skill => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between text-xs sm:text-sm">
-                      <span className="text-foreground truncate pr-2">{skill.name}</span>
-                      <span className="text-muted-foreground flex-shrink-0">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
+    <section 
+      id="skills" 
+      ref={sectionRef} 
+      className="py-6 sm:py-8 md:py-16 lg:py-20"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">🚀 Skills & Expertise</h2>
+          <p className="text-xs sm:text-sm md:text-lg text-muted-foreground max-w-xl md:max-w-2xl mx-auto">
+            Advanced cybersecurity and penetration testing capabilities
+          </p>
+        </div>
+
+        {/* Mobile: Ultra Compact Design */}
+        <div className="block lg:hidden">
+          {/* Core Skills - Circular Progress */}
+          <div className="mb-5">
+            <h3 className="text-sm font-bold mb-3 text-blue-400 flex items-center">
+              <span className="mr-2">🎯</span>
+              Core Expertise
+            </h3>
+            <div className="grid grid-cols-3 gap-3">
+              {skills.filter(skill => skill.category === "Security").slice(0, 6).map((skill, index) => (
+                <div key={skill.name} className="text-center">
+                  <div className="relative w-14 h-14 mx-auto mb-2">
+                    <svg className="w-14 h-14 transform -rotate-90" viewBox="0 0 36 36">
+                      <path
+                        d="m18,2.0845 a 15.9155,15.9155 0 0,1 0,31.831 a 15.9155,15.9155 0 0,1 0,-31.831"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeDasharray="100, 100"
+                        className="text-muted/20"
                       />
+                      <path
+                        d="m18,2.0845 a 15.9155,15.9155 0 0,1 0,31.831 a 15.9155,15.9155 0 0,1 0,-31.831"
+                        fill="none"
+                        strokeWidth="2"
+                        strokeDasharray={`${inView ? skill.level : 0}, 100`}
+                        strokeLinecap="round"
+                        className="text-blue-500 transition-all duration-1000"
+                        style={{ transitionDelay: `${index * 150}ms` }}
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-xs font-bold">{skill.level}%</span>
+                    </div>
+                  </div>
+                  <p className="text-xs font-medium truncate">{skill.name.split(' ')[0]}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Programming & Systems - Compact Bars */}
+          <div className="mb-5">
+            <h3 className="text-sm font-bold mb-3 text-emerald-400 flex items-center">
+              <span className="mr-2">💻</span>
+              Tech Stack
+            </h3>
+            <div className="bg-muted/20 rounded-lg p-3 border border-border/30">
+              <div className="space-y-2">
+                {skills.filter(skill => skill.category !== "Security").map((skill, index) => (
+                  <div key={skill.name} className="flex items-center justify-between">
+                    <span className="text-xs font-medium flex items-center">
+                      <span className="mr-2">{skill.icon}</span>
+                      {skill.name}
+                    </span>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-16 h-1.5 bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-emerald-500 rounded-full transition-all duration-1000"
+                          style={{ 
+                            width: inView ? `${skill.level}%` : '0%',
+                            transitionDelay: `${index * 100 + 300}ms`
+                          }}
+                        />
+                      </div>
+                      <span className="text-xs text-muted-foreground w-8">{skill.level}%</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Security Tools - Tag Cloud */}
+          <div className="mb-5">
+            <h3 className="text-sm font-bold mb-3 text-purple-400 flex items-center">
+              <span className="mr-2">🛠️</span>
+              Security Arsenal
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {tools.slice(0, 10).map((tool, index) => (
+                <span 
+                  key={tool} 
+                  className="px-2 py-1 text-xs bg-purple-500/20 text-purple-400 rounded-md border border-purple-500/30 font-medium"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Certifications */}
+          <div>
+            <h3 className="text-sm font-bold mb-3 text-orange-400 flex items-center">
+              <span className="mr-2">🏆</span>
+              Certifications
+            </h3>
+            <div className="grid grid-cols-3 gap-2">
+              {["CEH", "CRTA", "BSCP"].map((cert, index) => (
+                <div key={cert} className="p-2 text-center rounded-lg bg-orange-500/20 border border-orange-500/30">
+                  <div className="text-orange-400 font-bold text-sm">{cert}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: Professional Layout */}
+        <div className="hidden lg:block">
+          {/* Skills Categories Grid */}
+          <div className="grid grid-cols-3 gap-8 mb-12">
+            {["Security", "Programming", "Systems"].map((category, categoryIndex) => (
+              <Card key={category} className="p-6 bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-300">
+                <CardContent className="p-0">
+                  <h3 className="text-xl font-semibold mb-6 text-primary flex items-center">
+                    <span className="mr-3 text-2xl">
+                      {category === "Security" ? "🛡️" : category === "Programming" ? "💻" : "⚙️"}
+                    </span>
+                    {category}
+                  </h3>
+                  <div className="space-y-4">
+                    {skills.filter(skill => skill.category === category).map((skill, index) => (
+                      <div key={skill.name} className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium flex items-center">
+                            <span className="mr-2">{skill.icon}</span>
+                            {skill.name}
+                          </span>
+                          <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                        </div>
+                        <div className="h-2 bg-muted rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
+                            style={{ 
+                              width: inView ? `${skill.level}%` : '0%',
+                              transitionDelay: `${(categoryIndex * 4 + index) * 150}ms`
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Security Tools Grid */}
+          <Card className="p-6 bg-card/50 border-border/50 mb-8">
+            <CardContent className="p-0">
+              <h3 className="text-xl font-semibold mb-6 text-primary flex items-center">
+                <span className="mr-3 text-2xl">🛠️</span>
+                Security Tools Arsenal
+              </h3>
+              <div className="grid grid-cols-4 gap-4">
+                {tools.map((tool, index) => (
+                  <div 
+                    key={tool} 
+                    className="p-3 rounded-lg bg-muted/20 hover:bg-primary/10 border border-border hover:border-primary/30 transition-all duration-300 text-center group"
+                  >
+                    <div className="font-medium text-sm group-hover:text-primary transition-colors">
+                      {tool}
                     </div>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
-        ))}
+
+          {/* Certifications */}
+          <div className="grid grid-cols-3 gap-6">
+            {[
+              { name: "CEH", desc: "Certified Ethical Hacker", color: "blue" },
+              { name: "CRTA", desc: "Certified Red Team Analyst", color: "green" },
+              { name: "BSCP", desc: "Burp Suite Certified Practitioner", color: "purple" }
+            ].map((cert, index) => (
+              <Card key={cert.name} className="p-6 bg-card/30 border-border/50 text-center hover:scale-105 transition-transform duration-300">
+                <CardContent className="p-0">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-${cert.color}-500/20 flex items-center justify-center`}>
+                    <Award className={`w-8 h-8 text-${cert.color}-500`} />
+                  </div>
+                  <h4 className="text-lg font-bold mb-2">{cert.name}</h4>
+                  <p className="text-sm text-muted-foreground">{cert.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 };
 
