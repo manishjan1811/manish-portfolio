@@ -68,9 +68,19 @@ const HeroSection = () => {
           <div className="space-y-4 animate-fade-in-up">
             {/* Mobile compact heading */}
             <div className="space-y-3">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="w-8 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded"></div>
+                <span className="text-xs font-bold text-red-500 tracking-widest">CYBERSECURITY</span>
+                <div className="w-8 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded"></div>
+              </div>
               <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold cyber-text leading-tight">
                 MANISH JANGRA
               </h1>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="w-6 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded"></div>
+                <span className="text-xs font-bold text-blue-500 tracking-widest">WEB DEVELOPER</span>
+                <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded"></div>
+              </div>
               <div className="text-sm xs:text-base text-muted-foreground font-medium">
                 <span className="border-r-2 border-primary animate-pulse">
                   {typedText}
@@ -126,9 +136,19 @@ const HeroSection = () => {
           <div className="space-y-8 animate-fade-in-up max-w-5xl mx-auto">
             {/* Desktop grand heading */}
             <div className="space-y-6">
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="w-16 h-1.5 bg-gradient-to-r from-red-500 to-orange-500 rounded"></div>
+                <span className="text-sm font-bold text-red-500 tracking-widest">CYBERSECURITY EXPERT</span>
+                <div className="w-16 h-1.5 bg-gradient-to-r from-orange-500 to-red-500 rounded"></div>
+              </div>
               <h1 className="text-5xl xl:text-7xl font-bold cyber-text leading-tight tracking-tight">
                 MANISH JANGRA
               </h1>
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded"></div>
+                <span className="text-sm font-bold text-blue-500 tracking-widest">WEB DEVELOPER</span>
+                <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded"></div>
+              </div>
               <div className="text-xl xl:text-3xl text-muted-foreground font-medium">
                 <span className="border-r-2 border-primary animate-pulse">
                   {typedText}
