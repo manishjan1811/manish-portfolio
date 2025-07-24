@@ -245,7 +245,13 @@ const ProjectsSection = () => {
                               <>
                                 <Button 
                                   className={`font-medium transition-all duration-300 hover:scale-105 ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-blue-500/25' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 shadow-md hover:shadow-emerald-500/25' : 'bg-red-500 hover:bg-red-600 shadow-md hover:shadow-red-500/25'}`} 
-                                  onClick={() => window.open(project.githubUrl, '_blank')}
+                                  onClick={() => {
+                                    if (project.title === 'CheapOTT Store') {
+                                      alert('This project is not uploaded to GitHub because it is client property and confidential.');
+                                    } else {
+                                      window.open(project.githubUrl, '_blank');
+                                    }
+                                  }}
                                 >
                                   <Github className="w-4 h-4 mr-2" />
                                   View Source
