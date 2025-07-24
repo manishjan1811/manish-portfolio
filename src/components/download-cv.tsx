@@ -24,12 +24,12 @@ export function DownloadCV() {
       onClick={handleDownload}
       variant="outline"
       size="sm"
-      className="relative px-4 py-2.5 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group overflow-hidden"
+      className="w-full relative px-4 py-2.5 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group overflow-hidden"
       aria-label="Download CV"
     >
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center justify-center space-x-2">
         <Download className="w-4 h-4 text-primary group-hover:animate-bounce" />
-        <span className="text-sm font-medium text-foreground">CV</span>
+        <span className="text-sm font-medium text-foreground">Download CV</span>
       </div>
       
       {/* Subtle glow effect */}

@@ -334,16 +334,18 @@ const ProjectsSection = () => {
           </p>
         </div>
 
-        {/* Tabs */}
+        {/* Optimized Tabs for mobile */}
         <Tabs defaultValue="cybersecurity" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="cybersecurity" className="flex items-center gap-2">
-              <Shield className="w-4 h-4" />
-              Cybersecurity
+          <TabsList className="grid w-full grid-cols-2 mb-8 h-auto p-1">
+            <TabsTrigger value="cybersecurity" className="flex items-center gap-2 py-3 px-2 text-xs sm:text-sm">
+              <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden xs:inline">Cybersecurity</span>
+              <span className="xs:hidden">Cyber</span>
             </TabsTrigger>
-            <TabsTrigger value="webdev" className="flex items-center gap-2">
-              <Code className="w-4 h-4" />
-              Web Development
+            <TabsTrigger value="webdev" className="flex items-center gap-2 py-3 px-2 text-xs sm:text-sm">
+              <Code className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden xs:inline">Web Development</span>
+              <span className="xs:hidden">Web Dev</span>
             </TabsTrigger>
           </TabsList>
 

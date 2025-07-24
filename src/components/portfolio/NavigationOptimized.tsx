@@ -106,7 +106,6 @@ const Navigation = () => {
 
           {/* Mobile Interactive Features & Menu */}
           <div className="md:hidden flex items-center space-x-2">
-            <DownloadCV />
             <ThemeToggle />
             <Button
               variant="ghost"
