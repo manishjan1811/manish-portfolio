@@ -17,120 +17,31 @@ export function CVPreview() {
         description: "Please wait while we prepare your CV download.",
       })
 
-      // Create a temporary container with React rendering for perfect styling
-      const tempContainer = document.createElement('div')
-      tempContainer.style.position = 'fixed'
-      tempContainer.style.top = '-10000px'
-      tempContainer.style.left = '-10000px'
-      tempContainer.style.width = '794px' // A4 width in pixels
-      tempContainer.style.height = 'auto'
-      tempContainer.style.zIndex = '-1000'
-      tempContainer.style.background = 'white'
+      // Use the existing CVPage element from the dialog preview
+      const existingCvElement = document.querySelector('#cv-page') as HTMLElement
       
-      document.body.appendChild(tempContainer)
-      
-      // Render the CVPage component with React for perfect styling
-      const root = createRoot(tempContainer)
-      root.render(<CVPage />)
-      
-      // Wait for React to render and styles to be applied
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      const cvElement = tempContainer.querySelector('#cv-page') as HTMLElement
-      
-      if (!cvElement) {
-        throw new Error('Could not render CV component')
+      if (!existingCvElement) {
+        throw new Error('CV preview not found. Please open the preview first.')
       }
 
-      // Convert to canvas with maximum quality settings
-      const canvas = await html2canvas(cvElement, {
-        scale: 4, // Maximum quality
+      // Convert the existing styled element to canvas
+      const canvas = await html2canvas(existingCvElement, {
+        scale: 3,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: cvElement.scrollWidth,
-        height: cvElement.scrollHeight,
+        backgroundColor: null, // Keep transparent areas
+        width: existingCvElement.scrollWidth,
+        height: existingCvElement.scrollHeight,
         scrollX: 0,
         scrollY: 0,
         logging: false,
         removeContainer: false,
         foreignObjectRendering: true,
-        onclone: (clonedDoc) => {
-          // Ensure all styles are properly applied
-          const clonedElement = clonedDoc.querySelector('#cv-page') as HTMLElement
-          if (clonedElement) {
-            // Add CSS for glassmorphism effects that might not be captured
-            const style = clonedDoc.createElement('style')
-            style.textContent = `
-              .bg-gradient-to-br { 
-                background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)) !important;
-              }
-              .from-slate-900\\/95 { 
-                --tw-gradient-from: rgba(15, 23, 42, 0.95) !important;
-                --tw-gradient-to: rgba(15, 23, 42, 0) !important;
-                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-              }
-              .via-blue-900\\/90 { 
-                --tw-gradient-to: rgba(30, 58, 138, 0) !important;
-                --tw-gradient-stops: var(--tw-gradient-from), rgba(30, 58, 138, 0.9), var(--tw-gradient-to) !important;
-              }
-              .to-slate-800\\/95 { 
-                --tw-gradient-to: rgba(30, 41, 59, 0.95) !important;
-              }
-              .backdrop-blur-xl { 
-                backdrop-filter: blur(24px) !important;
-                -webkit-backdrop-filter: blur(24px) !important;
-              }
-              .backdrop-blur-sm { 
-                backdrop-filter: blur(4px) !important;
-                -webkit-backdrop-filter: blur(4px) !important;
-              }
-              .bg-white\\/\\[0\\.05\\] { 
-                background-color: rgba(255, 255, 255, 0.05) !important;
-              }
-              .bg-white\\/5 { 
-                background-color: rgba(255, 255, 255, 0.05) !important;
-              }
-              .border-white\\/10 { 
-                border-color: rgba(255, 255, 255, 0.1) !important;
-              }
-              .border-white\\/20 { 
-                border-color: rgba(255, 255, 255, 0.2) !important;
-              }
-              .text-white\\/90 { 
-                color: rgba(255, 255, 255, 0.9) !important;
-              }
-              .bg-gradient-to-r { 
-                background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
-              }
-              .from-white { 
-                --tw-gradient-from: rgb(255, 255, 255) !important;
-                --tw-gradient-to: rgba(255, 255, 255, 0) !important;
-                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-              }
-              .via-blue-100 { 
-                --tw-gradient-to: rgba(219, 234, 254, 0) !important;
-                --tw-gradient-stops: var(--tw-gradient-from), rgb(219, 234, 254), var(--tw-gradient-to) !important;
-              }
-              .to-cyan-200 { 
-                --tw-gradient-to: rgb(165, 243, 252) !important;
-              }
-              .bg-clip-text { 
-                background-clip: text !important;
-                -webkit-background-clip: text !important;
-              }
-              .text-transparent { 
-                color: transparent !important;
-              }
-            `
-            clonedDoc.head.appendChild(style)
-          }
+        ignoreElements: (element) => {
+          // Skip elements that might cause issues
+          return element.tagName === 'SCRIPT' || element.tagName === 'STYLE'
         }
       })
-
-      // Clean up
-      root.unmount()
-      document.body.removeChild(tempContainer)
 
       // Create PDF with high quality
       const imgData = canvas.toDataURL('image/png', 1.0)
