@@ -29,15 +29,18 @@ export function CVPreview() {
         body: JSON.stringify({ url: cvUrl }),
       })
 
-      const result = await response.json()
-
       if (!response.ok) {
-        throw new Error(result.error || 'PDF generation failed')
+        const errorText = await response.text()
+        console.error('Response error:', response.status, errorText)
+        throw new Error(`HTTP ${response.status}: ${errorText}`)
       }
 
+      const result = await response.json()
+      console.log('Backend response:', result)
+
       toast({
-        title: "✅ PDF Ready!",
-        description: "Backend se CV successfully convert hui hai",
+        title: "✅ PDF Processing Started!",
+        description: "Backend ne CV convert karna shuru kar diya hai",
       })
 
       // For now, open CV in new tab for manual print
