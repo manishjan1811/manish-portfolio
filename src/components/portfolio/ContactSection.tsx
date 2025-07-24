@@ -57,20 +57,14 @@ const ContactSection = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "#",
+      href: "https://www.linkedin.com/in/manish-jangraa/",
       color: "primary"
     },
     {
       icon: Github,
       label: "GitHub",
-      href: "#",
+      href: "https://github.com/manishjan1811/",
       color: "accent"
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "#",
-      color: "cyber-purple"
     }
   ];
 
