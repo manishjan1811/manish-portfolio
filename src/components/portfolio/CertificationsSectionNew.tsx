@@ -261,18 +261,18 @@ const CertificationsSectionNew = () => {
 
         {/* Mobile: Horizontal Scrolling Skills Cards */}
         <div className="block lg:hidden mb-8">
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4">
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-2">
             {/* Web Pentester Skills Card */}
-            <Card className="flex-shrink-0 w-64 p-4 bg-green-500/10 border-green-500/30 border-2">
-              <div className="text-center mb-3">
-                <div className="p-3 rounded-full bg-green-500/10 inline-block mb-2">
-                  <Shield className="w-5 h-5 text-green-400" />
+            <Card className="flex-shrink-0 w-72 p-4 bg-green-500/10 border-green-500/30 border-2">
+              <div className="text-center mb-4">
+                <div className="p-3 rounded-full bg-green-500/10 inline-block mb-3">
+                  <Shield className="w-6 h-6 text-green-400" />
                 </div>
-                <h3 className="text-sm font-bold text-green-400">Web Pentester</h3>
+                <h3 className="text-base font-bold text-green-400 mb-2">Web Pentester</h3>
               </div>
-              <div className="grid grid-cols-2 gap-1">
+              <div className="grid grid-cols-2 gap-2">
                 {webPentesterSkills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="border-green-500/30 text-green-400 text-xs py-1 justify-center">
+                  <Badge key={skill} variant="outline" className="border-green-500/30 text-green-400 text-xs py-1.5 px-2 justify-center text-center">
                     {skill}
                   </Badge>
                 ))}
@@ -280,16 +280,16 @@ const CertificationsSectionNew = () => {
             </Card>
 
             {/* Web Developer Skills Card */}
-            <Card className="flex-shrink-0 w-64 p-4 bg-blue-500/10 border-blue-500/30 border-2">
-              <div className="text-center mb-3">
-                <div className="p-3 rounded-full bg-blue-500/10 inline-block mb-2">
-                  <Target className="w-5 h-5 text-blue-400" />
+            <Card className="flex-shrink-0 w-72 p-4 bg-blue-500/10 border-blue-500/30 border-2">
+              <div className="text-center mb-4">
+                <div className="p-3 rounded-full bg-blue-500/10 inline-block mb-3">
+                  <Target className="w-6 h-6 text-blue-400" />
                 </div>
-                <h3 className="text-sm font-bold text-blue-400">Web Developer</h3>
+                <h3 className="text-base font-bold text-blue-400 mb-2">Web Developer</h3>
               </div>
-              <div className="grid grid-cols-2 gap-1">
+              <div className="grid grid-cols-2 gap-2">
                 {webDeveloperSkills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="border-blue-500/30 text-blue-400 text-xs py-1 justify-center">
+                  <Badge key={skill} variant="outline" className="border-blue-500/30 text-blue-400 text-xs py-1.5 px-2 justify-center text-center">
                     {skill}
                   </Badge>
                 ))}
@@ -297,23 +297,23 @@ const CertificationsSectionNew = () => {
             </Card>
 
             {/* Continuous Learning Card */}
-            <Card className="flex-shrink-0 w-64 p-4 bg-purple-500/10 border-purple-500/30 border-2">
-              <div className="text-center mb-3">
-                <div className="p-3 rounded-full bg-purple-500/10 inline-block mb-2">
-                  <Users className="w-5 h-5 text-purple-400" />
+            <Card className="flex-shrink-0 w-72 p-4 bg-purple-500/10 border-purple-500/30 border-2">
+              <div className="text-center mb-4">
+                <div className="p-3 rounded-full bg-purple-500/10 inline-block mb-3">
+                  <Users className="w-6 h-6 text-purple-400" />
                 </div>
-                <h3 className="text-sm font-bold text-purple-400">Learning</h3>
+                <h3 className="text-base font-bold text-purple-400 mb-2">Learning Path</h3>
               </div>
-              <div className="space-y-2 text-xs">
+              <div className="space-y-3 text-center">
                 <div>
-                  <p className="font-medium text-purple-400 mb-1">Focus:</p>
-                  <p className="text-muted-foreground">• Advanced Web Attacks</p>
-                  <p className="text-muted-foreground">• Cloud Security</p>
+                  <p className="font-medium text-purple-400 mb-2 text-sm">Current Focus:</p>
+                  <p className="text-muted-foreground text-xs">• Advanced Web Attacks</p>
+                  <p className="text-muted-foreground text-xs">• Cloud Security</p>
                 </div>
                 <div>
-                  <p className="font-medium text-purple-400 mb-1">Next:</p>
-                  <p className="text-muted-foreground">• OSCP</p>
-                  <p className="text-muted-foreground">• CISSP</p>
+                  <p className="font-medium text-purple-400 mb-2 text-sm">Next Goals:</p>
+                  <p className="text-muted-foreground text-xs">• OSCP Certification</p>
+                  <p className="text-muted-foreground text-xs">• CISSP Certification</p>
                 </div>
               </div>
             </Card>
