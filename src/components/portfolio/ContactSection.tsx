@@ -20,6 +20,14 @@ import {
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'Security Consulting',
+    message: ''
+  });
 
   const contactInfo = [
     {
@@ -65,6 +73,50 @@ const ContactSection = () => {
       color: "cyber-purple"
     }
   ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('contact-form', {
+        body: formData
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message! I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: 'Security Consulting',
+        message: ''
+      });
+
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -138,46 +190,57 @@ const ContactSection = () => {
               <h3 className="text-base font-bold text-accent">Send Message</h3>
             </div>
             
-            <form className="space-y-4" onSubmit={(e) => {
-              e.preventDefault();
-              // Here we'll add real message authentication
-              alert('Message functionality will be connected to a real email service. For now, please use the direct email link above.');
-            }}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <input
+                <Input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
-                  className="px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="px-4 py-3 text-sm"
                   required
                 />
-                <input
+                <Input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
-                  className="px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="px-4 py-3 text-sm"
                   required
                 />
               </div>
               
-              <select className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm">
-                <option>Security Consulting</option>
-                <option>Training Inquiry</option>
-                <option>Collaboration</option>
-                <option>General Inquiry</option>
+              <select 
+                name="subject"
+                value={formData.subject}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
+              >
+                <option value="Security Consulting">Security Consulting</option>
+                <option value="Training Inquiry">Training Inquiry</option>
+                <option value="Collaboration">Collaboration</option>
+                <option value="General Inquiry">General Inquiry</option>
               </select>
 
-              <textarea
+              <Textarea
+                name="message"
                 rows={4}
                 placeholder="Your message..."
-                className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 text-sm"
                 required
-              ></textarea>
+              />
 
               <Button 
                 type="submit" 
-                className="w-full bg-accent hover:bg-accent/90 text-background py-3 text-sm font-semibold transition-all"
+                disabled={isSubmitting}
+                className="w-full bg-accent hover:bg-accent/90 text-background py-3 text-sm font-semibold transition-all disabled:opacity-50"
               >
                 <Send className="w-4 h-4 mr-2" />
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </Card>
@@ -281,63 +344,72 @@ const ContactSection = () => {
             <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-accent/20">
               <h3 className="text-2xl font-bold cyber-text mb-6">Quick Message</h3>
               
-              <form className="space-y-6" onSubmit={(e) => {
-                e.preventDefault();
-                // Here we'll add real message authentication
-                alert('Message functionality will be connected to a real email service. For now, please use the direct email link.');
-              }}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                  <input
+                  <label htmlFor="desktop-name" className="block text-sm font-medium mb-2">Name</label>
+                  <Input
                     type="text"
-                    id="name"
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    id="desktop-name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3"
                     placeholder="Your name"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                  <input
+                  <label htmlFor="desktop-email" className="block text-sm font-medium mb-2">Email</label>
+                  <Input
                     type="email"
-                    id="email"
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    id="desktop-email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3"
                     placeholder="your.email@example.com"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
+                  <label htmlFor="desktop-subject" className="block text-sm font-medium mb-2">Subject</label>
                   <select
-                    id="subject"
+                    id="desktop-subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                   >
-                    <option>Security Consulting</option>
-                    <option>Training Inquiry</option>
-                    <option>Collaboration</option>
-                    <option>General Inquiry</option>
+                    <option value="Security Consulting">Security Consulting</option>
+                    <option value="Training Inquiry">Training Inquiry</option>
+                    <option value="Collaboration">Collaboration</option>
+                    <option value="General Inquiry">General Inquiry</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                  <textarea
-                    id="message"
+                  <label htmlFor="desktop-message" className="block text-sm font-medium mb-2">Message</label>
+                  <Textarea
+                    id="desktop-message"
+                    name="message"
                     rows={5}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3"
                     placeholder="Tell me about your project or inquiry..."
                     required
-                  ></textarea>
+                  />
                 </div>
 
                 <Button 
                   type="submit" 
-                  className="w-full cyber-glow bg-gradient-cyber hover:shadow-cyber py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                  disabled={isSubmitting}
+                  className="w-full cyber-glow bg-gradient-cyber hover:shadow-cyber py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 disabled:opacity-50"
                 >
                   <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </Card>
