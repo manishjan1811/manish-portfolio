@@ -60,88 +60,149 @@ const ProjectsSection = () => {
           </p>
         </div>
 
-        {/* Mobile: Card Stack Design */}
+        {/* Mobile: Side by Side + Stack Design */}
         <div className="block md:hidden">
-          <div className="relative">
-            {projects.map((project, index) => {
-            const IconComponent = project.icon;
-            return <div key={project.title} className="mb-6 animate-on-scroll" style={{
-              animationDelay: `${index * 0.15}s`
-            }}>
-                  {/* Project Card with Unique Layout */}
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-background via-background/95 to-background/90 border border-border/50 shadow-lg">
-                    {/* Top Section with Icon and Type */}
-                    <div className={`relative h-24 bg-gradient-to-r ${project.color === 'primary' ? 'from-blue-500/20 to-blue-600/30' : project.color === 'accent' ? 'from-emerald-500/20 to-emerald-600/30' : 'from-red-500/20 to-red-600/30'}`}>
+          {/* Side by Side: Reconbro and Toolsbro */}
+          <div className="grid grid-cols-2 gap-3 mb-6">
+            {projects.slice(0, 2).map((project, index) => {
+              const IconComponent = project.icon;
+              return (
+                <div key={project.title} className="animate-on-scroll" style={{
+                  animationDelay: `${index * 0.15}s`
+                }}>
+                  <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-background via-background/95 to-background/90 border border-border/50 shadow-lg">
+                    {/* Compact Top Section */}
+                    <div className={`relative h-16 bg-gradient-to-r ${project.color === 'primary' ? 'from-blue-500/20 to-blue-600/30' : 'from-emerald-500/20 to-emerald-600/30'}`}>
                       <div className="absolute inset-0 bg-black/10"></div>
-                      <div className="relative p-4 flex items-center justify-between">
-                        <div className={`p-3 rounded-xl bg-background/90 backdrop-blur-sm shadow-lg`}>
-                          <IconComponent className={`w-6 h-6 ${project.color === 'primary' ? 'text-blue-500' : project.color === 'accent' ? 'text-emerald-500' : 'text-red-500'}`} />
-                        </div>
-                        <div className={`px-3 py-1.5 rounded-full text-xs font-medium ${project.color === 'primary' ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : project.color === 'accent' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}`}>
-                          {project.type}
+                      <div className="relative p-3 flex items-center justify-center">
+                        <div className="p-2 rounded-lg bg-background/90 backdrop-blur-sm shadow-lg">
+                          <IconComponent className={`w-5 h-5 ${project.color === 'primary' ? 'text-blue-500' : 'text-emerald-500'}`} />
                         </div>
                       </div>
                     </div>
 
-                    {/* Content Section */}
-                    <div className="p-5 space-y-4">
-                      {/* Title and Date */}
+                    {/* Compact Content */}
+                    <div className="p-3 space-y-3">
                       <div>
-                        <h3 className="text-lg font-bold mb-1">{project.title}</h3>
-                        <p className={`text-sm font-medium mb-2 ${project.color === 'primary' ? 'text-blue-400' : project.color === 'accent' ? 'text-emerald-400' : 'text-red-400'}`}>
+                        <h3 className="text-sm font-bold mb-1">{project.title}</h3>
+                        <p className={`text-xs font-medium ${project.color === 'primary' ? 'text-blue-400' : 'text-emerald-400'}`}>
                           {project.subtitle}
                         </p>
-                        <p className="text-xs text-muted-foreground">{project.date}</p>
                       </div>
 
-                      {/* Description */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
                         {project.description}
                       </p>
 
-                      {/* Key Features - Horizontal Scroll */}
-                      <div>
-                        <h4 className="text-sm font-semibold mb-3">Key Features</h4>
-                        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                          {project.features.slice(0, 4).map((feature, idx) => <div key={idx} className="flex-shrink-0 px-3 py-2 bg-muted/50 rounded-lg border border-border/50">
-                              <p className="text-xs text-muted-foreground whitespace-nowrap">{feature}</p>
-                            </div>)}
-                        </div>
+                      {/* Compact Tech Stack */}
+                      <div className="flex flex-wrap gap-1">
+                        {project.technologies.slice(0, 2).map(tech => (
+                          <span key={tech} className="px-1.5 py-0.5 text-xs bg-primary/10 text-primary rounded border border-primary/20">
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 2 && (
+                          <span className="px-1.5 py-0.5 text-xs bg-muted/50 text-muted-foreground rounded">
+                            +{project.technologies.length - 2}
+                          </span>
+                        )}
                       </div>
 
-                      {/* Technologies - Compact Pills */}
-                      <div>
-                        <h4 className="text-sm font-semibold mb-2">Technologies</h4>
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.technologies.map(tech => <span key={tech} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-md border border-primary/20">
-                              {tech}
-                            </span>)}
-                        </div>
-                      </div>
+                      {/* Compact Action Button */}
+                      <button 
+                        className={`w-full py-2 rounded-lg text-xs font-medium transition-all flex items-center justify-center ${
+                          project.color === 'primary' 
+                            ? 'bg-blue-500 hover:bg-blue-600 text-white' 
+                            : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+                        }`}
+                        onClick={() => window.open(
+                          project.title === 'Reconbro.sh' 
+                            ? 'https://github.com/manishjan1811/Reconbro.sh' 
+                            : 'https://github.com/manishjan1811/Toolsbro.sh', 
+                          '_blank'
+                        )}
+                      >
+                        <Github className="w-3 h-3 mr-1" />
+                        View Code
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-                      {/* Action Buttons */}
-                      <div className="pt-2">
-                        {project.title.includes('Epic Games') ? <button className="w-full py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg border border-red-500/30 transition-colors text-sm font-medium flex items-center justify-center">
-                            <Shield className="w-4 h-4 mr-2" />
-                            Security Research
-                          </button> : <div className="grid grid-cols-2 gap-2">
-                            <button className={`py-2.5 rounded-lg text-xs font-medium transition-all flex items-center justify-center ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 text-white' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'bg-red-500 hover:bg-red-600 text-white'}`} onClick={() => window.open(project.title === 'Reconbro.sh' ? 'https://github.com/manishjan1811/Reconbro.sh' : 'https://github.com/manishjan1811/Toolsbro.sh', '_blank')}>
-                              <Github className="w-3.5 h-3.5 mr-1.5" />
-                              View Code
-                            </button>
-                            <button className="py-2.5 bg-muted hover:bg-muted/80 text-foreground rounded-lg border border-border transition-colors text-xs font-medium flex items-center justify-center" onClick={() => {
-                        window.open('#', '_blank');
-                      }}>
-                              <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
-                              Demo
-                            </button>
-                          </div>}
+          {/* Epic Games Project - Full Width */}
+          {projects.slice(2).map((project, index) => {
+            const IconComponent = project.icon;
+            return (
+              <div key={project.title} className="mb-6 animate-on-scroll" style={{
+                animationDelay: `${(index + 2) * 0.15}s`
+              }}>
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-background via-background/95 to-background/90 border border-border/50 shadow-lg">
+                  {/* Top Section with Icon and Type */}
+                  <div className="relative h-24 bg-gradient-to-r from-red-500/20 to-red-600/30">
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    <div className="relative p-4 flex items-center justify-between">
+                      <div className="p-3 rounded-xl bg-background/90 backdrop-blur-sm shadow-lg">
+                        <IconComponent className="w-6 h-6 text-red-500" />
+                      </div>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-medium bg-red-500/20 text-red-400 border border-red-500/30">
+                        {project.type}
                       </div>
                     </div>
                   </div>
-                </div>;
+
+                  {/* Content Section */}
+                  <div className="p-5 space-y-4">
+                    <div>
+                      <h3 className="text-lg font-bold mb-1">{project.title}</h3>
+                      <p className="text-sm font-medium mb-2 text-red-400">
+                        {project.subtitle}
+                      </p>
+                      <p className="text-xs text-muted-foreground">{project.date}</p>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Key Features - Horizontal Scroll */}
+                    <div>
+                      <h4 className="text-sm font-semibold mb-3">Key Features</h4>
+                      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                        {project.features.slice(0, 4).map((feature, idx) => (
+                          <div key={idx} className="flex-shrink-0 px-3 py-2 bg-muted/50 rounded-lg border border-border/50">
+                            <p className="text-xs text-muted-foreground whitespace-nowrap">{feature}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Technologies */}
+                    <div>
+                      <h4 className="text-sm font-semibold mb-2">Technologies</h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.map(tech => (
+                          <span key={tech} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-md border border-primary/20">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="pt-2">
+                      <button className="w-full py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg border border-red-500/30 transition-colors text-sm font-medium flex items-center justify-center">
+                        <Shield className="w-4 h-4 mr-2" />
+                        Security Research
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
           })}
-          </div>
 
           {/* Mobile Research Section */}
           <div className="mt-8 p-5 rounded-2xl bg-gradient-to-br from-primary/5 via-primary/10 to-accent/5 border border-primary/20">
