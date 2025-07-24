@@ -78,17 +78,31 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    console.log('Submitting contact form...', formData);
+
     try {
+      console.log('Calling Supabase edge function...');
+      
       const { data, error } = await supabase.functions.invoke('contact-form', {
         body: formData
       });
 
+      console.log('Edge function response:', { data, error });
+
       if (error) {
-        throw error;
+        console.error('Edge function error:', error);
+        throw new Error(error.message || 'Failed to send message');
       }
 
+      if (data?.error) {
+        console.error('API error:', data.error);
+        throw new Error(data.error);
+      }
+
+      console.log('Message sent successfully');
+      
       toast({
-        title: "Message Sent!",
+        title: "Message Sent! ✅",
         description: "Thank you for your message! I'll get back to you soon.",
       });
 
@@ -101,9 +115,11 @@ const ContactSection = () => {
       });
 
     } catch (error: any) {
+      console.error('Contact form submission error:', error);
+      
       toast({
-        title: "Error",
-        description: error.message || "Failed to send message. Please try again.",
+        title: "Error ❌",
+        description: error.message || "Failed to send message. Please try the direct email link above.",
         variant: "destructive",
       });
     } finally {
