@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield, Code2 } from "lucide-react";
+import { Menu, X, Terminal } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,10 +54,7 @@ const Navigation = () => {
                 ? 'bg-primary/15 shadow-lg shadow-primary/20' 
                 : 'bg-primary/10 group-hover:bg-primary/20'
             }`}>
-              <div className="flex items-center space-x-1">
-                <Shield className="w-4 h-4 text-primary" />
-                <Code2 className="w-4 h-4 text-primary" />
-              </div>
+              <Terminal className="w-5 h-5 text-primary" />
               {/* Subtle glow effect */}
               <div className="absolute inset-0 rounded-xl bg-primary/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
