@@ -8,7 +8,13 @@ export function CVPage({ className = "" }: CVPageProps) {
   return (
     <div className={`bg-white text-black max-w-4xl mx-auto ${className}`} id="cv-page">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-700 text-white p-6 md:p-8">
+      <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white p-6 md:p-8 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.3),transparent_50%)]"></div>
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-cyan-500/20 rounded-full blur-xl"></div>
+        </div>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
           {/* Profile Photo Placeholder */}
           <div className="w-32 h-32 md:w-40 md:h-40 bg-white/10 rounded-full flex items-center justify-center text-white/70 text-4xl font-bold">
