@@ -433,14 +433,8 @@ const ProjectsSection = () => {
 
         {/* Mobile-Specific Popup */}
         {showPrivateDialog && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:hidden">
-            {/* Semi-transparent backdrop */}
-            <div 
-              className="absolute inset-0 bg-black/60" 
-              onClick={() => setShowPrivateDialog(false)}
-            />
-            {/* Popup content */}
-            <div className="relative bg-background rounded-2xl p-6 w-full max-w-sm mx-auto shadow-2xl border border-border animate-in fade-in-0 zoom-in-95 z-10">
+          <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 sm:hidden">
+            <div className="bg-background rounded-2xl p-6 w-full max-w-sm mx-auto shadow-2xl border border-border animate-in fade-in-0 zoom-in-95">
               <div className="text-center space-y-4">
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <div className="p-2 bg-orange-500/10 rounded-full">
