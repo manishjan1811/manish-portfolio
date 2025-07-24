@@ -107,7 +107,7 @@ const ExperienceSection = () => {
                   </div>
                   
                   {/* Achievement Number */}
-                  <div className="absolute top-2 right-3 text-xs font-bold text-primary/30">
+                  <div className="absolute top-2 right-3 text-xs font-bold text-gray-600 dark:text-gray-400">
                     {String(index + 1).padStart(2, '0')}
                   </div>
                 </Card>
