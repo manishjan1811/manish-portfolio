@@ -67,7 +67,7 @@ const Footer = () => {
                 +91 93505 45502
               </a>
               <p className="text-muted-foreground text-sm">
-                Hisar, Haryana, India
+                Gurgaon, Haryana, India
               </p>
             </div>
           </div>
