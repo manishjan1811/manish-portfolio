@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast"
 import { CVPage } from "@/components/CVPage"
 import html2canvas from "html2canvas"
 import jsPDF from "jspdf"
+import { createRoot } from 'react-dom/client'
 
 export function CVPreview() {
   const { toast } = useToast()
@@ -16,34 +17,34 @@ export function CVPreview() {
         description: "Please wait while we prepare your CV download.",
       })
 
-      // Get the CV page element from the dialog or create a temporary one for better rendering
-      let cvElement = document.querySelector('#cv-page') as HTMLElement
-      let temporaryElement = false
-
+      // Create a temporary container with React rendering for perfect styling
+      const tempContainer = document.createElement('div')
+      tempContainer.style.position = 'fixed'
+      tempContainer.style.top = '-10000px'
+      tempContainer.style.left = '-10000px'
+      tempContainer.style.width = '794px' // A4 width in pixels
+      tempContainer.style.height = 'auto'
+      tempContainer.style.zIndex = '-1000'
+      tempContainer.style.background = 'white'
+      
+      document.body.appendChild(tempContainer)
+      
+      // Render the CVPage component with React for perfect styling
+      const root = createRoot(tempContainer)
+      root.render(<CVPage />)
+      
+      // Wait for React to render and styles to be applied
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      const cvElement = tempContainer.querySelector('#cv-page') as HTMLElement
+      
       if (!cvElement) {
-        // Create a temporary CV element for download with proper styling
-        const tempContainer = document.createElement('div')
-        tempContainer.style.position = 'fixed'
-        tempContainer.style.top = '-9999px'
-        tempContainer.style.left = '-9999px'
-        tempContainer.style.width = '794px' // A4 width in pixels (210mm at 96dpi)
-        tempContainer.style.zIndex = '-1'
-        tempContainer.innerHTML = `
-          <div id="temp-cv-page" class="bg-white text-black max-w-4xl mx-auto">
-            ${document.querySelector('.cv-content')?.innerHTML || ''}
-          </div>
-        `
-        document.body.appendChild(tempContainer)
-        cvElement = tempContainer.querySelector('#temp-cv-page') as HTMLElement
-        temporaryElement = true
+        throw new Error('Could not render CV component')
       }
 
-      // Wait a bit for styles to be applied
-      await new Promise(resolve => setTimeout(resolve, 500))
-
-      // Convert to canvas with enhanced options for better quality
+      // Convert to canvas with maximum quality settings
       const canvas = await html2canvas(cvElement, {
-        scale: 3, // Higher scale for better quality
+        scale: 4, // Maximum quality
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
@@ -52,39 +53,94 @@ export function CVPreview() {
         scrollX: 0,
         scrollY: 0,
         logging: false,
+        removeContainer: false,
+        foreignObjectRendering: true,
         onclone: (clonedDoc) => {
-          // Ensure all CSS is loaded in the cloned document
-          const clonedElement = clonedDoc.querySelector('#cv-page, #temp-cv-page') as HTMLElement
+          // Ensure all styles are properly applied
+          const clonedElement = clonedDoc.querySelector('#cv-page') as HTMLElement
           if (clonedElement) {
-            // Force apply inline styles for glassmorphism effects
-            const glassmorphElements = clonedElement.querySelectorAll('.bg-white\\/5, .backdrop-blur-sm')
-            glassmorphElements.forEach(el => {
-              const element = el as HTMLElement
-              element.style.backgroundColor = 'rgba(255, 255, 255, 0.05)'
-              element.style.backdropFilter = 'blur(4px)'
-              ;(element.style as any).webkitBackdropFilter = 'blur(4px)'
-            })
+            // Add CSS for glassmorphism effects that might not be captured
+            const style = clonedDoc.createElement('style')
+            style.textContent = `
+              .bg-gradient-to-br { 
+                background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)) !important;
+              }
+              .from-slate-900\\/95 { 
+                --tw-gradient-from: rgba(15, 23, 42, 0.95) !important;
+                --tw-gradient-to: rgba(15, 23, 42, 0) !important;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+              }
+              .via-blue-900\\/90 { 
+                --tw-gradient-to: rgba(30, 58, 138, 0) !important;
+                --tw-gradient-stops: var(--tw-gradient-from), rgba(30, 58, 138, 0.9), var(--tw-gradient-to) !important;
+              }
+              .to-slate-800\\/95 { 
+                --tw-gradient-to: rgba(30, 41, 59, 0.95) !important;
+              }
+              .backdrop-blur-xl { 
+                backdrop-filter: blur(24px) !important;
+                -webkit-backdrop-filter: blur(24px) !important;
+              }
+              .backdrop-blur-sm { 
+                backdrop-filter: blur(4px) !important;
+                -webkit-backdrop-filter: blur(4px) !important;
+              }
+              .bg-white\\/\\[0\\.05\\] { 
+                background-color: rgba(255, 255, 255, 0.05) !important;
+              }
+              .bg-white\\/5 { 
+                background-color: rgba(255, 255, 255, 0.05) !important;
+              }
+              .border-white\\/10 { 
+                border-color: rgba(255, 255, 255, 0.1) !important;
+              }
+              .border-white\\/20 { 
+                border-color: rgba(255, 255, 255, 0.2) !important;
+              }
+              .text-white\\/90 { 
+                color: rgba(255, 255, 255, 0.9) !important;
+              }
+              .bg-gradient-to-r { 
+                background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+              }
+              .from-white { 
+                --tw-gradient-from: rgb(255, 255, 255) !important;
+                --tw-gradient-to: rgba(255, 255, 255, 0) !important;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+              }
+              .via-blue-100 { 
+                --tw-gradient-to: rgba(219, 234, 254, 0) !important;
+                --tw-gradient-stops: var(--tw-gradient-from), rgb(219, 234, 254), var(--tw-gradient-to) !important;
+              }
+              .to-cyan-200 { 
+                --tw-gradient-to: rgb(165, 243, 252) !important;
+              }
+              .bg-clip-text { 
+                background-clip: text !important;
+                -webkit-background-clip: text !important;
+              }
+              .text-transparent { 
+                color: transparent !important;
+              }
+            `
+            clonedDoc.head.appendChild(style)
           }
         }
       })
 
-      // Clean up temporary element
-      if (temporaryElement) {
-        const tempContainer = cvElement.closest('div')
-        if (tempContainer?.parentNode) {
-          tempContainer.parentNode.removeChild(tempContainer)
-        }
-      }
+      // Clean up
+      root.unmount()
+      document.body.removeChild(tempContainer)
 
-      // Create PDF with better quality settings
+      // Create PDF with high quality
       const imgData = canvas.toDataURL('image/png', 1.0)
       const pdf = new jsPDF('p', 'mm', 'a4')
       
       const imgWidth = 210 // A4 width
       const imgHeight = (canvas.height * imgWidth) / canvas.width
       
-      // If content is too long, split into multiple pages
-      if (imgHeight > 297) { // A4 height is 297mm
+      // Handle multi-page if content is too long
+      if (imgHeight > 297) {
         const pageHeight = 297
         let yOffset = 0
         
@@ -104,7 +160,7 @@ export function CVPreview() {
 
       toast({
         title: "CV Downloaded",
-        description: "Your CV has been downloaded as PDF successfully!",
+        description: "Your styled CV has been downloaded successfully!",
       })
     } catch (error) {
       console.error('Download error:', error)
