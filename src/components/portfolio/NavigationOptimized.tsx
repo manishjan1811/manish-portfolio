@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X, Shield, Code2 } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,16 +47,27 @@ const Navigation = () => {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-18">
-          {/* Original logo design */}
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <Terminal className="w-5 h-5 text-primary" />
+          {/* Enhanced logo with cybersecurity theme */}
+          <div className="flex items-center space-x-3 group">
+            <div className={`relative p-2.5 rounded-xl transition-all duration-300 ${
+              isScrolled 
+                ? 'bg-primary/15 shadow-lg shadow-primary/20' 
+                : 'bg-primary/10 group-hover:bg-primary/20'
+            }`}>
+              <div className="flex items-center space-x-1">
+                <Shield className="w-4 h-4 text-primary" />
+                <Code2 className="w-4 h-4 text-primary" />
+              </div>
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 rounded-xl bg-primary/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold text-foreground">
-                MANISH.DEV
+              <span className="text-lg sm:text-xl font-bold text-foreground tracking-tight">
+                MANISH<span className="text-primary">.DEV</span>
               </span>
-              <span className="text-xs text-muted-foreground">pentester</span>
+              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                Security Expert
+              </span>
             </div>
           </div>
 
