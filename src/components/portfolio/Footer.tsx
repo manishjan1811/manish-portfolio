@@ -1,4 +1,4 @@
-import { Shield, Heart, Code } from "lucide-react";
+import { Terminal, Heart, Code } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <div className="cyber-glow p-2 rounded-lg bg-primary/10">
-                <Shield className="w-6 h-6 text-primary" />
+                <Terminal className="w-6 h-6 text-primary" />
               </div>
               <span className="text-xl font-bold cyber-text">Manish Jangra</span>
             </div>
