@@ -87,7 +87,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                     </li>
                     <li className="flex items-start gap-3">
                       <Target className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                      <span><strong>Created real-world hacking scenarios</strong> for comprehensive cybersecurity training programs</span>
+                      <span><strong>Delivered cybersecurity training sessions</strong> and workshops for corporate clients</span>
                     </li>
                   </ul>
                 </div>
