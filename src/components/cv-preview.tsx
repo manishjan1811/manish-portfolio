@@ -1,69 +1,60 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { Download, Eye, Mail, Phone, MapPin, ExternalLink } from "lucide-react"
+import { Download, Eye } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { supabase } from "@/integrations/supabase/client"
-import { useState, useEffect } from "react"
+import { CVPage } from "@/components/CVPage"
+import html2canvas from "html2canvas"
+import jsPDF from "jspdf"
 
 export function CVPreview() {
   const { toast } = useToast()
-  const [cvContent, setCvContent] = useState<string>("")
-  const [loading, setLoading] = useState(false)
-
-  const loadCVContent = async () => {
-    try {
-      setLoading(true)
-      const { data, error } = await supabase.functions.invoke('cv-handler', {
-        body: { action: 'preview' }
-      })
-
-      if (error) throw error
-      
-      if (data?.content) {
-        setCvContent(data.content)
-      }
-    } catch (error) {
-      console.error('Error loading CV:', error)
-      // Fallback content if backend fails
-      setCvContent("CV content loading...")
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleDownload = async () => {
     try {
       toast({
-        title: "Downloading CV...",
-        description: "Your CV download will start shortly.",
+        title: "Generating PDF...",
+        description: "Please wait while we prepare your CV download.",
       })
 
-      const { data, error } = await supabase.functions.invoke('cv-handler', {
-        body: { action: 'download' }
+      // Get the CV page element from the dialog
+      const cvElement = document.querySelector('#cv-page') as HTMLElement
+      if (!cvElement) {
+        toast({
+          title: "Error",
+          description: "Please open the preview first, then try downloading.",
+          variant: "destructive",
+        })
+        return
+      }
+
+      // Convert to canvas
+      const canvas = await html2canvas(cvElement, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        width: cvElement.scrollWidth,
+        height: cvElement.scrollHeight
       })
 
-      if (error) throw error
-
-      // Create download
-      const blob = new Blob([data.content || data], { type: 'text/plain' })
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = 'Manish_Jangra_CV.txt'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      window.URL.revokeObjectURL(url)
+      // Create PDF
+      const imgData = canvas.toDataURL('image/png')
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      
+      const imgWidth = 210 // A4 width
+      const imgHeight = (canvas.height * imgWidth) / canvas.width
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+      pdf.save('Manish_Jangra_CV.pdf')
 
       toast({
         title: "CV Downloaded",
-        description: "Your CV has been downloaded successfully!",
+        description: "Your CV has been downloaded as PDF successfully!",
       })
     } catch (error) {
       console.error('Download error:', error)
       toast({
-        title: "Download Error",
-        description: "There was an error downloading the CV.",
+        title: "Download Error", 
+        description: "There was an error generating the PDF.",
         variant: "destructive",
       })
     }
@@ -85,41 +76,23 @@ export function CVPreview() {
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
-        <DialogHeader>
+      <DialogContent className="max-w-5xl max-h-[95vh] overflow-hidden p-0">
+        <DialogHeader className="p-6 pb-2 border-b">
           <DialogTitle className="flex items-center justify-between">
-            <span>Manish Jangra - CV Preview</span>
+            <span>CV Preview - Manish Jangra</span>
             <Button
               onClick={handleDownload}
               size="sm" 
               className="flex items-center gap-2"
             >
               <Download className="w-4 h-4" />
-              Download CV
+              Download PDF
             </Button>
           </DialogTitle>
         </DialogHeader>
         
-        <div className="overflow-y-auto pr-2 max-h-[calc(90vh-100px)]">
-          {/* Load CV content when dialog opens */}
-          <div className="bg-background p-8 space-y-6 text-sm">
-            {loading ? (
-              <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-                <p className="mt-2 text-muted-foreground">Loading CV...</p>
-              </div>
-            ) : cvContent ? (
-              <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed">
-                {cvContent}
-              </pre>
-            ) : (
-              <div onClick={loadCVContent} className="cursor-pointer text-center py-8 hover:bg-muted/20 rounded-lg transition-colors">
-                <Eye className="w-12 h-12 mx-auto mb-4 text-primary" />
-                <p className="text-lg font-semibold mb-2">Click to Load CV Preview</p>
-                <p className="text-muted-foreground">View the complete CV content</p>
-              </div>
-            )}
-          </div>
+        <div className="overflow-y-auto max-h-[calc(95vh-80px)] p-4">
+          <CVPage className="shadow-lg" />
         </div>
       </DialogContent>
     </Dialog>

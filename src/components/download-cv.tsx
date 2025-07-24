@@ -2,7 +2,8 @@ import { Download, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { CVPreview } from "@/components/cv-preview"
-import { supabase } from "@/integrations/supabase/client"
+import html2canvas from "html2canvas"
+import jsPDF from "jspdf"
 
 export function DownloadCV() {
   const { toast } = useToast()
@@ -10,40 +11,104 @@ export function DownloadCV() {
   const handleDownload = async () => {
     try {
       toast({
-        title: "Downloading CV...",
-        description: "Your CV download will start shortly.",
+        title: "Generating PDF...",
+        description: "Please wait while we prepare your CV download.",
       })
 
-      // Call the edge function to handle download
-      const { data, error } = await supabase.functions.invoke('cv-handler', {
-        body: { action: 'download' }
-      })
-
-      if (error) {
-        throw error
+      // Get the CV page element
+      const cvElement = document.getElementById('cv-page')
+      if (!cvElement) {
+        // If CV page not found, create a temporary one
+        const tempDiv = document.createElement('div')
+        tempDiv.innerHTML = `
+          <div style="width: 210mm; padding: 20mm; font-family: Arial, sans-serif; background: white; color: black;">
+            <h1 style="color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 8px;">MANISH JANGRA</h1>
+            <h2 style="color: #3b82f6; margin-bottom: 20px;">Web Application Pentester & Developer</h2>
+            
+            <h3 style="color: #1e293b; border-bottom: 1px solid #3b82f6; padding-bottom: 4px;">PROFESSIONAL SUMMARY</h3>
+            <p>Elite cybersecurity specialist with 6+ months of advanced penetration testing experience. Certified in CEH, CRTA, and BSCP.</p>
+            
+            <h3 style="color: #1e293b; border-bottom: 1px solid #3b82f6; padding-bottom: 4px;">CERTIFICATIONS</h3>
+            <ul>
+              <li>Certified Ethical Hacker (CEH) - 2024</li>
+              <li>Certified Red Team Analyst (CRTA) - 2024</li>
+              <li>Burp Suite Certified Practitioner (BSCP) - 2024</li>
+            </ul>
+            
+            <h3 style="color: #1e293b; border-bottom: 1px solid #3b82f6; padding-bottom: 4px;">EXPERIENCE</h3>
+            <h4>Web Application Penetration Tester | 6+ Months</h4>
+            <ul>
+              <li>Conducted comprehensive security assessments on web applications</li>
+              <li>Identified and documented critical vulnerabilities including OWASP Top 10</li>
+              <li>Performed manual and automated penetration testing</li>
+            </ul>
+            
+            <h3 style="color: #1e293b; border-bottom: 1px solid #3b82f6; padding-bottom: 4px;">TECHNICAL SKILLS</h3>
+            <p><strong>Security Tools:</strong> Burp Suite, OWASP ZAP, Nmap, Metasploit, Wireshark</p>
+            <p><strong>Programming:</strong> JavaScript, TypeScript, Python, SQL, React</p>
+            
+            <h3 style="color: #1e293b; border-bottom: 1px solid #3b82f6; padding-bottom: 4px;">CONTACT</h3>
+            <p>Email: manish.jangra@email.com | Phone: +91 XXXXX XXXXX | Location: India</p>
+          </div>
+        `
+        document.body.appendChild(tempDiv)
+        
+        const canvas = await html2canvas(tempDiv.firstElementChild as HTMLElement, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff'
+        })
+        
+        document.body.removeChild(tempDiv)
+        
+        const imgData = canvas.toDataURL('image/png')
+        const pdf = new jsPDF('p', 'mm', 'a4')
+        const imgWidth = 210
+        const imgHeight = (canvas.height * imgWidth) / canvas.width
+        
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+        pdf.save('Manish_Jangra_CV.pdf')
+        
+        toast({
+          title: "CV Downloaded",
+          description: "Your CV has been downloaded successfully!",
+        })
+        return
       }
 
-      // Create a blob and download
-      const blob = new Blob([data.content || data], { type: 'text/plain' })
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = 'Manish_Jangra_CV.txt'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      window.URL.revokeObjectURL(url)
+      // Convert the CV page to canvas
+      const canvas = await html2canvas(cvElement, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        width: cvElement.scrollWidth,
+        height: cvElement.scrollHeight
+      })
+
+      // Create PDF
+      const imgData = canvas.toDataURL('image/png')
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      
+      // Calculate dimensions to fit A4
+      const imgWidth = 210 // A4 width in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width
+      
+      // Add image to PDF
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+      
+      // Save the PDF
+      pdf.save('Manish_Jangra_CV.pdf')
 
       toast({
         title: "CV Downloaded",
-        description: "Your CV has been downloaded successfully!",
+        description: "Your CV has been downloaded as PDF successfully!",
       })
 
     } catch (error) {
       console.error('Download error:', error)
       toast({
         title: "Download Error",
-        description: "There was an error downloading the CV. Please try again.",
+        description: "There was an error generating the PDF. Please try again.",
         variant: "destructive",
       })
     }
