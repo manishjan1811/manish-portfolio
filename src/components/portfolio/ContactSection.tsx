@@ -165,7 +165,7 @@ const ContactSection = () => {
                 <Mail className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-lg font-bold text-primary mb-2">Let's Connect</h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-gray-700 dark:text-muted-foreground mb-4">
                 Available for cybersecurity consulting, training, and collaboration opportunities.
               </p>
               
@@ -196,13 +196,13 @@ const ContactSection = () => {
             <Card className="p-4 bg-card/50 border-primary/20 text-center">
               <Shield className="w-6 h-6 text-primary mx-auto mb-2" />
               <h4 className="text-xs font-semibold text-primary mb-1">VAPT Services</h4>
-              <p className="text-xs text-muted-foreground">Web app security testing</p>
+              <p className="text-xs text-gray-600 dark:text-muted-foreground">Web app security testing</p>
             </Card>
             
             <Card className="p-4 bg-card/50 border-accent/20 text-center">
               <Target className="w-6 h-6 text-accent mx-auto mb-2" />
               <h4 className="text-xs font-semibold text-accent mb-1">Security Training</h4>
-              <p className="text-xs text-muted-foreground">Custom education programs</p>
+              <p className="text-xs text-gray-600 dark:text-muted-foreground">Custom education programs</p>
             </Card>
           </div>
 

@@ -72,11 +72,11 @@ const ExperienceSection = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-accent">Cyber Security Trainer</h3>
-                  <p className="text-sm text-muted-foreground">Cywer Learning • Ongoing</p>
+                  <p className="text-sm text-gray-600 dark:text-muted-foreground">Cywer Learning • Ongoing</p>
                 </div>
               </div>
               
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-sm text-gray-700 dark:text-muted-foreground mb-4 leading-relaxed">
                 Delivering advanced cybersecurity training programs for professionals and organizations, 
                 focusing on practical penetration testing skills.
               </p>
@@ -102,7 +102,7 @@ const ExperienceSection = () => {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-sm text-foreground mb-1">{accomplishment.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{accomplishment.description}</p>
+                      <p className="text-xs text-gray-600 dark:text-muted-foreground leading-relaxed">{accomplishment.description}</p>
                     </div>
                   </div>
                   
@@ -121,15 +121,15 @@ const ExperienceSection = () => {
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
                 <div className="text-xl font-bold text-primary mb-1">6+</div>
-                <p className="text-xs text-muted-foreground">Months Training</p>
+                <p className="text-xs text-gray-600 dark:text-muted-foreground">Months Training</p>
               </div>
               <div>
                 <div className="text-xl font-bold text-accent mb-1">1</div>
-                <p className="text-xs text-muted-foreground">Critical CVE</p>
+                <p className="text-xs text-gray-600 dark:text-muted-foreground">Critical CVE</p>
               </div>
               <div>
                 <div className="text-xl font-bold text-primary mb-1">2</div>
-                <p className="text-xs text-muted-foreground">Custom Tools</p>
+                <p className="text-xs text-gray-600 dark:text-muted-foreground">Custom Tools</p>
               </div>
             </div>
           </Card>

@@ -100,7 +100,7 @@ const HeroSection = () => {
 
             {/* Mobile hero card */}
             <div className="bg-card/30 backdrop-blur-md rounded-2xl border border-border/50 p-4 xs:p-5 mx-2 mt-6">
-              <p className="text-xs xs:text-sm text-muted-foreground leading-relaxed mb-4">
+              <p className="text-xs xs:text-sm text-gray-700 dark:text-muted-foreground leading-relaxed mb-4">
                 Elite cybersecurity specialist with <span className="text-primary font-semibold">6+ months</span> of penetration testing experience.
               </p>
               
@@ -108,15 +108,15 @@ const HeroSection = () => {
               <div className="flex justify-between items-center bg-card/50 rounded-xl p-3 mb-4">
                 <div className="text-center">
                   <div className="text-lg font-bold text-primary">3+</div>
-                  <div className="text-xs text-muted-foreground">Certs</div>
+                  <div className="text-xs text-gray-600 dark:text-muted-foreground">Certs</div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-primary">6+</div>
-                  <div className="text-xs text-muted-foreground">Months</div>
+                  <div className="text-xs text-gray-600 dark:text-muted-foreground">Months</div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-primary">Multi</div>
-                  <div className="text-xs text-muted-foreground">Vulns</div>
+                  <div className="text-xs text-gray-600 dark:text-muted-foreground">Vulns</div>
                 </div>
               </div>
 
