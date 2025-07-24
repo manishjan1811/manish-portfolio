@@ -20,21 +20,21 @@ const CertificationsSectionMobile = () => {
 
   const certifications = [
     {
-      title: "Certified Ethical Hacker",
+      title: "Certified Ethical Hacker (Practical)",
       acronym: "CEH",
       issuer: "EC-Council",
-      description: "Comprehensive ethical hacking and penetration testing certification covering advanced attack techniques, tools, and methodologies.",
+      description: "Hands-on practical ethical hacking certification demonstrating real-world penetration testing skills and advanced attack techniques in live lab environments.",
       skills: [
-        "Ethical Hacking Methodologies",
-        "Advanced Penetration Testing",
-        "Network Security Assessment",
+        "Practical Penetration Testing",
+        "Live Environment Exploitation",
+        "Network Security Assessment", 
         "Web Application Security",
         "Malware Analysis",
         "Social Engineering"
       ],
       icon: Shield,
       color: "primary",
-      level: "Professional",
+      level: "Practical",
       gradient: "from-green-500/20 via-emerald-500/10 to-teal-500/20"
     },
     {
@@ -167,7 +167,7 @@ const CertificationsSectionMobile = () => {
             {/* Horizontal scrolling container */}
             <div
               ref={scrollRef}
-              className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-8"
+              className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 px-8"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {certifications.map((cert, index) => {
@@ -175,66 +175,68 @@ const CertificationsSectionMobile = () => {
                 return (
                   <div
                     key={cert.acronym}
-                    className="flex-shrink-0 w-72 sm:w-80 animate-on-scroll"
+                    className="flex-shrink-0 w-80 sm:w-96 animate-on-scroll"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {/* 3D Rotating Card */}
-                    <div className="group perspective-1000 h-96">
+                    <div className="group perspective-1000 h-[420px]">
                       <div className="relative preserve-3d transition-transform duration-700 group-hover:rotate-y-180 w-full h-full">
-                        {/* Front side */}
+                        {/* Front side - Larger padding and text */}
                         <div className={`absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-gradient-to-br ${cert.gradient} backdrop-blur-xl border border-white/20 shadow-2xl`}>
-                          <div className="p-6 h-full flex flex-col">
+                          <div className="p-8 h-full flex flex-col justify-between">
                             {/* Icon and Title */}
                             <div className="text-center mb-6">
                               <div className="inline-flex p-4 rounded-full bg-white/10 backdrop-blur-sm mb-4 border border-white/20">
-                                <IconComponent className="w-8 h-8 text-white" />
+                                <IconComponent className="w-10 h-10 text-white" />
                               </div>
-                              <h3 className="text-3xl font-bold text-white mb-2">{cert.acronym}</h3>
+                              <h3 className="text-4xl font-bold text-white mb-3">{cert.acronym}</h3>
                               <Badge 
                                 variant="secondary" 
-                                className="bg-white/20 text-white border-white/30 backdrop-blur-sm"
+                                className="bg-white/20 text-white border-white/30 backdrop-blur-sm px-4 py-1"
                               >
                                 {cert.level}
                               </Badge>
                             </div>
 
                             {/* Title and Issuer */}
-                            <div className="text-center mb-4">
-                              <h4 className="text-lg font-semibold text-white/90 mb-2">{cert.title}</h4>
-                              <p className="text-white/70 font-medium">{cert.issuer}</p>
+                            <div className="text-center mb-6">
+                              <h4 className="text-xl font-semibold text-white/90 mb-3 leading-tight">{cert.title}</h4>
+                              <p className="text-white/70 font-medium text-lg">{cert.issuer}</p>
                             </div>
 
                             {/* Description */}
-                            <p className="text-white/80 text-sm leading-relaxed flex-grow">
-                              {cert.description}
-                            </p>
+                            <div className="flex-grow flex items-center">
+                              <p className="text-white/80 text-base leading-relaxed text-center">
+                                {cert.description}
+                              </p>
+                            </div>
 
                             {/* Hover indicator */}
-                            <div className="text-center mt-4">
-                              <p className="text-white/60 text-xs animate-pulse">
+                            <div className="text-center">
+                              <p className="text-white/60 text-sm animate-pulse">
                                 Tap to see skills →
                               </p>
                             </div>
                           </div>
                         </div>
 
-                        {/* Back side */}
+                        {/* Back side - Larger padding */}
                         <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br ${cert.gradient} backdrop-blur-xl border border-white/20 shadow-2xl`}>
-                          <div className="p-6 h-full flex flex-col">
-                            <h5 className="font-bold text-white mb-4 text-center">Key Skills Covered</h5>
-                            <div className="space-y-3 flex-grow">
+                          <div className="p-8 h-full flex flex-col">
+                            <h5 className="font-bold text-white mb-6 text-center text-xl">Key Skills Covered</h5>
+                            <div className="space-y-4 flex-grow">
                               {cert.skills.map((skill, idx) => (
                                 <div key={idx} className="flex items-start space-x-3">
-                                  <CheckCircle className="w-4 h-4 text-white/80 flex-shrink-0 mt-0.5" />
-                                  <span className="text-sm text-white/90 leading-relaxed">{skill}</span>
+                                  <CheckCircle className="w-5 h-5 text-white/80 flex-shrink-0 mt-1" />
+                                  <span className="text-base text-white/90 leading-relaxed">{skill}</span>
                                 </div>
                               ))}
                             </div>
 
-                            <div className="mt-4 pt-4 border-t border-white/20">
+                            <div className="mt-6 pt-6 border-t border-white/20">
                               <button className="w-full flex items-center justify-center space-x-2 text-white/90 hover:text-white transition-colors">
-                                <span className="text-sm font-medium">Verify Certification</span>
-                                <ExternalLink className="w-4 h-4" />
+                                <span className="text-base font-medium">Verify Certification</span>
+                                <ExternalLink className="w-5 h-5" />
                               </button>
                             </div>
                           </div>
