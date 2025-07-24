@@ -409,7 +409,7 @@ const ProjectsSection = () => {
 
         {/* Private Project Dialog */}
         <Dialog open={showPrivateDialog} onOpenChange={setShowPrivateDialog}>
-          <DialogContent className="max-w-sm sm:max-w-md mx-auto top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] fixed">
+          <DialogContent className="max-w-[90vw] sm:max-w-md w-full mx-4 sm:mx-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-center justify-center">
                 <Lock className="w-5 h-5 text-orange-500" />
