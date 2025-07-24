@@ -16,34 +16,90 @@ export function CVPreview() {
         description: "Please wait while we prepare your CV download.",
       })
 
-      // Get the CV page element from the dialog
-      const cvElement = document.querySelector('#cv-page') as HTMLElement
+      // Get the CV page element from the dialog or create a temporary one for better rendering
+      let cvElement = document.querySelector('#cv-page') as HTMLElement
+      let temporaryElement = false
+
       if (!cvElement) {
-        toast({
-          title: "Error",
-          description: "Please open the preview first, then try downloading.",
-          variant: "destructive",
-        })
-        return
+        // Create a temporary CV element for download with proper styling
+        const tempContainer = document.createElement('div')
+        tempContainer.style.position = 'fixed'
+        tempContainer.style.top = '-9999px'
+        tempContainer.style.left = '-9999px'
+        tempContainer.style.width = '794px' // A4 width in pixels (210mm at 96dpi)
+        tempContainer.style.zIndex = '-1'
+        tempContainer.innerHTML = `
+          <div id="temp-cv-page" class="bg-white text-black max-w-4xl mx-auto">
+            ${document.querySelector('.cv-content')?.innerHTML || ''}
+          </div>
+        `
+        document.body.appendChild(tempContainer)
+        cvElement = tempContainer.querySelector('#temp-cv-page') as HTMLElement
+        temporaryElement = true
       }
 
-      // Convert to canvas
+      // Wait a bit for styles to be applied
+      await new Promise(resolve => setTimeout(resolve, 500))
+
+      // Convert to canvas with enhanced options for better quality
       const canvas = await html2canvas(cvElement, {
-        scale: 2,
+        scale: 3, // Higher scale for better quality
         useCORS: true,
+        allowTaint: true,
         backgroundColor: '#ffffff',
         width: cvElement.scrollWidth,
-        height: cvElement.scrollHeight
+        height: cvElement.scrollHeight,
+        scrollX: 0,
+        scrollY: 0,
+        logging: false,
+        onclone: (clonedDoc) => {
+          // Ensure all CSS is loaded in the cloned document
+          const clonedElement = clonedDoc.querySelector('#cv-page, #temp-cv-page') as HTMLElement
+          if (clonedElement) {
+            // Force apply inline styles for glassmorphism effects
+            const glassmorphElements = clonedElement.querySelectorAll('.bg-white\\/5, .backdrop-blur-sm')
+            glassmorphElements.forEach(el => {
+              const element = el as HTMLElement
+              element.style.backgroundColor = 'rgba(255, 255, 255, 0.05)'
+              element.style.backdropFilter = 'blur(4px)'
+              ;(element.style as any).webkitBackdropFilter = 'blur(4px)'
+            })
+          }
+        }
       })
 
-      // Create PDF
-      const imgData = canvas.toDataURL('image/png')
+      // Clean up temporary element
+      if (temporaryElement) {
+        const tempContainer = cvElement.closest('div')
+        if (tempContainer?.parentNode) {
+          tempContainer.parentNode.removeChild(tempContainer)
+        }
+      }
+
+      // Create PDF with better quality settings
+      const imgData = canvas.toDataURL('image/png', 1.0)
       const pdf = new jsPDF('p', 'mm', 'a4')
       
       const imgWidth = 210 // A4 width
       const imgHeight = (canvas.height * imgWidth) / canvas.width
       
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+      // If content is too long, split into multiple pages
+      if (imgHeight > 297) { // A4 height is 297mm
+        const pageHeight = 297
+        let yOffset = 0
+        
+        while (yOffset < imgHeight) {
+          if (yOffset > 0) {
+            pdf.addPage()
+          }
+          
+          pdf.addImage(imgData, 'PNG', 0, -yOffset, imgWidth, imgHeight)
+          yOffset += pageHeight
+        }
+      } else {
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+      }
+      
       pdf.save('Manish_Jangra_CV.pdf')
 
       toast({
@@ -92,7 +148,9 @@ export function CVPreview() {
         </DialogHeader>
         
         <div className="overflow-y-auto max-h-[calc(95vh-80px)] p-4">
-          <CVPage className="shadow-lg" />
+          <div className="cv-content">
+            <CVPage className="shadow-lg" />
+          </div>
         </div>
       </DialogContent>
     </Dialog>
