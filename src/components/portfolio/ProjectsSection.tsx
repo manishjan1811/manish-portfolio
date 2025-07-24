@@ -262,7 +262,7 @@ const ProjectsSection = () => {
                                     if (project.title === 'CheapOTT Store') {
                                       setShowPrivateDialog(true);
                                     } else {
-                                      window.open(project.githubUrl, '_blank');
+                                      window.open('https://github.com/manishjan1811/webtools.sh', '_blank');
                                     }
                                   }}
                                 >
