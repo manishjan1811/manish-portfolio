@@ -107,8 +107,31 @@
     @apply bg-background text-foreground font-inter overflow-x-hidden;
   }
 
+  /* Apple-style smooth scrolling with performance optimization */
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+
+  /* Performance optimizations */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   /* Custom scrollbar */
@@ -131,44 +154,37 @@
 }
 
 @layer components {
-  /* Matrix effect background */
+  /* Apple-style minimal background */
   .matrix-bg {
-    background: linear-gradient(135deg, 
-      hsl(var(--background)), 
-      hsl(120 100% 3% / 0.5), 
-      hsl(var(--background))
-    );
-    background-size: 200% 200%;
-    animation: matrix-flow 8s ease-in-out infinite;
+    background: 
+      radial-gradient(circle at 30% 40%, hsl(var(--primary) / 0.02) 0%, transparent 70%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.1) 100%);
   }
 
-  /* Cyber glow effects */
+  /* Apple-style subtle glow */
   .cyber-glow {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.4),
-                0 0 40px hsl(var(--primary) / 0.2),
-                0 0 80px hsl(var(--primary) / 0.1);
-    transition: var(--transition-glow);
+    box-shadow: 
+      0 1px 3px hsl(var(--foreground) / 0.1),
+      0 1px 2px hsl(var(--foreground) / 0.06);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .cyber-glow:hover {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.6),
-                0 0 60px hsl(var(--primary) / 0.3),
-                0 0 120px hsl(var(--primary) / 0.15);
+    box-shadow: 
+      0 4px 6px hsl(var(--foreground) / 0.1),
+      0 2px 4px hsl(var(--foreground) / 0.06);
+    transform: translateY(-1px);
   }
 
-  /* Text effects */
+  /* Apple-style clean text */
   .cyber-text {
-    background: var(--gradient-cyber);
+    background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--foreground) / 0.8));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    -webkit-text-fill-color: transparent;
   }
 
-  .glitch-text {
-    position: relative;
-    animation: glitch 2s linear infinite;
-  }
+  /* Removed heavy glitch effect for clean Apple-style text */
 
   /* Interactive underline */
   .cyber-underline {
@@ -193,14 +209,13 @@
     transform-origin: bottom left;
   }
 
-  /* Floating animation */
+  /* Apple-style minimal animations */
   .float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
   }
 
-  /* Pulse glow */
   .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+    animation: pulse-glow 3s ease-in-out infinite alternate;
   }
 
   /* Skill progress bars */
