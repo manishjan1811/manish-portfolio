@@ -8,49 +8,39 @@ export function CVPreview() {
   const { toast } = useToast()
 
   const handleDownloadPDF = async () => {
+    console.log('Download button clicked!') // Debug log
+    
     try {
       toast({
-        title: "PDF Generate Ho Rahi Hai...",
-        description: "Backend se /cv page convert ho raha hai PDF mein",
+        title: "Opening CV Page...",
+        description: "CV page khul raha hai - aap manual download kar sakte hain",
       })
 
-      // Get current domain
+      // Direct approach - open CV page for manual print/download
       const currentDomain = window.location.origin
       const cvUrl = `${currentDomain}/cv`
-
-      console.log('Converting CV URL to PDF:', cvUrl)
-
-      // Call backend to convert /cv page to PDF
-      const response = await fetch('https://suynbvqdtzuwxqrrgrgn.supabase.co/functions/v1/convert-to-pdf', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url: cvUrl }),
-      })
-
-      if (!response.ok) {
-        const errorText = await response.text()
-        console.error('Response error:', response.status, errorText)
-        throw new Error(`HTTP ${response.status}: ${errorText}`)
+      
+      console.log('Opening CV URL:', cvUrl)
+      
+      // Open CV page in new tab
+      const newWindow = window.open(cvUrl, '_blank')
+      
+      if (!newWindow) {
+        throw new Error('Pop-up blocked! Please allow pop-ups for this site.')
       }
 
-      const result = await response.json()
-      console.log('Backend response:', result)
-
-      toast({
-        title: "✅ PDF Processing Started!",
-        description: "Backend ne CV convert karna shuru kar diya hai",
-      })
-
-      // For now, open CV in new tab for manual print
-      // Later we'll return actual PDF blob
-      window.open(cvUrl, '_blank')
+      // Give user instructions
+      setTimeout(() => {
+        toast({
+          title: "✅ CV Page Ready!",
+          description: "Press Ctrl+P → Save as PDF → A4 size → Background graphics ON",
+        })
+      }, 1000)
 
     } catch (error) {
-      console.error('PDF generation error:', error)
+      console.error('Error opening CV:', error)
       toast({
-        title: "❌ PDF Generation Failed",
+        title: "❌ Error Opening CV",
         description: "Error: " + (error as Error).message,
         variant: "destructive",
       })
