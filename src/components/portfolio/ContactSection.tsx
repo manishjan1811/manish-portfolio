@@ -197,69 +197,6 @@ const ContactSection = () => {
             </div>
           </Card>
 
-          {/* Quick Message Form - Mobile Optimized */}
-          <Card className="p-5 bg-gradient-to-br from-accent/10 to-accent/5 border-accent/30">
-            <div className="text-center mb-4">
-              <div className="p-3 rounded-full bg-accent/20 inline-block mb-2">
-                <MessageSquare className="w-6 h-6 text-accent" />
-              </div>
-              <h3 className="text-base font-bold text-accent">Send Message</h3>
-            </div>
-            
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="px-4 py-3 text-sm"
-                  required
-                />
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="px-4 py-3 text-sm"
-                  required
-                />
-              </div>
-              
-              <select 
-                name="subject"
-                value={formData.subject}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
-              >
-                <option value="Security Consulting">Security Consulting</option>
-                <option value="Training Inquiry">Training Inquiry</option>
-                <option value="Collaboration">Collaboration</option>
-                <option value="General Inquiry">General Inquiry</option>
-              </select>
-
-              <Textarea
-                name="message"
-                rows={4}
-                placeholder="Your message..."
-                value={formData.message}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 text-sm"
-                required
-              />
-
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full bg-accent hover:bg-accent/90 text-background py-3 text-sm font-semibold transition-all disabled:opacity-50"
-              >
-                <Send className="w-4 h-4 mr-2" />
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
-            </form>
-          </Card>
 
           {/* Services Grid */}
           <div className="grid grid-cols-2 gap-3">
@@ -297,10 +234,9 @@ const ContactSection = () => {
           </Card>
         </div>
 
-        {/* Desktop: Original Two-Column Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8">
-          {/* Contact Information */}
-          <div className="space-y-8 animate-on-scroll">
+        {/* Desktop: Contact Information Only */}
+        <div className="hidden lg:block">
+          <div className="max-w-3xl mx-auto animate-on-scroll">
             <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-primary/20">
               <h3 className="text-2xl font-bold cyber-text mb-6">Let's Connect</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -352,106 +288,30 @@ const ContactSection = () => {
                   })}
                 </div>
               </div>
-            </Card>
-          </div>
 
-          {/* Quick Contact Form */}
-          <div className="animate-on-scroll">
-            <Card className="cyber-glow p-8 bg-card/50 backdrop-blur-sm border-accent/20">
-              <h3 className="text-2xl font-bold cyber-text mb-6">Quick Message</h3>
-              
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="desktop-name" className="block text-sm font-medium mb-2">Name</label>
-                  <Input
-                    type="text"
-                    id="desktop-name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3"
-                    placeholder="Your name"
-                    required
-                  />
+              {/* Professional Services */}
+              <div className="mt-8 pt-8 border-t border-border">
+                <div className="flex items-center space-x-3 mb-4">
+                  <MessageSquare className="w-6 h-6 text-primary" />
+                  <h4 className="font-semibold text-lg">Professional Services</h4>
                 </div>
-
-                <div>
-                  <label htmlFor="desktop-email" className="block text-sm font-medium mb-2">Email</label>
-                  <Input
-                    type="email"
-                    id="desktop-email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3"
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="desktop-subject" className="block text-sm font-medium mb-2">Subject</label>
-                  <select
-                    id="desktop-subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                  >
-                    <option value="Security Consulting">Security Consulting</option>
-                    <option value="Training Inquiry">Training Inquiry</option>
-                    <option value="Collaboration">Collaboration</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="desktop-message" className="block text-sm font-medium mb-2">Message</label>
-                  <Textarea
-                    id="desktop-message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3"
-                    placeholder="Tell me about your project or inquiry..."
-                    required
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full cyber-glow bg-gradient-cyber hover:shadow-cyber py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 disabled:opacity-50"
-                >
-                  <Send className="w-5 h-5 mr-2" />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
-              </form>
-            </Card>
-
-            {/* Professional Services */}
-            <Card className="cyber-glow mt-8 p-8 bg-gradient-cyber/10 backdrop-blur-sm border-primary/20">
-              <div className="flex items-center space-x-3 mb-4">
-                <MessageSquare className="w-6 h-6 text-primary" />
-                <h4 className="font-semibold text-lg">Professional Services</h4>
-              </div>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <h5 className="font-medium text-primary mb-1">Security Consulting</h5>
-                  <p className="text-muted-foreground">Web application security assessments</p>
-                </div>
-                <div>
-                  <h5 className="font-medium text-accent mb-1">Penetration Testing</h5>
-                  <p className="text-muted-foreground">Comprehensive VAPT services</p>
-                </div>
-                <div>
-                  <h5 className="font-medium text-cyber-purple mb-1">Security Training</h5>
-                  <p className="text-muted-foreground">Custom cybersecurity education</p>
-                </div>
-                <div>
-                  <h5 className="font-medium text-cyber-orange mb-1">Tool Development</h5>
-                  <p className="text-muted-foreground">Custom security automation</p>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <h5 className="font-medium text-primary mb-1">Security Consulting</h5>
+                    <p className="text-muted-foreground">Web application security assessments</p>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-accent mb-1">Penetration Testing</h5>
+                    <p className="text-muted-foreground">Comprehensive VAPT services</p>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-cyber-purple mb-1">Security Training</h5>
+                    <p className="text-muted-foreground">Custom cybersecurity education</p>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-cyber-orange mb-1">Tool Development</h5>
+                    <p className="text-muted-foreground">Custom security automation</p>
+                  </div>
                 </div>
               </div>
             </Card>
