@@ -248,19 +248,14 @@ const ProjectsSection = () => {
                         </div>
 
                         {/* Right: Key Features - Optimized */}
-                        <div className="col-span-2">
+                        <div className="col-span-2 px-0 py-0 my-[20px]">
                           <h4 className="text-base font-semibold mb-3 flex items-center">
                             <div className={`w-2 h-2 rounded-full mr-3 ${project.color === 'primary' ? 'bg-blue-400' : project.color === 'accent' ? 'bg-emerald-400' : 'bg-red-400'}`}></div>
                             Key Features
                           </h4>
                           <div className="space-y-2.5">
                             {project.features.map((feature, idx) => <div key={idx} className={`group/feature relative p-3 rounded-lg border transition-all duration-300 hover:scale-[1.01] ${project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/10 hover:border-blue-500/30' : project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/10 hover:border-emerald-500/30' : 'bg-red-500/5 border-red-500/10 hover:border-red-500/30'}`}>
-                                <div className="flex items-start space-x-3">
-                                  <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 transition-all duration-300 ${project.color === 'primary' ? 'bg-blue-400 group-hover/feature:bg-blue-300' : project.color === 'accent' ? 'bg-emerald-400 group-hover/feature:bg-emerald-300' : 'bg-red-400 group-hover/feature:bg-red-300'}`}></div>
-                                  <p className="text-sm text-muted-foreground group-hover/feature:text-foreground transition-colors duration-300 leading-snug">
-                                    {feature}
-                                  </p>
-                                </div>
+                                
                               </div>)}
                           </div>
                         </div>
