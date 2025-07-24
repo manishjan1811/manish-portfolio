@@ -41,18 +41,18 @@ export function CVPage({ className = "" }: CVPageProps) {
                 </div>
                 
                 {/* Contact Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
-                    <Mail className="w-4 h-4 text-blue-300" />
-                    <span className="text-sm text-white/90">manishjangra1811@gmail.com</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-2 border border-white/10">
+                    <Mail className="w-3 h-3 text-blue-300 flex-shrink-0" />
+                    <span className="text-xs text-white/90 truncate">manishjangra1811@gmail.com</span>
                   </div>
-                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
-                    <Phone className="w-4 h-4 text-emerald-300" />
-                    <span className="text-sm text-white/90">+91 9350545502</span>
+                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-2 border border-white/10">
+                    <Phone className="w-3 h-3 text-emerald-300 flex-shrink-0" />
+                    <span className="text-xs text-white/90">+91 9350545502</span>
                   </div>
-                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
-                    <MapPin className="w-4 h-4 text-purple-300" />
-                    <span className="text-sm text-white/90">Gurgaon, India</span>
+                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-2 border border-white/10">
+                    <MapPin className="w-3 h-3 text-purple-300 flex-shrink-0" />
+                    <span className="text-xs text-white/90">Gurgaon, India</span>
                   </div>
                 </div>
               </div>
