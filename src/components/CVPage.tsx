@@ -259,21 +259,21 @@ export function CVPage({ className = "" }: CVPageProps) {
                   <Award className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-slate-800">Certified Ethical Hacker (CEH)</h3>
-                    <p className="text-sm text-gray-600">EC-Council • 2024</p>
+                    <p className="text-sm text-gray-600">EC-Council • 2025</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Award className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-slate-800">Certified Red Team Analyst (CRTA)</h3>
-                    <p className="text-sm text-gray-600">Zero Point Security • 2024</p>
+                    <p className="text-sm text-gray-600">Zero Point Security • 2025</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Award className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-slate-800">Burp Suite Certified Practitioner (BSCP)</h3>
-                    <p className="text-sm text-gray-600">PortSwigger • 2024</p>
+                    <p className="text-sm text-gray-600">PortSwigger • 2025</p>
                   </div>
                 </div>
               </div>
