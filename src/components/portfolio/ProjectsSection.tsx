@@ -255,7 +255,7 @@ const ProjectsSection = () => {
                           </h4>
                           <div className="space-y-2.5">
                             {project.features.map((feature, idx) => <div key={idx} className={`group/feature relative p-3 rounded-lg border transition-all duration-300 hover:scale-[1.01] ${project.color === 'primary' ? 'bg-blue-500/5 border-blue-500/10 hover:border-blue-500/30' : project.color === 'accent' ? 'bg-emerald-500/5 border-emerald-500/10 hover:border-emerald-500/30' : 'bg-red-500/5 border-red-500/10 hover:border-red-500/30'}`}>
-                                
+                                <p className="text-sm text-muted-foreground leading-relaxed">{feature}</p>
                               </div>)}
                           </div>
                         </div>
