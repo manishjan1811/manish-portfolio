@@ -409,13 +409,13 @@ const ProjectsSection = () => {
 
         {/* Private Project Dialog */}
         <Dialog open={showPrivateDialog} onOpenChange={setShowPrivateDialog}>
-          <DialogContent className="sm:max-w-md">
+          <DialogContent className="max-w-sm sm:max-w-md mx-auto top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] fixed">
             <DialogHeader>
-              <DialogTitle className="flex items-center gap-2">
+              <DialogTitle className="flex items-center gap-2 text-center justify-center">
                 <Lock className="w-5 h-5 text-orange-500" />
                 Private Repository
               </DialogTitle>
-              <DialogDescription className="pt-3">
+              <DialogDescription className="pt-3 text-center">
                 This project is not uploaded to GitHub because it is client property and contains confidential business logic and sensitive information that cannot be made public.
               </DialogDescription>
             </DialogHeader>
