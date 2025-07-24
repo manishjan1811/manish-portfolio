@@ -2,7 +2,7 @@ import Navigation from "@/components/portfolio/NavigationOptimized";
 import HeroSection from "@/components/portfolio/HeroSectionOptimized";
 import { AboutSectionOptimized, SkillsSectionOptimized, ContactSectionOptimized } from "@/components/portfolio/OptimizedSections";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
-import CertificationsSection from "@/components/portfolio/CertificationsSectionMobile";
+import CertificationsSection from "@/components/portfolio/CertificationsSectionNew";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import Footer from "@/components/portfolio/Footer";
 
