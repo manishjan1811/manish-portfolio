@@ -2,22 +2,51 @@ import { Download, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { CVPreview } from "@/components/cv-preview"
+import { supabase } from "@/integrations/supabase/client"
 
 export function DownloadCV() {
   const { toast } = useToast()
 
-  const handleDownload = () => {
-    // For now, we'll show a toast. In production, you'd have an actual CV file
-    toast({
-      title: "CV Download",
-      description: "CV download feature coming soon! Contact me directly for my resume.",
-    })
-    
-    // Future implementation:
-    // const link = document.createElement('a')
-    // link.href = '/manish-jangra-cv.pdf'
-    // link.download = 'Manish_Jangra_Cybersecurity_Resume.pdf'
-    // link.click()
+  const handleDownload = async () => {
+    try {
+      toast({
+        title: "Downloading CV...",
+        description: "Your CV download will start shortly.",
+      })
+
+      // Call the edge function to handle download
+      const { data, error } = await supabase.functions.invoke('cv-handler', {
+        body: { action: 'download' }
+      })
+
+      if (error) {
+        throw error
+      }
+
+      // Create a blob and download
+      const blob = new Blob([data.content || data], { type: 'text/plain' })
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'Manish_Jangra_CV.txt'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+
+      toast({
+        title: "CV Downloaded",
+        description: "Your CV has been downloaded successfully!",
+      })
+
+    } catch (error) {
+      console.error('Download error:', error)
+      toast({
+        title: "Download Error",
+        description: "There was an error downloading the CV. Please try again.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (
