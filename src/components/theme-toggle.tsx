@@ -1,6 +1,5 @@
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 
 export function ThemeToggle() {
@@ -18,23 +17,25 @@ export function ThemeToggle() {
   const isDark = theme === "dark"
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative p-2.5 rounded-xl hover:bg-primary/10 transition-all duration-300 group"
-      aria-label="Toggle theme"
-    >
-      <div className="relative w-5 h-5">
-        <Sun className={`absolute inset-0 w-5 h-5 text-primary transition-all duration-300 ${
-          isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
-        }`} />
-        <Moon className={`absolute inset-0 w-5 h-5 text-primary transition-all duration-300 ${
-          isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
-        }`} />
-      </div>
-      {/* Subtle glow effect */}
-      <div className="absolute inset-0 rounded-xl bg-primary/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    </Button>
+    <div className="flex items-center space-x-2">
+      <Sun className="w-4 h-4 text-muted-foreground" />
+      
+      {/* Slide Toggle */}
+      <button
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+          isDark ? 'bg-primary' : 'bg-muted'
+        }`}
+        aria-label="Toggle theme"
+      >
+        <span
+          className={`inline-block h-4 w-4 transform rounded-full bg-background transition-transform duration-300 ${
+            isDark ? 'translate-x-6' : 'translate-x-1'
+          }`}
+        />
+      </button>
+      
+      <Moon className="w-4 h-4 text-muted-foreground" />
+    </div>
   )
 }
