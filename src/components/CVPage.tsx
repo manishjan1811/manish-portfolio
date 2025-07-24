@@ -8,33 +8,53 @@ export function CVPage({ className = "" }: CVPageProps) {
   return (
     <div className={`bg-white text-black max-w-4xl mx-auto ${className}`} id="cv-page">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-700 text-white p-6 md:p-8">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-          {/* Profile Photo */}
-          <div className="w-32 h-32 md:w-40 md:h-40 bg-white/10 rounded-full flex items-center justify-center text-white/70 text-4xl font-bold">
-            MJ
-          </div>
-          
-          {/* Header Info */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight">
-              MANISH JANGRA
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-200 mb-4 font-medium">
-              Web Application Pentester & Developer
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <Mail className="w-4 h-4" />
-                <span>manishjangra1811@gmail.com</span>
+      <div className="relative overflow-hidden bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-800/95 backdrop-blur-xl">
+        {/* Subtle Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-48 translate-x-48"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl translate-y-40 -translate-x-40"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/[0.02] to-transparent"></div>
+        </div>
+        
+        {/* Glassmorphism Container */}
+        <div className="relative z-10 bg-white/[0.05] backdrop-blur-sm border border-white/10 mx-4 md:mx-6 my-6 rounded-2xl">
+          <div className="p-6 md:p-8">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              
+              {/* Profile Photo */}
+              <div className="relative">
+                <div className="w-32 h-32 md:w-36 md:h-36 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-4xl md:text-5xl font-bold border border-white/20 shadow-2xl">
+                  MJ
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-2 border-white/20 shadow-lg"></div>
               </div>
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <Phone className="w-4 h-4" />
-                <span>+91 9350545502</span>
-              </div>
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>Gurgaon, India</span>
+              
+              {/* Header Info */}
+              <div className="flex-1 text-center md:text-left space-y-4">
+                <div>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
+                    MANISH JANGRA
+                  </h1>
+                  <p className="text-lg md:text-xl text-blue-200/90 font-medium">
+                    Web Application Pentester & Developer
+                  </p>
+                </div>
+                
+                {/* Contact Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <Mail className="w-4 h-4 text-blue-300" />
+                    <span className="text-sm text-white/90">manishjangra1811@gmail.com</span>
+                  </div>
+                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <Phone className="w-4 h-4 text-emerald-300" />
+                    <span className="text-sm text-white/90">+91 9350545502</span>
+                  </div>
+                  <div className="flex items-center justify-center md:justify-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <MapPin className="w-4 h-4 text-purple-300" />
+                    <span className="text-sm text-white/90">Gurgaon, India</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
