@@ -8,39 +8,110 @@ export function CVPage({ className = "" }: CVPageProps) {
   return (
     <div className={`bg-white text-black max-w-4xl mx-auto ${className}`} id="cv-page">
       {/* Header Section */}
-      <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white p-6 md:p-8 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.3),transparent_50%)]"></div>
           <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
           <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-cyan-500/20 rounded-full blur-xl"></div>
         </div>
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-          {/* Profile Photo Placeholder */}
-          <div className="w-32 h-32 md:w-40 md:h-40 bg-white/10 rounded-full flex items-center justify-center text-white/70 text-4xl font-bold">
-            MJ
-          </div>
-          
-          {/* Header Info */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight">
-              MANISH JANGRA
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-200 mb-4 font-medium">
-              Web Application Pentester & Developer
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <Mail className="w-4 h-4" />
-                <span>manishjangra1811@gmail.com</span>
+        
+        {/* Main Header Content */}
+        <div className="relative z-10 p-6 md:p-8 lg:p-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+              
+              {/* Profile Section */}
+              <div className="flex flex-col items-center lg:items-start">
+                <div className="relative mb-6">
+                  <div className="w-36 h-36 md:w-44 md:h-44 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-full flex items-center justify-center text-white text-5xl md:text-6xl font-bold backdrop-blur-sm border border-white/20">
+                    MJ
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
+                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                  </div>
+                </div>
+                
+                {/* Quick Stats */}
+                <div className="grid grid-cols-2 gap-4 text-center lg:text-left">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                    <div className="text-2xl font-bold text-blue-300">6+</div>
+                    <div className="text-xs text-white/80">Months Exp</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                    <div className="text-2xl font-bold text-cyan-300">3</div>
+                    <div className="text-xs text-white/80">Certifications</div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <Phone className="w-4 h-4" />
-                <span>+91 9350545502</span>
-              </div>
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>Gurgaon, India</span>
+              
+              {/* Main Info Section */}
+              <div className="flex-1 text-center lg:text-left space-y-6">
+                {/* Name and Title */}
+                <div className="space-y-3">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
+                    MANISH JANGRA
+                  </h1>
+                  <div className="flex flex-col lg:flex-row lg:items-center gap-3">
+                    <p className="text-xl md:text-2xl text-blue-200 font-semibold">
+                      Web Application Pentester & Developer
+                    </p>
+                    <div className="flex justify-center lg:justify-start">
+                      <span className="px-4 py-2 bg-blue-600/30 text-blue-100 rounded-full text-sm font-medium border border-blue-400/30">
+                        Security Expert
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Contact Information */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                  <div className="flex items-center justify-center lg:justify-start gap-3 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <div className="p-2 bg-blue-500/20 rounded-lg">
+                      <Mail className="w-4 h-4 text-blue-300" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-white/60 uppercase tracking-wide">Email</div>
+                      <div className="text-sm font-medium">manishjangra1811@gmail.com</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-center lg:justify-start gap-3 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <div className="p-2 bg-green-500/20 rounded-lg">
+                      <Phone className="w-4 h-4 text-green-300" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-white/60 uppercase tracking-wide">Phone</div>
+                      <div className="text-sm font-medium">+91 9350545502</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-center lg:justify-start gap-3 bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 md:col-span-2 xl:col-span-1">
+                    <div className="p-2 bg-purple-500/20 rounded-lg">
+                      <MapPin className="w-4 h-4 text-purple-300" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-white/60 uppercase tracking-wide">Location</div>
+                      <div className="text-sm font-medium">Gurgaon, India</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Specializations */}
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-2">
+                  <span className="px-3 py-1 bg-red-500/20 text-red-200 rounded-full text-xs font-medium border border-red-400/30">
+                    Penetration Testing
+                  </span>
+                  <span className="px-3 py-1 bg-orange-500/20 text-orange-200 rounded-full text-xs font-medium border border-orange-400/30">
+                    Web Security
+                  </span>
+                  <span className="px-3 py-1 bg-green-500/20 text-green-200 rounded-full text-xs font-medium border border-green-400/30">
+                    VAPT
+                  </span>
+                  <span className="px-3 py-1 bg-blue-500/20 text-blue-200 rounded-full text-xs font-medium border border-blue-400/30">
+                    Security Training
+                  </span>
+                </div>
               </div>
             </div>
           </div>
