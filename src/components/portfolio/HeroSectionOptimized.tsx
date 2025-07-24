@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-cybersecurity.jpg";
+import cyberMatrix from "@/assets/hero-cyber-matrix.jpg";
+import webDevBg from "@/assets/hero-web-dev.jpg";
 import circuitBg from "@/assets/circuit-board-bg.jpg";
 
 const HeroSection = () => {
@@ -30,35 +31,43 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Enhanced layered background */}
       <div className="absolute inset-0">
-        {/* Primary circuit board background */}
+        {/* Primary cybersecurity matrix background */}
         <div className="absolute inset-0">
+          <img 
+            src={cyberMatrix} 
+            alt="Cybersecurity Matrix Background" 
+            className="w-full h-full object-cover object-center opacity-30"
+            loading="eager"
+          />
+        </div>
+        
+        {/* Web development overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src={webDevBg} 
+            alt="Web Development Background" 
+            className="w-full h-full object-cover object-center mix-blend-overlay"
+            loading="eager"
+          />
+        </div>
+        
+        {/* Circuit board accent for mobile responsiveness */}
+        <div className="absolute inset-0 opacity-15 block md:hidden">
           <img 
             src={circuitBg} 
             alt="Circuit Board Background" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover object-center"
             loading="eager"
           />
         </div>
         
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80"></div>
+        {/* Enhanced gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background/85 via-background/70 to-background/85"></div>
         
-        {/* Matrix animation overlay */}
-        <div className="absolute inset-0 matrix-bg opacity-40"></div>
-        
-        {/* Subtle hero accent */}
-        <div className="absolute inset-0 opacity-5">
-          <img 
-            src={heroImage} 
-            alt="Cybersecurity Professional" 
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
-        
-        {/* Tech glow effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Cyber glow effects */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
       {/* Content - Enhanced responsive layout */}
