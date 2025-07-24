@@ -6,23 +6,45 @@ import { CVPage } from "@/components/CVPage"
 import html2canvas from "html2canvas"
 import jsPDF from "jspdf"
 import { createRoot } from 'react-dom/client'
+import React from 'react'
 
 export function CVPreview() {
   const { toast } = useToast()
 
-  const waitForResourcesAndStyles = async () => {
-    // Wait for document to be ready
-    if (document.readyState !== 'complete') {
-      await new Promise(resolve => {
-        window.addEventListener('load', resolve, { once: true })
-      })
-    }
-
-    // Wait for all fonts to load
-    await document.fonts.ready
-
-    // Wait for any remaining async operations
-    await new Promise(resolve => setTimeout(resolve, 1000))
+  const renderCVForCapture = async (): Promise<HTMLElement> => {
+    // Create a temporary container
+    const tempContainer = document.createElement('div')
+    tempContainer.style.position = 'absolute'
+    tempContainer.style.top = '-9999px'
+    tempContainer.style.left = '-9999px'
+    tempContainer.style.width = '794px' // A4 width in pixels at 96 DPI
+    tempContainer.style.background = 'white'
+    tempContainer.style.zIndex = '-1'
+    
+    document.body.appendChild(tempContainer)
+    
+    // Create a root and render CVPage
+    const root = createRoot(tempContainer)
+    
+    return new Promise((resolve) => {
+      const CVPageComponent = () => {
+        React.useEffect(() => {
+          // Wait for component to mount and styles to apply
+          const timer = setTimeout(() => {
+            const cvElement = tempContainer.querySelector('#cv-page') as HTMLElement
+            if (cvElement) {
+              resolve(cvElement)
+            }
+          }, 1000)
+          
+          return () => clearTimeout(timer)
+        }, [])
+        
+        return <CVPage className="w-full" />
+      }
+      
+      root.render(<CVPageComponent />)
+    })
   }
 
   const handleDownload = async () => {
@@ -32,165 +54,107 @@ export function CVPreview() {
         description: "Please wait while we prepare your CV download.",
       })
 
-      // Ensure all resources are loaded
-      await waitForResourcesAndStyles()
-
-      // Find the CV element from the dialog preview
-      const cvElement = document.querySelector('#cv-page') as HTMLElement
+      // Try to get CV from dialog first, if not available, render it fresh
+      let cvElement = document.querySelector('#cv-page') as HTMLElement
+      let tempContainer: HTMLElement | null = null
       
       if (!cvElement) {
-        throw new Error('CV preview not found. Please open the preview first.')
+        // Render CV fresh for capture
+        cvElement = await renderCVForCapture()
+        tempContainer = cvElement.parentElement
       }
 
-      // Force a repaint to ensure all styles are applied
-      cvElement.style.transform = 'translateZ(0)'
-      await new Promise(resolve => requestAnimationFrame(resolve))
-      cvElement.style.transform = ''
+      // Wait for all resources to load
+      await document.fonts.ready
+      await new Promise(resolve => setTimeout(resolve, 1500))
 
-      // Get all stylesheets to ensure they're included
-      const stylesheets = Array.from(document.styleSheets)
-      
-      // Capture with enhanced settings for style preservation
+      // Capture with maximum quality
       const canvas = await html2canvas(cvElement, {
-        scale: 2, // Good balance of quality and performance
+        scale: 3,
         useCORS: true,
         allowTaint: false,
         backgroundColor: '#ffffff',
-        width: cvElement.scrollWidth,
+        width: 794, // A4 width at 96 DPI
         height: cvElement.scrollHeight,
         scrollX: 0,
         scrollY: 0,
         logging: false,
         removeContainer: false,
         foreignObjectRendering: true,
-        imageTimeout: 15000, // Wait longer for images
         onclone: (clonedDoc, clonedElement) => {
-          // Ensure the cloned document has all styles
-          const clonedCvElement = clonedElement.querySelector('#cv-page') as HTMLElement
+          // Ensure all Tailwind classes work in cloned document
+          const originalHead = document.head
+          const clonedHead = clonedDoc.head
           
+          // Copy all stylesheets
+          Array.from(originalHead.children).forEach(child => {
+            if (child.tagName === 'STYLE' || 
+                (child.tagName === 'LINK' && (child as HTMLLinkElement).rel === 'stylesheet')) {
+              clonedHead.appendChild(child.cloneNode(true))
+            }
+          })
+          
+          // Ensure the CV element is visible and styled
+          const clonedCvElement = clonedElement.querySelector('#cv-page') as HTMLElement
           if (clonedCvElement) {
-            // Force visibility and opacity
             clonedCvElement.style.visibility = 'visible'
             clonedCvElement.style.opacity = '1'
-            clonedCvElement.style.position = 'relative'
-            clonedCvElement.style.zIndex = '1'
-            
-            // Copy all computed styles from original to cloned element
-            const originalStyles = window.getComputedStyle(cvElement)
-            for (let i = 0; i < originalStyles.length; i++) {
-              const property = originalStyles[i]
-              const value = originalStyles.getPropertyValue(property)
-              clonedCvElement.style.setProperty(property, value)
-            }
-            
-            // Ensure all child elements have their styles preserved
-            const allElements = clonedCvElement.querySelectorAll('*')
-            const allOriginalElements = cvElement.querySelectorAll('*')
-            
-            allElements.forEach((element, index) => {
-              if (allOriginalElements[index]) {
-                const originalElementStyles = window.getComputedStyle(allOriginalElements[index])
-                const clonedElementStyle = (element as HTMLElement).style
-                
-                // Copy critical style properties
-                const criticalProps = [
-                  'background', 'background-color', 'background-image', 'background-gradient',
-                  'color', 'font-family', 'font-size', 'font-weight', 'font-style',
-                  'border', 'border-radius', 'box-shadow', 'text-shadow',
-                  'opacity', 'visibility', 'display', 'position',
-                  'margin', 'padding', 'width', 'height',
-                  'backdrop-filter', 'filter', 'transform'
-                ]
-                
-                criticalProps.forEach(prop => {
-                  const value = originalElementStyles.getPropertyValue(prop)
-                  if (value) {
-                    clonedElementStyle.setProperty(prop, value)
-                  }
-                })
-              }
-            })
-            
-            // Add all stylesheets to cloned document
-            stylesheets.forEach(stylesheet => {
-              try {
-                if (stylesheet.href) {
-                  const link = clonedDoc.createElement('link')
-                  link.rel = 'stylesheet'
-                  link.href = stylesheet.href
-                  clonedDoc.head.appendChild(link)
-                } else if (stylesheet.cssRules) {
-                  const style = clonedDoc.createElement('style')
-                  Array.from(stylesheet.cssRules).forEach(rule => {
-                    style.appendChild(clonedDoc.createTextNode(rule.cssText))
-                  })
-                  clonedDoc.head.appendChild(style)
-                }
-              } catch (e) {
-                console.warn('Could not clone stylesheet:', e)
-              }
-            })
-            
-            // Ensure fonts are available
-            if (document.fonts) {
-              Array.from(document.fonts).forEach(font => {
-                if (font.status === 'loaded') {
-                  clonedDoc.fonts.add(font)
-                }
-              })
-            }
+            clonedCvElement.style.transform = 'none'
           }
-        },
-        ignoreElements: (element) => {
-          return element.tagName === 'SCRIPT' || 
-                 element.tagName === 'NOSCRIPT' ||
-                 element.classList?.contains('exclude-from-pdf')
         }
       })
 
-      // Create high-quality PDF with proper A4 dimensions
+      // Clean up temporary container if created
+      if (tempContainer) {
+        document.body.removeChild(tempContainer)
+      }
+
+      // Create PDF with proper A4 dimensions
       const pdf = new jsPDF('p', 'mm', 'a4')
+      const imgData = canvas.toDataURL('image/jpeg', 0.98)
       
-      // A4 dimensions with margins
+      // A4 dimensions
       const pdfWidth = 210
       const pdfHeight = 297
       const margin = 10
+      
+      // Calculate scaling to fit A4 with margins
       const contentWidth = pdfWidth - (margin * 2)
-      const contentHeight = pdfHeight - (margin * 2)
-      
-      // Calculate dimensions maintaining aspect ratio
       const aspectRatio = canvas.width / canvas.height
-      let imgWidth = contentWidth
-      let imgHeight = contentWidth / aspectRatio
+      const imgWidth = contentWidth
+      const imgHeight = contentWidth / aspectRatio
       
-      // If height exceeds page, adjust to fit
-      if (imgHeight > contentHeight) {
-        imgHeight = contentHeight
-        imgWidth = contentHeight * aspectRatio
+      // Add to PDF
+      pdf.addImage(imgData, 'JPEG', margin, margin, imgWidth, Math.min(imgHeight, pdfHeight - margin * 2))
+      
+      // If content is too long, add additional pages
+      if (imgHeight > pdfHeight - margin * 2) {
+        let remainingHeight = imgHeight - (pdfHeight - margin * 2)
+        let currentPage = 1
+        
+        while (remainingHeight > 0) {
+          pdf.addPage()
+          const yOffset = -(currentPage * (pdfHeight - margin * 2))
+          const pageHeight = Math.min(remainingHeight, pdfHeight - margin * 2)
+          
+          pdf.addImage(imgData, 'JPEG', margin, margin + yOffset, imgWidth, imgHeight)
+          
+          remainingHeight -= pageHeight
+          currentPage++
+        }
       }
       
-      // Center the content
-      const xOffset = (pdfWidth - imgWidth) / 2
-      const yOffset = (pdfHeight - imgHeight) / 2
-      
-      // Convert to high-quality image
-      const imgData = canvas.toDataURL('image/jpeg', 0.95)
-      
-      // Add image to PDF
-      pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight)
-      
-      // Save the PDF
       pdf.save('Manish_Jangra_CV.pdf')
 
       toast({
-        title: "CV Downloaded Successfully",
-        description: "Your pixel-perfect CV has been downloaded as PDF!",
+        title: "CV Downloaded Successfully!",
+        description: "Your professionally styled CV has been saved as PDF.",
       })
     } catch (error) {
       console.error('Download error:', error)
       toast({
-        title: "Download Error", 
-        description: "Failed to generate PDF. Please try again or use browser print (Ctrl+P).",
+        title: "Download Failed", 
+        description: "Could not generate PDF. Try opening CV preview first.",
         variant: "destructive",
       })
     }
