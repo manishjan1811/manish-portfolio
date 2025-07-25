@@ -61,7 +61,7 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
             </div>
             
             <div className="hidden md:block w-32 h-32 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full shadow-lg flex items-center justify-center">
-              <span className="text-3xl font-bold text-white">OS</span>
+              <span className="text-5xl font-bold text-white">OS</span>
             </div>
           </div>
         </div>
