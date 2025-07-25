@@ -168,8 +168,8 @@ async function generateCVPDF(cvType: string, supabaseClient: any): Promise<Uint8
     
     // Get the frontend URL - try multiple possible URLs
     const possibleUrls = [
+      'https://6d1f6749-049b-4ded-bd3f-be6b2215c707.lovableproject.com',
       'https://suynbvqdtzuwxqrrgrgn.lovable.app',
-      'https://loving-transformation-d5f3e7.netlify.app',
       Deno.env.get('FRONTEND_URL')
     ].filter(Boolean);
     
@@ -336,9 +336,10 @@ ADDITIONAL INFORMATION
 Languages: English, Hindi, Punjabi
 Interests & Hobbies: Capture the Flag (CTF), Threat Hunting, Reading Books
 
----
-Generated on ${new Date().toLocaleDateString()}
-This CV contains the most up-to-date information about Omkar Singh's professional experience and qualifications.
+ADDITIONAL INFORMATION
+=====================================
+Languages: English, Hindi, Punjabi
+Interests & Hobbies: Capture the Flag (CTF), Threat Hunting, Reading Books
 `;
   }
 
@@ -440,8 +441,8 @@ REFERENCES
 =====================================
 Available upon request
 
----
-Generated on ${new Date().toLocaleDateString()}
-This CV was generated automatically. For the most up-to-date version, please contact directly.
+REFERENCES
+=====================================
+Available upon request
 `
 }

@@ -230,7 +230,7 @@ async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
     doc.setFontSize(10);
     doc.text('Graduate from Delhi University (DU) | 2020-2023', 25, yPosition);
     
-    // Return the PDF as Uint8Array
+    // Return clean PDF without any metadata or extra info
     return new Uint8Array(doc.output('arraybuffer'));
     
   } catch (error) {
