@@ -484,3 +484,42 @@
     transform: translateX(0) rotate(0deg);
   }
 }
+
+/* Print styles for PDF generation */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+  
+  .print\:max-w-none {
+    max-width: none !important;
+  }
+  
+  /* Ensure gradients and colors are preserved */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r,
+  .text-transparent {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Page breaks */
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+  }
+  
+  .print\:break-before-page {
+    break-before: page;
+  }
+}

@@ -25,14 +25,51 @@ serve(async (req) => {
     console.log(`CV Handler - Action: ${action}, Type: ${cvType}`);
 
     if (action === 'upload') {
-      // For future implementation - upload CV
-      return new Response(
-        JSON.stringify({ message: `Upload functionality ready for ${cvType} CV PDF file` }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 200 
+      // Handle CV upload to storage
+      try {
+        console.log('Upload request received for CV type:', cvType);
+        
+        // Generate the CV PDF
+        const pdfBuffer = await generateCVPDF(cvType, supabaseClient);
+        const fileName = cvType === 'omkar' ? 'omkar-singh-cv.pdf' : 'manish-jangra-cv.pdf';
+        
+        // Upload to storage
+        const { data, error } = await supabaseClient.storage
+          .from('cv-files')
+          .upload(fileName, pdfBuffer, {
+            contentType: 'application/pdf',
+            upsert: true
+          });
+
+        if (error) {
+          throw new Error(`Upload failed: ${error.message}`);
         }
-      )
+
+        return new Response(
+          JSON.stringify({ 
+            success: true,
+            message: `${cvType} CV uploaded successfully`,
+            file: fileName,
+            data: data 
+          }),
+          { 
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            status: 200 
+          }
+        );
+      } catch (uploadError) {
+        console.error('Upload error:', uploadError);
+        return new Response(
+          JSON.stringify({ 
+            error: 'Upload failed', 
+            details: uploadError.message 
+          }),
+          { 
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            status: 500 
+          }
+        );
+      }
     }
 
     if (action === 'download') {
@@ -129,9 +166,10 @@ async function generateCVPDF(cvType: string, supabaseClient: any): Promise<Uint8
   try {
     console.log(`Generating PDF for ${cvType} CV...`);
     
-    // Determine the correct URL for the CV page
-    const baseUrl = Deno.env.get('SUPABASE_URL')?.replace('/rest/v1', '') || 'https://suynbvqdtzuwxqrrgrgn.supabase.co';
-    const cvUrl = cvType === 'omkar' ? `${baseUrl}/omkar-cv` : `${baseUrl}/cv`;
+    // Get the frontend URL - this needs to be the actual website URL, not the Supabase API URL
+    // For Lovable projects, the frontend URL would be something like: https://project-name.lovable.app
+    const frontendUrl = 'https://suynbvqdtzuwxqrrgrgn.lovable.app'; // This should be the actual frontend URL
+    const cvUrl = cvType === 'omkar' ? `${frontendUrl}/omkar-cv` : `${frontendUrl}/cv`;
     
     console.log(`CV URL: ${cvUrl}`);
 

@@ -22,7 +22,7 @@ interface OmkarCVPageProps {
 
 const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
   return (
-    <div className={`max-w-5xl mx-auto bg-white text-gray-900 shadow-2xl ${className}`}>
+    <div className={`max-w-5xl mx-auto bg-white text-gray-900 shadow-2xl print:shadow-none print:max-w-none ${className}`}>
       {/* Header Section */}
       <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white p-8 overflow-hidden">
         {/* Background Pattern */}
