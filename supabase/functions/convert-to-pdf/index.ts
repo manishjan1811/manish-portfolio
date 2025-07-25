@@ -45,21 +45,30 @@ async function generateCleanPDF(): Promise<Uint8Array> {
     // Import jsPDF
     const { jsPDF } = await import('https://esm.sh/jspdf@2.5.1');
     
-    // Create new PDF with no metadata
+    // Create new PDF with custom settings to prevent metadata
     const doc = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
-      format: 'a4'
+      format: 'a4',
+      compress: true,
+      precision: 2
     });
 
-    // Clear all metadata
+    // Set specific properties for Omkar Singh
     doc.setProperties({
-      title: '',
-      subject: '',
-      author: '',
-      creator: '',
-      producer: '',
-      keywords: ''
+      title: 'Omkar Singh - Web Pentester',
+      subject: 'CV - Omkar Singh',
+      author: 'Omkar Singh',
+      creator: 'Omkar Singh',
+      producer: 'CV Generator',
+      keywords: 'CV, Resume, Omkar Singh, Web Pentester, Cybersecurity'
+    });
+
+    // Additional PDF settings to control display
+    doc.setDisplayMode('fullpage', 'continuous');
+    doc.setDocumentProperties({
+      title: 'Omkar Singh - Web Pentester',
+      author: 'Omkar Singh'
     });
 
     // Header with blue background
