@@ -60,7 +60,19 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
               </div>
             </div>
             
-            <div className="hidden md:block w-32 h-32 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full shadow-lg flex items-center justify-center">
+            <div className="hidden md:block relative">
+              <div className="w-36 h-36 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
+                {/* Outer glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/50 to-purple-600/50 rounded-full blur-md scale-110 opacity-50"></div>
+                {/* Inner highlight */}
+                <div className="absolute top-3 left-3 w-8 h-8 bg-white/20 rounded-full blur-sm"></div>
+                {/* Content area for initials */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  <span className="text-4xl font-bold text-white tracking-wider">OS</span>
+                </div>
+                {/* Animated border */}
+                <div className="absolute inset-0 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-all duration-300"></div>
+              </div>
             </div>
           </div>
         </div>
