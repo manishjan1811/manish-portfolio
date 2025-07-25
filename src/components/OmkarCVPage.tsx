@@ -28,6 +28,8 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
 
   const handleExportPDF = async () => {
     try {
+      console.log('=== PDF Export Process Started ===');
+      
       toast({
         title: "Preparing your CV",
         description: "Generating high-quality PDF with all colors and textures...",
@@ -120,11 +122,20 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
 
     } catch (error: any) {
       console.error('Error exporting CV:', error);
+      
+      // Fallback: Use browser print dialog as PDF export
+      console.log('Attempting fallback: browser print dialog...');
+      
       toast({
-        title: "Export Error",
-        description: `There was an issue exporting your CV: ${error.message}`,
-        variant: "destructive",
+        title: "Using Alternative Method",
+        description: "Opening print dialog. Please select 'Save as PDF' from the destination options.",
+        duration: 5000,
       });
+      
+      // Small delay to let the toast show, then trigger print
+      setTimeout(() => {
+        window.print();
+      }, 1000);
     }
   };
 

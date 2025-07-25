@@ -166,14 +166,42 @@ async function generateCVPDF(cvType: string, supabaseClient: any): Promise<Uint8
   try {
     console.log(`Generating PDF for ${cvType} CV...`);
     
-    // Get the frontend URL - this needs to be the actual website URL, not the Supabase API URL
-    // For Lovable projects, the frontend URL would be something like: https://project-name.lovable.app
-    const frontendUrl = 'https://suynbvqdtzuwxqrrgrgn.lovable.app'; // This should be the actual frontend URL
+    // Get the frontend URL - try multiple possible URLs
+    const possibleUrls = [
+      'https://suynbvqdtzuwxqrrgrgn.lovable.app',
+      'https://loving-transformation-d5f3e7.netlify.app',
+      Deno.env.get('FRONTEND_URL')
+    ].filter(Boolean);
+    
+    console.log('Trying possible frontend URLs:', possibleUrls);
+    
+    // Use the first available URL, fallback to localhost for development
+    const frontendUrl = possibleUrls[0] || 'http://localhost:8080';
     const cvUrl = cvType === 'omkar' ? `${frontendUrl}/omkar-cv` : `${frontendUrl}/cv`;
     
     console.log(`CV URL: ${cvUrl}`);
 
+    // First, test if the URL is accessible
+    try {
+      console.log('Testing URL accessibility...');
+      const testResponse = await fetch(cvUrl, { 
+        method: 'HEAD',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; PDF-Generator/1.0)'
+        }
+      });
+      console.log(`URL test response: ${testResponse.status}`);
+      
+      if (!testResponse.ok) {
+        console.warn(`URL ${cvUrl} returned status ${testResponse.status}`);
+      }
+    } catch (testError) {
+      console.error('URL accessibility test failed:', testError);
+      throw new Error(`CV page not accessible at ${cvUrl}: ${testError.message}`);
+    }
+
     // Call the convert-to-pdf function to generate high-quality PDF
+    console.log('Calling convert-to-pdf function...');
     const { data, error } = await supabaseClient.functions.invoke('convert-to-pdf', {
       body: { 
         url: cvUrl,
