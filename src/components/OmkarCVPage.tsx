@@ -13,14 +13,121 @@ import {
   Globe, 
   Database,
   Server,
-  Lock
+  Lock,
+  Download
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 interface OmkarCVPageProps {
   className?: string;
 }
 
 const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
+  const { toast } = useToast();
+
+  const handleExportPDF = async () => {
+    try {
+      toast({
+        title: "Preparing your CV",
+        description: "Generating high-quality PDF with all colors and textures...",
+      });
+
+      console.log('Starting CV export process...');
+
+      // Create URL with query parameters
+      const baseUrl = 'https://suynbvqdtzuwxqrrgrgn.supabase.co/functions/v1/cv-handler';
+      const params = new URLSearchParams({
+        action: 'download',
+        type: 'omkar'
+      });
+      const functionUrl = `${baseUrl}?${params}`;
+      
+      console.log('Calling function URL:', functionUrl);
+
+      const response = await fetch(functionUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1eW5idnFkdHp1d3hxcnJncmduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzMzA1MjgsImV4cCI6MjA2ODkwNjUyOH0.bBbH0Cc-4Y0FTFnkno6SNIGjggvSj_9S5S7D_Fo_4uw`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Response error:', errorText);
+        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+      }
+
+      // Get the content type to determine how to handle the response
+      const contentType = response.headers.get('content-type');
+      console.log('Content type:', contentType);
+
+      if (contentType?.includes('application/pdf')) {
+        // Handle PDF response
+        const blob = await response.blob();
+        console.log('PDF blob size:', blob.size);
+        
+        // Create download link
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Omkar_Singh_CV.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        toast({
+          title: "CV Downloaded Successfully!",
+          description: "Your high-resolution CV with all colors and textures has been downloaded.",
+        });
+      } else if (contentType?.includes('text/plain')) {
+        // Handle text response (fallback)
+        const textContent = await response.text();
+        console.log('Text content length:', textContent.length);
+        
+        const blob = new Blob([textContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Omkar_Singh_CV.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        toast({
+          title: "CV Downloaded (Text Format)",
+          description: "CV downloaded in text format. PDF generation is being set up.",
+        });
+      } else {
+        // Handle JSON response (might contain error or data)
+        const jsonData = await response.json();
+        console.log('JSON response:', jsonData);
+        
+        if (jsonData.error) {
+          throw new Error(jsonData.error);
+        }
+        
+        toast({
+          title: "Download Initiated",
+          description: jsonData.message || "CV download process started.",
+        });
+      }
+
+    } catch (error: any) {
+      console.error('Error exporting CV:', error);
+      toast({
+        title: "Export Error",
+        description: `There was an issue exporting your CV: ${error.message}`,
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className={`max-w-5xl mx-auto bg-white text-gray-900 shadow-2xl print:shadow-none print:max-w-none ${className}`}>
       {/* Header Section */}
@@ -60,18 +167,31 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
               </div>
             </div>
             
-            <div className="hidden md:block relative">
-              <div className="w-36 h-36 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
-                {/* Outer glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/50 to-purple-600/50 rounded-full blur-md scale-110 opacity-50"></div>
-                {/* Inner highlight */}
-                <div className="absolute top-3 left-3 w-8 h-8 bg-white/20 rounded-full blur-sm"></div>
-                {/* Content area for initials */}
-                <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <span className="text-4xl font-bold text-white tracking-wider">OS</span>
+            <div className="flex flex-col md:flex-row items-center gap-4">
+              {/* Export Button */}
+              <Button 
+                onClick={handleExportPDF}
+                className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300 print:hidden"
+                variant="outline"
+              >
+                <Download className="w-5 h-5" />
+                Export PDF
+              </Button>
+              
+              {/* Profile Circle */}
+              <div className="hidden md:block relative">
+                <div className="w-36 h-36 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
+                  {/* Outer glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/50 to-purple-600/50 rounded-full blur-md scale-110 opacity-50"></div>
+                  {/* Inner highlight */}
+                  <div className="absolute top-3 left-3 w-8 h-8 bg-white/20 rounded-full blur-sm"></div>
+                  {/* Content area for initials */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                    <span className="text-4xl font-bold text-white tracking-wider">OS</span>
+                  </div>
+                  {/* Animated border */}
+                  <div className="absolute inset-0 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-all duration-300"></div>
                 </div>
-                {/* Animated border */}
-                <div className="absolute inset-0 rounded-full border-2 border-white/10 group-hover:border-white/20 transition-all duration-300"></div>
               </div>
             </div>
           </div>
