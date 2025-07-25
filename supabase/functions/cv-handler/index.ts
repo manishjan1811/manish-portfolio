@@ -130,7 +130,7 @@ async function generateCVPDF(cvType: string, supabaseClient: any): Promise<Uint8
     console.log(`Generating PDF for ${cvType} CV...`);
     
     // Determine the correct URL for the CV page
-    const baseUrl = Deno.env.get('SUPABASE_URL')?.replace('/rest/v1', '') || '';
+    const baseUrl = Deno.env.get('SUPABASE_URL')?.replace('/rest/v1', '') || 'https://suynbvqdtzuwxqrrgrgn.supabase.co';
     const cvUrl = cvType === 'omkar' ? `${baseUrl}/omkar-cv` : `${baseUrl}/cv`;
     
     console.log(`CV URL: ${cvUrl}`);

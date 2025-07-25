@@ -9,3 +9,6 @@ max_rows = 1000
 
 [functions.convert-to-pdf]
 verify_jwt = false
+
+[functions.cv-handler]
+verify_jwt = false
