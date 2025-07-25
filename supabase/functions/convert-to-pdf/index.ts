@@ -44,17 +44,16 @@ serve(async (req) => {
 
     // Generate a proper PDF from the CV content
     const pdfBase64 = await generateCVPDF(htmlContent);
+    const base64Data = pdfBase64.split(',')[1]; // Remove data:application/pdf;base64, prefix
+    const binaryData = Uint8Array.from(atob(base64Data), c => c.charCodeAt(0));
     
-    return new Response(
-      JSON.stringify({ 
-        success: true, 
-        pdf: pdfBase64,
-        message: 'PDF generated successfully'
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
-    );
+    return new Response(binaryData, {
+      headers: { 
+        ...corsHeaders, 
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'attachment; filename="Omkar_Singh_CV.pdf"'
+      },
+    });
     
   } catch (error) {
     console.error('Error generating PDF:', error)
@@ -76,12 +75,10 @@ async function generateCVPDF(htmlContent: string): Promise<string> {
     const cvData = extractCVData(htmlContent);
     
     // Create a professional PDF document
-    const pdfContent = createProfessionalPDF(cvData);
+    const pdfBytes = await createProfessionalPDF(cvData);
     
     // Convert to base64
-    const encoder = new TextEncoder();
-    const data = encoder.encode(pdfContent);
-    const base64 = btoa(String.fromCharCode(...data));
+    const base64 = btoa(String.fromCharCode(...pdfBytes));
     
     return `data:application/pdf;base64,${base64}`;
   } catch (error) {
@@ -105,147 +102,139 @@ function extractCVData(htmlContent: string) {
   };
 }
 
-function createProfessionalPDF(cvData: any): string {
-  const pdfContent = `%PDF-1.4
-1 0 obj
-<<
-/Type /Catalog
-/Pages 2 0 R
->>
-endobj
-
-2 0 obj
-<<
-/Type /Pages
-/Kids [3 0 R]
-/Count 1
->>
-endobj
-
-3 0 obj
-<<
-/Type /Page
-/Parent 2 0 R
-/MediaBox [0 0 612 792]
-/Contents 4 0 R
-/Resources <<
-/Font <<
-/F1 5 0 R
-/F2 6 0 R
->>
->>
->>
-endobj
-
-4 0 obj
-<<
-/Length 2500
->>
-stream
-BT
-/F2 24 Tf
-50 750 Td
-(${cvData.name}) Tj
-0 -30 Td
-/F1 16 Tf
-(${cvData.title}) Tj
-0 -40 Td
-/F1 12 Tf
-(Email: ${cvData.email}) Tj
-0 -20 Td
-(Phone: ${cvData.phone}) Tj
-0 -20 Td
-(Location: ${cvData.location}) Tj
-0 -20 Td
-(LinkedIn: ${cvData.linkedin}) Tj
-0 -40 Td
-/F2 16 Tf
-(SUMMARY) Tj
-0 -25 Td
-/F1 12 Tf
-(CEH-certified Cybersecurity Professional with over 2 years of hands-on) Tj
-0 -15 Td
-(experience in Vulnerability Assessment and Penetration Testing \\(VAPT\\)) Tj
-0 -15 Td
-(across web applications, mobile platforms, APIs, and infrastructure.) Tj
-0 -30 Td
-/F2 16 Tf
-(PROFESSIONAL EXPERIENCE) Tj
-0 -25 Td
-/F2 14 Tf
-(VAPT Security Consultant) Tj
-0 -18 Td
-/F1 12 Tf
-(Digital Track Solutions Private Limited | August 2024 – Present) Tj
-0 -20 Td
-(• Successfully led comprehensive VAPT projects for TNeGA) Tj
-0 -15 Td
-(• Performed in-depth Web Application and API Security Testing) Tj
-0 -15 Td
-(• Delivered actionable VAPT assessments for Muthoot Housing Finance) Tj
-0 -30 Td
-/F2 14 Tf
-(Cybersecurity Analyst) Tj
-0 -18 Td
-/F1 12 Tf
-(Infocus IT Solutions Private Limited | 2023–2024) Tj
-0 -20 Td
-(• Conducted end-to-end VAPT for Hitachi's applications) Tj
-0 -15 Td
-(• Identified critical vulnerabilities and security gaps) Tj
-0 -30 Td
-/F2 16 Tf
-(CERTIFICATIONS) Tj
-0 -25 Td
-/F1 12 Tf
-(• C|EH Certified Ethical Hacker \\(EC Council\\)) Tj
-0 -15 Td
-(• CRTP \\(Certified Red Team Professional\\)) Tj
-0 -15 Td
-(• CRTA \\(Certified Red Team Analyst\\)) Tj
-0 -30 Td
-/F2 16 Tf
-(EDUCATION) Tj
-0 -25 Td
-/F1 12 Tf
-(Graduate from Delhi University \\(DU\\) | 2020-2023) Tj
-ET
-endstream
-endobj
-
-5 0 obj
-<<
-/Type /Font
-/Subtype /Type1
-/BaseFont /Helvetica
->>
-endobj
-
-6 0 obj
-<<
-/Type /Font
-/Subtype /Type1
-/BaseFont /Helvetica-Bold
->>
-endobj
-
-xref
-0 7
-0000000000 65535 f 
-0000000010 00000 n 
-0000000079 00000 n 
-0000000136 00000 n 
-0000000301 00000 n 
-0000002850 00000 n 
-0000002925 00000 n 
-trailer
-<<
-/Size 7
-/Root 1 0 R
->>
-startxref
-3005
-%%EOF`;
-
-  return pdfContent;
+async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
+  try {
+    // Use jsPDF library for proper PDF generation
+    const { jsPDF } = await import('https://esm.sh/jspdf@2.5.1');
+    const doc = new jsPDF();
+    
+    // Set up fonts and colors
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(24);
+    doc.setTextColor(0, 0, 0);
+    
+    // Header with blue background
+    doc.setFillColor(59, 88, 156); // Blue color
+    doc.rect(0, 0, 210, 50, 'F');
+    
+    // Name and title in white
+    doc.setTextColor(255, 255, 255);
+    doc.text(cvData.name, 20, 25);
+    doc.setFontSize(16);
+    doc.text(cvData.title, 20, 35);
+    
+    // Contact info
+    doc.setFontSize(10);
+    doc.text(`Email: ${cvData.email}`, 20, 42);
+    doc.text(`Phone: ${cvData.phone}`, 20, 46);
+    
+    // Reset to black for body
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    
+    let yPosition = 70;
+    
+    // Summary section
+    doc.text('SUMMARY', 20, yPosition);
+    yPosition += 10;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    
+    const summaryText = 'CEH-certified Cybersecurity Professional with over 2 years of hands-on experience in Vulnerability Assessment and Penetration Testing (VAPT) across web applications, mobile platforms, APIs, and infrastructure.';
+    const splitSummary = doc.splitTextToSize(summaryText, 170);
+    doc.text(splitSummary, 20, yPosition);
+    yPosition += splitSummary.length * 5 + 10;
+    
+    // Experience section
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('PROFESSIONAL EXPERIENCE', 20, yPosition);
+    yPosition += 15;
+    
+    // Current role
+    doc.setFontSize(12);
+    doc.text('VAPT Security Consultant', 20, yPosition);
+    yPosition += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.text('Digital Track Solutions Private Limited | August 2024 – Present', 20, yPosition);
+    yPosition += 8;
+    
+    const currentRolePoints = [
+      '• Successfully led comprehensive VAPT projects for TNeGA',
+      '• Performed in-depth Web Application and API Security Testing',
+      '• Delivered actionable VAPT assessments for Muthoot Housing Finance'
+    ];
+    
+    currentRolePoints.forEach(point => {
+      const splitPoint = doc.splitTextToSize(point, 170);
+      doc.text(splitPoint, 25, yPosition);
+      yPosition += splitPoint.length * 4 + 2;
+    });
+    
+    yPosition += 10;
+    
+    // Previous role
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.text('Cybersecurity Analyst', 20, yPosition);
+    yPosition += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.text('Infocus IT Solutions Private Limited | 2023–2024', 20, yPosition);
+    yPosition += 8;
+    
+    const previousRolePoints = [
+      '• Conducted end-to-end VAPT for Hitachi\'s applications',
+      '• Identified critical vulnerabilities and security gaps',
+      '• Performed deep packet inspection and port scanning'
+    ];
+    
+    previousRolePoints.forEach(point => {
+      const splitPoint = doc.splitTextToSize(point, 170);
+      doc.text(splitPoint, 25, yPosition);
+      yPosition += splitPoint.length * 4 + 2;
+    });
+    
+    yPosition += 15;
+    
+    // Certifications
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('CERTIFICATIONS', 20, yPosition);
+    yPosition += 10;
+    
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    const certifications = [
+      '• C|EH Certified Ethical Hacker (EC Council)',
+      '• CRTP (Certified Red Team Professional)',
+      '• CRTA (Certified Red Team Analyst)'
+    ];
+    
+    certifications.forEach(cert => {
+      doc.text(cert, 25, yPosition);
+      yPosition += 6;
+    });
+    
+    yPosition += 10;
+    
+    // Education
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('EDUCATION', 20, yPosition);
+    yPosition += 10;
+    
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.text('Graduate from Delhi University (DU) | 2020-2023', 25, yPosition);
+    
+    // Return the PDF as Uint8Array
+    return new Uint8Array(doc.output('arraybuffer'));
+    
+  } catch (error) {
+    console.error('Error creating PDF with jsPDF:', error);
+    throw error;
+  }
 }

@@ -115,9 +115,9 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
   return (
     <div className={`max-w-5xl mx-auto bg-white text-gray-900 shadow-2xl print:shadow-none print:max-w-none ${className}`}>
       {/* Header Section */}
-      <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white p-8 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white p-8 overflow-hidden print:bg-blue-900 print:p-6">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 print:hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         </div>
         
