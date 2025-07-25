@@ -335,11 +335,6 @@ ADDITIONAL INFORMATION
 =====================================
 Languages: English, Hindi, Punjabi
 Interests & Hobbies: Capture the Flag (CTF), Threat Hunting, Reading Books
-
-ADDITIONAL INFORMATION
-=====================================
-Languages: English, Hindi, Punjabi
-Interests & Hobbies: Capture the Flag (CTF), Threat Hunting, Reading Books
 `;
   }
 

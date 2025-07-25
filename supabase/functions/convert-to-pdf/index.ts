@@ -14,7 +14,7 @@ serve(async (req) => {
   try {
     console.log('PDF generation request received')
     
-    const { url, options = {} } = await req.json()
+    const { url } = await req.json()
     
     if (!url) {
       return new Response(
@@ -104,49 +104,54 @@ function extractCVData(htmlContent: string) {
 
 async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
   try {
-    // Use jsPDF library for proper PDF generation
+    // Create a simple, clean PDF without any metadata
     const { jsPDF } = await import('https://esm.sh/jspdf@2.5.1');
     const doc = new jsPDF();
     
-    // Set up fonts and colors
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(24);
-    doc.setTextColor(0, 0, 0);
+    // Remove all metadata
+    doc.setProperties({
+      title: '',
+      subject: '',
+      author: '',
+      creator: '',
+      producer: ''
+    });
     
     // Header with blue background
-    doc.setFillColor(59, 88, 156); // Blue color
+    doc.setFillColor(59, 88, 156);
     doc.rect(0, 0, 210, 50, 'F');
     
     // Name and title in white
     doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(24);
     doc.text(cvData.name, 20, 25);
     doc.setFontSize(16);
     doc.text(cvData.title, 20, 35);
     
     // Contact info
     doc.setFontSize(10);
-    doc.text(`Email: ${cvData.email}`, 20, 42);
-    doc.text(`Phone: ${cvData.phone}`, 20, 46);
+    doc.text(`${cvData.email} | ${cvData.phone}`, 20, 42);
+    doc.text(`${cvData.location}`, 20, 46);
     
-    // Reset to black for body
+    // Body content in black
     doc.setTextColor(0, 0, 0);
-    doc.setFontSize(14);
-    doc.setFont('helvetica', 'bold');
-    
     let yPosition = 70;
     
-    // Summary section
+    // Summary
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
     doc.text('SUMMARY', 20, yPosition);
     yPosition += 10;
+    
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    
     const summaryText = 'CEH-certified Cybersecurity Professional with over 2 years of hands-on experience in Vulnerability Assessment and Penetration Testing (VAPT) across web applications, mobile platforms, APIs, and infrastructure.';
     const splitSummary = doc.splitTextToSize(summaryText, 170);
     doc.text(splitSummary, 20, yPosition);
-    yPosition += splitSummary.length * 5 + 10;
+    yPosition += splitSummary.length * 5 + 15;
     
-    // Experience section
+    // Experience
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
     doc.text('PROFESSIONAL EXPERIENCE', 20, yPosition);
@@ -159,18 +164,17 @@ async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     doc.text('Digital Track Solutions Private Limited | August 2024 – Present', 20, yPosition);
-    yPosition += 8;
+    yPosition += 10;
     
-    const currentRolePoints = [
-      '• Successfully led comprehensive VAPT projects for TNeGA',
-      '• Performed in-depth Web Application and API Security Testing',
-      '• Delivered actionable VAPT assessments for Muthoot Housing Finance'
+    const currentPoints = [
+      '• Led comprehensive VAPT projects for TNeGA',
+      '• Performed Web Application and API Security Testing',
+      '• Delivered VAPT assessments for Muthoot Housing Finance'
     ];
     
-    currentRolePoints.forEach(point => {
-      const splitPoint = doc.splitTextToSize(point, 170);
-      doc.text(splitPoint, 25, yPosition);
-      yPosition += splitPoint.length * 4 + 2;
+    currentPoints.forEach(point => {
+      doc.text(point, 25, yPosition);
+      yPosition += 5;
     });
     
     yPosition += 10;
@@ -183,18 +187,16 @@ async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     doc.text('Infocus IT Solutions Private Limited | 2023–2024', 20, yPosition);
-    yPosition += 8;
+    yPosition += 10;
     
-    const previousRolePoints = [
-      '• Conducted end-to-end VAPT for Hitachi\'s applications',
-      '• Identified critical vulnerabilities and security gaps',
-      '• Performed deep packet inspection and port scanning'
+    const previousPoints = [
+      '• Conducted VAPT for Hitachi applications',
+      '• Identified critical vulnerabilities and security gaps'
     ];
     
-    previousRolePoints.forEach(point => {
-      const splitPoint = doc.splitTextToSize(point, 170);
-      doc.text(splitPoint, 25, yPosition);
-      yPosition += splitPoint.length * 4 + 2;
+    previousPoints.forEach(point => {
+      doc.text(point, 25, yPosition);
+      yPosition += 5;
     });
     
     yPosition += 15;
@@ -207,18 +209,18 @@ async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
     
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    const certifications = [
+    const certs = [
       '• C|EH Certified Ethical Hacker (EC Council)',
       '• CRTP (Certified Red Team Professional)',
       '• CRTA (Certified Red Team Analyst)'
     ];
     
-    certifications.forEach(cert => {
+    certs.forEach(cert => {
       doc.text(cert, 25, yPosition);
       yPosition += 6;
     });
     
-    yPosition += 10;
+    yPosition += 15;
     
     // Education
     doc.setFont('helvetica', 'bold');
@@ -230,11 +232,11 @@ async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
     doc.setFontSize(10);
     doc.text('Graduate from Delhi University (DU) | 2020-2023', 25, yPosition);
     
-    // Return clean PDF without any metadata or extra info
+    // Return clean PDF with no metadata
     return new Uint8Array(doc.output('arraybuffer'));
     
   } catch (error) {
-    console.error('Error creating PDF with jsPDF:', error);
+    console.error('Error creating PDF:', error);
     throw error;
   }
 }
