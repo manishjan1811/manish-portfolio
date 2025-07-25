@@ -15,16 +15,19 @@ serve(async (req) => {
   try {
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_ANON_KEY') ?? ''
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     )
 
     const url = new URL(req.url);
     const action = url.searchParams.get('action');
+    const cvType = url.searchParams.get('type') || 'manish'; // Default to manish, support 'omkar'
+
+    console.log(`CV Handler - Action: ${action}, Type: ${cvType}`);
 
     if (action === 'upload') {
       // For future implementation - upload CV
       return new Response(
-        JSON.stringify({ message: 'Upload functionality ready for PDF file' }),
+        JSON.stringify({ message: `Upload functionality ready for ${cvType} CV PDF file` }),
         { 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           status: 200 
@@ -33,36 +36,66 @@ serve(async (req) => {
     }
 
     if (action === 'download') {
-      // Try to get the CV file from storage
-      const { data, error } = await supabaseClient.storage
-        .from('cv-files')
-        .download('manish-jangra-cv.pdf')
+      const fileName = cvType === 'omkar' ? 'omkar-singh-cv.pdf' : 'manish-jangra-cv.pdf';
+      
+      try {
+        // Try to get the existing PDF file from storage
+        const { data, error } = await supabaseClient.storage
+          .from('cv-files')
+          .download(fileName)
 
-      if (error) {
-        console.error('Download error:', error)
-        // If file doesn't exist, return a generated CV content
-        const cvContent = generateCVContent();
+        if (error) {
+          console.log(`File not found in storage: ${fileName}, generating new PDF...`);
+          // Generate PDF if not found
+          const pdfBuffer = await generateCVPDF(cvType, supabaseClient);
+          
+          // Upload the generated PDF to storage for future use
+          const { error: uploadError } = await supabaseClient.storage
+            .from('cv-files')
+            .upload(fileName, pdfBuffer, {
+              contentType: 'application/pdf',
+              upsert: true
+            });
+
+          if (uploadError) {
+            console.error('Error uploading PDF:', uploadError);
+          }
+
+          return new Response(pdfBuffer, {
+            headers: {
+              ...corsHeaders,
+              'Content-Type': 'application/pdf',
+              'Content-Disposition': `attachment; filename="${fileName}"`,
+            },
+          });
+        }
+
+        return new Response(data, {
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename="${fileName}"`
+          }
+        })
+
+      } catch (downloadError) {
+        console.error('Error in download process:', downloadError);
+        // Fallback to text version
+        const cvContent = generateCVContent(cvType);
+        const txtFileName = cvType === 'omkar' ? 'Omkar_Singh_CV.txt' : 'Manish_Jangra_CV.txt';
         return new Response(cvContent, {
           headers: {
             ...corsHeaders,
             'Content-Type': 'text/plain',
-            'Content-Disposition': 'attachment; filename="Manish_Jangra_CV.txt"'
+            'Content-Disposition': `attachment; filename="${txtFileName}"`
           }
         })
       }
-
-      return new Response(data, {
-        headers: {
-          ...corsHeaders,
-          'Content-Type': 'application/pdf',
-          'Content-Disposition': 'attachment; filename="Manish_Jangra_CV.pdf"'
-        }
-      })
     }
 
     if (action === 'preview') {
       // Return CV content for preview
-      const cvContent = generateCVContent();
+      const cvContent = generateCVContent(cvType);
       return new Response(
         JSON.stringify({ content: cvContent }),
         { 
@@ -92,7 +125,158 @@ serve(async (req) => {
   }
 })
 
-function generateCVContent(): string {
+async function generateCVPDF(cvType: string, supabaseClient: any): Promise<Uint8Array> {
+  try {
+    console.log(`Generating PDF for ${cvType} CV...`);
+    
+    // Determine the correct URL for the CV page
+    const baseUrl = Deno.env.get('SUPABASE_URL')?.replace('/rest/v1', '') || '';
+    const cvUrl = cvType === 'omkar' ? `${baseUrl}/omkar-cv` : `${baseUrl}/cv`;
+    
+    console.log(`CV URL: ${cvUrl}`);
+
+    // Call the convert-to-pdf function to generate high-quality PDF
+    const { data, error } = await supabaseClient.functions.invoke('convert-to-pdf', {
+      body: { 
+        url: cvUrl,
+        options: {
+          format: 'A4',
+          printBackground: true,
+          preferCSSPageSize: true,
+          displayHeaderFooter: false,
+          margin: {
+            top: '0.4in',
+            bottom: '0.4in',
+            left: '0.4in',
+            right: '0.4in'
+          },
+          scale: 0.85,
+          timeout: 30000,
+          waitUntil: 'networkidle0'
+        }
+      }
+    });
+
+    if (error) {
+      console.error('PDF generation error:', error);
+      throw new Error(`PDF generation failed: ${error.message}`);
+    }
+
+    if (data && data.pdf) {
+      console.log('PDF generated successfully');
+      // Convert base64 to Uint8Array
+      const base64Data = data.pdf.replace(/^data:application\/pdf;base64,/, '');
+      const binaryString = atob(base64Data);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return bytes;
+    }
+
+    throw new Error('No PDF data received from conversion service');
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+    throw error;
+  }
+}
+
+function generateCVContent(cvType: string): string {
+  if (cvType === 'omkar') {
+    return `
+OMKAR SINGH
+Cyber Security Specialist
+44-B Chander Vihar New Delhi, India | omkarsingh9655@gmail.com | linkedin.com/in/omkar-singh10 | +91 9625547807
+
+SUMMARY
+=====================================
+CEH-certified Cybersecurity Professional with over 2 years of hands-on experience in Vulnerability Assessment and Penetration Testing (VAPT) across web applications, mobile platforms, APIs, and infrastructure. Skilled in identifying and exploiting security vulnerabilities through real-world attack simulations. Certified in CRTP (Certified Red Team Professional) and CRTA (Certified Red Team Analyst), with a strong focus on offensive security techniques, Active Directory exploitation, and post-exploitation tactics. Proven ability to deliver comprehensive, actionable security reports that support regulatory compliance, enhance risk management, and improve overall security posture.
+
+PROFESSIONAL EXPERIENCE
+=====================================
+
+VAPT Security Consultant | Digital Track Solutions Private Limited | August 2024 – Present
+• Successfully led and executed a comprehensive Vulnerability Assessment and Penetration Testing (VAPT) project for the Tamil Nadu e-Governance Agency (TNeGA), identifying and mitigating critical vulnerabilities across complex IT infrastructure, significantly enhancing overall security and operational resilience.
+• Performed in-depth Web Application, API, and Mobile Application Security Testing for TNeGA, uncovering potential exploit vectors and reinforcing their systems against sophisticated cyber threats.
+• Delivered a thorough and actionable VAPT assessment for Muthoot Housing Finance, addressing critical security gaps and providing strategic, risk-based remediation recommendations.
+• Ensured all assessments adhered to industry-recognized security standards (OWASP, NIST, etc.), supporting clients in maintaining compliance and scalable, future-ready security postures.
+
+Cybersecurity Analyst | Infocus It Solutions Private Limited | 2023–2024
+• Conducted end-to-end Vulnerability Assessment and Penetration Testing (VAPT) for Hitachi's Web Applications, REST APIs, and Network Infrastructure in alignment with OWASP Top 10 and SANS 25 standards.
+• Identified and exploited critical vulnerabilities including authentication bypass, improper input validation, and insecure API endpoints, helping strengthen overall security posture.
+• Performed deep packet inspection, port scanning, and configuration auditing on Hitachi's internal and external-facing network components.
+• Prepared and delivered comprehensive VAPT reports with actionable remediation steps, directly contributing to enhanced compliance and risk mitigation.
+• Collaborated with development and IT teams to verify patching and validate fixes through re-testing activities.
+
+KEY PROJECTS
+=====================================
+
+PhillipCapital (India) Private Limited
+Web Application VAPT | API Security Testing | Network Penetration Testing
+• Conducted comprehensive Web and API Vulnerability Assessments, identifying critical flaws and delivering precise remediation strategies to mitigate exploitation risks.
+• Strengthened the organization's security posture by aligning findings with OWASP Top 10 and CWE standards, ensuring actionable and compliant security recommendations.
+
+Muthoot Housing Finance Company Limited
+Web Application VAPT | API Security Testing | Network Penetration Testing
+• Executed full-scope Vulnerability Assessment and Penetration Testing (VAPT) covering web applications, APIs, and internal network architecture.
+• Mapped vulnerabilities to industry standards such as OWASP, SANS, and NIST, helping the organization bolster compliance and governance.
+
+TECHNICAL SKILLS
+=====================================
+
+Penetration Testing:
+• Web Application Pentesting (Automated, Manual)
+• API Pentesting
+• OWASP Top 10
+• Secure Code Review
+• Network Pentesting
+• Python Scripting
+
+Web Application & Web Services Penetration Testing Tools:
+• Burp Suite Professional
+• Nikto
+• Dirbuster
+• Ffuf
+• Nuclei
+• OWASP Zap
+• WpScan
+
+Infrastructure & Network Penetration Testing Tools:
+• Nmap
+• Metasploit
+• Nessus
+• Kali Linux OS
+
+Red Teaming Tools:
+• Hashcat
+• Mimikatz
+• Windows Privesc
+• Linux Privesc
+• Linpeas
+• Winpeas
+
+EDUCATION
+=====================================
+Graduate from Delhi University (DU) | 2020-2023
+
+CERTIFICATIONS
+=====================================
+• C|EH Certified Ethical Hacker (EC Council)
+• CRTP (Certified Red Team Professional)
+• CRTA (Certified Red Team Analyst)
+
+ADDITIONAL INFORMATION
+=====================================
+Languages: English, Hindi, Punjabi
+Interests & Hobbies: Capture the Flag (CTF), Threat Hunting, Reading Books
+
+---
+Generated on ${new Date().toLocaleDateString()}
+This CV contains the most up-to-date information about Omkar Singh's professional experience and qualifications.
+`;
+  }
+
+  // Default Manish CV content
   return `
 MANISH JANGRA
 Web Application Pentester & Developer
@@ -100,7 +284,7 @@ Web Application Pentester & Developer
 Contact Information:
 Email: manish.jangra@email.com
 Phone: +91 XXXXX XXXXX
-Location: India
+Location: Gurgaon, Haryana, India
 Portfolio: https://your-portfolio-url.com
 
 PROFESSIONAL SUMMARY
