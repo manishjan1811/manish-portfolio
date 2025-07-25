@@ -478,14 +478,6 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="bg-gray-100 px-8 py-4 text-center text-gray-600 text-sm border-t">
-        <p>CV generated on {new Date().toLocaleDateString('en-US', { 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        })}</p>
-      </div>
     </div>
   );
 };
