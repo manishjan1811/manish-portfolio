@@ -14,44 +14,17 @@ serve(async (req) => {
   try {
     console.log('PDF generation request received')
     
-    const { url } = await req.json()
+    // Generate PDF directly without fetching HTML
+    const pdfBytes = await generateCleanPDF();
     
-    if (!url) {
-      return new Response(
-        JSON.stringify({ error: 'URL is required' }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
-      )
-    }
-
-    console.log('Converting URL to PDF:', url)
-
-    // Fetch the HTML content from the URL
-    const htmlResponse = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    });
-    
-    if (!htmlResponse.ok) {
-      throw new Error(`Failed to fetch URL: ${htmlResponse.status}`);
-    }
-    
-    const htmlContent = await htmlResponse.text();
-    console.log('Fetched HTML content, length:', htmlContent.length);
-
-    // Generate a proper PDF from the CV content
-    const pdfBase64 = await generateCVPDF(htmlContent);
-    const base64Data = pdfBase64.split(',')[1]; // Remove data:application/pdf;base64, prefix
-    const binaryData = Uint8Array.from(atob(base64Data), c => c.charCodeAt(0));
-    
-    return new Response(binaryData, {
+    return new Response(pdfBytes, {
       headers: { 
         ...corsHeaders, 
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="Omkar_Singh_CV.pdf"'
+        'Content-Disposition': 'attachment; filename="Omkar_Singh_CV.pdf"',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
       },
     });
     
@@ -67,176 +40,203 @@ serve(async (req) => {
   }
 })
 
-async function generateCVPDF(htmlContent: string): Promise<string> {
+async function generateCleanPDF(): Promise<Uint8Array> {
   try {
-    console.log('Generating CV PDF from HTML content...');
-    
-    // Extract structured data from the CV HTML
-    const cvData = extractCVData(htmlContent);
-    
-    // Create a professional PDF document
-    const pdfBytes = await createProfessionalPDF(cvData);
-    
-    // Convert to base64
-    const base64 = btoa(String.fromCharCode(...pdfBytes));
-    
-    return `data:application/pdf;base64,${base64}`;
-  } catch (error) {
-    console.error('Error generating CV PDF:', error);
-    throw error;
-  }
-}
-
-function extractCVData(htmlContent: string) {
-  // Extract key information from the HTML
-  const name = htmlContent.match(/<h1[^>]*>([^<]+)</i)?.[1] || 'OMKAR SINGH';
-  const title = htmlContent.match(/Cyber Security Specialist/i)?.[0] || 'Cyber Security Specialist';
-  
-  return {
-    name,
-    title,
-    email: 'omkarsingh9655@gmail.com',
-    phone: '+91 9625547807',
-    location: '44-B Chander Vihar New Delhi, India',
-    linkedin: 'linkedin.com/in/omkar-singh10'
-  };
-}
-
-async function createProfessionalPDF(cvData: any): Promise<Uint8Array> {
-  try {
-    // Create a simple, clean PDF without any metadata
+    // Import jsPDF
     const { jsPDF } = await import('https://esm.sh/jspdf@2.5.1');
-    const doc = new jsPDF();
     
-    // Remove all metadata
+    // Create new PDF with no metadata
+    const doc = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    });
+
+    // Clear all metadata
     doc.setProperties({
       title: '',
       subject: '',
       author: '',
       creator: '',
-      producer: ''
+      producer: '',
+      keywords: ''
     });
-    
+
     // Header with blue background
     doc.setFillColor(59, 88, 156);
     doc.rect(0, 0, 210, 50, 'F');
     
-    // Name and title in white
+    // Name in white
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(24);
-    doc.text(cvData.name, 20, 25);
+    doc.setFontSize(28);
+    doc.text('OMKAR SINGH', 20, 25);
+    
+    // Title
     doc.setFontSize(16);
-    doc.text(cvData.title, 20, 35);
+    doc.text('Cyber Security Specialist', 20, 35);
     
     // Contact info
     doc.setFontSize(10);
-    doc.text(`${cvData.email} | ${cvData.phone}`, 20, 42);
-    doc.text(`${cvData.location}`, 20, 46);
+    doc.text('omkarsingh9655@gmail.com | +91 9625547807 | 44-B Chander Vihar New Delhi, India', 20, 42);
     
-    // Body content in black
+    // Switch to black for body content
     doc.setTextColor(0, 0, 0);
-    let yPosition = 70;
+    let y = 70;
     
     // Summary
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
-    doc.text('SUMMARY', 20, yPosition);
-    yPosition += 10;
+    doc.text('SUMMARY', 20, y);
+    y += 10;
     
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    const summaryText = 'CEH-certified Cybersecurity Professional with over 2 years of hands-on experience in Vulnerability Assessment and Penetration Testing (VAPT) across web applications, mobile platforms, APIs, and infrastructure.';
-    const splitSummary = doc.splitTextToSize(summaryText, 170);
-    doc.text(splitSummary, 20, yPosition);
-    yPosition += splitSummary.length * 5 + 15;
+    const summary = 'CEH-certified Cybersecurity Professional with over 2 years of hands-on experience in Vulnerability Assessment and Penetration Testing (VAPT) across web applications, mobile platforms, APIs, and infrastructure. Skilled in identifying and exploiting security vulnerabilities through real-world attack simulations.';
+    const splitSummary = doc.splitTextToSize(summary, 170);
+    doc.text(splitSummary, 20, y);
+    y += splitSummary.length * 5 + 15;
     
-    // Experience
+    // Professional Experience
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
-    doc.text('PROFESSIONAL EXPERIENCE', 20, yPosition);
-    yPosition += 15;
+    doc.text('PROFESSIONAL EXPERIENCE', 20, y);
+    y += 15;
     
-    // Current role
+    // Current Job
     doc.setFontSize(12);
-    doc.text('VAPT Security Consultant', 20, yPosition);
-    yPosition += 6;
+    doc.text('VAPT Security Consultant', 20, y);
+    y += 6;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    doc.text('Digital Track Solutions Private Limited | August 2024 – Present', 20, yPosition);
-    yPosition += 10;
+    doc.text('Digital Track Solutions Private Limited | August 2024 – Present', 20, y);
+    y += 8;
     
     const currentPoints = [
-      '• Led comprehensive VAPT projects for TNeGA',
-      '• Performed Web Application and API Security Testing',
-      '• Delivered VAPT assessments for Muthoot Housing Finance'
+      '• Led comprehensive VAPT projects for Tamil Nadu e-Governance Agency (TNeGA)',
+      '• Performed Web Application, API, and Mobile Application Security Testing',
+      '• Delivered actionable VAPT assessments for Muthoot Housing Finance',
+      '• Ensured assessments adhered to OWASP, NIST security standards'
     ];
     
     currentPoints.forEach(point => {
-      doc.text(point, 25, yPosition);
-      yPosition += 5;
+      const splitPoint = doc.splitTextToSize(point, 170);
+      doc.text(splitPoint, 25, y);
+      y += splitPoint.length * 4 + 2;
     });
     
-    yPosition += 10;
+    y += 10;
     
-    // Previous role
+    // Previous Job
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(12);
-    doc.text('Cybersecurity Analyst', 20, yPosition);
-    yPosition += 6;
+    doc.text('Cybersecurity Analyst', 20, y);
+    y += 6;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    doc.text('Infocus IT Solutions Private Limited | 2023–2024', 20, yPosition);
-    yPosition += 10;
+    doc.text('Infocus IT Solutions Private Limited | 2023–2024', 20, y);
+    y += 8;
     
     const previousPoints = [
-      '• Conducted VAPT for Hitachi applications',
-      '• Identified critical vulnerabilities and security gaps'
+      '• Conducted end-to-end VAPT for Hitachi Web Applications and APIs',
+      '• Identified critical vulnerabilities including authentication bypass',
+      '• Performed network penetration testing and configuration auditing',
+      '• Prepared comprehensive VAPT reports with remediation steps'
     ];
     
     previousPoints.forEach(point => {
-      doc.text(point, 25, yPosition);
-      yPosition += 5;
+      const splitPoint = doc.splitTextToSize(point, 170);
+      doc.text(splitPoint, 25, y);
+      y += splitPoint.length * 4 + 2;
     });
     
-    yPosition += 15;
+    y += 15;
+    
+    // Key Projects
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('KEY PROJECTS', 20, y);
+    y += 10;
+    
+    doc.setFontSize(11);
+    doc.text('PhillipCapital (India) Private Limited', 20, y);
+    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text('• Comprehensive Web and API Vulnerability Assessments', 25, y);
+    y += 4;
+    doc.text('• Security recommendations aligned with OWASP Top 10', 25, y);
+    y += 8;
+    
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.text('Muthoot Housing Finance Company Limited', 20, y);
+    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text('• Full-scope VAPT covering web applications and network architecture', 25, y);
+    y += 4;
+    doc.text('• Vulnerability mapping to OWASP, SANS, and NIST standards', 25, y);
+    y += 15;
+    
+    // Technical Skills
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('TECHNICAL SKILLS', 20, y);
+    y += 10;
+    
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    const skills = [
+      'Penetration Testing: Web Applications, APIs, Network Infrastructure',
+      'Security Tools: Burp Suite Professional, Metasploit, Nmap, Nessus',
+      'Programming: Python Scripting for Security Automation',
+      'Standards: OWASP Top 10, SANS 25, NIST Framework'
+    ];
+    
+    skills.forEach(skill => {
+      doc.text(`• ${skill}`, 25, y);
+      y += 6;
+    });
+    
+    y += 10;
     
     // Certifications
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
-    doc.text('CERTIFICATIONS', 20, yPosition);
-    yPosition += 10;
+    doc.text('CERTIFICATIONS', 20, y);
+    y += 10;
     
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     const certs = [
-      '• C|EH Certified Ethical Hacker (EC Council)',
-      '• CRTP (Certified Red Team Professional)',
-      '• CRTA (Certified Red Team Analyst)'
+      'C|EH Certified Ethical Hacker (EC Council)',
+      'CRTP (Certified Red Team Professional)',
+      'CRTA (Certified Red Team Analyst)'
     ];
     
     certs.forEach(cert => {
-      doc.text(cert, 25, yPosition);
-      yPosition += 6;
+      doc.text(`• ${cert}`, 25, y);
+      y += 6;
     });
     
-    yPosition += 15;
+    y += 10;
     
     // Education
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(14);
-    doc.text('EDUCATION', 20, yPosition);
-    yPosition += 10;
+    doc.text('EDUCATION', 20, y);
+    y += 10;
     
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    doc.text('Graduate from Delhi University (DU) | 2020-2023', 25, yPosition);
+    doc.text('• Graduate from Delhi University (DU) | 2020-2023', 25, y);
     
-    // Return clean PDF with no metadata
+    // Return clean PDF bytes
     return new Uint8Array(doc.output('arraybuffer'));
     
   } catch (error) {
-    console.error('Error creating PDF:', error);
+    console.error('Error generating clean PDF:', error);
     throw error;
   }
 }
