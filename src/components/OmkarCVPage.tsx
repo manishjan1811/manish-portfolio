@@ -83,41 +83,14 @@ const OmkarCVPage: React.FC<OmkarCVPageProps> = ({ className = "" }) => {
         window.URL.revokeObjectURL(url);
 
         toast({
-          title: "CV Downloaded Successfully!",
-          description: "Your high-resolution CV with all colors and textures has been downloaded.",
-        });
-      } else if (contentType?.includes('text/plain')) {
-        // Handle text response (fallback)
-        const textContent = await response.text();
-        console.log('Text content length:', textContent.length);
-        
-        const blob = new Blob([textContent], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Omkar_Singh_CV.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-
-        toast({
-          title: "CV Downloaded (Text Format)",
-          description: "CV downloaded in text format. PDF generation is being set up.",
+          title: "PDF Downloaded Successfully!",
+          description: "Your high-resolution CV PDF has been downloaded.",
         });
       } else {
-        // Handle JSON response (might contain error or data)
-        const jsonData = await response.json();
-        console.log('JSON response:', jsonData);
-        
-        if (jsonData.error) {
-          throw new Error(jsonData.error);
-        }
-        
-        toast({
-          title: "Download Initiated",
-          description: jsonData.message || "CV download process started.",
-        });
+        // If not PDF, there's an issue - show error
+        const responseText = await response.text();
+        console.error('Expected PDF but got:', contentType, responseText);
+        throw new Error('PDF generation failed. Expected PDF file but received different format.');
       }
 
     } catch (error: any) {
