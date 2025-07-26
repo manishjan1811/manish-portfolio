@@ -282,82 +282,138 @@ export function CVPage({ className = "" }: CVPageProps) {
                 {/* Projects Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* Reconbro.sh */}
-                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Search className="w-4 h-4 text-blue-600" />
-                      Reconbro.sh
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Search className="w-5 h-5 text-blue-600" />
+                      Reconbro.sh - Advanced Recon Automation
                     </h3>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Advanced reconnaissance automation tool built in bash script. Designed for beginners in web pentesting 
-                      with powerful yet easy-to-use reconnaissance capabilities.
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      Enterprise-grade reconnaissance automation framework designed specifically for web application security testing. 
+                      Features intelligent subdomain discovery, comprehensive port scanning, and automated vulnerability detection with 
+                      multi-threaded execution for maximum efficiency.
                     </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Bash</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Automation</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Reconnaissance</span>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-full font-medium">Bash Scripting</span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">Security Automation</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">OSINT</span>
+                      <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full font-medium">Multi-threading</span>
                     </div>
-                    <div className="text-xs text-gray-500">
-                      <strong>Features:</strong> Domain recon, subdomain enumeration, port scanning, directory discovery
+                    <div className="text-xs text-gray-600 bg-white/70 p-3 rounded-lg">
+                      <strong>Key Features:</strong> Passive & active reconnaissance, subdomain enumeration with 15+ sources, 
+                      intelligent port scanning, directory bruteforcing, technology detection, automated report generation
                     </div>
                   </div>
 
                   {/* Toolsbro.sh */}
-                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Download className="w-4 h-4 text-emerald-600" />
-                      Toolsbro.sh
+                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded-xl border border-emerald-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Download className="w-5 h-5 text-emerald-600" />
+                      Toolsbro.sh - Security Tools Manager
                     </h3>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      One-click installer for essential web pentesting tools. Streamlines setup process for security 
-                      professionals by automating tool installation and configuration.
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      Comprehensive security tools management system that automates installation, configuration, and updates 
+                      of 50+ essential penetration testing tools. Features intelligent dependency resolution, version control, 
+                      and automated environment setup for Kali Linux and Ubuntu systems.
                     </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Bash</span>
-                      <span className="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded">Automation</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Tool Management</span>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-full font-medium">DevOps</span>
+                      <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs rounded-full font-medium">Package Management</span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">System Administration</span>
+                      <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">CI/CD</span>
                     </div>
-                    <div className="text-xs text-gray-500">
-                      <strong>Features:</strong> One-click installation, dependency resolution, update management
+                    <div className="text-xs text-gray-600 bg-white/70 p-3 rounded-lg">
+                      <strong>Key Features:</strong> 50+ tools support, dependency auto-resolution, version management, 
+                      backup/restore functionality, custom tool integration, progress tracking with colored output
                     </div>
                   </div>
 
                   {/* CheapOTT Store */}
-                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Globe className="w-4 h-4 text-blue-600" />
-                      CheapOTT Store
+                  <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl border border-orange-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Globe className="w-5 h-5 text-orange-600" />
+                      CheapOTT Store - E-commerce Platform
                     </h3>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Complete e-commerce solution for streaming service subscriptions. Frontend implementation with 
-                      responsive design and modern user interface for client requirements.
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      Full-featured e-commerce platform specializing in digital streaming service subscriptions. Built with 
+                      responsive design principles, featuring advanced product filtering, secure payment integration mockups, 
+                      user account management, and comprehensive admin dashboard for inventory management.
                     </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">HTML</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">CSS</span>
-                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">JavaScript</span>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">HTML5/CSS3</span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">Responsive Design</span>
+                      <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">JavaScript ES6+</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">Bootstrap</span>
                     </div>
-                    <div className="text-xs text-gray-500">
-                      <strong>Features:</strong> Responsive design, product catalog, shopping cart, SEO optimization
+                    <div className="text-xs text-gray-600 bg-white/70 p-3 rounded-lg">
+                      <strong>Key Features:</strong> Mobile-first design, product catalog with filtering, shopping cart functionality, 
+                      user authentication UI, payment gateway integration, SEO-optimized structure, admin panel interface
                     </div>
                   </div>
 
                   {/* Trade Flow Universe */}
-                  <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                      <Code className="w-4 h-4 text-purple-600" />
-                      Trade Flow Universe
+                  <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl border border-purple-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Code className="w-5 h-5 text-purple-600" />
+                      Trade Flow Universe - Crypto Trading Interface
                     </h3>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                      Advanced cryptocurrency trading interface frontend with modern React architecture. 
-                      Showcases trading interface design and user experience implementation.
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      Professional cryptocurrency trading platform frontend featuring real-time market data visualization, 
+                      advanced charting with technical indicators, portfolio management dashboard, and sophisticated trading 
+                      interface. Built with modern React patterns and TypeScript for type safety and maintainability.
                     </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                      <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">TypeScript</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Chart.js</span>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">React 18</span>
+                      <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full font-medium">TypeScript</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">Chart.js</span>
+                      <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full font-medium">Material-UI</span>
                     </div>
-                    <div className="text-xs text-gray-500">
-                      <strong>Features:</strong> Trading interface, portfolio UI, charting, responsive design
+                    <div className="text-xs text-gray-600 bg-white/70 p-3 rounded-lg">
+                      <strong>Key Features:</strong> Real-time charts, technical analysis tools, portfolio tracking, 
+                      order book visualization, price alerts system, dark/light theme, responsive trading interface
+                    </div>
+                  </div>
+
+                  {/* Additional Project 1 */}
+                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-xl border border-cyan-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Shield className="w-5 h-5 text-cyan-600" />
+                      Security Assessment Framework
+                    </h3>
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      Custom web application security assessment framework combining automated scanning with manual testing 
+                      methodologies. Features vulnerability classification, risk scoring, and comprehensive reporting system 
+                      for professional penetration testing engagements.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Python</span>
+                      <span className="px-3 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full font-medium">Security Testing</span>
+                      <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">OWASP</span>
+                    </div>
+                    <div className="text-xs text-gray-600 bg-white/70 p-3 rounded-lg">
+                      <strong>Key Features:</strong> Automated vulnerability scanning, manual testing integration, 
+                      detailed reporting, risk assessment, compliance checking
+                    </div>
+                  </div>
+
+                  {/* Additional Project 2 */}
+                  <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-6 rounded-xl border border-teal-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Terminal className="w-5 h-5 text-teal-600" />
+                      Bug Bounty Automation Suite
+                    </h3>
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      Comprehensive automation suite for bug bounty hunting activities including target reconnaissance, 
+                      vulnerability scanning, and result correlation. Integrates with multiple bug bounty platforms 
+                      and provides automated monitoring for new targets and scope changes.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-full font-medium">Python</span>
+                      <span className="px-3 py-1 bg-teal-100 text-teal-800 text-xs rounded-full font-medium">API Integration</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">Bug Bounty</span>
+                    </div>
+                    <div className="text-xs text-gray-600 bg-white/70 p-3 rounded-lg">
+                      <strong>Key Features:</strong> Multi-platform integration, automated target monitoring, 
+                      vulnerability correlation, notification system, reporting automation
                     </div>
                   </div>
                 </div>
