@@ -461,10 +461,6 @@ export function CVPage({ className = "" }: CVPageProps) {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="border-t pt-6 text-center text-gray-600 text-sm">
-          <p>This CV was generated on {new Date().toLocaleDateString()}. For the most up-to-date version, please contact directly.</p>
-        </div>
 
       </div>
     </div>
