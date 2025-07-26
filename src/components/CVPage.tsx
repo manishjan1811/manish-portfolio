@@ -102,7 +102,7 @@ export function CVPage({ className = "" }: CVPageProps) {
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-36 translate-x-36 md:-translate-y-48 md:translate-x-48"></div>
           <div className="absolute bottom-0 left-0 w-60 h-60 md:w-80 md:h-80 bg-cyan-500/10 rounded-full blur-3xl translate-y-30 -translate-x-30 md:translate-y-40 md:-translate-x-40"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.05] via-transparent to-cyan-500/[0.05]"></div>
+          <div className="absolute inset-0"></div>
         </div>
         
         {/* Glassmorphism Container */}
