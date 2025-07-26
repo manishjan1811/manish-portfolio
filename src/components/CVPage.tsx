@@ -358,14 +358,12 @@ export function CVPage({ className = "" }: CVPageProps) {
                   </div>
 
                   {/* Security Assessment Framework */}
-                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 rounded-lg border border-cyan-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-bold text-slate-800 flex items-center gap-2 text-sm">
-                        <Shield className="w-4 h-4 text-cyan-600" />
-                        Security Assessment Framework
-                      </h3>
-                      <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">Ongoing</span>
-                    </div>
+                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 rounded-lg border border-cyan-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
+                    <span className="absolute top-2 right-2 text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">Ongoing</span>
+                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
+                      <Shield className="w-4 h-4 text-cyan-600" />
+                      Security Assessment Framework
+                    </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
                       Currently developing web application security testing framework with automated scanning and manual testing methods.
                     </p>
@@ -380,14 +378,12 @@ export function CVPage({ className = "" }: CVPageProps) {
                   </div>
 
                   {/* Bug Bounty Automation */}
-                  <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-4 rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-bold text-slate-800 flex items-center gap-2 text-sm">
-                        <Terminal className="w-4 h-4 text-teal-600" />
-                        Bug Bounty Automation Suite
-                      </h3>
-                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">In Progress</span>
-                    </div>
+                  <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-4 rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
+                    <span className="absolute top-2 right-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">In Progress</span>
+                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
+                      <Terminal className="w-4 h-4 text-teal-600" />
+                      Bug Bounty Automation Suite
+                    </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
                       Work-in-progress automation suite for bug bounty hunting with target reconnaissance and vulnerability scanning.
                     </p>
