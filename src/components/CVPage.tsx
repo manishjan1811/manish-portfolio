@@ -146,7 +146,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                 </div>
                 
                 {/* Export PDF Button */}
-                <div className="flex justify-center md:justify-start mt-4">
+                <div className="flex justify-center md:justify-start mt-4 print:hidden">
                   <button
                     onClick={handleExportPDF}
                     className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
