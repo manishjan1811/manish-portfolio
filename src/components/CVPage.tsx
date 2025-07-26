@@ -492,6 +492,88 @@ export function CVPage({ className = "" }: CVPageProps) {
               </div>
             </section>
 
+            {/* Achievements & Awards */}
+            <section>
+              <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-blue-500 pb-2">
+                ACHIEVEMENTS
+              </h2>
+              <div className="space-y-3">
+                <div className="p-3 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border border-red-200">
+                  <div className="flex items-start gap-2">
+                    <Bug className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-slate-800 text-sm">Epic Games CVE Discovery</h3>
+                      <p className="text-xs text-gray-600">Critical 2FA bypass vulnerability</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                  <div className="flex items-start gap-2">
+                    <Award className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-slate-800 text-sm">Security Tool Development</h3>
+                      <p className="text-xs text-gray-600">Created Reconbro & Toolsbro automation</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                  <div className="flex items-start gap-2">
+                    <Users className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-slate-800 text-sm">Corporate Training</h3>
+                      <p className="text-xs text-gray-600">Security awareness & pentesting training</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Training & Workshops */}
+            <section>
+              <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-blue-500 pb-2">
+                TRAINING & WORKSHOPS
+              </h2>
+              <div className="space-y-2">
+                <div className="p-2 bg-gray-50 rounded-lg">
+                  <h3 className="font-semibold text-slate-800 text-sm">Advanced Web Application Security</h3>
+                  <p className="text-xs text-gray-600">OWASP Foundation • 2024</p>
+                </div>
+                <div className="p-2 bg-gray-50 rounded-lg">
+                  <h3 className="font-semibold text-slate-800 text-sm">Red Team Operations</h3>
+                  <p className="text-xs text-gray-600">Zero Point Security • 2024</p>
+                </div>
+                <div className="p-2 bg-gray-50 rounded-lg">
+                  <h3 className="font-semibold text-slate-800 text-sm">Bug Bounty Methodology</h3>
+                  <p className="text-xs text-gray-600">HackerOne • 2024</p>
+                </div>
+              </div>
+            </section>
+
+            {/* Professional Interests */}
+            <section>
+              <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-blue-500 pb-2">
+                INTERESTS
+              </h2>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="p-2 bg-blue-50 rounded-lg text-center">
+                  <Shield className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                  <span className="text-xs font-medium text-slate-800">Cyber Threats</span>
+                </div>
+                <div className="p-2 bg-green-50 rounded-lg text-center">
+                  <Code className="w-6 h-6 text-green-600 mx-auto mb-1" />
+                  <span className="text-xs font-medium text-slate-800">Automation</span>
+                </div>
+                <div className="p-2 bg-purple-50 rounded-lg text-center">
+                  <Search className="w-6 h-6 text-purple-600 mx-auto mb-1" />
+                  <span className="text-xs font-medium text-slate-800">Research</span>
+                </div>
+                <div className="p-2 bg-orange-50 rounded-lg text-center">
+                  <Terminal className="w-6 h-6 text-orange-600 mx-auto mb-1" />
+                  <span className="text-xs font-medium text-slate-800">Open Source</span>
+                </div>
+              </div>
+            </section>
+
           </div>
         </div>
 
