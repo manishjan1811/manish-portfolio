@@ -288,7 +288,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       Reconbro.sh
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Enterprise-grade reconnaissance automation framework for web application security testing with intelligent subdomain discovery and multi-threaded execution.
+                      Automated reconnaissance tool for web application security testing with subdomain discovery.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Bash</span>
@@ -307,7 +307,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       Toolsbro.sh
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Comprehensive security tools management system automating installation and configuration of 50+ essential penetration testing tools with intelligent dependency resolution.
+                      One-click installer for 50+ penetration testing tools with automated setup and configuration.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">DevOps</span>
@@ -326,7 +326,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       CheapOTT Store
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Full-featured e-commerce platform for digital streaming subscriptions with responsive design, advanced filtering, and comprehensive admin dashboard.
+                      E-commerce platform for streaming service subscriptions with responsive design and admin dashboard.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">HTML5</span>
@@ -345,7 +345,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       Trade Flow Universe
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Professional cryptocurrency trading platform with real-time market data visualization, advanced charting, and sophisticated trading interface built with React.
+                      Cryptocurrency trading platform frontend with real-time charts and portfolio management interface.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
@@ -364,7 +364,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       Security Assessment Framework
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Custom web application security framework combining automated scanning with manual testing methodologies and comprehensive reporting system.
+                      Web application security testing framework combining automated scanning with manual testing methods.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Python</span>
@@ -383,7 +383,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       Bug Bounty Automation Suite
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Comprehensive automation suite for bug bounty activities including target reconnaissance, vulnerability scanning, and multi-platform integration.
+                      Automation suite for bug bounty hunting with target reconnaissance and vulnerability scanning.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Python</span>
