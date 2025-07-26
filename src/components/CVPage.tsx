@@ -1,10 +1,99 @@
 import { Mail, Phone, MapPin, Calendar, Award, Code, Shield, Globe, Database, Terminal, ExternalLink, Bug, Search, Download, GraduationCap, Users, Target } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 interface CVPageProps {
   className?: string
 }
 
 export function CVPage({ className = "" }: CVPageProps) {
+  const { toast } = useToast();
+
+  const handleExportPDF = async () => {
+    try {
+      console.log('=== PDF Export Process Started ===');
+      
+      toast({
+        title: "Preparing your CV",
+        description: "Generating high-quality PDF with all colors and textures...",
+      });
+
+      console.log('Starting CV export process...');
+
+      // Create URL with query parameters
+      const baseUrl = 'https://suynbvqdtzuwxqrrgrgn.supabase.co/functions/v1/cv-handler';
+      const params = new URLSearchParams({
+        action: 'download',
+        type: 'manish'
+      });
+      const functionUrl = `${baseUrl}?${params}`;
+      
+      console.log('Calling function URL:', functionUrl);
+
+      const response = await fetch(functionUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1eW5idnFkdHp1d3hxcnJncmduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzMzA1MjgsImV4cCI6MjA2ODkwNjUyOH0.bBbH0Cc-4Y0FTFnkno6SNIGjggvSj_9S5S7D_Fo_4uw`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Response error:', errorText);
+        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+      }
+
+      // Get the content type to determine how to handle the response
+      const contentType = response.headers.get('content-type');
+      console.log('Content type:', contentType);
+
+      if (contentType?.includes('application/pdf')) {
+        // Handle PDF response
+        const blob = await response.blob();
+        console.log('PDF blob size:', blob.size);
+        
+        // Create download link
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Manish_Jangra_CV.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        toast({
+          title: "PDF Downloaded Successfully!",
+          description: "Your high-resolution CV PDF has been downloaded.",
+        });
+      } else {
+        // If not PDF, there's an issue - show error
+        const responseText = await response.text();
+        console.error('Expected PDF but got:', contentType, responseText);
+        throw new Error('PDF generation failed. Expected PDF file but received different format.');
+      }
+
+    } catch (error: any) {
+      console.error('Error exporting CV:', error);
+      
+      // Fallback: Use browser print dialog as PDF export
+      console.log('Attempting fallback: browser print dialog...');
+      
+      toast({
+        title: "Using Alternative Method",
+        description: "Opening print dialog. Please select 'Save as PDF' from the destination options.",
+        duration: 5000,
+      });
+      
+      // Small delay to let the toast show, then trigger print
+      setTimeout(() => {
+        window.print();
+      }, 1000);
+    }
+  };
+
   return (
     <div className={`bg-white text-black max-w-4xl mx-auto ${className}`} id="cv-page">
       {/* Header Section */}
@@ -54,6 +143,17 @@ export function CVPage({ className = "" }: CVPageProps) {
                     <MapPin className="w-3 h-3 text-purple-300 flex-shrink-0" />
                     <span className="text-xs text-white/90">Gurgaon, India</span>
                   </div>
+                </div>
+                
+                {/* Export PDF Button */}
+                <div className="flex justify-center md:justify-start mt-4">
+                  <button
+                    onClick={handleExportPDF}
+                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                  >
+                    <Download className="w-4 h-4" />
+                    Export as PDF
+                  </button>
                 </div>
               </div>
             </div>
