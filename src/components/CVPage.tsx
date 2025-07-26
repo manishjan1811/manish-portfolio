@@ -362,9 +362,10 @@ export function CVPage({ className = "" }: CVPageProps) {
                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
                       <Shield className="w-4 h-4 text-cyan-600" />
                       Security Assessment Framework
+                      <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">Ongoing</span>
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Web application security testing framework combining automated scanning with manual testing methods.
+                      Currently developing web application security testing framework with automated scanning and manual testing methods.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Python</span>
@@ -372,7 +373,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">OWASP</span>
                     </div>
                     <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> Auto scanning, risk assessment, reporting
+                      <strong>Progress:</strong> Auto scanning module, risk assessment planning
                     </div>
                   </div>
 
@@ -381,9 +382,10 @@ export function CVPage({ className = "" }: CVPageProps) {
                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
                       <Terminal className="w-4 h-4 text-teal-600" />
                       Bug Bounty Automation Suite
+                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">In Progress</span>
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Automation suite for bug bounty hunting with target reconnaissance and vulnerability scanning.
+                      Work-in-progress automation suite for bug bounty hunting with target reconnaissance and vulnerability scanning.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Python</span>
@@ -391,7 +393,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Bug Bounty</span>
                     </div>
                     <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> Multi-platform, automated monitoring, alerts
+                      <strong>Status:</strong> Multi-platform integration, monitoring development
                     </div>
                   </div>
                 </div>
