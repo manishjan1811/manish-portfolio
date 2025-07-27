@@ -48,6 +48,17 @@ const ProjectsSection = () => {
   }];
 
   const webDevProjects = [{
+    title: "Uber Luxury Home",
+    subtitle: "Premium Real Estate Platform",
+    date: "2024",
+    description: "Luxury real estate platform featuring high-end properties with immersive virtual tours, advanced search filters, and premium user experience design.",
+    features: ["Virtual property tours", "Advanced property search", "Luxury property showcase", "Premium UI/UX design", "High-resolution galleries", "Interactive maps", "Mobile responsive", "SEO optimized"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
+    icon: Globe,
+    color: "primary",
+    type: "Real Estate",
+    liveUrl: "https://uberluxuryhome.com"
+  }, {
     title: "CheapOTT Store",
     subtitle: "E-commerce Platform for Client",
     date: "2024",
@@ -55,7 +66,7 @@ const ProjectsSection = () => {
     features: ["Responsive design", "Product catalog display", "Shopping cart functionality", "Modern UI/UX", "SEO optimization", "Mobile-first approach", "Fast loading", "Cross-browser compatibility"],
     technologies: ["HTML", "CSS", "JavaScript"],
     icon: Globe,
-    color: "primary",
+    color: "accent",
     type: "E-commerce",
     liveUrl: "https://cheapott.store"
   }, {

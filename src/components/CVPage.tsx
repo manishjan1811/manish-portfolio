@@ -319,6 +319,25 @@ export function CVPage({ className = "" }: CVPageProps) {
                     </div>
                   </div>
 
+                  {/* Uber Luxury Home */}
+                  <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-4 rounded-lg border border-amber-200 shadow-sm hover:shadow-md transition-all duration-300">
+                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
+                      <Globe className="w-4 h-4 text-amber-600" />
+                      Uber Luxury Home
+                    </h3>
+                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
+                      Premium real estate platform featuring luxury properties with virtual tours and advanced search capabilities.
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
+                      <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">TypeScript</span>
+                      <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">Next.js</span>
+                    </div>
+                    <div className="text-xs text-gray-600">
+                      <strong>Features:</strong> Virtual tours, premium UI/UX, mobile responsive
+                    </div>
+                  </div>
+
                   {/* CheapOTT Store */}
                   <div className="bg-gradient-to-br from-orange-50 to-red-50 p-4 rounded-lg border border-orange-200 shadow-sm hover:shadow-md transition-all duration-300">
                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
