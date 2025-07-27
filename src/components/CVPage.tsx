@@ -326,15 +326,15 @@ export function CVPage({ className = "" }: CVPageProps) {
                       Uber Luxury Home
                     </h3>
                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Premium real estate platform featuring luxury properties with virtual tours and advanced search capabilities.
+                      Premium real estate platform built with Lovable's React/TypeScript stack and Supabase backend integration.
                     </p>
                     <div className="flex flex-wrap gap-1 mb-2">
                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
                       <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">TypeScript</span>
-                      <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">Next.js</span>
+                      <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">Supabase</span>
                     </div>
                     <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> Virtual tours, premium UI/UX, mobile responsive
+                      <strong>Features:</strong> Modern architecture, Tailwind design system, full-stack
                     </div>
                   </div>
 

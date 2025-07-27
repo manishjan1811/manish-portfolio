@@ -49,11 +49,11 @@ const ProjectsSection = () => {
 
   const webDevProjects = [{
     title: "Uber Luxury Home",
-    subtitle: "Premium Real Estate Platform",
+    subtitle: "Premium Real Estate Platform Built with Lovable",
     date: "2024",
-    description: "Luxury real estate platform featuring high-end properties with immersive virtual tours, advanced search filters, and premium user experience design.",
-    features: ["Virtual property tours", "Advanced property search", "Luxury property showcase", "Premium UI/UX design", "High-resolution galleries", "Interactive maps", "Mobile responsive", "SEO optimized"],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
+    description: "Full-stack luxury real estate platform built using Lovable's React/TypeScript stack. Features modern design system, responsive layouts, and premium user experience with Supabase backend integration.",
+    features: ["Modern React/TypeScript architecture", "Tailwind CSS design system", "Supabase database integration", "Responsive luxury UI/UX", "Component-based architecture", "Modern development workflow", "Optimized performance", "Mobile-first design"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Vite"],
     icon: Globe,
     color: "primary",
     type: "Real Estate",
