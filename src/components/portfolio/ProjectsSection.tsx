@@ -10,6 +10,7 @@ import MobileProjectModal from "./MobileProjectModal";
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [showPrivateDialog, setShowPrivateDialog] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<string>('');
 
   console.log('Dialog state:', showPrivateDialog);
 
@@ -164,6 +165,7 @@ const ProjectsSection = () => {
                                 console.log('Mobile button clicked for:', project.title);
                                 if (project.title === 'CheapOTT Store' || project.title === 'Uber Luxury Home') {
                                   console.log('Setting dialog to true');
+                                  setSelectedProject(project.title);
                                   setShowPrivateDialog(true);
                                 } else {
                                   window.open(project.githubUrl, '_blank');
@@ -271,6 +273,7 @@ const ProjectsSection = () => {
                                   className={`font-medium transition-all duration-300 hover:scale-105 ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-blue-500/25' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 shadow-md hover:shadow-emerald-500/25' : 'bg-red-500 hover:bg-red-600 shadow-md hover:shadow-red-500/25'}`} 
                                   onClick={() => {
                                     if (project.title === 'CheapOTT Store' || project.title === 'Uber Luxury Home') {
+                                      setSelectedProject(project.title);
                                       setShowPrivateDialog(true);
                                     } else {
                                       window.open('https://github.com/manishjan1811/webtools.sh', '_blank');
@@ -427,19 +430,62 @@ const ProjectsSection = () => {
 
         {/* Desktop & Tablet Dialog */}
         <Dialog open={showPrivateDialog} onOpenChange={setShowPrivateDialog}>
-          <DialogContent className="max-w-[90vw] sm:max-w-md w-full mx-4 sm:mx-auto hidden sm:block">
+          <DialogContent className="max-w-[90vw] sm:max-w-lg w-full mx-4 sm:mx-auto hidden sm:block">
             <DialogHeader>
-              <DialogTitle className="flex items-center gap-2 text-center justify-center">
-                <Lock className="w-5 h-5 text-orange-500" />
-                Private Repository
+              <DialogTitle className="flex items-center gap-2 text-center justify-center text-xl">
+                <Lock className="w-6 h-6 text-amber-500" />
+                {selectedProject === 'Uber Luxury Home' ? 'Premium Real Estate Platform' : 'E-commerce Platform'}
               </DialogTitle>
-              <DialogDescription className="pt-3 text-center">
-                This project is not uploaded to GitHub because it is client property and contains confidential business logic and sensitive information that cannot be made public.
+              <DialogDescription className="pt-4 text-center space-y-4">
+                {selectedProject === 'Uber Luxury Home' ? (
+                  <div className="space-y-3">
+                    <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+                      <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">🏡 Uber Luxury Home</h4>
+                      <p className="text-sm text-amber-700 dark:text-amber-300">
+                        This is a premium real estate platform built using Lovable's modern tech stack (React, TypeScript, Tailwind CSS, Supabase). 
+                        The project showcases luxury property listings with advanced features and premium UI/UX design.
+                      </p>
+                    </div>
+                    <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <p className="text-sm text-blue-700 dark:text-blue-300">
+                        <strong>🔒 Privacy Notice:</strong> Source code is private as this is a commercial project with proprietary business logic and design systems.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center mt-3">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
+                      <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">TypeScript</span>
+                      <span className="px-3 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">Supabase</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Tailwind CSS</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
+                      <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2">🛒 CheapOTT Store</h4>
+                      <p className="text-sm text-orange-700 dark:text-orange-300">
+                        A complete e-commerce platform for streaming service subscriptions. Built for a client with custom business requirements 
+                        and integrated payment systems.
+                      </p>
+                    </div>
+                    <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                      <p className="text-sm text-red-700 dark:text-red-300">
+                        <strong>🔒 Client Confidentiality:</strong> This project belongs to the client and contains sensitive business logic, 
+                        payment integrations, and proprietary features that cannot be made public.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center mt-3">
+                      <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">HTML5</span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">CSS3</span>
+                      <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">JavaScript</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">E-commerce</span>
+                    </div>
+                  </div>
+                )}
               </DialogDescription>
             </DialogHeader>
-            <div className="flex justify-center pt-4">
-              <Button onClick={() => setShowPrivateDialog(false)} className="w-full">
-                Understood
+            <div className="flex justify-center pt-6">
+              <Button onClick={() => setShowPrivateDialog(false)} className="w-full max-w-xs">
+                Got it, Thanks!
               </Button>
             </div>
           </DialogContent>
@@ -449,7 +495,8 @@ const ProjectsSection = () => {
         <MobileProjectModal 
           isOpen={showPrivateDialog}
           onClose={() => setShowPrivateDialog(false)}
-          title="CheapOTT Store"
+          title={selectedProject}
+          selectedProject={selectedProject}
         />
       </div>
     </section>
