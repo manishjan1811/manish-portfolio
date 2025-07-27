@@ -162,7 +162,7 @@ const ProjectsSection = () => {
                               className={`py-2.5 rounded-lg text-xs font-medium transition-all flex items-center justify-center ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 text-white' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'bg-red-500 hover:bg-red-600 text-white'}`} 
                               onClick={() => {
                                 console.log('Mobile button clicked for:', project.title);
-                                if (project.title === 'CheapOTT Store') {
+                                if (project.title === 'CheapOTT Store' || project.title === 'Uber Luxury Home') {
                                   console.log('Setting dialog to true');
                                   setShowPrivateDialog(true);
                                 } else {
@@ -171,7 +171,7 @@ const ProjectsSection = () => {
                               }}
                             >
                               <Github className="w-3.5 h-3.5 mr-1.5" />
-                              View Code
+                              {project.title === 'Uber Luxury Home' ? 'Private' : 'View Code'}
                             </button>
                             <button 
                               className="py-2.5 bg-muted hover:bg-muted/80 text-foreground rounded-lg border border-border transition-colors text-xs font-medium flex items-center justify-center" 
@@ -270,7 +270,7 @@ const ProjectsSection = () => {
                                 <Button 
                                   className={`font-medium transition-all duration-300 hover:scale-105 ${project.color === 'primary' ? 'bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-blue-500/25' : project.color === 'accent' ? 'bg-emerald-500 hover:bg-emerald-600 shadow-md hover:shadow-emerald-500/25' : 'bg-red-500 hover:bg-red-600 shadow-md hover:shadow-red-500/25'}`} 
                                   onClick={() => {
-                                    if (project.title === 'CheapOTT Store') {
+                                    if (project.title === 'CheapOTT Store' || project.title === 'Uber Luxury Home') {
                                       setShowPrivateDialog(true);
                                     } else {
                                       window.open('https://github.com/manishjan1811/webtools.sh', '_blank');
@@ -278,7 +278,7 @@ const ProjectsSection = () => {
                                   }}
                                 >
                                   <Github className="w-4 h-4 mr-2" />
-                                  View Source
+                                  {project.title === 'Uber Luxury Home' ? 'Private Project' : 'View Source'}
                                 </Button>
                                 <Button 
                                   variant="outline" 
