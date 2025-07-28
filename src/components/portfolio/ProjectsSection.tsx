@@ -80,7 +80,8 @@ const ProjectsSection = () => {
     icon: Code,
     color: "accent",
     type: "Fintech",
-    githubUrl: "https://github.com/manishjan1811/trade-flow-universe/tree/main"
+    githubUrl: "https://github.com/manishjan1811/trade-flow-universe/tree/main",
+    liveUrl: "https://red-hamster-862711.hostingersite.com/"
   }];
 
   const renderProjects = (projects: any[]) => {
