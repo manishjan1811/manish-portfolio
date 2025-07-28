@@ -187,16 +187,16 @@ const ProjectsSection = () => {
                       </div>
                     </div>
 
-                    {/* Project-specific Dialog for Mobile */}
-                    {project.title === 'Uber Luxury Home' && (
-                      <Dialog open={uberDialogOpen} onOpenChange={setUberDialogOpen}>
-                        <DialogContent className="max-w-[95vw] w-full mx-2">
-                          <DialogHeader>
-                            <DialogTitle className="flex items-center gap-2 text-center justify-center text-lg">
+                    {/* Project-specific Popup for Mobile - Within Container */}
+                    {project.title === 'Uber Luxury Home' && uberDialogOpen && (
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-sm w-full max-h-[80vh] overflow-y-auto">
+                          <div className="p-4">
+                            <div className="flex items-center gap-2 text-center justify-center mb-4">
                               <Lock className="w-5 h-5 text-amber-500" />
-                              Premium Real Estate Platform
-                            </DialogTitle>
-                            <DialogDescription className="pt-3 text-center space-y-3">
+                              <h3 className="font-bold text-lg">Premium Real Estate Platform</h3>
+                            </div>
+                            <div className="space-y-3">
                               <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
                                 <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2 text-sm">🏡 Uber Luxury Home</h4>
                                 <p className="text-xs text-amber-700 dark:text-amber-300">
@@ -208,26 +208,26 @@ const ProjectsSection = () => {
                                 <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">TypeScript</span>
                                 <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">Supabase</span>
                               </div>
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="flex justify-center pt-4">
-                            <Button onClick={() => setUberDialogOpen(false)} className="w-full max-w-xs text-sm">
-                              Got it!
-                            </Button>
+                            </div>
+                            <div className="flex justify-center pt-4">
+                              <Button onClick={() => setUberDialogOpen(false)} className="w-full text-sm">
+                                Got it!
+                              </Button>
+                            </div>
                           </div>
-                        </DialogContent>
-                      </Dialog>
+                        </div>
+                      </div>
                     )}
 
-                    {project.title === 'CheapOTT Store' && (
-                      <Dialog open={cheapottDialogOpen} onOpenChange={setCheapottDialogOpen}>
-                        <DialogContent className="max-w-[95vw] w-full mx-2">
-                          <DialogHeader>
-                            <DialogTitle className="flex items-center gap-2 text-center justify-center text-lg">
+                    {project.title === 'CheapOTT Store' && cheapottDialogOpen && (
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-sm w-full max-h-[80vh] overflow-y-auto">
+                          <div className="p-4">
+                            <div className="flex items-center gap-2 text-center justify-center mb-4">
                               <Lock className="w-5 h-5 text-amber-500" />
-                              E-commerce Platform
-                            </DialogTitle>
-                            <DialogDescription className="pt-3 text-center space-y-3">
+                              <h3 className="font-bold text-lg">E-commerce Platform</h3>
+                            </div>
+                            <div className="space-y-3">
                               <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
                                 <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2 text-sm">🛒 CheapOTT Store</h4>
                                 <p className="text-xs text-orange-700 dark:text-orange-300">
@@ -239,15 +239,15 @@ const ProjectsSection = () => {
                                 <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">CSS3</span>
                                 <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">JavaScript</span>
                               </div>
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="flex justify-center pt-4">
-                            <Button onClick={() => setCheapottDialogOpen(false)} className="w-full max-w-xs text-sm">
-                              Got it!
-                            </Button>
+                            </div>
+                            <div className="flex justify-center pt-4">
+                              <Button onClick={() => setCheapottDialogOpen(false)} className="w-full text-sm">
+                                Got it!
+                              </Button>
+                            </div>
                           </div>
-                        </DialogContent>
-                      </Dialog>
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -377,86 +377,69 @@ const ProjectsSection = () => {
                       </div>
                     </div>
 
-                    {/* Project-specific Dialog for Desktop */}
-                    {project.title === 'Uber Luxury Home' && (
-                      <Dialog open={uberDialogOpen} onOpenChange={setUberDialogOpen}>
-                        <DialogContent className="max-w-[90vw] sm:max-w-lg w-full mx-4 sm:mx-auto">
-                          <DialogHeader>
-                            <DialogTitle className="flex items-center gap-2 text-center justify-center text-xl">
+                    {/* Project-specific Popup for Desktop - Within Container */}
+                    {project.title === 'Uber Luxury Home' && uberDialogOpen && (
+                      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto">
+                          <div className="p-6">
+                            <div className="flex items-center gap-2 text-center justify-center mb-4">
                               <Lock className="w-6 h-6 text-amber-500" />
-                              Premium Real Estate Platform
-                            </DialogTitle>
-                            <DialogDescription className="pt-4 text-center space-y-4">
-                              <div className="space-y-3">
-                                <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                                  <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">🏡 Uber Luxury Home</h4>
-                                  <p className="text-sm text-amber-700 dark:text-amber-300">
-                                    This is a premium real estate platform built using modern tech stack (React, TypeScript, Tailwind CSS, Supabase). 
-                                    The project showcases luxury property listings with advanced features and premium UI/UX design.
-                                  </p>
-                                </div>
-                                <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                                  <p className="text-sm text-blue-700 dark:text-blue-300">
-                                    <strong>🔒 Privacy Notice:</strong> Source code is private as this is a commercial project with proprietary business logic and design systems.
-                                  </p>
-                                </div>
-                                <div className="flex flex-wrap gap-2 justify-center mt-3">
-                                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
-                                  <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">TypeScript</span>
-                                  <span className="px-3 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">Supabase</span>
-                                  <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Tailwind CSS</span>
-                                </div>
+                              <h3 className="font-bold text-xl">Premium Real Estate Platform</h3>
+                            </div>
+                            <div className="space-y-4">
+                              <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+                                <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">🏡 Uber Luxury Home</h4>
+                                <p className="text-sm text-amber-700 dark:text-amber-300">
+                                  Premium real estate platform built using modern tech stack. Source code is private as this is a commercial project with proprietary business logic.
+                                </p>
                               </div>
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="flex justify-center pt-6">
-                            <Button onClick={() => setUberDialogOpen(false)} className="w-full max-w-xs">
-                              Got it, Thanks!
-                            </Button>
+                              <div className="flex flex-wrap gap-2 justify-center">
+                                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
+                                <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">TypeScript</span>
+                                <span className="px-3 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">Supabase</span>
+                                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Tailwind CSS</span>
+                              </div>
+                            </div>
+                            <div className="flex justify-center pt-6">
+                              <Button onClick={() => setUberDialogOpen(false)} className="w-full max-w-xs">
+                                Got it, Thanks!
+                              </Button>
+                            </div>
                           </div>
-                        </DialogContent>
-                      </Dialog>
+                        </div>
+                      </div>
                     )}
 
-                    {project.title === 'CheapOTT Store' && (
-                      <Dialog open={cheapottDialogOpen} onOpenChange={setCheapottDialogOpen}>
-                        <DialogContent className="max-w-[90vw] sm:max-w-lg w-full mx-4 sm:mx-auto">
-                          <DialogHeader>
-                            <DialogTitle className="flex items-center gap-2 text-center justify-center text-xl">
+                    {project.title === 'CheapOTT Store' && cheapottDialogOpen && (
+                      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto">
+                          <div className="p-6">
+                            <div className="flex items-center gap-2 text-center justify-center mb-4">
                               <Lock className="w-6 h-6 text-amber-500" />
-                              E-commerce Platform
-                            </DialogTitle>
-                            <DialogDescription className="pt-4 text-center space-y-4">
-                              <div className="space-y-3">
-                                <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                                  <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2">🛒 CheapOTT Store</h4>
-                                  <p className="text-sm text-orange-700 dark:text-orange-300">
-                                    A complete e-commerce platform for streaming service subscriptions. Built for a client with custom business requirements 
-                                    and integrated payment systems.
-                                  </p>
-                                </div>
-                                <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
-                                  <p className="text-sm text-red-700 dark:text-red-300">
-                                    <strong>🔒 Client Confidentiality:</strong> This project belongs to the client and contains sensitive business logic, 
-                                    payment integrations, and proprietary features that cannot be made public.
-                                  </p>
-                                </div>
-                                <div className="flex flex-wrap gap-2 justify-center mt-3">
-                                  <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">HTML5</span>
-                                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">CSS3</span>
-                                  <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">JavaScript</span>
-                                  <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">E-commerce</span>
-                                </div>
+                              <h3 className="font-bold text-xl">E-commerce Platform</h3>
+                            </div>
+                            <div className="space-y-4">
+                              <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
+                                <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2">🛒 CheapOTT Store</h4>
+                                <p className="text-sm text-orange-700 dark:text-orange-300">
+                                  E-commerce platform for streaming subscriptions. Code is private due to client confidentiality and contains sensitive business logic.
+                                </p>
                               </div>
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="flex justify-center pt-6">
-                            <Button onClick={() => setCheapottDialogOpen(false)} className="w-full max-w-xs">
-                              Got it, Thanks!
-                            </Button>
+                              <div className="flex flex-wrap gap-2 justify-center">
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">HTML5</span>
+                                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">CSS3</span>
+                                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">JavaScript</span>
+                                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">E-commerce</span>
+                              </div>
+                            </div>
+                            <div className="flex justify-center pt-6">
+                              <Button onClick={() => setCheapottDialogOpen(false)} className="w-full max-w-xs">
+                                Got it, Thanks!
+                              </Button>
+                            </div>
                           </div>
-                        </DialogContent>
-                      </Dialog>
+                        </div>
+                      </div>
                     )}
                   </Card>
                 </div>
