@@ -342,7 +342,8 @@ const ProjectsSection = () => {
     <>
       {/* Top Notification Bar for Uber Luxury Home */}
       {uberDialogOpen && (
-        <div className="fixed top-0 left-0 right-0 z-[9999] animate-in slide-in-from-top duration-300">
+        <div className="fixed top-0 left-0 right-0 z-[9999] animate-fade-in"
+             style={{ animationDuration: '0.3s' }}>
           <div className="bg-gradient-to-r from-amber-50 to-blue-50 dark:from-amber-900/30 dark:to-blue-900/30 border-b border-amber-200 dark:border-amber-800 shadow-lg backdrop-blur-sm">
             <div className="max-w-6xl mx-auto px-4 py-4">
               <div className="flex items-center justify-between">
@@ -371,7 +372,8 @@ const ProjectsSection = () => {
 
       {/* Top Notification Bar for CheapOTT Store */}
       {cheapottDialogOpen && (
-        <div className="fixed top-0 left-0 right-0 z-[9999] animate-in slide-in-from-top duration-300">
+        <div className="fixed top-0 left-0 right-0 z-[9999] animate-fade-in"
+             style={{ animationDuration: '0.3s' }}>
           <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/30 dark:to-red-900/30 border-b border-orange-200 dark:border-orange-800 shadow-lg backdrop-blur-sm">
             <div className="max-w-6xl mx-auto px-4 py-4">
               <div className="flex items-center justify-between">
