@@ -276,12 +276,12 @@ const ProjectsSection = () => {
                                       setSelectedProject(project.title);
                                       setShowPrivateDialog(true);
                                     } else {
-                                      window.open('https://github.com/manishjan1811/webtools.sh', '_blank');
+                                      window.open(project.githubUrl || 'https://github.com/manishjan1811/webtools.sh', '_blank');
                                     }
                                   }}
                                 >
                                   <Github className="w-4 h-4 mr-2" />
-                                  {project.title === 'Uber Luxury Home' ? 'Private Project' : 'View Source'}
+                                  {project.title === 'Uber Luxury Home' || project.title === 'CheapOTT Store' ? 'Private Project' : 'View Source'}
                                 </Button>
                                 <Button 
                                   variant="outline" 
