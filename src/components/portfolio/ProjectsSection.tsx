@@ -186,69 +186,6 @@ const ProjectsSection = () => {
                         )}
                       </div>
                     </div>
-
-                    {/* Project-specific Popup for Mobile - Within Container */}
-                    {project.title === 'Uber Luxury Home' && uberDialogOpen && (
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-sm w-full max-h-[80vh] overflow-y-auto">
-                          <div className="p-4">
-                            <div className="flex items-center gap-2 text-center justify-center mb-4">
-                              <Lock className="w-5 h-5 text-amber-500" />
-                              <h3 className="font-bold text-lg">Premium Real Estate Platform</h3>
-                            </div>
-                            <div className="space-y-3">
-                              <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                                <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2 text-sm">🏡 Uber Luxury Home</h4>
-                                <p className="text-xs text-amber-700 dark:text-amber-300">
-                                  Premium real estate platform with modern tech stack. Source code is private as this is a commercial project.
-                                </p>
-                              </div>
-                              <div className="flex flex-wrap gap-1.5 justify-center">
-                                <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
-                                <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">TypeScript</span>
-                                <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">Supabase</span>
-                              </div>
-                            </div>
-                            <div className="flex justify-center pt-4">
-                              <Button onClick={() => setUberDialogOpen(false)} className="w-full text-sm">
-                                Got it!
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {project.title === 'CheapOTT Store' && cheapottDialogOpen && (
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-sm w-full max-h-[80vh] overflow-y-auto">
-                          <div className="p-4">
-                            <div className="flex items-center gap-2 text-center justify-center mb-4">
-                              <Lock className="w-5 h-5 text-amber-500" />
-                              <h3 className="font-bold text-lg">E-commerce Platform</h3>
-                            </div>
-                            <div className="space-y-3">
-                              <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                                <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2 text-sm">🛒 CheapOTT Store</h4>
-                                <p className="text-xs text-orange-700 dark:text-orange-300">
-                                  E-commerce platform for streaming subscriptions. Code is private due to client confidentiality.
-                                </p>
-                              </div>
-                              <div className="flex flex-wrap gap-1.5 justify-center">
-                                <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">HTML5</span>
-                                <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">CSS3</span>
-                                <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">JavaScript</span>
-                              </div>
-                            </div>
-                            <div className="flex justify-center pt-4">
-                              <Button onClick={() => setCheapottDialogOpen(false)} className="w-full text-sm">
-                                Got it!
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               );
@@ -376,71 +313,6 @@ const ProjectsSection = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Project-specific Popup for Desktop - Within Container */}
-                    {project.title === 'Uber Luxury Home' && uberDialogOpen && (
-                      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto">
-                          <div className="p-6">
-                            <div className="flex items-center gap-2 text-center justify-center mb-4">
-                              <Lock className="w-6 h-6 text-amber-500" />
-                              <h3 className="font-bold text-xl">Premium Real Estate Platform</h3>
-                            </div>
-                            <div className="space-y-4">
-                              <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                                <h4 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">🏡 Uber Luxury Home</h4>
-                                <p className="text-sm text-amber-700 dark:text-amber-300">
-                                  Premium real estate platform built using modern tech stack. Source code is private as this is a commercial project with proprietary business logic.
-                                </p>
-                              </div>
-                              <div className="flex flex-wrap gap-2 justify-center">
-                                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
-                                <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">TypeScript</span>
-                                <span className="px-3 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">Supabase</span>
-                                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Tailwind CSS</span>
-                              </div>
-                            </div>
-                            <div className="flex justify-center pt-6">
-                              <Button onClick={() => setUberDialogOpen(false)} className="w-full max-w-xs">
-                                Got it, Thanks!
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {project.title === 'CheapOTT Store' && cheapottDialogOpen && (
-                      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-                        <div className="bg-background border border-border rounded-xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto">
-                          <div className="p-6">
-                            <div className="flex items-center gap-2 text-center justify-center mb-4">
-                              <Lock className="w-6 h-6 text-amber-500" />
-                              <h3 className="font-bold text-xl">E-commerce Platform</h3>
-                            </div>
-                            <div className="space-y-4">
-                              <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                                <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-2">🛒 CheapOTT Store</h4>
-                                <p className="text-sm text-orange-700 dark:text-orange-300">
-                                  E-commerce platform for streaming subscriptions. Code is private due to client confidentiality and contains sensitive business logic.
-                                </p>
-                              </div>
-                              <div className="flex flex-wrap gap-2 justify-center">
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">HTML5</span>
-                                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">CSS3</span>
-                                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">JavaScript</span>
-                                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">E-commerce</span>
-                              </div>
-                            </div>
-                            <div className="flex justify-center pt-6">
-                              <Button onClick={() => setCheapottDialogOpen(false)} className="w-full max-w-xs">
-                                Got it, Thanks!
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </Card>
                 </div>
               );
@@ -467,7 +339,66 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-8 sm:py-12 md:py-16 lg:py-24">
+    <>
+      {/* Top Notification Bar for Uber Luxury Home */}
+      {uberDialogOpen && (
+        <div className="fixed top-0 left-0 right-0 z-[9999] animate-in slide-in-from-top duration-300">
+          <div className="bg-gradient-to-r from-amber-50 to-blue-50 dark:from-amber-900/30 dark:to-blue-900/30 border-b border-amber-200 dark:border-amber-800 shadow-lg backdrop-blur-sm">
+            <div className="max-w-6xl mx-auto px-4 py-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
+                    <Lock className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-amber-900 dark:text-amber-100">🏡 Uber Luxury Home - Private Project</h3>
+                    <p className="text-sm text-amber-700 dark:text-amber-300">Premium real estate platform built with React, TypeScript & Supabase. Source code is private due to commercial nature.</p>
+                  </div>
+                </div>
+                <Button 
+                  onClick={() => setUberDialogOpen(false)} 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-amber-600 hover:bg-amber-100 dark:text-amber-400 dark:hover:bg-amber-900/50"
+                >
+                  ✕
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Top Notification Bar for CheapOTT Store */}
+      {cheapottDialogOpen && (
+        <div className="fixed top-0 left-0 right-0 z-[9999] animate-in slide-in-from-top duration-300">
+          <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/30 dark:to-red-900/30 border-b border-orange-200 dark:border-orange-800 shadow-lg backdrop-blur-sm">
+            <div className="max-w-6xl mx-auto px-4 py-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
+                    <Lock className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-orange-900 dark:text-orange-100">🛒 CheapOTT Store - Client Project</h3>
+                    <p className="text-sm text-orange-700 dark:text-orange-300">E-commerce platform for streaming subscriptions. Code is private due to client confidentiality.</p>
+                  </div>
+                </div>
+                <Button 
+                  onClick={() => setCheapottDialogOpen(false)} 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-orange-600 hover:bg-orange-100 dark:text-orange-400 dark:hover:bg-orange-900/50"
+                >
+                  ✕
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section id="projects" ref={sectionRef} className="py-8 sm:py-12 md:py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
@@ -559,6 +490,7 @@ const ProjectsSection = () => {
 
       </div>
     </section>
+    </>
   );
 };
 
