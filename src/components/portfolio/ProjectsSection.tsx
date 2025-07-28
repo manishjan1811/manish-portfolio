@@ -58,7 +58,7 @@ const ProjectsSection = () => {
     icon: Globe,
     color: "primary",
     type: "Real Estate",
-    liveUrl: "https://uberluxuryhome.com"
+    liveUrl: "https://red-hamster-862711.hostingersite.com/"
   }, {
     title: "CheapOTT Store",
     subtitle: "E-commerce Platform for Client",
@@ -80,8 +80,7 @@ const ProjectsSection = () => {
     icon: Code,
     color: "accent",
     type: "Fintech",
-    githubUrl: "https://github.com/manishjan1811/trade-flow-universe/tree/main",
-    liveUrl: "https://red-hamster-862711.hostingersite.com/"
+    githubUrl: "https://github.com/manishjan1811/trade-flow-universe/tree/main"
   }];
 
   const renderProjects = (projects: any[]) => {
