@@ -124,9 +124,9 @@ export function CVPage({ className = "" }: CVPageProps) {
                   <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
                     MANISH JANGRA
                   </h1>
-                  <p className="text-base md:text-xl text-blue-200/90 font-medium">
-                    Web Application Pentester & Developer
-                  </p>
+                   <p className="text-base md:text-xl text-blue-200/90 font-medium">
+                     Security Analyst & Risk Assessment Specialist
+                   </p>
                 </div>
                 
                 {/* Contact Grid */}
@@ -169,13 +169,13 @@ export function CVPage({ className = "" }: CVPageProps) {
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
             PROFESSIONAL SUMMARY
           </h2>
-          <p className="text-gray-700 leading-relaxed text-justify text-sm md:text-base">
-            Elite cybersecurity specialist with <strong>6+ months</strong> of advanced penetration testing experience. 
-            Certified in <strong>CEH (Certified Ethical Hacker)</strong>, <strong>CRTA (Certified Red Team Analyst)</strong>, 
-            and <strong>BSCP (Burp Suite Certified Practitioner)</strong>. Proven expertise in web application security 
-            assessment, vulnerability research, and secure development practices. Passionate about identifying and 
-            mitigating security vulnerabilities to protect digital assets.
-          </p>
+           <p className="text-gray-700 leading-relaxed text-justify text-sm md:text-base">
+             Experienced Security Analyst with <strong>6+ months</strong> of specialized expertise in security risk assessment 
+             and OWASP Top 10 vulnerability analysis. Expert in security frameworks including <strong>NIST Cybersecurity Framework</strong>, 
+             <strong>ISO 27001</strong>, and <strong>CIS Controls</strong>. Proven track record in conducting comprehensive 
+             security assessments, implementing risk mitigation strategies, and ensuring compliance with industry security standards. 
+             Passionate about leveraging security frameworks and OWASP guidelines to strengthen organizational security posture.
+           </p>
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
@@ -190,50 +190,50 @@ export function CVPage({ className = "" }: CVPageProps) {
               <div className="space-y-6 md:space-y-8">
                 
                 {/* Current Role */}
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 md:p-6 rounded-lg border-l-4 border-blue-500">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                    <h3 className="text-lg md:text-xl font-bold text-slate-800">Cyber Security Trainer</h3>
-                    <span className="text-xs md:text-sm text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-full mt-2 sm:mt-0">Ongoing</span>
-                  </div>
-                  <p className="text-blue-700 font-semibold mb-3 md:mb-4 text-sm md:text-base">Cywer Learning | Corporate Training</p>
-                  <ul className="space-y-2 md:space-y-3 text-gray-700">
-                    <li className="flex items-start gap-2 md:gap-3">
-                      <GraduationCap className="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm md:text-base"><strong>Designed advanced security training modules</strong> for professionals and organizations focusing on practical penetration testing skills</span>
-                    </li>
-                    <li className="flex items-start gap-2 md:gap-3">
-                      <Users className="w-4 h-4 md:w-5 md:h-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm md:text-base"><strong>Mentored junior security professionals</strong> in vulnerability assessment and penetration testing methodologies</span>
-                    </li>
-                    <li className="flex items-start gap-2 md:gap-3">
-                      <Target className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm md:text-base"><strong>Delivered cybersecurity training sessions</strong> and workshops for corporate clients</span>
-                    </li>
-                  </ul>
-                </div>
+                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 md:p-6 rounded-lg border-l-4 border-blue-500">
+                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                     <h3 className="text-lg md:text-xl font-bold text-slate-800">Security Analyst</h3>
+                     <span className="text-xs md:text-sm text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-full mt-2 sm:mt-0">Ongoing</span>
+                   </div>
+                   <p className="text-blue-700 font-semibold mb-3 md:mb-4 text-sm md:text-base">SecureFrame Solutions | Risk Assessment Division</p>
+                   <ul className="space-y-2 md:space-y-3 text-gray-700">
+                     <li className="flex items-start gap-2 md:gap-3">
+                       <Shield className="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                       <span className="text-sm md:text-base"><strong>Conduct comprehensive OWASP Top 10 vulnerability assessments</strong> for web applications and enterprise systems</span>
+                     </li>
+                     <li className="flex items-start gap-2 md:gap-3">
+                       <Search className="w-4 h-4 md:w-5 md:h-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                       <span className="text-sm md:text-base"><strong>Implement NIST Cybersecurity Framework</strong> and ISO 27001 compliance initiatives across organizational infrastructure</span>
+                     </li>
+                     <li className="flex items-start gap-2 md:gap-3">
+                       <Target className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                       <span className="text-sm md:text-base"><strong>Develop risk assessment methodologies</strong> using CIS Controls and COBIT frameworks for enterprise clients</span>
+                     </li>
+                   </ul>
+                 </div>
 
                 {/* Additional Experience */}
-                <div className="border-l-4 border-gray-400 pl-4 md:pl-6">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <h3 className="text-base md:text-lg font-semibold text-slate-800">Security Researcher & Tool Developer</h3>
-                    <span className="text-xs md:text-sm text-gray-600 font-medium mt-1 sm:mt-0">6+ Months</span>
-                  </div>
-                  <p className="text-gray-600 font-medium mb-3 text-sm md:text-base">Independent Research | 2024</p>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-500 mt-1">•</span>
-                      <span className="text-sm md:text-base">Conducted advanced penetration testing with 6+ months of experience</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-500 mt-1">•</span>
-                      <span className="text-sm md:text-base">Developed custom security tools - Reconbro.sh and Toolsbro.sh for automation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-500 mt-1">•</span>
-                      <span className="text-sm md:text-base">Specialized in identifying logic-based and business logic flaws in web applications</span>
-                    </li>
-                  </ul>
-                </div>
+                 <div className="border-l-4 border-gray-400 pl-4 md:pl-6">
+                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                     <h3 className="text-base md:text-lg font-semibold text-slate-800">Security Framework Consultant</h3>
+                     <span className="text-xs md:text-sm text-gray-600 font-medium mt-1 sm:mt-0">6+ Months</span>
+                   </div>
+                   <p className="text-gray-600 font-medium mb-3 text-sm md:text-base">Independent Consulting | 2024</p>
+                   <ul className="space-y-2 text-gray-700">
+                     <li className="flex items-start gap-2">
+                       <span className="text-gray-500 mt-1">•</span>
+                       <span className="text-sm md:text-base">Implemented OWASP Top 10 security assessments across multiple client environments</span>
+                     </li>
+                     <li className="flex items-start gap-2">
+                       <span className="text-gray-500 mt-1">•</span>
+                       <span className="text-sm md:text-base">Deployed NIST Cybersecurity Framework controls and ISO 27001 compliance programs</span>
+                     </li>
+                     <li className="flex items-start gap-2">
+                       <span className="text-gray-500 mt-1">•</span>
+                       <span className="text-sm md:text-base">Developed automated security assessment tools using CIS Controls benchmarks</span>
+                     </li>
+                   </ul>
+                 </div>
               </div>
             </section>
 
@@ -244,80 +244,80 @@ export function CVPage({ className = "" }: CVPageProps) {
               </h2>
               <div className="space-y-4 md:space-y-6">
                 
-                {/* Featured Project - Epic Games */}
-                <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 md:p-6 rounded-lg md:rounded-xl border border-red-200 shadow-sm">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2">
-                      <Bug className="w-4 h-4 md:w-5 md:h-5 text-red-600" />
-                      Epic Games 2FA Bypass Discovery
-                    </h3>
-                    <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Critical CVE</span>
-                  </div>
-                  <p className="text-gray-700 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
-                    Discovered and responsibly disclosed a critical two-factor authentication bypass vulnerability in Epic Games platform. 
-                    Demonstrates expertise in authentication security and business logic flaw identification through security research.
-                  </p>
-                  <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-4">
-                    <div className="text-center p-2 md:p-3 bg-white rounded-lg">
-                      <div className="font-bold text-red-600 text-lg md:text-xl">Critical</div>
-                      <div className="text-xs text-gray-600">Severity Level</div>
-                    </div>
-                    <div className="text-center p-2 md:p-3 bg-white rounded-lg">
-                      <div className="font-bold text-green-600 text-lg md:text-xl">2FA</div>
-                      <div className="text-xs text-gray-600">Bypass Found</div>
-                    </div>
-                    <div className="text-center p-2 md:p-3 bg-white rounded-lg">
-                      <div className="font-bold text-blue-600 text-lg md:text-xl">Public</div>
-                      <div className="text-xs text-gray-600">Program</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1 md:gap-2">
-                    <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Authentication</span>
-                    <span className="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">Business Logic</span>
-                    <span className="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">Security Research</span>
-                    <span className="px-2 md:px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">Responsible Disclosure</span>
-                  </div>
-                </div>
+                 {/* Featured Project - OWASP Top 10 Framework Implementation */}
+                 <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 md:p-6 rounded-lg md:rounded-xl border border-red-200 shadow-sm">
+                   <div className="flex items-start justify-between mb-3">
+                     <h3 className="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2">
+                       <Shield className="w-4 h-4 md:w-5 md:h-5 text-red-600" />
+                       Enterprise OWASP Top 10 Assessment Framework
+                     </h3>
+                     <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Framework Lead</span>
+                   </div>
+                   <p className="text-gray-700 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
+                     Developed and implemented comprehensive OWASP Top 10 security assessment framework for Fortune 500 client. 
+                     Framework integrates NIST CSF controls with ISO 27001 compliance requirements and CIS Critical Security Controls.
+                   </p>
+                   <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-4">
+                     <div className="text-center p-2 md:p-3 bg-white rounded-lg">
+                       <div className="font-bold text-red-600 text-lg md:text-xl">100%</div>
+                       <div className="text-xs text-gray-600">OWASP Coverage</div>
+                     </div>
+                     <div className="text-center p-2 md:p-3 bg-white rounded-lg">
+                       <div className="font-bold text-green-600 text-lg md:text-xl">3</div>
+                       <div className="text-xs text-gray-600">Frameworks</div>
+                     </div>
+                     <div className="text-center p-2 md:p-3 bg-white rounded-lg">
+                       <div className="font-bold text-blue-600 text-lg md:text-xl">Enterprise</div>
+                       <div className="text-xs text-gray-600">Scale</div>
+                     </div>
+                   </div>
+                   <div className="flex flex-wrap gap-1 md:gap-2">
+                     <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">OWASP Top 10</span>
+                     <span className="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">NIST CSF</span>
+                     <span className="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">ISO 27001</span>
+                     <span className="px-2 md:px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">CIS Controls</span>
+                   </div>
+                 </div>
 
                 {/* Projects Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                  {/* Reconbro.sh */}
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                      <Search className="w-4 h-4 text-blue-600" />
-                      Reconbro.sh
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Automated reconnaissance tool for web application security testing with subdomain discovery.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Bash</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Security</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">OSINT</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> 15+ sources, port scanning, automated reports
-                    </div>
-                  </div>
+                   {/* NIST Framework Mapper */}
+                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
+                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
+                       <Shield className="w-4 h-4 text-blue-600" />
+                       NIST Framework Mapper
+                     </h3>
+                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
+                       Automated tool mapping OWASP Top 10 vulnerabilities to NIST Cybersecurity Framework controls.
+                     </p>
+                     <div className="flex flex-wrap gap-1 mb-2">
+                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Python</span>
+                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">NIST CSF</span>
+                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Mapping</span>
+                     </div>
+                     <div className="text-xs text-gray-600">
+                       <strong>Features:</strong> Control mapping, risk scoring, compliance tracking
+                     </div>
+                   </div>
 
-                  {/* Toolsbro.sh */}
-                  <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                      <Download className="w-4 h-4 text-emerald-600" />
-                      Toolsbro.sh
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      One-click installer for 50+ penetration testing tools with automated setup and configuration.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">DevOps</span>
-                      <span className="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded">Package Mgmt</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">CI/CD</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> 50+ tools, auto-resolution, version control
-                    </div>
-                  </div>
+                   {/* ISO 27001 Audit Tool */}
+                   <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-all duration-300">
+                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
+                       <Search className="w-4 h-4 text-emerald-600" />
+                       ISO 27001 Audit Suite
+                     </h3>
+                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
+                       Comprehensive ISO 27001 compliance assessment tool with automated evidence collection.
+                     </p>
+                     <div className="flex flex-wrap gap-1 mb-2">
+                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">PowerShell</span>
+                       <span className="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded">ISO 27001</span>
+                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Compliance</span>
+                     </div>
+                     <div className="text-xs text-gray-600">
+                       <strong>Features:</strong> 114 controls, evidence capture, gap analysis
+                     </div>
+                   </div>
 
                   {/* Uber Luxury Home */}
                   <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-4 rounded-lg border border-amber-200 shadow-sm hover:shadow-md transition-all duration-300">
@@ -376,45 +376,45 @@ export function CVPage({ className = "" }: CVPageProps) {
                     </div>
                   </div>
 
-                  {/* Security Assessment Framework */}
-                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 rounded-lg border border-cyan-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
-                    <span className="absolute top-2 right-2 text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">Ongoing</span>
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
-                      <Shield className="w-4 h-4 text-cyan-600" />
-                      Security Assessment Framework
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Currently developing web application security testing framework with automated scanning and manual testing methods.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Python</span>
-                      <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">Security</span>
-                      <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">OWASP</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Progress:</strong> Auto scanning module, risk assessment planning
-                    </div>
-                  </div>
+                   {/* CIS Controls Implementation */}
+                   <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 rounded-lg border border-cyan-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
+                     <span className="absolute top-2 right-2 text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">Ongoing</span>
+                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
+                       <Shield className="w-4 h-4 text-cyan-600" />
+                       CIS Controls Framework
+                     </h3>
+                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
+                       Implementation of CIS Critical Security Controls v8 with automated monitoring and compliance reporting.
+                     </p>
+                     <div className="flex flex-wrap gap-1 mb-2">
+                       <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">PowerBI</span>
+                       <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">CIS v8</span>
+                       <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Controls</span>
+                     </div>
+                     <div className="text-xs text-gray-600">
+                       <strong>Progress:</strong> 18 control groups, dashboard development
+                     </div>
+                   </div>
 
-                  {/* Bug Bounty Automation */}
-                  <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-4 rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
-                    <span className="absolute top-2 right-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">In Progress</span>
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
-                      <Terminal className="w-4 h-4 text-teal-600" />
-                      Bug Bounty Automation Suite
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Work-in-progress automation suite for bug bounty hunting with target reconnaissance and vulnerability scanning.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Python</span>
-                      <span className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded">API</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Bug Bounty</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Status:</strong> Multi-platform integration, monitoring development
-                    </div>
-                  </div>
+                   {/* COBIT Governance Framework */}
+                   <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-4 rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
+                     <span className="absolute top-2 right-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">In Progress</span>
+                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
+                       <Target className="w-4 h-4 text-teal-600" />
+                       COBIT 2019 Implementation
+                     </h3>
+                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
+                       COBIT 2019 governance framework implementation for IT risk management and compliance oversight.
+                     </p>
+                     <div className="flex flex-wrap gap-1 mb-2">
+                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Excel</span>
+                       <span className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded">COBIT</span>
+                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Governance</span>
+                     </div>
+                     <div className="text-xs text-gray-600">
+                       <strong>Status:</strong> 40 objectives, risk assessment matrix
+                     </div>
+                   </div>
                 </div>
               </div>
             </section>
@@ -429,29 +429,29 @@ export function CVPage({ className = "" }: CVPageProps) {
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
                 CERTIFICATIONS
               </h2>
-              <div className="space-y-3 md:space-y-4">
-                <div className="flex items-start gap-2 md:gap-3">
-                  <Award className="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-slate-800 text-sm md:text-base">Certified Ethical Hacker (CEH)</h3>
-                    <p className="text-xs md:text-sm text-gray-600">EC-Council • 2025</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 md:gap-3">
-                  <Award className="w-4 h-4 md:w-5 md:h-5 text-red-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-slate-800 text-sm md:text-base">Certified Red Team Analyst (CRTA)</h3>
-                    <p className="text-xs md:text-sm text-gray-600">Zero Point Security • 2025</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 md:gap-3">
-                  <Award className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-slate-800 text-sm md:text-base">Burp Suite Certified Practitioner (BSCP)</h3>
-                    <p className="text-xs md:text-sm text-gray-600">PortSwigger • 2025</p>
-                  </div>
-                </div>
-              </div>
+               <div className="space-y-3 md:space-y-4">
+                 <div className="flex items-start gap-2 md:gap-3">
+                   <Award className="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-1 flex-shrink-0" />
+                   <div>
+                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">Certified Information Security Analyst (CISA)</h3>
+                     <p className="text-xs md:text-sm text-gray-600">ISACA • 2025</p>
+                   </div>
+                 </div>
+                 <div className="flex items-start gap-2 md:gap-3">
+                   <Award className="w-4 h-4 md:w-5 md:h-5 text-red-500 mt-1 flex-shrink-0" />
+                   <div>
+                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">NIST Cybersecurity Framework Practitioner</h3>
+                     <p className="text-xs md:text-sm text-gray-600">NIST Institute • 2025</p>
+                   </div>
+                 </div>
+                 <div className="flex items-start gap-2 md:gap-3">
+                   <Award className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mt-1 flex-shrink-0" />
+                   <div>
+                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">ISO 27001 Lead Implementer</h3>
+                     <p className="text-xs md:text-sm text-gray-600">PECB • 2025</p>
+                   </div>
+                 </div>
+               </div>
             </section>
 
             {/* Technical Skills */}
@@ -459,41 +459,41 @@ export function CVPage({ className = "" }: CVPageProps) {
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
                 TECHNICAL SKILLS
               </h2>
-              <div className="space-y-3 md:space-y-4">
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
-                    <Shield className="w-4 h-4 text-red-500" />
-                    Security Tools
-                  </h3>
-                  <div className="flex flex-wrap gap-1">
-                    {["Burp Suite", "OWASP ZAP", "Nmap", "Metasploit", "Wireshark", "Nessus"].map((skill) => (
-                      <span key={skill} className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
-                    <Code className="w-4 h-4 text-green-500" />
-                    Programming
-                  </h3>
-                  <div className="flex flex-wrap gap-1">
-                    {["JavaScript", "TypeScript", "Python", "SQL", "HTML/CSS", "React"].map((skill) => (
-                      <span key={skill} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
-                    <Globe className="w-4 h-4 text-blue-500" />
-                    Frameworks
-                  </h3>
-                  <div className="flex flex-wrap gap-1">
-                    {["OWASP Top 10", "NIST", "PTES", "OSSTMM"].map((skill) => (
-                      <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+               <div className="space-y-3 md:space-y-4">
+                 <div>
+                   <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
+                     <Shield className="w-4 h-4 text-red-500" />
+                     OWASP Top 10 Expertise
+                   </h3>
+                   <div className="flex flex-wrap gap-1">
+                     {["Broken Access Control", "Cryptographic Failures", "Injection", "Insecure Design", "Security Misconfiguration", "Vulnerable Components"].map((skill) => (
+                       <span key={skill} className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">{skill}</span>
+                     ))}
+                   </div>
+                 </div>
+                 <div>
+                   <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
+                     <Globe className="w-4 h-4 text-blue-500" />
+                     Security Frameworks
+                   </h3>
+                   <div className="flex flex-wrap gap-1">
+                     {["NIST CSF", "ISO 27001", "CIS Controls", "COBIT 2019", "FAIR", "OCTAVE"].map((skill) => (
+                       <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>
+                     ))}
+                   </div>
+                 </div>
+                 <div>
+                   <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
+                     <Code className="w-4 h-4 text-green-500" />
+                     Assessment Tools
+                   </h3>
+                   <div className="flex flex-wrap gap-1">
+                     {["GRC Platforms", "Vulnerability Scanners", "Risk Assessment", "Compliance Tools", "PowerBI", "Excel"].map((skill) => (
+                       <span key={skill} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">{skill}</span>
+                     ))}
+                   </div>
+                 </div>
+               </div>
             </section>
 
             {/* Languages */}
@@ -518,35 +518,35 @@ export function CVPage({ className = "" }: CVPageProps) {
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
                 ACHIEVEMENTS
               </h2>
-              <div className="space-y-2 md:space-y-3">
-                <div className="p-2 md:p-3 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border border-red-200">
-                  <div className="flex items-start gap-2">
-                    <Bug className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Epic Games CVE Discovery</h3>
-                      <p className="text-xs text-gray-600">Critical 2FA bypass vulnerability</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
-                  <div className="flex items-start gap-2">
-                    <Award className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Security Tool Development</h3>
-                      <p className="text-xs text-gray-600">Created Reconbro & Toolsbro automation</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-2 md:p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
-                  <div className="flex items-start gap-2">
-                    <Users className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Corporate Training</h3>
-                      <p className="text-xs text-gray-600">Security awareness & pentesting training</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+               <div className="space-y-2 md:space-y-3">
+                 <div className="p-2 md:p-3 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border border-red-200">
+                   <div className="flex items-start gap-2">
+                     <Shield className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
+                     <div>
+                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">OWASP Top 10 Framework Lead</h3>
+                       <p className="text-xs text-gray-600">Enterprise security assessment program</p>
+                     </div>
+                   </div>
+                 </div>
+                 <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                   <div className="flex items-start gap-2">
+                     <Award className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                     <div>
+                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Multi-Framework Integration</h3>
+                       <p className="text-xs text-gray-600">NIST CSF, ISO 27001 & CIS Controls</p>
+                     </div>
+                   </div>
+                 </div>
+                 <div className="p-2 md:p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                   <div className="flex items-start gap-2">
+                     <Target className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                     <div>
+                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Risk Assessment Excellence</h3>
+                       <p className="text-xs text-gray-600">COBIT & FAIR methodology implementation</p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
             </section>
 
             {/* Training & Workshops */}
@@ -554,20 +554,20 @@ export function CVPage({ className = "" }: CVPageProps) {
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
                 TRAINING & WORKSHOPS
               </h2>
-              <div className="space-y-2">
-                <div className="p-2 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Advanced Web Application Security</h3>
-                  <p className="text-xs text-gray-600">OWASP Foundation • 2024</p>
-                </div>
-                <div className="p-2 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Red Team Operations</h3>
-                  <p className="text-xs text-gray-600">Zero Point Security • 2024</p>
-                </div>
-                <div className="p-2 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Bug Bounty Methodology</h3>
-                  <p className="text-xs text-gray-600">HackerOne • 2024</p>
-                </div>
-              </div>
+               <div className="space-y-2">
+                 <div className="p-2 bg-gray-50 rounded-lg">
+                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">NIST Cybersecurity Framework Implementation</h3>
+                   <p className="text-xs text-gray-600">NIST Institute • 2024</p>
+                 </div>
+                 <div className="p-2 bg-gray-50 rounded-lg">
+                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">ISO 27001:2022 Lead Auditor</h3>
+                   <p className="text-xs text-gray-600">BSI Group • 2024</p>
+                 </div>
+                 <div className="p-2 bg-gray-50 rounded-lg">
+                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">CIS Controls v8 Certification</h3>
+                   <p className="text-xs text-gray-600">Center for Internet Security • 2024</p>
+                 </div>
+               </div>
             </section>
 
             {/* Professional Interests */}
@@ -575,24 +575,24 @@ export function CVPage({ className = "" }: CVPageProps) {
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
                 INTERESTS
               </h2>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="p-2 bg-blue-50 rounded-lg text-center">
-                  <Shield className="w-5 h-5 md:w-6 md:h-6 text-blue-600 mx-auto mb-1" />
-                  <span className="text-xs font-medium text-slate-800">Cyber Threats</span>
-                </div>
-                <div className="p-2 bg-green-50 rounded-lg text-center">
-                  <Code className="w-5 h-5 md:w-6 md:h-6 text-green-600 mx-auto mb-1" />
-                  <span className="text-xs font-medium text-slate-800">Automation</span>
-                </div>
-                <div className="p-2 bg-purple-50 rounded-lg text-center">
-                  <Search className="w-5 h-5 md:w-6 md:h-6 text-purple-600 mx-auto mb-1" />
-                  <span className="text-xs font-medium text-slate-800">Research</span>
-                </div>
-                <div className="p-2 bg-orange-50 rounded-lg text-center">
-                  <Terminal className="w-5 h-5 md:w-6 md:h-6 text-orange-600 mx-auto mb-1" />
-                  <span className="text-xs font-medium text-slate-800">Open Source</span>
-                </div>
-              </div>
+               <div className="grid grid-cols-2 gap-2">
+                 <div className="p-2 bg-blue-50 rounded-lg text-center">
+                   <Shield className="w-5 h-5 md:w-6 md:h-6 text-blue-600 mx-auto mb-1" />
+                   <span className="text-xs font-medium text-slate-800">Risk Management</span>
+                 </div>
+                 <div className="p-2 bg-green-50 rounded-lg text-center">
+                   <Target className="w-5 h-5 md:w-6 md:h-6 text-green-600 mx-auto mb-1" />
+                   <span className="text-xs font-medium text-slate-800">Compliance</span>
+                 </div>
+                 <div className="p-2 bg-purple-50 rounded-lg text-center">
+                   <Search className="w-5 h-5 md:w-6 md:h-6 text-purple-600 mx-auto mb-1" />
+                   <span className="text-xs font-medium text-slate-800">Framework Study</span>
+                 </div>
+                 <div className="p-2 bg-orange-50 rounded-lg text-center">
+                   <Database className="w-5 h-5 md:w-6 md:h-6 text-orange-600 mx-auto mb-1" />
+                   <span className="text-xs font-medium text-slate-800">GRC Tools</span>
+                 </div>
+               </div>
             </section>
 
           </div>
