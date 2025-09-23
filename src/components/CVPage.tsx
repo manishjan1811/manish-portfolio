@@ -539,28 +539,28 @@ export function CVPage({
                <div className="space-y-2 md:space-y-3">
                  <div className="p-2 md:p-3 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border border-red-200">
                    <div className="flex items-start gap-2">
-                     <Shield className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
+                     <Bug className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
                      <div>
-                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">OWASP Top 10 Framework Lead</h3>
-                       <p className="text-xs text-gray-600">Enterprise security assessment program</p>
+                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Epic Games Vulnerability Discovery</h3>
+                       <p className="text-xs text-gray-600">Account creation bypass - OTP & 2FA circumvention</p>
                      </div>
                    </div>
                  </div>
                  <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
                    <div className="flex items-start gap-2">
-                     <Award className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                     <Terminal className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
                      <div>
-                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Multi-Framework Integration</h3>
-                       <p className="text-xs text-gray-600">NIST CSF, ISO 27001 & CIS Controls</p>
+                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Security Tools Development</h3>
+                       <p className="text-xs text-gray-600">Created BugBro & ToolsBro - AI-assisted security utilities</p>
                      </div>
                    </div>
                  </div>
                  <div className="p-2 md:p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
                    <div className="flex items-start gap-2">
-                     <Target className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                     <Globe className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
                      <div>
-                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Risk Assessment Excellence</h3>
-                       <p className="text-xs text-gray-600">COBIT & FAIR methodology implementation</p>
+                       <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Multi-Website Portfolio</h3>
+                       <p className="text-xs text-gray-600">Multiple web applications built individually using AI assistance</p>
                      </div>
                    </div>
                  </div>
