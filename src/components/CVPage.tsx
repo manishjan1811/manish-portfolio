@@ -504,9 +504,9 @@ export function CVPage({
                      <Globe className="w-4 h-4 text-blue-500" />
                      Security Frameworks
                    </h3>
-                   <div className="flex flex-wrap gap-1">
-                     {["NIST CSF", "ISO 27001", "CIS Controls", "COBIT 2019", "FAIR", "OCTAVE"].map(skill => <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>)}
-                   </div>
+                    <div className="flex flex-wrap gap-1">
+                      {["NIST CSF", "ISO 27001", "CIS Controls"].map(skill => <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>)}
+                    </div>
                  </div>
                  <div>
                    <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
