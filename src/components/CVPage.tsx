@@ -566,23 +566,25 @@ export function CVPage({
                </div>
             </section>
 
-            {/* Training & Workshops */}
+            {/* Education */}
             <section>
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
-                TRAINING & WORKSHOPS
+                EDUCATION
               </h2>
                <div className="space-y-2">
-                 <div className="p-2 bg-gray-50 rounded-lg">
-                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">NIST Cybersecurity Framework Implementation</h3>
-                   <p className="text-xs text-gray-600">NIST Institute • 2024</p>
+                 <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                   <div className="flex items-start gap-2">
+                     <GraduationCap className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                     <div>
+                       <h3 className="font-semibold text-slate-800 text-sm md:text-base">Diploma in Cyber Security</h3>
+                       <p className="text-xs md:text-sm text-blue-700 font-medium">Craw Cyber Security</p>
+                       <p className="text-xs text-gray-600 mt-1">Foundation in cybersecurity principles, ethical hacking, and security frameworks</p>
+                     </div>
+                   </div>
                  </div>
                  <div className="p-2 bg-gray-50 rounded-lg">
-                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">ISO 27001:2022 Lead Auditor</h3>
-                   <p className="text-xs text-gray-600">BSI Group • 2024</p>
-                 </div>
-                 <div className="p-2 bg-gray-50 rounded-lg">
-                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">CIS Controls v8 Certification</h3>
-                   <p className="text-xs text-gray-600">Center for Internet Security • 2024</p>
+                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Self-Directed Learning & Implementation</h3>
+                   <p className="text-xs text-gray-600">Advanced security frameworks, OWASP methodologies, and practical security assessment tools through hands-on experience and independent research</p>
                  </div>
                </div>
             </section>
