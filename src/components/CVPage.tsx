@@ -243,27 +243,7 @@ export function CVPage({
                  </div>
 
                 {/* Additional Experience */}
-                 <div className="border-l-4 border-gray-400 pl-4 md:pl-6">
-                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                     <h3 className="text-base md:text-lg font-semibold text-slate-800">Security Framework Consultant</h3>
-                     <span className="text-xs md:text-sm text-gray-600 font-medium mt-1 sm:mt-0">6+ Months</span>
-                   </div>
-                   <p className="text-gray-600 font-medium mb-3 text-sm md:text-base">Independent Consulting | 2024</p>
-                   <ul className="space-y-2 text-gray-700">
-                     <li className="flex items-start gap-2">
-                       <span className="text-gray-500 mt-1">•</span>
-                       <span className="text-sm md:text-base">Implemented OWASP Top 10 security assessments across multiple client environments</span>
-                     </li>
-                     <li className="flex items-start gap-2">
-                       <span className="text-gray-500 mt-1">•</span>
-                       <span className="text-sm md:text-base">Deployed NIST Cybersecurity Framework controls and ISO 27001 compliance programs</span>
-                     </li>
-                     <li className="flex items-start gap-2">
-                       <span className="text-gray-500 mt-1">•</span>
-                       <span className="text-sm md:text-base">Developed automated security assessment tools using CIS Controls benchmarks</span>
-                     </li>
-                   </ul>
-                 </div>
+                 
               </div>
             </section>
 
@@ -428,24 +408,7 @@ export function CVPage({
                    </div>
 
                    {/* COBIT Governance Framework */}
-                   <div className="bg-gradient-to-br from-teal-50 to-emerald-50 p-4 rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
-                     <span className="absolute top-2 right-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">In Progress</span>
-                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
-                       <Target className="w-4 h-4 text-teal-600" />
-                       COBIT 2019 Implementation
-                     </h3>
-                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                       COBIT 2019 governance framework implementation for IT risk management and compliance oversight.
-                     </p>
-                     <div className="flex flex-wrap gap-1 mb-2">
-                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Excel</span>
-                       <span className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded">COBIT</span>
-                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Governance</span>
-                     </div>
-                     <div className="text-xs text-gray-600">
-                       <strong>Status:</strong> 40 objectives, risk assessment matrix
-                     </div>
-                   </div>
+                   
                 </div>
               </div>
             </section>
