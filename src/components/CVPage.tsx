@@ -285,7 +285,8 @@ export function CVPage({
                    </div>
                    <p className="text-gray-700 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
                      Successfully identified and reported a critical security vulnerability in Epic Games' public bug bounty program. 
-                     The discovery demonstrated practical application of OWASP Top 10 methodologies and ethical hacking techniques.
+                     Discovered an account creation bypass that circumvented both OTP (One-Time Password) and 2FA (Two-Factor Authentication) 
+                     security mechanisms, demonstrating practical application of OWASP Top 10 methodologies and authentication testing techniques.
                    </p>
                    <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-4">
                      <div className="text-center p-2 md:p-3 bg-white rounded-lg">
