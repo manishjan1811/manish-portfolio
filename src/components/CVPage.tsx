@@ -274,38 +274,38 @@ export function CVPage({
               </h2>
               <div className="space-y-4 md:space-y-6">
                 
-                 {/* Featured Project - OWASP Top 10 Framework Implementation */}
+                 {/* Featured Project - Epic Games Bug Discovery */}
                  <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 md:p-6 rounded-lg md:rounded-xl border border-red-200 shadow-sm">
                    <div className="flex items-start justify-between mb-3">
                      <h3 className="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2">
-                       <Shield className="w-4 h-4 md:w-5 md:h-5 text-red-600" />
-                       Enterprise OWASP Top 10 Assessment Framework
+                       <Bug className="w-4 h-4 md:w-5 md:h-5 text-red-600" />
+                       Epic Games Bug Discovery
                      </h3>
-                     <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Framework Lead</span>
+                     <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Bug Hunter</span>
                    </div>
                    <p className="text-gray-700 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
-                     Developed and implemented comprehensive OWASP Top 10 security assessment framework for Fortune 500 client. 
-                     Framework integrates NIST CSF controls with ISO 27001 compliance requirements and CIS Critical Security Controls.
+                     Successfully identified and reported a critical security vulnerability in Epic Games' public bug bounty program. 
+                     The discovery demonstrated practical application of OWASP Top 10 methodologies and ethical hacking techniques.
                    </p>
                    <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-4">
                      <div className="text-center p-2 md:p-3 bg-white rounded-lg">
-                       <div className="font-bold text-red-600 text-lg md:text-xl">100%</div>
-                       <div className="text-xs text-gray-600">OWASP Coverage</div>
+                       <div className="font-bold text-red-600 text-lg md:text-xl">1</div>
+                       <div className="text-xs text-gray-600">Bug Found</div>
                      </div>
                      <div className="text-center p-2 md:p-3 bg-white rounded-lg">
-                       <div className="font-bold text-green-600 text-lg md:text-xl">3</div>
-                       <div className="text-xs text-gray-600">Frameworks</div>
+                       <div className="font-bold text-green-600 text-lg md:text-xl">✓</div>
+                       <div className="text-xs text-gray-600">Accepted</div>
                      </div>
                      <div className="text-center p-2 md:p-3 bg-white rounded-lg">
-                       <div className="font-bold text-blue-600 text-lg md:text-xl">Enterprise</div>
-                       <div className="text-xs text-gray-600">Scale</div>
+                       <div className="font-bold text-blue-600 text-lg md:text-xl">Public</div>
+                       <div className="text-xs text-gray-600">Program</div>
                      </div>
                    </div>
                    <div className="flex flex-wrap gap-1 md:gap-2">
-                     <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">OWASP Top 10</span>
-                     <span className="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">NIST CSF</span>
-                     <span className="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">ISO 27001</span>
-                     <span className="px-2 md:px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">CIS Controls</span>
+                     <span className="px-2 md:px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">Bug Bounty</span>
+                     <span className="px-2 md:px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full font-medium">Epic Games</span>
+                     <span className="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">Ethical Hacking</span>
+                     <span className="px-2 md:px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">OWASP Top 10</span>
                    </div>
                  </div>
 
