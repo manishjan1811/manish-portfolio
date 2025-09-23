@@ -569,7 +569,7 @@ export function CVPage({
                  </div>
                  <div className="p-2 bg-purple-50 rounded-lg text-center">
                    <Terminal className="w-5 h-5 md:w-6 md:h-6 text-purple-600 mx-auto mb-1" />
-                   <span className="text-xs font-medium text-slate-800">Automation Tools</span>
+                   <span className="text-xs font-medium text-slate-800 mx-[7px]">Automation Tools</span>
                  </div>
                  <div className="p-2 bg-orange-50 rounded-lg text-center">
                    <Users className="w-5 h-5 md:w-6 md:h-6 text-orange-600 mx-auto mb-1" />
