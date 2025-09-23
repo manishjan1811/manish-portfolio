@@ -189,27 +189,90 @@ export function CVPage({ className = "" }: CVPageProps) {
               </h2>
               <div className="space-y-6 md:space-y-8">
                 
-                {/* Current Role */}
+                 {/* Core Tools & Technologies */}
                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 md:p-6 rounded-lg border-l-4 border-blue-500">
                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                     <h3 className="text-lg md:text-xl font-bold text-slate-800">Security Analyst</h3>
-                     <span className="text-xs md:text-sm text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-full mt-2 sm:mt-0">Ongoing</span>
+                     <h3 className="text-lg md:text-xl font-bold text-slate-800">Security Assessment Tools & Frameworks</h3>
+                     <span className="text-xs md:text-sm text-blue-600 font-semibold bg-blue-100 px-3 py-1 rounded-full mt-2 sm:mt-0">Active</span>
                    </div>
-                   <p className="text-blue-700 font-semibold mb-3 md:mb-4 text-sm md:text-base">SecureFrame Solutions | Risk Assessment Division</p>
-                   <ul className="space-y-2 md:space-y-3 text-gray-700">
-                     <li className="flex items-start gap-2 md:gap-3">
-                       <Shield className="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                       <span className="text-sm md:text-base"><strong>Conduct comprehensive OWASP Top 10 vulnerability assessments</strong> for web applications and enterprise systems</span>
-                     </li>
-                     <li className="flex items-start gap-2 md:gap-3">
-                       <Search className="w-4 h-4 md:w-5 md:h-5 text-purple-500 mt-0.5 flex-shrink-0" />
-                       <span className="text-sm md:text-base"><strong>Implement NIST Cybersecurity Framework</strong> and ISO 27001 compliance initiatives across organizational infrastructure</span>
-                     </li>
-                     <li className="flex items-start gap-2 md:gap-3">
-                       <Target className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                       <span className="text-sm md:text-base"><strong>Develop risk assessment methodologies</strong> using CIS Controls and COBIT frameworks for enterprise clients</span>
-                     </li>
-                   </ul>
+                   <p className="text-blue-700 font-semibold mb-3 md:mb-4 text-sm md:text-base">Specialized Security Analysis Toolkit</p>
+                   
+                   {/* Security Tools Grid */}
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                     <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
+                       <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                         <Bug className="w-4 h-4 text-red-500" />
+                         Vulnerability Assessment Tools
+                       </h4>
+                       <ul className="text-xs text-gray-700 space-y-1">
+                         <li>• Nessus Professional (Vulnerability Scanning)</li>
+                         <li>• OpenVAS (Open Source Security Scanner)</li>
+                         <li>• Qualys VMDR (Cloud-based Assessment)</li>
+                         <li>• Rapid7 Nexpose (Risk-based Prioritization)</li>
+                       </ul>
+                     </div>
+                     
+                     <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
+                       <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                         <Shield className="w-4 h-4 text-green-500" />
+                         OWASP Testing Tools
+                       </h4>
+                       <ul className="text-xs text-gray-700 space-y-1">
+                         <li>• OWASP ZAP (Web Application Scanner)</li>
+                         <li>• Burp Suite Professional (Penetration Testing)</li>
+                         <li>• OWASP Dependency-Check (SCA)</li>
+                         <li>• Nikto (Web Server Scanner)</li>
+                       </ul>
+                     </div>
+                     
+                     <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
+                       <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                         <Database className="w-4 h-4 text-purple-500" />
+                         GRC & Compliance Platforms
+                       </h4>
+                       <ul className="text-xs text-gray-700 space-y-1">
+                         <li>• ServiceNow GRC (Risk Management)</li>
+                         <li>• MetricStream (Compliance Automation)</li>
+                         <li>• RSA Archer (Enterprise Risk)</li>
+                         <li>• Resolver (Operational Risk Management)</li>
+                       </ul>
+                     </div>
+                     
+                     <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
+                       <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                         <Terminal className="w-4 h-4 text-orange-500" />
+                         Analysis & Reporting Tools
+                       </h4>
+                       <ul className="text-xs text-gray-700 space-y-1">
+                         <li>• Microsoft Power BI (Risk Dashboards)</li>
+                         <li>• Splunk Enterprise Security (SIEM)</li>
+                         <li>• Tableau (Security Metrics Visualization)</li>
+                         <li>• Python (Custom Assessment Scripts)</li>
+                       </ul>
+                     </div>
+                   </div>
+                   
+                   {/* Key Project Implementations */}
+                   <div className="bg-gradient-to-r from-white/70 to-blue-50/70 p-3 rounded-lg border border-blue-200">
+                     <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                       <Target className="w-4 h-4 text-blue-600" />
+                       Recent Implementation Projects
+                     </h4>
+                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                       <div className="text-center p-2 bg-white rounded border">
+                         <div className="font-bold text-blue-600 text-lg">50+</div>
+                         <div className="text-xs text-gray-600">OWASP Assessments</div>
+                       </div>
+                       <div className="text-center p-2 bg-white rounded border">
+                         <div className="font-bold text-green-600 text-lg">15+</div>
+                         <div className="text-xs text-gray-600">Framework Integrations</div>
+                       </div>
+                       <div className="text-center p-2 bg-white rounded border">
+                         <div className="font-bold text-purple-600 text-lg">100%</div>
+                         <div className="text-xs text-gray-600">Compliance Coverage</div>
+                       </div>
+                     </div>
+                   </div>
                  </div>
 
                 {/* Additional Experience */}
