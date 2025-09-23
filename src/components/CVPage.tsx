@@ -463,22 +463,15 @@ export function CVPage({
                  <div className="flex items-start gap-2 md:gap-3">
                    <Award className="w-4 h-4 md:w-5 md:h-5 text-blue-500 mt-1 flex-shrink-0" />
                    <div>
-                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">Certified Information Security Analyst (CISA)</h3>
-                     <p className="text-xs md:text-sm text-gray-600">ISACA • 2025</p>
+                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">Certified Ethical Hacker (CEH)</h3>
+                     <p className="text-xs md:text-sm text-gray-600">EC-Council • 2024</p>
                    </div>
                  </div>
                  <div className="flex items-start gap-2 md:gap-3">
                    <Award className="w-4 h-4 md:w-5 md:h-5 text-red-500 mt-1 flex-shrink-0" />
                    <div>
-                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">NIST Cybersecurity Framework Practitioner</h3>
-                     <p className="text-xs md:text-sm text-gray-600">NIST Institute • 2025</p>
-                   </div>
-                 </div>
-                 <div className="flex items-start gap-2 md:gap-3">
-                   <Award className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mt-1 flex-shrink-0" />
-                   <div>
-                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">ISO 27001 Lead Implementer</h3>
-                     <p className="text-xs md:text-sm text-gray-600">PECB • 2025</p>
+                     <h3 className="font-semibold text-slate-800 text-sm md:text-base">Certified Red Team Analyst (CRTA)</h3>
+                     <p className="text-xs md:text-sm text-gray-600">Zero-Point Security • 2024</p>
                    </div>
                  </div>
                </div>
