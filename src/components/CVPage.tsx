@@ -1,22 +1,21 @@
-import { Mail, Phone, MapPin, Calendar, Award, Code, Shield, Globe, Database, Terminal, ExternalLink, Bug, Search, Download, GraduationCap, Users, Target } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
-
+import { Mail, Phone, MapPin, Calendar, Award, Code, Shield, Globe, Database, Terminal, ExternalLink, Bug, Search, Download, GraduationCap, Users, Target } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 interface CVPageProps {
-  className?: string
+  className?: string;
 }
-
-export function CVPage({ className = "" }: CVPageProps) {
-  const { toast } = useToast();
-
+export function CVPage({
+  className = ""
+}: CVPageProps) {
+  const {
+    toast
+  } = useToast();
   const handleExportPDF = async () => {
     try {
       console.log('=== PDF Export Process Started ===');
-      
       toast({
         title: "Preparing your CV",
-        description: "Generating high-quality PDF with all colors and textures...",
+        description: "Generating high-quality PDF with all colors and textures..."
       });
-
       console.log('Starting CV export process...');
 
       // Create URL with query parameters
@@ -26,19 +25,15 @@ export function CVPage({ className = "" }: CVPageProps) {
         type: 'manish'
       });
       const functionUrl = `${baseUrl}?${params}`;
-      
       console.log('Calling function URL:', functionUrl);
-
       const response = await fetch(functionUrl, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1eW5idnFkdHp1d3hxcnJncmduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzMzA1MjgsImV4cCI6MjA2ODkwNjUyOH0.bBbH0Cc-4Y0FTFnkno6SNIGjggvSj_9S5S7D_Fo_4uw`,
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
-
       console.log('Response status:', response.status);
-
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Response error:', errorText);
@@ -48,12 +43,11 @@ export function CVPage({ className = "" }: CVPageProps) {
       // Get the content type to determine how to handle the response
       const contentType = response.headers.get('content-type');
       console.log('Content type:', contentType);
-
       if (contentType?.includes('application/pdf')) {
         // Handle PDF response
         const blob = await response.blob();
         console.log('PDF blob size:', blob.size);
-        
+
         // Create download link
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -63,10 +57,9 @@ export function CVPage({ className = "" }: CVPageProps) {
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-
         toast({
           title: "PDF Downloaded Successfully!",
-          description: "Your high-resolution CV PDF has been downloaded.",
+          description: "Your high-resolution CV PDF has been downloaded."
         });
       } else {
         // If not PDF, there's an issue - show error
@@ -74,28 +67,24 @@ export function CVPage({ className = "" }: CVPageProps) {
         console.error('Expected PDF but got:', contentType, responseText);
         throw new Error('PDF generation failed. Expected PDF file but received different format.');
       }
-
     } catch (error: any) {
       console.error('Error exporting CV:', error);
-      
+
       // Fallback: Use browser print dialog as PDF export
       console.log('Attempting fallback: browser print dialog...');
-      
       toast({
         title: "Using Alternative Method",
         description: "Opening print dialog. Please select 'Save as PDF' from the destination options.",
-        duration: 5000,
+        duration: 5000
       });
-      
+
       // Small delay to let the toast show, then trigger print
       setTimeout(() => {
         window.print();
       }, 1000);
     }
   };
-
-  return (
-    <div className={`bg-white text-black max-w-4xl mx-auto ${className}`} id="cv-page">
+  return <div className={`bg-white text-black max-w-4xl mx-auto ${className}`} id="cv-page">
       {/* Header Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-800/95 backdrop-blur-xl">
         {/* Subtle Background Effects */}
@@ -147,10 +136,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                 
                 {/* Export PDF Button */}
                 <div className="flex justify-center md:justify-start mt-4 print:hidden">
-                  <button
-                    onClick={handleExportPDF}
-                    className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg text-sm md:text-base"
-                  >
+                  <button onClick={handleExportPDF} className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg text-sm md:text-base">
                     <Download className="w-4 h-4" />
                     Export as PDF
                   </button>
@@ -253,26 +239,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                    </div>
                    
                    {/* Key Project Implementations */}
-                   <div className="bg-gradient-to-r from-white/70 to-blue-50/70 p-3 rounded-lg border border-blue-200">
-                     <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                       <Target className="w-4 h-4 text-blue-600" />
-                       Recent Implementation Projects
-                     </h4>
-                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                       <div className="text-center p-2 bg-white rounded border">
-                         <div className="font-bold text-blue-600 text-lg">50+</div>
-                         <div className="text-xs text-gray-600">OWASP Assessments</div>
-                       </div>
-                       <div className="text-center p-2 bg-white rounded border">
-                         <div className="font-bold text-green-600 text-lg">15+</div>
-                         <div className="text-xs text-gray-600">Framework Integrations</div>
-                       </div>
-                       <div className="text-center p-2 bg-white rounded border">
-                         <div className="font-bold text-purple-600 text-lg">100%</div>
-                         <div className="text-xs text-gray-600">Compliance Coverage</div>
-                       </div>
-                     </div>
-                   </div>
+                   
                  </div>
 
                 {/* Additional Experience */}
@@ -529,9 +496,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                      OWASP Top 10 Expertise
                    </h3>
                    <div className="flex flex-wrap gap-1">
-                     {["Broken Access Control", "Cryptographic Failures", "Injection", "Insecure Design", "Security Misconfiguration", "Vulnerable Components"].map((skill) => (
-                       <span key={skill} className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">{skill}</span>
-                     ))}
+                     {["Broken Access Control", "Cryptographic Failures", "Injection", "Insecure Design", "Security Misconfiguration", "Vulnerable Components"].map(skill => <span key={skill} className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">{skill}</span>)}
                    </div>
                  </div>
                  <div>
@@ -540,9 +505,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                      Security Frameworks
                    </h3>
                    <div className="flex flex-wrap gap-1">
-                     {["NIST CSF", "ISO 27001", "CIS Controls", "COBIT 2019", "FAIR", "OCTAVE"].map((skill) => (
-                       <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>
-                     ))}
+                     {["NIST CSF", "ISO 27001", "CIS Controls", "COBIT 2019", "FAIR", "OCTAVE"].map(skill => <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>)}
                    </div>
                  </div>
                  <div>
@@ -551,9 +514,7 @@ export function CVPage({ className = "" }: CVPageProps) {
                      Assessment Tools
                    </h3>
                    <div className="flex flex-wrap gap-1">
-                     {["GRC Platforms", "Vulnerability Scanners", "Risk Assessment", "Compliance Tools", "PowerBI", "Excel"].map((skill) => (
-                       <span key={skill} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">{skill}</span>
-                     ))}
+                     {["GRC Platforms", "Vulnerability Scanners", "Risk Assessment", "Compliance Tools", "PowerBI", "Excel"].map(skill => <span key={skill} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">{skill}</span>)}
                    </div>
                  </div>
                </div>
@@ -663,6 +624,5 @@ export function CVPage({ className = "" }: CVPageProps) {
 
 
       </div>
-    </div>
-  )
+    </div>;
 }
