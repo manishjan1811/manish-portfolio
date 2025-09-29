@@ -19,6 +19,7 @@ interface GitHubRepo {
   updated_at: string;
   created_at: string;
   homepage: string | null;
+  fork: boolean;
 }
 
 interface ProjectData {
@@ -64,8 +65,8 @@ serve(async (req) => {
     const username = userData.login;
     console.log(`Fetching repos for user: ${username}`);
 
-    // Fetch repositories
-    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=20`, {
+    // Fetch repositories (including private repos)
+    const reposResponse = await fetch(`https://api.github.com/user/repos?sort=updated&per_page=20`, {
       headers: {
         'Authorization': `token ${githubToken}`,
         'Accept': 'application/vnd.github.v3+json',
@@ -95,7 +96,7 @@ serve(async (req) => {
           ...repo.topics.filter(topic => 
             ['react', 'typescript', 'javascript', 'python', 'nodejs', 'nextjs', 'tailwind', 'css', 'html', 'supabase', 'firebase'].includes(topic.toLowerCase())
           )
-        ].filter(Boolean).slice(0, 4);
+        ].filter((tech): tech is string => Boolean(tech)).slice(0, 4);
 
         // Generate features description
         const features = generateFeatures(repo);
@@ -131,7 +132,7 @@ serve(async (req) => {
     console.error('Error in github-projects function:', error);
     return new Response(JSON.stringify({ 
       success: false, 
-      error: error.message 
+      error: error instanceof Error ? error.message : 'Unknown error' 
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
