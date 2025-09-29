@@ -53,8 +53,15 @@ export function GitHubProjects() {
         throw new Error(response.error || 'Failed to fetch projects');
       }
 
-      setProjects(response.projects);
-      console.log(`Loaded ${response.projects.length} projects from GitHub`);
+      // Enhance project data with better features and technologies
+      const enhancedProjects = response.projects.map(project => ({
+        ...project,
+        technologies: getEnhancedTechnologies(project.name, project.description),
+        features: getEnhancedFeatures(project.name, project.description)
+      }));
+
+      setProjects(enhancedProjects);
+      console.log(`Loaded ${enhancedProjects.length} projects from GitHub`);
 
     } catch (err: any) {
       console.error('Error fetching GitHub projects:', err);
@@ -70,8 +77,8 @@ export function GitHubProjects() {
         {
           name: "NIST Framework Mapper",
           description: "Automated tool mapping OWASP Top 10 vulnerabilities to NIST Cybersecurity Framework controls.",
-          technologies: ["Python", "NIST CSF", "Mapping"],
-          features: "Control mapping, risk scoring, compliance tracking",
+          technologies: ["Python", "NIST CSF", "Security"],
+          features: "Vulnerability mapping, compliance tracking, automated reporting",
           github_url: "#",
           stars: 0,
           forks: 0,
@@ -81,7 +88,7 @@ export function GitHubProjects() {
           name: "ISO 27001 Audit Suite", 
           description: "Comprehensive ISO 27001 compliance assessment tool with automated evidence collection.",
           technologies: ["PowerShell", "ISO 27001", "Compliance"],
-          features: "114 controls, evidence capture, gap analysis",
+          features: "114 security controls, automated evidence collection, gap analysis reporting",
           github_url: "#",
           stars: 0,
           forks: 0,
@@ -91,6 +98,76 @@ export function GitHubProjects() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const getEnhancedTechnologies = (name: string, description: string) => {
+    const nameLower = name.toLowerCase();
+    const descLower = description.toLowerCase();
+    
+    const technologies = [];
+    
+    // Framework detection
+    if (descLower.includes('react')) technologies.push('React');
+    if (descLower.includes('typescript')) technologies.push('TypeScript');
+    if (descLower.includes('tailwind')) technologies.push('Tailwind CSS');
+    if (descLower.includes('supabase')) technologies.push('Supabase');
+    if (descLower.includes('node')) technologies.push('Node.js');
+    if (descLower.includes('express')) technologies.push('Express');
+    if (descLower.includes('next')) technologies.push('Next.js');
+    
+    // Language detection
+    if (descLower.includes('python') || nameLower.includes('python')) technologies.push('Python');
+    if (descLower.includes('shell') || descLower.includes('bash')) technologies.push('Shell');
+    if (descLower.includes('powershell')) technologies.push('PowerShell');
+    if (descLower.includes('javascript')) technologies.push('JavaScript');
+    
+    // Domain-specific
+    if (descLower.includes('cryptocurrency') || descLower.includes('crypto')) technologies.push('Blockchain');
+    if (descLower.includes('real estate') || nameLower.includes('luxury')) technologies.push('Real Estate');
+    if (descLower.includes('portfolio') || descLower.includes('cv')) technologies.push('Portfolio');
+    if (descLower.includes('pentest') || descLower.includes('security')) technologies.push('Cybersecurity');
+    if (descLower.includes('reconnaissance') || descLower.includes('recon')) technologies.push('Pentesting');
+    
+    return technologies.length > 0 ? technologies : ['Web Development'];
+  };
+
+  const getEnhancedFeatures = (name: string, description: string) => {
+    const nameLower = name.toLowerCase();
+    const descLower = description.toLowerCase();
+    
+    // Specific project features based on name and description
+    if (nameLower.includes('luxury') && nameLower.includes('homes')) {
+      return 'Property listings, responsive design, location pages, premium UI components';
+    }
+    
+    if (nameLower.includes('trade') && nameLower.includes('flow')) {
+      return 'Real-time market data, P2P trading, portfolio management, secure exchange';
+    }
+    
+    if (nameLower.includes('portfolio') || nameLower.includes('manish')) {
+      return 'CV generator, project showcase, contact forms, responsive design';
+    }
+    
+    if (nameLower.includes('webtools')) {
+      return 'One-click installer, automated setup, pentesting tools configuration';
+    }
+    
+    if (nameLower.includes('recon')) {
+      return 'Automated reconnaissance, web enumeration, beginner-friendly interface';
+    }
+    
+    // Generic features based on description content
+    const features = [];
+    if (descLower.includes('responsive')) features.push('responsive design');
+    if (descLower.includes('real-time')) features.push('real-time updates');
+    if (descLower.includes('portfolio')) features.push('project showcase');
+    if (descLower.includes('cv') || descLower.includes('resume')) features.push('CV generation');
+    if (descLower.includes('contact')) features.push('contact forms');
+    if (descLower.includes('authentication') || descLower.includes('auth')) features.push('user authentication');
+    if (descLower.includes('database')) features.push('data persistence');
+    if (descLower.includes('api')) features.push('API integration');
+    
+    return features.length > 0 ? features.join(', ') : 'Modern web application features';
   };
 
   const getTechColor = (tech: string) => {
