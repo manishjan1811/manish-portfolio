@@ -233,7 +233,7 @@ export function CVPage({
                           <li>• BugBro (AI-assisted Bug Hunting Tool)</li>
                           <li>• ToolsBro (Security Assessment Utilities)</li>
                           <li>• Python (Automation Scripts)</li>
-                          <li>• Web Development (Frontend/Backend)</li>
+                          <li>• Web Development (Frontend/Backend) using AI</li>
                         </ul>
                       </div>
                    </div>
