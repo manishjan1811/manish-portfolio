@@ -348,15 +348,6 @@ export function CVPage({
                       {["NIST CSF", "ISO 27001", "CIS Controls"].map(skill => <span key={skill} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{skill}</span>)}
                     </div>
                  </div>
-                 <div>
-                   <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
-                     <Code className="w-4 h-4 text-green-500" />
-                     Assessment Tools
-                   </h3>
-                   <div className="flex flex-wrap gap-1">
-                     {["GRC Platforms", "Vulnerability Scanners", "Risk Assessment", "Compliance Tools", "PowerBI", "Excel"].map(skill => <span key={skill} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">{skill}</span>)}
-                   </div>
-                 </div>
                </div>
             </section>
 
