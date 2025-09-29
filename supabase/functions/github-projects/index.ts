@@ -66,7 +66,7 @@ serve(async (req) => {
     console.log(`Fetching repos for user: ${username}`);
 
     // Fetch repositories (including private repos)
-    const reposResponse = await fetch(`https://api.github.com/user/repos?sort=updated&per_page=20`, {
+    const reposResponse = await fetch(`https://api.github.com/user/repos?visibility=all&affiliation=owner,collaborator,organization_member&sort=updated&per_page=50`, {
       headers: {
         'Authorization': `token ${githubToken}`,
         'Accept': 'application/vnd.github.v3+json',
@@ -84,9 +84,7 @@ serve(async (req) => {
     // Filter and transform repositories to project data
     const projects: ProjectData[] = repos
       .filter(repo => 
-        !repo.fork && // Exclude forks
-        repo.description && // Must have description
-        repo.stargazers_count >= 0 // Include all for now
+        !repo.fork
       )
       .slice(0, 6) // Limit to 6 projects
       .map(repo => {
