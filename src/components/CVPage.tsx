@@ -211,18 +211,18 @@ export function CVPage({
                        </ul>
                      </div>
                      
-                     <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
-                       <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                         <Database className="w-4 h-4 text-purple-500" />
-                         GRC & Compliance Platforms
-                       </h4>
-                       <ul className="text-xs text-gray-700 space-y-1">
-                         <li>• ServiceNow GRC (Risk Management)</li>
-                         <li>• MetricStream (Compliance Automation)</li>
-                         <li>• RSA Archer (Enterprise Risk)</li>
-                         <li>• Resolver (Operational Risk Management)</li>
-                       </ul>
-                     </div>
+                      <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
+                        <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+                          <Bug className="w-4 h-4 text-purple-500" />
+                          Bug Hunting & Research Tools
+                        </h4>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• Manual Testing Methodologies</li>
+                          <li>• OWASP Top 10 Analysis</li>
+                          <li>• Authentication Bypass Research</li>
+                          <li>• Security Framework Mapping</li>
+                        </ul>
+                      </div>
                      
                       <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
                         <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
