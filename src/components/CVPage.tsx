@@ -190,12 +190,12 @@ export function CVPage({
                          <Bug className="w-4 h-4 text-red-500" />
                          Vulnerability Assessment Tools
                        </h4>
-                       <ul className="text-xs text-gray-700 space-y-1">
-                         <li>• Nessus Professional (Vulnerability Scanning)</li>
-                         <li>• OpenVAS (Open Source Security Scanner)</li>
-                         <li>• Qualys VMDR (Cloud-based Assessment)</li>
-                         <li>• Rapid7 Nexpose (Risk-based Prioritization)</li>
-                       </ul>
+                        <ul className="text-xs text-gray-700 space-y-1">
+                          <li>• Manual Vulnerability Testing</li>
+                          <li>• Bug Bounty Platform Testing</li>
+                          <li>• OWASP Top 10 Assessment</li>
+                          <li>• Web Application Security Testing</li>
+                        </ul>
                      </div>
                      
                      <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
