@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Calendar, Award, Code, Shield, Globe, Database, Terminal, ExternalLink, Bug, Search, Download, GraduationCap, Users, Target } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { GitHubProjects } from "./GitHubProjects";
 interface CVPageProps {
   className?: string;
 }
@@ -290,126 +291,8 @@ export function CVPage({
                    </div>
                  </div>
 
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                   {/* NIST Framework Mapper */}
-                   <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
-                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                       <Shield className="w-4 h-4 text-blue-600" />
-                       NIST Framework Mapper
-                     </h3>
-                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                       Automated tool mapping OWASP Top 10 vulnerabilities to NIST Cybersecurity Framework controls.
-                     </p>
-                     <div className="flex flex-wrap gap-1 mb-2">
-                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Python</span>
-                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">NIST CSF</span>
-                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Mapping</span>
-                     </div>
-                     <div className="text-xs text-gray-600">
-                       <strong>Features:</strong> Control mapping, risk scoring, compliance tracking
-                     </div>
-                   </div>
-
-                   {/* ISO 27001 Audit Tool */}
-                   <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-all duration-300">
-                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                       <Search className="w-4 h-4 text-emerald-600" />
-                       ISO 27001 Audit Suite
-                     </h3>
-                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                       Comprehensive ISO 27001 compliance assessment tool with automated evidence collection.
-                     </p>
-                     <div className="flex flex-wrap gap-1 mb-2">
-                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">PowerShell</span>
-                       <span className="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded">ISO 27001</span>
-                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Compliance</span>
-                     </div>
-                     <div className="text-xs text-gray-600">
-                       <strong>Features:</strong> 114 controls, evidence capture, gap analysis
-                     </div>
-                   </div>
-
-                  {/* Uber Luxury Home */}
-                  <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-4 rounded-lg border border-amber-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                      <Globe className="w-4 h-4 text-amber-600" />
-                      Uber Luxury Home
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Premium real estate platform built with Lovable's React/TypeScript stack and Supabase backend integration.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                      <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">TypeScript</span>
-                      <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">Supabase</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> Modern architecture, Tailwind design system, full-stack
-                    </div>
-                  </div>
-
-                  {/* CheapOTT Store */}
-                  <div className="bg-gradient-to-br from-orange-50 to-red-50 p-4 rounded-lg border border-orange-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                      <Globe className="w-4 h-4 text-orange-600" />
-                      CheapOTT Store
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      E-commerce platform for streaming service subscriptions with responsive design and admin dashboard.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">HTML5</span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">CSS3</span>
-                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">JavaScript</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> Mobile-first, cart system, SEO optimized
-                    </div>
-                  </div>
-
-                  {/* Trade Flow Universe */}
-                  <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-4 rounded-lg border border-purple-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm">
-                      <Code className="w-4 h-4 text-purple-600" />
-                      Trade Flow Universe
-                    </h3>
-                    <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                      Cryptocurrency trading platform frontend with real-time charts and portfolio management interface.
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                      <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">TypeScript</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Chart.js</span>
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      <strong>Features:</strong> Real-time charts, portfolio tracking, alerts
-                    </div>
-                  </div>
-
-                   {/* CIS Controls Implementation */}
-                   <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 rounded-lg border border-cyan-200 shadow-sm hover:shadow-md transition-all duration-300 relative">
-                     <span className="absolute top-2 right-2 text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">Ongoing</span>
-                     <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2 text-sm pr-16">
-                       <Shield className="w-4 h-4 text-cyan-600" />
-                       CIS Controls Framework
-                     </h3>
-                     <p className="text-xs text-gray-700 mb-3 leading-relaxed">
-                       Implementation of CIS Critical Security Controls v8 with automated monitoring and compliance reporting.
-                     </p>
-                     <div className="flex flex-wrap gap-1 mb-2">
-                       <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">PowerBI</span>
-                       <span className="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs rounded">CIS v8</span>
-                       <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Controls</span>
-                     </div>
-                     <div className="text-xs text-gray-600">
-                       <strong>Progress:</strong> 18 control groups, dashboard development
-                     </div>
-                   </div>
-
-                   {/* COBIT Governance Framework */}
-                   
-                </div>
+                {/* GitHub Projects Component */}
+                <GitHubProjects />
               </div>
             </section>
 
