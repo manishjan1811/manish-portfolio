@@ -59,10 +59,11 @@ serve(async (req) => {
         );
       } catch (uploadError) {
         console.error('Upload error:', uploadError);
+        const errorMessage = uploadError instanceof Error ? uploadError.message : 'Unknown upload error';
         return new Response(
           JSON.stringify({ 
             error: 'Upload failed', 
-            details: uploadError.message 
+            details: errorMessage 
           }),
           { 
             headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -98,7 +99,7 @@ serve(async (req) => {
             console.error('Error uploading PDF:', uploadError);
           }
 
-          return new Response(pdfBuffer, {
+          return new Response(new Uint8Array(pdfBuffer), {
             headers: {
               ...corsHeaders,
               'Content-Type': 'application/pdf',
@@ -152,8 +153,9 @@ serve(async (req) => {
 
   } catch (error) {
     console.error('Error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return new Response(
-      JSON.stringify({ error: 'Internal server error', details: error.message }),
+      JSON.stringify({ error: 'Internal server error', details: errorMessage }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 500 
@@ -197,7 +199,8 @@ async function generateCVPDF(cvType: string, supabaseClient: any): Promise<Uint8
       }
     } catch (testError) {
       console.error('URL accessibility test failed:', testError);
-      throw new Error(`CV page not accessible at ${cvUrl}: ${testError.message}`);
+      const errorMessage = testError instanceof Error ? testError.message : 'Unknown test error';
+      throw new Error(`CV page not accessible at ${cvUrl}: ${errorMessage}`);
     }
 
     // Call the convert-to-pdf function to generate high-quality PDF

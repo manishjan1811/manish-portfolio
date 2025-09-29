@@ -17,7 +17,7 @@ serve(async (req) => {
     // Generate PDF directly without fetching HTML
     const pdfBytes = await generateCleanPDF();
     
-    return new Response(pdfBytes, {
+    return new Response(new Uint8Array(pdfBytes), {
       headers: { 
         ...corsHeaders, 
         'Content-Type': 'application/pdf',
@@ -30,8 +30,9 @@ serve(async (req) => {
     
   } catch (error) {
     console.error('Error generating PDF:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return new Response(
-      JSON.stringify({ error: 'Failed to generate PDF', details: error.message }),
+      JSON.stringify({ error: 'Failed to generate PDF', details: errorMessage }),
       {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
