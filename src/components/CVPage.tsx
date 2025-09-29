@@ -193,8 +193,8 @@ export function CVPage({
                         <ul className="text-xs text-gray-700 space-y-1">
                           <li>• Nessus (Vulnerability Scanning)</li>
                           <li>• OpenVAS (Security Scanner)</li>
-                          <li>• Qualys (Cloud Assessment)</li>
-                          <li>• Rapid7 (Risk Analysis)</li>
+                          <li>• Nmap (Network Scanning)</li>
+                          <li>• Dirb/Gobuster (Directory Fuzzing)</li>
                         </ul>
                      </div>
                      
