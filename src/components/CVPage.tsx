@@ -220,7 +220,7 @@ export function CVPage({
                           <li>• Manual Testing Methodologies</li>
                           <li>• OWASP Top 10 Analysis</li>
                           <li>• Authentication Bypass Research</li>
-                          <li>• Security Framework Mapping</li>
+                          
                         </ul>
                       </div>
                      
