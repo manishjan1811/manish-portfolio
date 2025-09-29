@@ -157,10 +157,10 @@ export function CVPage({
             PROFESSIONAL SUMMARY
           </h2>
            <p className="text-gray-700 leading-relaxed text-justify text-sm md:text-base">
-              Cybersecurity professional with hands-on experience in finding and fixing security vulnerabilities. 
-              I specialize in security assessments, risk management, and helping organizations protect their digital assets. 
-              Skilled in using industry-standard security frameworks like NIST and ISO 27001 to improve security practices. 
-              I enjoy building security tools and conducting penetration testing to make systems safer and more secure.
+              <strong>Cybersecurity professional</strong> with hands-on experience in finding and fixing <strong>security vulnerabilities</strong>. 
+              I specialize in <strong>security assessments</strong>, <strong>risk management</strong>, and helping organizations protect their digital assets. 
+              Skilled in using industry-standard security frameworks like <strong>NIST</strong> and <strong>ISO 27001</strong> to improve security practices. 
+              I enjoy building <strong>security tools</strong> and conducting <strong>penetration testing</strong> to make systems safer and more secure.
             </p>
         </section>
 
