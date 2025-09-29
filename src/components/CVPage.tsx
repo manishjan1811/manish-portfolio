@@ -157,12 +157,11 @@ export function CVPage({
             PROFESSIONAL SUMMARY
           </h2>
            <p className="text-gray-700 leading-relaxed text-justify text-sm md:text-base">
-             Experienced Security Analyst with <strong>6+ months</strong> of specialized expertise in security risk assessment 
-             and OWASP Top 10 vulnerability analysis. Expert in security frameworks including <strong>NIST Cybersecurity Framework</strong>, 
-             <strong>ISO 27001</strong>, and <strong>CIS Controls</strong>. Proven track record in conducting comprehensive 
-             security assessments, implementing risk mitigation strategies, and ensuring compliance with industry security standards. 
-             Passionate about leveraging security frameworks and OWASP guidelines to strengthen organizational security posture.
-           </p>
+              Cybersecurity professional with hands-on experience in finding and fixing security vulnerabilities. 
+              I specialize in security assessments, risk management, and helping organizations protect their digital assets. 
+              Skilled in using industry-standard security frameworks like NIST and ISO 27001 to improve security practices. 
+              I enjoy building security tools and conducting penetration testing to make systems safer and more secure.
+            </p>
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
