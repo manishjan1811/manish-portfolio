@@ -207,17 +207,7 @@ export function GitHubProjects() {
             <strong>Features:</strong> {project.features}
           </div>
 
-          <div className="flex items-center justify-between text-xs text-gray-500">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1">
-                <Star className="w-3 h-3" />
-                {project.stars}
-              </div>
-              <div className="flex items-center gap-1">
-                <GitFork className="w-3 h-3" />
-                {project.forks}
-              </div>
-            </div>
+          <div className="flex items-center justify-end text-xs text-gray-500">
             <a 
               href={project.github_url} 
               target="_blank" 
