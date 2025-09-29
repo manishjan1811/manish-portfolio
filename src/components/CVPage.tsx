@@ -301,6 +301,11 @@ export function CVPage({
                      <p className="text-xs text-gray-700 mb-3 leading-relaxed">
                        Automated tool mapping OWASP Top 10 vulnerabilities to NIST Cybersecurity Framework controls.
                      </p>
+                     <div className="flex flex-wrap gap-1 mb-2">
+                       <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">Python</span>
+                       <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">NIST CSF</span>
+                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Mapping</span>
+                     </div>
                      <div className="text-xs text-gray-600">
                        <strong>Features:</strong> Control mapping, risk scoring, compliance tracking
                      </div>
