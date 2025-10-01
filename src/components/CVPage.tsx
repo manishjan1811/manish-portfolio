@@ -413,11 +413,10 @@ export function CVPage({
                  <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
                    <div className="flex items-start gap-2">
                      <GraduationCap className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                     <div>
-                       <h3 className="font-semibold text-slate-800 text-sm md:text-base">Diploma in Cyber Security</h3>
-                       <p className="text-xs md:text-sm text-blue-700 font-medium">Craw Cyber Security</p>
-                       <p className="text-xs text-gray-600 mt-1">Foundation in cybersecurity principles, ethical hacking, and security frameworks</p>
-                     </div>
+                      <div>
+                        <h3 className="font-semibold text-slate-800 text-sm md:text-base">Diploma in Cyber Security</h3>
+                        <p className="text-xs text-gray-600 mt-1">Foundation in cybersecurity principles, ethical hacking, and security frameworks</p>
+                      </div>
                    </div>
                  </div>
                  <div className="p-2 bg-gray-50 rounded-lg">
