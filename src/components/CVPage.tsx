@@ -407,21 +407,31 @@ export function CVPage({
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 border-b-2 border-blue-500 pb-2">
                 EDUCATION
               </h2>
-               <div className="space-y-2">
-                 <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
-                   <div className="flex items-start gap-2">
-                     <GraduationCap className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                 <div className="space-y-2">
+                  <div className="p-2 md:p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                    <div className="flex items-start gap-2">
+                      <GraduationCap className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold text-slate-800 text-sm md:text-base">Diploma in Cyber Security</h3>
                         <p className="text-xs text-gray-600 mt-1">Foundation in cybersecurity principles, ethical hacking, and security frameworks</p>
                       </div>
-                   </div>
-                 </div>
-                 <div className="p-2 bg-gray-50 rounded-lg">
-                   <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Self-Directed Learning & Implementation</h3>
-                   <p className="text-xs text-gray-600">Advanced security frameworks, OWASP methodologies, and practical security assessment tools through hands-on experience and independent research</p>
-                 </div>
-               </div>
+                    </div>
+                  </div>
+                  <div className="p-2 md:p-3 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+                    <div className="flex items-start gap-2">
+                      <GraduationCap className="w-4 h-4 text-purple-600 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold text-slate-800 text-sm md:text-base">Bachelor of Computer Applications (BCA)</h3>
+                        <p className="text-xs md:text-sm text-purple-700 font-medium">Om Starling Global University</p>
+                        <p className="text-xs text-gray-600 mt-1">Currently pursuing 3rd year • Building strong foundation in computer science, programming, and application development</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 bg-gray-50 rounded-lg">
+                    <h3 className="font-semibold text-slate-800 text-xs md:text-sm">Self-Directed Learning & Implementation</h3>
+                    <p className="text-xs text-gray-600">Advanced security frameworks, OWASP methodologies, and practical security assessment tools through hands-on experience and independent research</p>
+                  </div>
+                </div>
             </section>
 
             {/* Professional Interests */}
