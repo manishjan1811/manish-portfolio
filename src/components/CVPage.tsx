@@ -423,7 +423,7 @@ export function CVPage({
                       <div>
                         <h3 className="font-semibold text-slate-800 text-sm md:text-base">Bachelor of Computer Applications (BCA)</h3>
                         <p className="text-xs md:text-sm text-purple-700 font-medium">Om Starling Global University</p>
-                        <p className="text-xs text-gray-600 mt-1">Currently pursuing 3rd year • Building strong foundation in computer science, programming, and application development</p>
+                        <p className="text-xs text-gray-600 mt-1">Currently pursuing 3rd year • </p>
                       </div>
                     </div>
                   </div>
