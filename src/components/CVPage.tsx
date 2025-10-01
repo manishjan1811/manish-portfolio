@@ -213,14 +213,14 @@ export function CVPage({
                      
                       <div className="bg-white/50 p-3 rounded-lg border border-blue-200">
                         <h4 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                          <Bug className="w-4 h-4 text-purple-500" />
-                          Bug Hunting & Research Tools
+                          <Target className="w-4 h-4 text-purple-500" />
+                          Risk Management
                         </h4>
                         <ul className="text-xs text-gray-700 space-y-1">
-                          <li>• Manual Testing Methodologies</li>
-                          <li>• OWASP Top 10 Analysis</li>
-                          <li>• Authentication Bypass Research</li>
-                          
+                          <li>• Finding security problems before hackers do</li>
+                          <li>• Checking how safe systems are</li>
+                          <li>• Making plans to fix security issues</li>
+                          <li>• Helping teams understand security risks</li>
                         </ul>
                       </div>
                      
