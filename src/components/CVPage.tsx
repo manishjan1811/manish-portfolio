@@ -338,6 +338,16 @@ export function CVPage({
                      {["Broken Access Control", "Cryptographic Failures", "Injection", "Insecure Design", "Security Misconfiguration", "Vulnerable Components"].map(skill => <span key={skill} className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">{skill}</span>)}
                    </div>
                  </div>
+                 
+                 <div>
+                   <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2 text-sm md:text-base">
+                     <Target className="w-4 h-4 text-orange-500" />
+                     Risk Management
+                   </h3>
+                   <div className="flex flex-wrap gap-1">
+                     {["Finding Security Risks", "Safety Checks", "Fix Planning", "Team Training"].map(skill => <span key={skill} className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">{skill}</span>)}
+                   </div>
+                 </div>
                </div>
             </section>
 
