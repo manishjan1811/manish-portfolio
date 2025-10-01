@@ -363,7 +363,6 @@ export function CVPage({
                 </div>
                 <div className="flex justify-between items-center p-2 md:p-3 bg-green-50 rounded-lg">
                   <span className="font-semibold text-sm md:text-base">Hindi</span>
-                  <span className="text-xs md:text-sm font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Professional</span>
                 </div>
               </div>
             </section>
