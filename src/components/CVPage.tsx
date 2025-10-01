@@ -435,7 +435,7 @@ export function CVPage({
                <div className="grid grid-cols-2 gap-2">
                  <div className="p-2 bg-blue-50 rounded-lg text-center">
                    <Globe className="w-5 h-5 md:w-6 md:h-6 text-blue-600 mx-auto mb-1" />
-                   <span className="text-xs font-medium text-slate-800">Making Websites</span>
+                   <span className="text-xs font-medium text-slate-800">Making Websites using ai</span>
                  </div>
                  <div className="p-2 bg-green-50 rounded-lg text-center">
                    <Bug className="w-5 h-5 md:w-6 md:h-6 text-green-600 mx-auto mb-1" />
